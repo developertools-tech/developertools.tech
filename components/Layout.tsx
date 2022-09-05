@@ -3,6 +3,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+import GitHub from '@mui/icons-material/GitHub';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -60,29 +61,26 @@ export default function Layout({
   };
 
   const drawer = (
-    <>
-      <Toolbar />
-      <List>
-        {navItems.map(({ title: itemTitle, href, Icon }) => (
-          <ListItem
-            key={href}
-            disablePadding
+    <List>
+      {navItems.map(({ title: itemTitle, href, Icon }) => (
+        <ListItem
+          key={href}
+          disablePadding
+        >
+          <ListItemButton
+            href={href}
+            component={Link}
           >
-            <ListItemButton
-              href={href}
-              component={Link}
-            >
-              <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
-              <ListItemText primary={itemTitle} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </>
+            <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
+            <ListItemText primary={itemTitle} />
+          </ListItemButton>
+        </ListItem>
+      ))}
+    </List>
   );
 
   return (
-    <Box>
+    <Box height='100%'>
       <Head>
         <title>{title} | utils.dlford.io</title>
         <meta
@@ -95,7 +93,8 @@ export default function Layout({
       <AppBar
         position='fixed'
         sx={{
-          zIndex: (theme) => theme.zIndex.drawer + 1,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          mr: { sm: `${drawerWidth}px` },
         }}
       >
         <Toolbar>
@@ -148,14 +147,50 @@ export default function Layout({
       </Box>
       <Box
         component='main'
+        display='flex'
+        flexDirection='column'
+        justifyContent='center'
+        alignItems='center'
         sx={{
-          flexGrow: 1,
           p: 3,
+          pt: 12,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          minHeight: (theme) => ({
+            xs: `calc(100% - ${theme.mixins.toolbar.minHeight}px)`,
+            sm: `calc(100% - ${theme.mixins.toolbar.minHeight}px - 8px)`,
+          }),
         }}
       >
-        <Toolbar />
         {children}
+      </Box>
+      <Box
+        position='relative'
+        component='footer'
+        width={
+          (width || 0) < 600 ? '100%' : `calc(100% - ${drawerWidth}px)`
+        }
+        display='flex'
+        justifyContent='center'
+        alignItems='center'
+        bgcolor='grey.900'
+      >
+        <Toolbar>
+          <Typography
+            display='flex'
+            justifyContent='center'
+            alignItems='center'
+          >
+            CopyLeft DL Ford 2022{' '}
+            <IconButton
+              href='https://github.com/dlford/utils.dlford.io'
+              target='_blank'
+              rel='noopener noreferrer'
+              sx={{ mx: 0.5 }}
+            >
+              <GitHub />
+            </IconButton>
+          </Typography>
+        </Toolbar>
       </Box>
     </Box>
   );

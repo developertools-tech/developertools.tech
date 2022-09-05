@@ -2,22 +2,14 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
 
+import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 
 export default function IndexPage() {
   return (
     <Layout>
-      <Box
-        textAlign='center'
-        color='text.secondary'
-      >
-        <Typography
-          variant='h3'
-          component='h1'
-          marginBottom={2}
-        >
-          Welcome!
-        </Typography>
+      <Box textAlign='center'>
+        <Heading>Welcome!</Heading>
         <Typography paragraph>
           Choose a tool from the menu to get started.
         </Typography>
