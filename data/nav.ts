@@ -4,6 +4,8 @@ import Fingerprint from '@mui/icons-material/Fingerprint';
 import HomeIcon from '@mui/icons-material/Home';
 import Looks6 from '@mui/icons-material/Looks6';
 
+// Icons Index: https://mui.com/material-ui/material-icons/
+
 export default [
   {
     title: 'Home',
