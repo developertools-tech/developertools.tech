@@ -5,12 +5,12 @@ import Layout from '../components/Layout';
 
 export default function AspectRatioPage() {
   return (
-    <Layout title='Aspect Ratio'>
+    <Layout title='Base64'>
       <Typography
         variant='h5'
         component='h1'
       >
-        Aspect Ratio
+        Base64
       </Typography>
     </Layout>
   );

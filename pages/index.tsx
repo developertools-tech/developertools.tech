@@ -8,7 +8,6 @@ export default function IndexPage() {
   return (
     <Layout>
       <Box
-        padding={3}
         textAlign='center'
         color='text.secondary'
       >
