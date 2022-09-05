@@ -1,3 +1,4 @@
+// TODO: Install font, remove url from index.html
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -7,12 +8,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -24,7 +27,6 @@ import navItems from '../data/nav';
 import logo from '../public/logo-full.svg';
 import Link from './Link';
 
-const pageWidth = 1000;
 const drawerWidth = 240;
 
 function Logo() {
@@ -43,28 +45,20 @@ function Logo() {
   );
 }
 
-export default function Layout({
+export default function ResponsiveDrawer({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
-    setDrawerOpen(!drawerOpen);
+    setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
-    <Box
-      onClick={handleDrawerToggle}
-      sx={{ textAlign: 'center' }}
-    >
-      <Typography
-        variant='h6'
-        sx={{ my: 2 }}
-      >
-        Utilities
-      </Typography>
+    <>
+      <Toolbar />
       <Divider />
       <List>
         {navItems.map(({ title, href, Icon }) => (
@@ -75,20 +69,22 @@ export default function Layout({
             <ListItemButton
               href={href}
               component={Link}
-              sx={{ textAlign: 'center' }}
             >
-              <Icon />
+              <ListItemIcon>
+                <Icon />
+              </ListItemIcon>
               <ListItemText primary={title} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-    </Box>
+    </>
   );
 
   return (
     <>
       <Head>
+        {/* TODO: Make dynamic */}
         <title>Create Next App</title>
         <meta
           name='description'
@@ -100,89 +96,86 @@ export default function Layout({
         />
       </Head>
 
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100%',
-        }}
-      >
-        <Box sx={{ display: 'flex' }}>
-          <AppBar>
-            <Toolbar
-              sx={{
-                width: pageWidth,
-                maxWidth: '100%',
-                margin: '0 auto',
-              }}
-            >
-              <Typography
-                variant='h6'
-                component='div'
-                sx={{
-                  flexGrow: 1,
-                }}
-              >
-                <Logo />
-              </Typography>
-              <IconButton
-                color='inherit'
-                aria-label='open drawer'
-                edge='start'
-                onClick={handleDrawerToggle}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Toolbar>
-          </AppBar>
-          <Box component='nav'>
-            <Drawer
-              variant='temporary'
-              anchor='right'
-              open={drawerOpen}
-              onClose={handleDrawerToggle}
-              ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-              }}
-              sx={{
-                '& .MuiDrawer-paper': {
-                  boxSizing: 'border-box',
-                  width: drawerWidth,
-                },
-              }}
-            >
-              {drawer}
-            </Drawer>
-          </Box>
-          <Box
-            component='main'
-            sx={{
-              width: pageWidth,
-              maxWidth: '100%',
-              margin: '0 auto',
-            }}
-          >
-            <Toolbar />
-            {children}
-          </Box>
-        </Box>
-        <Box
-          component='footer'
+      <Box>
+        <CssBaseline />
+        <AppBar
+          position='fixed'
           sx={{
-            marginTop: 'auto',
-            marginBottom: 0,
-            p: 3,
-            display: 'flex',
-            justifyContent: 'center',
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+            // width: { sm: `calc(100% - ${drawerWidth}px)` },
+            // mr: { sm: `${drawerWidth}px` },
           }}
         >
-          <Link
-            href='https://www.dlford.io'
-            rel='noopener noreferrer'
-            target='_blank'
+          <Toolbar>
+            <Typography
+              variant='h6'
+              component='div'
+              sx={{
+                flexGrow: 1,
+              }}
+            >
+              <Logo />
+            </Typography>
+            <IconButton
+              color='inherit'
+              aria-label='open drawer'
+              edge='start'
+              onClick={handleDrawerToggle}
+              sx={{ ml: 2, display: { sm: 'none' } }}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        <Box
+          component='nav'
+          sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+          aria-label='mailbox folders'
+        >
+          {/* TODO: The implementation can be swapped with js to avoid SEO duplication of links. */}
+          <Drawer
+            variant='temporary'
+            anchor='right'
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: 'block', sm: 'none' },
+              '& .MuiDrawer-paper': {
+                boxSizing: 'border-box',
+                width: drawerWidth,
+              },
+            }}
           >
-            dlford &copy; {new Date().getFullYear()}
-          </Link>
+            {drawer}
+          </Drawer>
+          <Drawer
+            variant='permanent'
+            anchor='right'
+            sx={{
+              display: { xs: 'none', sm: 'block' },
+              '& .MuiDrawer-paper': {
+                boxSizing: 'border-box',
+                width: drawerWidth,
+              },
+            }}
+            open
+          >
+            {drawer}
+          </Drawer>
+        </Box>
+        <Box
+          component='main'
+          sx={{
+            flexGrow: 1,
+            p: 3,
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+          }}
+        >
+          <Toolbar />
+          {children}
         </Box>
       </Box>
     </>

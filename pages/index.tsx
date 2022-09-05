@@ -19,10 +19,7 @@ export default function IndexPage() {
         >
           Welcome!
         </Typography>
-        <Typography
-          variant='h5'
-          component='p'
-        >
+        <Typography paragraph>
           Choose a tool from the menu to get started.
         </Typography>
       </Box>
