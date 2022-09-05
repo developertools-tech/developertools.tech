@@ -131,16 +131,14 @@ export default function Layout({
           ModalProps={{
             keepMounted: true,
           }}
-          sx={
-            (width || 0) < 600
-              ? {}
-              : {
-                  '& .MuiDrawer-paper': {
-                    boxSizing: 'border-box',
-                    width: drawerWidth,
-                  },
-                }
-          }
+          sx={{
+            '& .MuiDrawer-paper': {
+              sm: {
+                boxSizing: 'border-box',
+                width: drawerWidth,
+              },
+            },
+          }}
         >
           {drawer}
         </Drawer>
@@ -166,9 +164,7 @@ export default function Layout({
       <Box
         position='relative'
         component='footer'
-        width={
-          (width || 0) < 600 ? '100%' : `calc(100% - ${drawerWidth}px)`
-        }
+        width={{ sm: `calc(100% - ${drawerWidth}px)` }}
         display='flex'
         justifyContent='center'
         alignItems='center'
