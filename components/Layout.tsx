@@ -147,7 +147,6 @@ export default function Layout({
         component='main'
         display='flex'
         flexDirection='column'
-        justifyContent='center'
         alignItems='center'
         sx={{
           p: 3,

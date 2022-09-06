@@ -54,7 +54,8 @@ function getDisplayRatio({
   return `${width / divisor}:${height / divisor}`;
 }
 
-// TODO: margin + gap ???
+// TODO: margin + gap + expand % ???
+// TODO: table controls
 // TODO: move other functions to hooks
 // PERF: useLayoutData running multipe times
 export default function AspectRatioPage() {
@@ -62,7 +63,17 @@ export default function AspectRatioPage() {
   const [height, setHeight] = React.useState<number | void>(1080);
   const [newWidth, setNewWidth] = React.useState<number | void>(1440);
   const [newHeight, setNewHeight] = React.useState<number | void>(810);
-  const getLayoutData = useLayoutData({ width, height });
+
+  const layoutWidths = [640, 1024, 1440, 1920];
+  const layoutCount = 4;
+  const getLayoutData = useLayoutData({
+    width,
+    height,
+    layoutWidths,
+    layoutCount,
+  });
+
+  const layoutData = getLayoutData();
 
   const hasWidthHeight = !!width && !!height;
 
@@ -185,13 +196,16 @@ export default function AspectRatioPage() {
         >
           <Typography component='h2'>Ratio Preview</Typography>
           <Box
-            width={previewMaxSize}
-            height={previewMaxSize}
+            width={previewMaxSize + 18}
+            height={previewMaxSize + 8}
             display='flex'
             flexDirection='column'
             gap={2}
-            justifyContent='start'
+            justifyContent='center'
             alignItems='center'
+            borderRadius={1}
+            p={1}
+            border='1px solid rgba(255, 255, 255, 0.2)'
           >
             {hasWidthHeight && (
               <Paper
@@ -236,35 +250,40 @@ export default function AspectRatioPage() {
           <TableHead>
             <TableRow>
               <TableCell>Layout</TableCell>
-              <TableCell align='right'>640w</TableCell>
-              <TableCell align='right'>1024w</TableCell>
-              <TableCell align='right'>1440w</TableCell>
-              <TableCell align='right'>1920w</TableCell>
+              {layoutWidths.map((label) => (
+                <TableCell
+                  key={label}
+                  align='right'
+                >
+                  {label}w
+                </TableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {hasWidthHeight &&
-              getLayoutData()?.map(
-                ({ layout, w640, w1024, w1440, w1920 }) => (
-                  <TableRow
-                    key={layout}
-                    sx={{
-                      '&:last-child td, &:last-child th': { border: 0 },
-                    }}
+            {layoutData?.map(({ layout, columns }) => (
+              <TableRow
+                key={layout}
+                sx={{
+                  '&:last-child td, &:last-child th': { border: 0 },
+                }}
+              >
+                <TableCell
+                  component='th'
+                  scope='row'
+                >
+                  {layout}
+                </TableCell>
+                {columns.map((colValue) => (
+                  <TableCell
+                    align='right'
+                    key={colValue}
                   >
-                    <TableCell
-                      component='th'
-                      scope='row'
-                    >
-                      {layout}
-                    </TableCell>
-                    <TableCell align='right'>{w640}</TableCell>
-                    <TableCell align='right'>{w1024}</TableCell>
-                    <TableCell align='right'>{w1440}</TableCell>
-                    <TableCell align='right'>{w1920}</TableCell>
-                  </TableRow>
-                ),
-              )}
+                    {colValue}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
