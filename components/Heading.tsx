@@ -15,7 +15,7 @@ export default function Heading({
           xs: '1.75rem',
           md: '3rem',
         },
-        pb: 3,
+        pb: 4,
       }}
     >
       {children}
