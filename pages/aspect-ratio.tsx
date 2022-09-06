@@ -14,6 +14,7 @@ import * as React from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
+import useLayoutData from '../hooks/aspectRatio/useLayoutData';
 
 const previewMaxSize = 226;
 
@@ -53,20 +54,15 @@ function getDisplayRatio({
   return `${width / divisor}:${height / divisor}`;
 }
 
-/*
-function getLayoutsData({ width, height }: { width: number, height: number }) {
-  let result = [];
-  for (const layout of ['1 Across', '2 Across', '3 Acress', '4 Across', '5 Acress']) {
-
-  }
-}
-*/
-
+// TODO: margin + gap ???
+// TODO: move other functions to hooks
+// PERF: useLayoutData running multipe times
 export default function AspectRatioPage() {
   const [width, setWidth] = React.useState<number | void>(1920);
   const [height, setHeight] = React.useState<number | void>(1080);
   const [newWidth, setNewWidth] = React.useState<number | void>(1440);
   const [newHeight, setNewHeight] = React.useState<number | void>(810);
+  const getLayoutData = useLayoutData({ width, height });
 
   const hasWidthHeight = !!width && !!height;
 
@@ -229,7 +225,10 @@ export default function AspectRatioPage() {
       >
         Layouts
       </Typography>
-      <TableContainer component={Paper}>
+      <TableContainer
+        component={Paper}
+        sx={{ mb: 3 }}
+      >
         <Table
           sx={{ minWidth: 650 }}
           aria-label='Image Layouts'
@@ -244,45 +243,28 @@ export default function AspectRatioPage() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {hasWidthHeight && (
-              <TableRow
-                sx={{
-                  '&:last-child td, &:last-child th': { border: 0 },
-                }}
-              >
-                <TableCell
-                  component='th'
-                  scope='row'
-                >
-                  1 Across
-                </TableCell>
-                <TableCell align='right'>1024x768</TableCell>
-                <TableCell align='right'>1024x768</TableCell>
-                <TableCell align='right'>1024x768</TableCell>
-                <TableCell align='right'>1024x768</TableCell>
-              </TableRow>
-            )}
-            {/*
-            {rows.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{
-                  '&:last-child td, &:last-child th': { border: 0 },
-                }}
-              >
-                <TableCell
-                  component='th'
-                  scope='row'
-                >
-                  {row.name}
-                </TableCell>
-                <TableCell align='right'>{row.calories}</TableCell>
-                <TableCell align='right'>{row.fat}</TableCell>
-                <TableCell align='right'>{row.carbs}</TableCell>
-                <TableCell align='right'>{row.protein}</TableCell>
-              </TableRow>
-            ))}
-          */}
+            {hasWidthHeight &&
+              getLayoutData()?.map(
+                ({ layout, w640, w1024, w1440, w1920 }) => (
+                  <TableRow
+                    key={layout}
+                    sx={{
+                      '&:last-child td, &:last-child th': { border: 0 },
+                    }}
+                  >
+                    <TableCell
+                      component='th'
+                      scope='row'
+                    >
+                      {layout}
+                    </TableCell>
+                    <TableCell align='right'>{w640}</TableCell>
+                    <TableCell align='right'>{w1024}</TableCell>
+                    <TableCell align='right'>{w1440}</TableCell>
+                    <TableCell align='right'>{w1920}</TableCell>
+                  </TableRow>
+                ),
+              )}
           </TableBody>
         </Table>
       </TableContainer>
