@@ -115,13 +115,20 @@ export default function AspectRatioPage() {
           gap={2}
           pb={2}
         >
+          {hasWidthHeight && (
+            <Chip
+              icon={<AspectRatioIcon />}
+              label={getDisplayRatio({ width, height })}
+              sx={{ p: 0.5 }}
+            />
+          )}
           <Box
             width={previewMaxSize}
             height={previewMaxSize}
             display='flex'
             flexDirection='column'
             gap={2}
-            justifyContent='center'
+            justifyContent='start'
             alignItems='center'
           >
             {hasWidthHeight && (
@@ -141,13 +148,6 @@ export default function AspectRatioPage() {
               </Paper>
             )}
           </Box>
-          {hasWidthHeight && (
-            <Chip
-              icon={<AspectRatioIcon />}
-              label={getDisplayRatio({ width, height })}
-              sx={{ p: 0.5 }}
-            />
-          )}
         </Box>
         <form>
           <Box
