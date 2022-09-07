@@ -61,11 +61,10 @@ function getDisplayRatio({
   return `${width / divisor}:${height / divisor}`;
 }
 
-// TODO: table controls
 // TODO: move other functions to hooks
 // TODO: clean up
 // TODO: save opts to local storage
-// INFO: margin + gap + expand % ???
+// TODO: margin + gap + expand % controls
 // PERF: useLayoutData running multipe times
 export default function AspectRatioPage() {
   const [width, setWidth] = React.useState<number | void>(1920);
