@@ -62,20 +62,27 @@ export default function Layout({
 
   const drawer = (
     <List>
-      {navItems.map(({ title: itemTitle, href, Icon }) => (
-        <ListItem
-          key={href}
-          disablePadding
-        >
-          <ListItemButton
-            href={href}
-            component={Link}
+      {[...navItems]
+        .sort((a, b) => {
+          if (a.title === 'Home') {
+            return -1;
+          }
+          return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
+        })
+        .map(({ title: itemTitle, href, Icon }) => (
+          <ListItem
+            key={href}
+            disablePadding
           >
-            <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
-            <ListItemText primary={itemTitle} />
-          </ListItemButton>
-        </ListItem>
-      ))}
+            <ListItemButton
+              href={href}
+              component={Link}
+            >
+              <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
+              <ListItemText primary={itemTitle} />
+            </ListItemButton>
+          </ListItem>
+        ))}
     </List>
   );
 

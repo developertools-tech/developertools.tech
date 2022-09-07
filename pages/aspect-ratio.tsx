@@ -61,7 +61,6 @@ function getDisplayRatio({
   return `${width / divisor}:${height / divisor}`;
 }
 
-// TODO: move other functions to hooks
 // TODO: clean up
 // TODO: save opts to local storage
 // PERF: useLayoutData running multipe times
