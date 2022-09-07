@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Paper from '@mui/material/Paper';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Slider from '@mui/material/Slider';
 import { Theme, useTheme } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -71,53 +72,8 @@ export default function AspectRatioPage() {
   const [height, setHeight] = React.useState<number | void>(1080);
   const [newWidth, setNewWidth] = React.useState<number | void>(1440);
   const [newHeight, setNewHeight] = React.useState<number | void>(810);
-
-  /* widths selector */
-
-  const ITEM_HEIGHT = 48;
-  const ITEM_PADDING_TOP = 8;
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-      },
-    },
-  };
-
-  const names = [
-    '320',
-    '480',
-    '600',
-    '640',
-    '768',
-    '800',
-    '1000',
-    '1024',
-    '1200',
-    '1280',
-    '1366',
-    '1440',
-    '1600',
-    '1920',
-    '2560',
-    '3840',
-  ];
-
-  function getStyles(
-    name: string,
-    personName: readonly string[],
-    theme: Theme,
-  ) {
-    return {
-      fontWeight:
-        personName.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
-
   const theme = useTheme();
+  const [layoutCount, setLayoutCount] = React.useState(4);
   const [layoutWidths, setLayoutWidths] = React.useState<string[]>([
     '640',
     '1024',
@@ -125,9 +81,43 @@ export default function AspectRatioPage() {
     '1920',
   ]);
 
-  const handleLayoutSizeChange = (
+  const layoutWidthOptions = [
+    '300',
+    '320',
+    '480',
+    '600',
+    '640',
+    '768',
+    '900',
+    '1000',
+    '1024',
+    '1200',
+    '1280',
+    '1366',
+    '1440',
+    '1536',
+    '1600',
+    '1920',
+    '2560',
+    '3840',
+  ];
+
+  function getDropdownStyles(
+    name: string,
+    personName: readonly string[],
+    themeObj: Theme,
+  ) {
+    return {
+      fontWeight:
+        personName.indexOf(name) === -1
+          ? themeObj.typography.fontWeightRegular
+          : themeObj.typography.fontWeightMedium,
+    };
+  }
+
+  function handleLayoutSizeChange(
     event: SelectChangeEvent<typeof layoutWidths>,
-  ) => {
+  ) {
     const {
       target: { value },
     } = event;
@@ -136,14 +126,20 @@ export default function AspectRatioPage() {
     setLayoutWidths(
       numbers.sort((a, b) => parseInt(a, 10) - parseInt(b, 10)),
     );
-  };
+  }
 
-  /* widths selector */
+  function handleLayoutCountChange(
+    event: Event,
+    newValue: number | number[],
+  ) {
+    setLayoutCount(newValue as number);
+  }
 
   const getLayoutData = useLayoutData({
     width,
     height,
     layoutWidths: layoutWidths.map((str) => parseInt(str, 10)),
+    layoutCount,
   });
 
   const layoutData = getLayoutData();
@@ -199,9 +195,10 @@ export default function AspectRatioPage() {
         flexWrap='wrap'
         flexDirection='row-reverse'
         justifyContent='center'
-        alignItems='start'
+        alignItems='center'
         gap={2}
         columnGap={8}
+        mb={2}
       >
         <form>
           <Box
@@ -312,47 +309,88 @@ export default function AspectRatioPage() {
       >
         Layouts
       </Typography>
-      <div className='widths'>
-        <FormControl sx={{ m: 1, width: 240 }}>
-          <InputLabel id='demo-multiple-chip-label'>
-            Screen Widths
-          </InputLabel>
-          <Select
-            labelId='demo-multiple-chip-label'
-            id='demo-multiple-chip'
-            multiple
-            value={layoutWidths}
-            onChange={handleLayoutSizeChange}
-            input={
-              <OutlinedInput
-                id='select-multiple-chip'
-                label='Screen Widths'
-              />
-            }
-            renderValue={(selected) => (
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                {selected.map((value) => (
-                  <Chip
-                    key={value}
-                    label={value}
-                  />
-                ))}
-              </Box>
-            )}
-            MenuProps={MenuProps}
+      <Box
+        display='flex'
+        flexWrap='wrap'
+        justifyContent='center'
+        alignItems='center'
+        mb={4}
+      >
+        <div>
+          <FormControl
+            sx={{ m: 1, width: { xs: 240, lg: 400, xl: 500 } }}
           >
-            {names.map((name) => (
-              <MenuItem
-                key={name}
-                value={name}
-                style={getStyles(name, layoutWidths, theme)}
-              >
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </div>
+            <InputLabel id='demo-multiple-chip-label'>
+              Screen Widths
+            </InputLabel>
+            <Select
+              labelId='demo-multiple-chip-label'
+              id='demo-multiple-chip'
+              multiple
+              value={layoutWidths}
+              onChange={handleLayoutSizeChange}
+              input={
+                <OutlinedInput
+                  id='select-multiple-chip'
+                  label='Screen Widths'
+                />
+              }
+              renderValue={(selected) => (
+                <Box
+                  sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}
+                >
+                  {selected.map((value) => (
+                    <Chip
+                      key={value}
+                      label={value}
+                    />
+                  ))}
+                </Box>
+              )}
+              MenuProps={{
+                PaperProps: {
+                  style: {
+                    // height * 4.5 + padding_top
+                    maxHeight: 48 * 4.5 + 8,
+                    width: 250,
+                  },
+                },
+              }}
+            >
+              {layoutWidthOptions.map((name) => (
+                <MenuItem
+                  key={name}
+                  value={name}
+                  style={getDropdownStyles(name, layoutWidths, theme)}
+                >
+                  {name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+        <Slider
+          aria-label='Number of layouts to display'
+          defaultValue={4}
+          valueLabelDisplay='auto'
+          step={1}
+          marks={[
+            {
+              value: 1,
+              label: '1 Across',
+            },
+            {
+              value: 10,
+              label: '10 Across',
+            },
+          ]}
+          min={1}
+          max={10}
+          sx={{ width: 240, mx: 8, my: 2 }}
+          onChange={handleLayoutCountChange}
+        />
+      </Box>
+
       <TableContainer
         component={Paper}
         sx={{ mb: 3, maxWidth: 1000 }}
