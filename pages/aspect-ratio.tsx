@@ -64,14 +64,16 @@ function getDisplayRatio({
 // TODO: move other functions to hooks
 // TODO: clean up
 // TODO: save opts to local storage
-// TODO: margin + gap + expand % controls
 // PERF: useLayoutData running multipe times
 export default function AspectRatioPage() {
+  const theme = useTheme();
   const [width, setWidth] = React.useState<number | void>(1920);
   const [height, setHeight] = React.useState<number | void>(1080);
   const [newWidth, setNewWidth] = React.useState<number | void>(1440);
   const [newHeight, setNewHeight] = React.useState<number | void>(810);
-  const theme = useTheme();
+  const [margins, setMargins] = React.useState(0);
+  const [gap, setGap] = React.useState(0);
+  const [expand, setExpand] = React.useState(0);
   const [layoutCount, setLayoutCount] = React.useState(4);
   const [layoutWidths, setLayoutWidths] = React.useState<string[]>([
     '640',
@@ -139,6 +141,9 @@ export default function AspectRatioPage() {
     height,
     layoutWidths: layoutWidths.map((str) => parseInt(str, 10)),
     layoutCount,
+    margin: margins,
+    gap,
+    expand,
   });
 
   const layoutData = getLayoutData();
@@ -199,62 +204,60 @@ export default function AspectRatioPage() {
         columnGap={8}
         mb={2}
       >
-        <form>
+        <Box
+          display='flex'
+          flexWrap='wrap'
+          justifyContent='center'
+          alignItems='center'
+          gap={2}
+        >
           <Box
             display='flex'
-            flexWrap='wrap'
+            flexDirection='column'
             justifyContent='center'
             alignItems='center'
             gap={2}
           >
-            <Box
-              display='flex'
-              flexDirection='column'
-              justifyContent='center'
-              alignItems='center'
-              gap={2}
-            >
-              <Typography component='h2'>Source Dimensions</Typography>
-              <TextField
-                label='Source Width'
-                variant='outlined'
-                value={width || ''}
-                name='width'
-                onChange={handleChange}
-              />
-              <TextField
-                label='Source Height'
-                variant='outlined'
-                value={height || ''}
-                name='height'
-                onChange={handleChange}
-              />
-            </Box>
-            <Box
-              display='flex'
-              flexDirection='column'
-              justifyContent='center'
-              alignItems='center'
-              gap={2}
-            >
-              <Typography component='h2'>Target Dimensions</Typography>
-              <TextField
-                label='Target Width'
-                variant='outlined'
-                value={newWidth || ''}
-                name='newWidth'
-                onChange={handleChange}
-              />
-              <TextField
-                label='Target Height'
-                variant='outlined'
-                value={newHeight || ''}
-                name='newHeight'
-                onChange={handleChange}
-              />
-            </Box>
+            <Typography component='h2'>Source Dimensions</Typography>
+            <TextField
+              label='Source Width'
+              variant='outlined'
+              value={width || ''}
+              name='width'
+              onChange={handleChange}
+            />
+            <TextField
+              label='Source Height'
+              variant='outlined'
+              value={height || ''}
+              name='height'
+              onChange={handleChange}
+            />
           </Box>
-        </form>
+          <Box
+            display='flex'
+            flexDirection='column'
+            justifyContent='center'
+            alignItems='center'
+            gap={2}
+          >
+            <Typography component='h2'>Target Dimensions</Typography>
+            <TextField
+              label='Target Width'
+              variant='outlined'
+              value={newWidth || ''}
+              name='newWidth'
+              onChange={handleChange}
+            />
+            <TextField
+              label='Target Height'
+              variant='outlined'
+              value={newHeight || ''}
+              name='newHeight'
+              onChange={handleChange}
+            />
+          </Box>
+        </Box>
         <Box
           display='flex'
           flexDirection='column'
@@ -313,83 +316,132 @@ export default function AspectRatioPage() {
         flexWrap='wrap'
         justifyContent='center'
         alignItems='center'
-        mb={4}
+        gap={8}
+        mb={6}
       >
-        <div>
-          <FormControl
-            sx={{ m: 1, width: { xs: 240, lg: 400, xl: 500 } }}
-          >
-            <InputLabel id='demo-multiple-chip-label'>
-              Screen Widths
-            </InputLabel>
-            <Select
-              labelId='demo-multiple-chip-label'
-              id='demo-multiple-chip'
-              multiple
-              value={layoutWidths}
-              onChange={handleLayoutSizeChange}
-              input={
-                <OutlinedInput
-                  id='select-multiple-chip'
-                  label='Screen Widths'
-                />
-              }
-              renderValue={(selected) => (
-                <Box
-                  sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}
-                >
-                  {selected.map((value) => (
-                    <Chip
-                      key={value}
-                      label={value}
-                    />
-                  ))}
-                </Box>
-              )}
-              MenuProps={{
-                PaperProps: {
-                  style: {
-                    // height * 4.5 + padding_top
-                    maxHeight: 48 * 4.5 + 8,
-                    width: 250,
-                  },
-                },
-              }}
+        <Box
+          display='flex'
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
+          mb={2}
+        >
+          <div>
+            <FormControl
+              sx={{ m: 1, width: { xs: 240, lg: 400, xl: 500 } }}
             >
-              {layoutWidthOptions.map((name) => (
-                <MenuItem
-                  key={name}
-                  value={name}
-                  style={getDropdownStyles(name, layoutWidths, theme)}
-                >
-                  {name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </div>
-        <Slider
-          aria-label='Number of layouts to display'
-          defaultValue={4}
-          valueLabelDisplay='auto'
-          step={1}
-          marks={[
-            {
-              value: 1,
-              label: '1 Across',
-            },
-            {
-              value: 10,
-              label: '10 Across',
-            },
-          ]}
-          min={1}
-          max={10}
-          sx={{ width: 240, mx: 8, my: 2 }}
-          onChange={handleLayoutCountChange}
-        />
+              <InputLabel id='demo-multiple-chip-label'>
+                Screen Widths
+              </InputLabel>
+              <Select
+                labelId='demo-multiple-chip-label'
+                id='demo-multiple-chip'
+                multiple
+                value={layoutWidths}
+                onChange={handleLayoutSizeChange}
+                input={
+                  <OutlinedInput
+                    id='select-multiple-chip'
+                    label='Screen Widths'
+                  />
+                }
+                renderValue={(selected) => (
+                  <Box
+                    sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}
+                  >
+                    {selected.map((value) => (
+                      <Chip
+                        key={value}
+                        label={value}
+                      />
+                    ))}
+                  </Box>
+                )}
+                MenuProps={{
+                  PaperProps: {
+                    style: {
+                      // height * 4.5 + padding_top
+                      maxHeight: 48 * 4.5 + 8,
+                      width: 250,
+                    },
+                  },
+                }}
+              >
+                {layoutWidthOptions.map((name) => (
+                  <MenuItem
+                    key={name}
+                    value={name}
+                    style={getDropdownStyles(name, layoutWidths, theme)}
+                  >
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+          <Slider
+            aria-label='Number of layouts to display'
+            defaultValue={4}
+            valueLabelDisplay='auto'
+            step={1}
+            marks={[
+              {
+                value: 1,
+                label: '1 Across',
+              },
+              {
+                value: 10,
+                label: '10 Across',
+              },
+            ]}
+            min={1}
+            max={10}
+            sx={{ width: 240, mx: 8, my: 2 }}
+            onChange={handleLayoutCountChange}
+          />
+        </Box>
+        <Box
+          display='flex'
+          flexDirection='column'
+          justifyContent='center'
+          alignItems='center'
+          gap={2}
+        >
+          <TextField
+            label='Margin Pixels (L+R)'
+            variant='outlined'
+            value={margins || ''}
+            name='margin'
+            onChange={(event) => {
+              const { value } = event.currentTarget;
+              const number = Number(value.replace(/\D/g, ''));
+              setMargins(number);
+            }}
+          />
+          <TextField
+            label='Gap Pixels'
+            variant='outlined'
+            value={gap || ''}
+            name='gap'
+            onChange={(event) => {
+              const { value } = event.currentTarget;
+              const number = Number(value.replace(/\D/g, ''));
+              setGap(number);
+            }}
+          />
+          <TextField
+            label='Expand Percent'
+            variant='outlined'
+            value={expand || ''}
+            name='expand'
+            onChange={(event) => {
+              const { value } = event.currentTarget;
+              const number = Number(value.replace(/\D/g, ''));
+              setExpand(number);
+            }}
+          />
+        </Box>
       </Box>
-
       <TableContainer
         component={Paper}
         sx={{ mb: 3, maxWidth: 1000 }}

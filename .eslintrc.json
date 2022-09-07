@@ -41,6 +41,7 @@
   "rules": {
     "import/extensions": "off",
     "react/prop-types": "off",
+    "no-plusplus": "off",
     "react/require-default-props": "off",
     "react/jsx-no-bind": "off",
     "react/jsx-props-no-spreading": "off",

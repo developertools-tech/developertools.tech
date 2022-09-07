@@ -25,24 +25,26 @@ export default function useLayoutData({
   const getLayoutData = useCallback((): LayoutData[] | void => {
     if (!width || !height) return undefined;
     const result = [];
-    for (let row = 0; row < layoutCount; row += 1) {
+    for (let row = 0; row < layoutCount; row++) {
       const layout: LayoutData = {
         layout: `${row + 1} Across`,
         columns: [],
       };
       const aspectRatio = width / height;
       const divisor = row + 1;
-      for (let col = 0; col < layoutWidths.length; col += 1) {
+      for (let col = 0; col < layoutWidths.length; col++) {
         const layoutWidth = layoutWidths[col];
         let unitWidth = Math.round(layoutWidth / divisor);
         if (margin) {
-          unitWidth -= margin;
+          unitWidth = Math.round(unitWidth - margin);
         }
         if (gap) {
-          unitWidth -= gap * (divisor - 1);
+          unitWidth = Math.round(unitWidth - gap * (divisor - 1));
         }
         if (expand) {
-          unitWidth += (unitWidth / 100) * expand;
+          unitWidth = Math.round(
+            unitWidth + (unitWidth / 100) * expand,
+          );
         }
         const unitHeight = Math.round(unitWidth / aspectRatio);
         layout.columns.push(`${unitWidth} x ${unitHeight}`);
