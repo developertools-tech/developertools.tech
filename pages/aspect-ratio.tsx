@@ -17,7 +17,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import React, { useState } from 'react';
+import React from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
@@ -63,7 +63,7 @@ function getDisplayRatio({
 }
 
 // TODO: clean up
-// TODO: save state for layoutCount (fix slider position on load)
+// TODO: save settings control?
 // PERF: useLayoutData running multipe times
 export default function AspectRatioPage() {
   const theme = useTheme();
@@ -95,7 +95,10 @@ export default function AspectRatioPage() {
     key: 'aspectRatioExpand',
     defaultValue: 0,
   });
-  const [layoutCount, setLayoutCount] = useState(4);
+  const [layoutCount, setLayoutCount] = useLocalState({
+    key: 'aspectRatioLayoutCount',
+    defaultValue: 4,
+  });
   const [layoutWidths, setLayoutWidths] = useLocalState<string[]>({
     key: 'aspectRatioLayoutWidths',
     defaultValue: ['640', '1024', '1440', '1920'],
@@ -400,7 +403,7 @@ export default function AspectRatioPage() {
           </div>
           <Slider
             aria-label='Number of layouts to display'
-            defaultValue={4}
+            value={layoutCount}
             valueLabelDisplay='auto'
             step={1}
             marks={[
