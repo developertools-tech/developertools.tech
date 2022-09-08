@@ -171,7 +171,7 @@ export default function Layout({
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           minHeight: (theme) => ({
             xs: `calc(100% - ${theme.mixins.toolbar.minHeight}px)`,
-            sm: `calc(100% - ${theme.mixins.toolbar.minHeight}px - 8px)`,
+            sm: `calc(100% - (${theme.mixins.toolbar.minHeight}px * 2) - 16px)`,
           }),
         }}
       >
