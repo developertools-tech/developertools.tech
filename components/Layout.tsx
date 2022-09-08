@@ -97,6 +97,10 @@ export default function Layout({
           name='description'
           content='Developer utilities by DL Ford'
         />
+        <meta
+          name='viewport'
+          content='initial-scale=1, width=device-width'
+        />
       </Head>
 
       <CssBaseline />
