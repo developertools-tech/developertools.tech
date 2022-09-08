@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
+import React from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
