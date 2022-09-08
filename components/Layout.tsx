@@ -67,6 +67,9 @@ export default function Layout({
           if (a.title === 'Home') {
             return -1;
           }
+          if (b.title === 'Home') {
+            return 1;
+          }
           return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
         })
         .map(({ title: itemTitle, href, Icon }) => (
