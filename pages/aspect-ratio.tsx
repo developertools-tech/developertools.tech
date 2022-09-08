@@ -17,7 +17,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import * as React from 'react';
+import React, { useState } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
@@ -66,15 +66,15 @@ function getDisplayRatio({
 // PERF: useLayoutData running multipe times
 export default function AspectRatioPage() {
   const theme = useTheme();
-  const [width, setWidth] = React.useState<number | void>(1920);
-  const [height, setHeight] = React.useState<number | void>(1080);
-  const [newWidth, setNewWidth] = React.useState<number | void>(1440);
-  const [newHeight, setNewHeight] = React.useState<number | void>(810);
-  const [margins, setMargins] = React.useState(0);
-  const [gap, setGap] = React.useState(0);
-  const [expand, setExpand] = React.useState(0);
-  const [layoutCount, setLayoutCount] = React.useState(4);
-  const [layoutWidths, setLayoutWidths] = React.useState<string[]>([
+  const [width, setWidth] = useState<number | void>(1920);
+  const [height, setHeight] = useState<number | void>(1080);
+  const [newWidth, setNewWidth] = useState<number | void>(1440);
+  const [newHeight, setNewHeight] = useState<number | void>(810);
+  const [margins, setMargins] = useState(0);
+  const [gap, setGap] = useState(0);
+  const [expand, setExpand] = useState(0);
+  const [layoutCount, setLayoutCount] = useState(4);
+  const [layoutWidths, setLayoutWidths] = useState<string[]>([
     '640',
     '1024',
     '1440',

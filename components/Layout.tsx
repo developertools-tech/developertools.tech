@@ -20,7 +20,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Head from 'next/head';
 import Image from 'next/image';
-import * as React from 'react';
+import React, { useState } from 'react';
 
 import navItems from '../data/nav';
 import useWindowSize from '../hooks/useWindowSize';
@@ -52,7 +52,7 @@ export default function Layout({
   title?: string;
   children: React.ReactNode;
 }) {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const { width } = useWindowSize();
 
@@ -92,7 +92,7 @@ export default function Layout({
   return (
     <Box height='100%'>
       <Head>
-        <title>{title} | utils.dlford.io</title>
+        <title>{title}</title>
         <meta
           name='description'
           content='Developer utilities by DL Ford'

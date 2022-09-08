@@ -1,4 +1,6 @@
-import { useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
+
+import useLayoutEffect from './useIsomorphicLayoutEffect';
 
 interface Size {
   width: number | undefined;
