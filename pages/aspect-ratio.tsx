@@ -22,6 +22,7 @@ import React, { useState } from 'react';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLayoutData from '../hooks/aspectRatio/useLayoutData';
+import useLocalState from '../hooks/useLocalState';
 
 const previewMaxSize = 226;
 
@@ -62,24 +63,43 @@ function getDisplayRatio({
 }
 
 // TODO: clean up
-// TODO: save opts to local storage
+// TODO: save state for layoutCount (fix slider position on load)
 // PERF: useLayoutData running multipe times
 export default function AspectRatioPage() {
   const theme = useTheme();
-  const [width, setWidth] = useState<number | void>(1920);
-  const [height, setHeight] = useState<number | void>(1080);
-  const [newWidth, setNewWidth] = useState<number | void>(1440);
-  const [newHeight, setNewHeight] = useState<number | void>(810);
-  const [margins, setMargins] = useState(0);
-  const [gap, setGap] = useState(0);
-  const [expand, setExpand] = useState(0);
+  const [width, setWidth] = useLocalState<number | void>({
+    key: 'aspectRatioWidth',
+    defaultValue: 1920,
+  });
+  const [height, setHeight] = useLocalState<number | void>({
+    key: 'aspectRatioHeight',
+    defaultValue: 1080,
+  });
+  const [newWidth, setNewWidth] = useLocalState<number | void>({
+    key: 'aspectRatioNewWidth',
+    defaultValue: 1440,
+  });
+  const [newHeight, setNewHeight] = useLocalState<number | void>({
+    key: 'aspectRatioNewHeight',
+    defaultValue: 810,
+  });
+  const [margins, setMargins] = useLocalState({
+    key: 'aspectRatioMargins',
+    defaultValue: 0,
+  });
+  const [gap, setGap] = useLocalState({
+    key: 'aspectRatioGap',
+    defaultValue: 0,
+  });
+  const [expand, setExpand] = useLocalState({
+    key: 'aspectRatioExpand',
+    defaultValue: 0,
+  });
   const [layoutCount, setLayoutCount] = useState(4);
-  const [layoutWidths, setLayoutWidths] = useState<string[]>([
-    '640',
-    '1024',
-    '1440',
-    '1920',
-  ]);
+  const [layoutWidths, setLayoutWidths] = useLocalState<string[]>({
+    key: 'aspectRatioLayoutWidths',
+    defaultValue: ['640', '1024', '1440', '1920'],
+  });
 
   const layoutWidthOptions = [
     '300',

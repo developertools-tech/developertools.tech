@@ -78,6 +78,12 @@
         "selector": "ImportDeclaration[source.value=/use-isomorphic-layout-effect/] > ImportDefaultSpecifier[local.name!=\"useLayoutEffect\"]",
         "message": "Must use `useLayoutEffect` as the name of the import from `useIsomorphicLayoutEffect` to leverage `eslint-plugin-react-hooks"
       }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
     ]
   }
 }
