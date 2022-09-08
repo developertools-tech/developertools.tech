@@ -105,7 +105,7 @@ export default function Layout({
 
       <CssBaseline />
       <AppBar
-        position='fixed'
+        position={(width || 0) > 600 ? 'relative' : 'fixed'}
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           mr: { sm: `${drawerWidth}px` },
@@ -164,7 +164,10 @@ export default function Layout({
         alignItems='center'
         sx={{
           p: 3,
-          pt: 12,
+          pt: {
+            xs: 12,
+            sm: 3,
+          },
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           minHeight: (theme) => ({
             xs: `calc(100% - ${theme.mixins.toolbar.minHeight}px)`,
