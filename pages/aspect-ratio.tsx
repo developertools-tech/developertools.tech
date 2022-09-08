@@ -291,14 +291,14 @@ export default function AspectRatioPage() {
           <Typography component='h2'>Ratio Preview</Typography>
           <Box
             width={previewMaxSize + 18}
-            height={previewMaxSize + 8}
+            height={previewMaxSize + 18}
             display='flex'
             flexDirection='column'
             gap={2}
             justifyContent='center'
             alignItems='center'
-            borderRadius={1}
             p={1}
+            borderRadius={1}
             border='1px solid rgba(255, 255, 255, 0.2)'
           >
             {hasWidthHeight && (
