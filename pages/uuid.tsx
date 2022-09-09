@@ -27,6 +27,7 @@ import {
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
+import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 
 export default function UuidPage() {
   const [uuidVersion, setUuidVersion] = useLocalState<number>({
@@ -56,8 +57,7 @@ export default function UuidPage() {
   const [alertOpen, setAlertOpen] = useState<boolean>(false);
   const [alertMessage, setAlertMessage] = useState<string>('');
   const [alertSeverity, setAlertSeverity] = useState<string>('success');
-  const [showPasteButton, setShowPasteButton] =
-    useState<boolean>(false);
+  const supportsClipboardRead = useSupportsClipboardRead();
 
   function createUuid() {
     switch (uuidVersion) {
@@ -124,12 +124,6 @@ export default function UuidPage() {
   useEffect(() => {
     createUuid();
   }, [uuidVersion, namespace, namespaceType, name]);
-
-  useEffect(() => {
-    if (typeof navigator.clipboard?.readText === 'function') {
-      setShowPasteButton(true);
-    }
-  }, []);
 
   return (
     <Layout title='UUID'>
@@ -236,7 +230,6 @@ export default function UuidPage() {
             {uuidVersion !== 5 && uuidVersion !== 3 ? (
               <Button
                 startIcon={<RefreshIcon />}
-                variant='contained'
                 onClick={createUuid}
               >
                 New UUID
@@ -244,7 +237,7 @@ export default function UuidPage() {
             ) : (
               <Button
                 startIcon={<ClearIcon />}
-                variant='contained'
+                disabled={!namespace && !name}
                 onClick={() => {
                   setName('');
                   setNamespace('');
@@ -256,7 +249,6 @@ export default function UuidPage() {
             )}
             <Button
               startIcon={<ContentCopyIcon />}
-              variant='contained'
               disabled={!uuid}
               sx={{ mr: 0, ml: 'auto' }}
               onClick={() => {
@@ -310,10 +302,9 @@ export default function UuidPage() {
             justifyContent='space-between'
             width='100%'
           >
-            {showPasteButton ? (
+            {supportsClipboardRead ? (
               <Button
                 startIcon={<ContentPasteGoIcon />}
-                variant='contained'
                 onClick={async () => {
                   const text = await navigator.clipboard.readText();
                   if (text) {
@@ -327,8 +318,8 @@ export default function UuidPage() {
             ) : null}
             <Button
               startIcon={<ClearIcon />}
-              variant='contained'
               sx={{ mr: 0, ml: 'auto' }}
+              disabled={!validateUuid}
               onClick={() => {
                 setValidateUuid('');
                 setValidateResult('');
