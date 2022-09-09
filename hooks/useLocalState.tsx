@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+import useLayoutEffect from './useIsomorphicLayoutEffect';
 
 export default function useLocalState<T>({
   key,
@@ -15,7 +17,7 @@ export default function useLocalState<T>({
     return defaultValue;
   });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!loaded) {
       setLoaded(true);
       const jsonValue = localStorage.getItem(key);

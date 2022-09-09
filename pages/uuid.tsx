@@ -5,6 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import SelectInput from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import React, { useEffect, useState } from 'react';
 import {
   // parse,
@@ -14,23 +15,42 @@ import {
   v4,
   v5,
   validate,
-  // version,
+  version,
 } from 'uuid';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
+import useLocalState from '../hooks/useLocalState';
 
-// TODO: validate, parse, stringify, version
+// TODO: parse, stringify, copy
 export default function UuidPage() {
-  const [version, setVersion] = useState<number>(4);
+  const [uuidVersion, setUuidVersion] = useLocalState<number>({
+    key: 'uuidVersion',
+    defaultValue: 4,
+  });
+  const [namespace, setNamespace] = useLocalState<string>({
+    key: 'uuidNamespace',
+    defaultValue: '',
+  });
+  const [namespaceType, setNamespaceType] = useLocalState<string>({
+    key: 'uuidNamespaceType',
+    defaultValue: 'custom',
+  });
+  const [validateUuid, setValidateUuid] = useLocalState<string>({
+    key: 'uuidValidate',
+    defaultValue: '',
+  });
+  const [name, setName] = useLocalState<string>({
+    key: 'uuidName',
+    defaultValue: '',
+  });
   const [uuid, setUuid] = useState<string>('');
-  const [namespace, setNamespace] = useState<string>('');
-  const [name, setName] = useState<string>('');
-  const [namespaceType, setNamespaceType] = useState<string>('custom');
   const [namespaceError, setNamespaceError] = useState<boolean>(false);
+  const [validateResult, setValidateResult] = useState<string>('');
+  const [validateError, setValidateError] = useState<boolean>(false);
 
   function createUuid() {
-    switch (version) {
+    switch (uuidVersion) {
       case 1:
         setUuid(v1());
         break;
@@ -47,8 +67,8 @@ export default function UuidPage() {
       default:
         if (
           (!namespace && namespaceType === 'custom') ||
-          !name ||
-          !validate(namespace)
+          (!validate(namespace) && namespaceType === 'custom') ||
+          !name
         ) {
           setUuid('');
           break;
@@ -67,90 +87,194 @@ export default function UuidPage() {
     }
   }
 
+  function handleValidateChange(
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) {
+    setValidateUuid(event.target.value);
+    if (!event.target.value) {
+      setValidateResult('');
+      setValidateError(false);
+      return;
+    }
+
+    if (validate(event.target.value)) {
+      setValidateResult(`Valid UUID v${version(event.target.value)}`);
+      setValidateError(false);
+      return;
+    }
+
+    setValidateResult('Invalid UUID');
+    setValidateError(true);
+  }
+
   useEffect(() => {
     createUuid();
-  }, [version, namespace, namespaceType, name]);
+  }, [uuidVersion, namespace, namespaceType, name]);
 
   return (
     <Layout title='UUID'>
       <Heading>UUID</Heading>
       <Box
         display='flex'
-        flexDirection='column'
-        gap={2}
-        width={350}
-        maxWidth='100%'
+        flexWrap='wrap'
+        justifyContent='center'
+        gap={4}
+        mb={4}
       >
-        <FormControl fullWidth>
-          <InputLabel id='version-label'>UUID Version</InputLabel>
-          <SelectInput
-            fullWidth
-            labelId='version-label'
-            value={version}
-            label='UUID Version'
-            onChange={(event) => setVersion(Number(event.target.value))}
-            sx={{ minWidth: 120 }}
+        <Box
+          display='flex'
+          flexDirection='column'
+          gap={2}
+          width={350}
+          maxWidth='calc(100% - 48px)'
+        >
+          <Typography
+            component='h2'
+            textAlign='center'
           >
-            <MenuItem value={1}>1</MenuItem>
-            <MenuItem value={3}>3</MenuItem>
-            <MenuItem value={4}>4</MenuItem>
-            <MenuItem value={5}>5</MenuItem>
-          </SelectInput>
-        </FormControl>
-        {version === 5 ? (
+            Generate a UUID
+          </Typography>
           <FormControl fullWidth>
-            <InputLabel id='namespace-type-label'>
-              Namespace Type
-            </InputLabel>
+            <InputLabel id='version-label'>UUID Version</InputLabel>
             <SelectInput
               fullWidth
-              labelId='namespace-type-label'
-              value={namespaceType}
-              label='Namespace Type'
-              onChange={(event) => setNamespaceType(event.target.value)}
+              labelId='version-label'
+              value={uuidVersion}
+              label='UUID Version'
+              onChange={(event) =>
+                setUuidVersion(Number(event.target.value))
+              }
               sx={{ minWidth: 120 }}
             >
-              <MenuItem value='custom'>Custom</MenuItem>
-              <MenuItem value='url'>URL</MenuItem>
-              <MenuItem value='dns'>DNS</MenuItem>
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={4}>4</MenuItem>
+              <MenuItem value={5}>5</MenuItem>
             </SelectInput>
           </FormControl>
-        ) : null}
-        {version === 3 ||
-        (version === 5 && namespaceType === 'custom') ? (
+          {uuidVersion === 5 ? (
+            <FormControl fullWidth>
+              <InputLabel id='namespace-type-label'>
+                Namespace Type
+              </InputLabel>
+              <SelectInput
+                fullWidth
+                labelId='namespace-type-label'
+                value={namespaceType}
+                label='Namespace Type'
+                onChange={(event) =>
+                  setNamespaceType(event.target.value)
+                }
+                sx={{ minWidth: 120 }}
+              >
+                <MenuItem value='custom'>Custom</MenuItem>
+                <MenuItem value='url'>URL</MenuItem>
+                <MenuItem value='dns'>DNS</MenuItem>
+              </SelectInput>
+            </FormControl>
+          ) : null}
+          {uuidVersion === 3 ||
+          (uuidVersion === 5 && namespaceType === 'custom') ? (
+            <TextField
+              label='Namespace'
+              value={namespace}
+              error={namespaceError}
+              helperText={namespaceError ? 'Invalid UUID' : ''}
+              onChange={(event) => {
+                setNamespace(event.target.value);
+                setNamespaceError(
+                  !validate(event.target.value) && !!event.target.value,
+                );
+              }}
+            />
+          ) : null}
+          {uuidVersion === 3 || uuidVersion === 5 ? (
+            <TextField
+              label='Name'
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+            />
+          ) : null}
           <TextField
-            label='Namespace'
-            value={namespace}
-            error={namespaceError}
-            helperText={namespaceError ? 'Invalid UUID' : ''}
-            onChange={(event) => {
-              setNamespace(event.target.value);
-              setNamespaceError(
-                !validate(event.target.value) && !!event.target.value,
-              );
+            label='UUID'
+            value={uuid}
+            disabled
+            fullWidth
+            onClick={() => {
+              navigator.clipboard.writeText(uuid);
             }}
           />
-        ) : null}
-        {version === 3 || version === 5 ? (
-          <TextField
-            label='Name'
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
-        ) : null}
-        <TextField
-          label='UUID'
-          value={uuid}
-          fullWidth
-        />
-        {version !== 5 && version !== 3 ? (
-          <Button
-            variant='contained'
-            onClick={createUuid}
+          {uuidVersion !== 5 && uuidVersion !== 3 ? (
+            <Button
+              variant='contained'
+              onClick={createUuid}
+            >
+              New UUID
+            </Button>
+          ) : null}
+        </Box>
+        <Box
+          display='flex'
+          flexDirection='column'
+          gap={2}
+          width={350}
+          maxWidth='calc(100% - 48px)'
+        >
+          <Typography
+            textAlign='center'
+            component='h2'
           >
-            New UUID
-          </Button>
-        ) : null}
+            Check UUID Version and Validity
+          </Typography>
+          <TextField
+            label='UUID'
+            value={validateUuid}
+            error={validateError}
+            helperText={validateResult}
+            fullWidth
+            onChange={handleValidateChange}
+          />
+        </Box>
+      </Box>
+      <Box
+        width={550}
+        maxWidth='100%'
+      >
+        <Typography
+          textAlign='center'
+          variant='h6'
+          component='h2'
+          mb={1}
+        >
+          About UUIDs
+        </Typography>
+        <Typography paragraph>
+          A Universally Unique Identifier (UUID) is a 128-bit number
+          used as a unique identifier.
+        </Typography>
+        <Typography paragraph>
+          UUID v1 is pseudorandom, created using the time of creation
+          and the MAC address of the computer that created it.
+        </Typography>
+        <Typography paragraph>
+          UUID v3 is an MD5 hash, created using a namespace and a name.
+          The namespace must be a UUID, and the name can be any string.
+          Given the same namespace and name, you will always get the
+          same UUID.
+        </Typography>
+        <Typography paragraph>
+          UUID v4 is random or pseudorandom, depending on how it is
+          generated. The version 4 UUIDs produced by this tool are
+          cryptographically-strong random values.
+        </Typography>
+        <Typography paragraph>
+          UUID v5 is a SHA-1 hash, created using a namespace and a name.
+          Much like v3 UUIDs, given the same namespace and name, you
+          will always get the same UUID. The namespace for v5 UUIDs can
+          either be a UUID, or a preset namespace type (URL, DNS, ISO
+          OID, and X.500 DN), this tool does not currently support ISO
+          OID or X.500 DN.
+        </Typography>
       </Box>
     </Layout>
   );
