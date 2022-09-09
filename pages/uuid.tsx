@@ -204,6 +204,14 @@ export default function UuidPage() {
               navigator.clipboard.writeText(uuid);
             }}
           />
+          <Button
+            variant='contained'
+            onClick={() => {
+              navigator.clipboard.writeText(uuid);
+            }}
+          >
+            Copy
+          </Button>
           {uuidVersion !== 5 && uuidVersion !== 3 ? (
             <Button
               variant='contained'
