@@ -1,9 +1,15 @@
+import ClearIcon from '@mui/icons-material/Clear';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import SelectInput from '@mui/material/Select';
+import Snackbar from '@mui/material/Snackbar';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useState } from 'react';
@@ -22,7 +28,6 @@ import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
 
-// TODO: parse, stringify, copy
 export default function UuidPage() {
   const [uuidVersion, setUuidVersion] = useLocalState<number>({
     key: 'uuidVersion',
@@ -48,6 +53,11 @@ export default function UuidPage() {
   const [namespaceError, setNamespaceError] = useState<boolean>(false);
   const [validateResult, setValidateResult] = useState<string>('');
   const [validateError, setValidateError] = useState<boolean>(false);
+  const [alertOpen, setAlertOpen] = useState<boolean>(false);
+  const [alertMessage, setAlertMessage] = useState<string>('');
+  const [alertSeverity, setAlertSeverity] = useState<string>('success');
+  const [showPasteButton, setShowPasteButton] =
+    useState<boolean>(false);
 
   function createUuid() {
     switch (uuidVersion) {
@@ -87,18 +97,15 @@ export default function UuidPage() {
     }
   }
 
-  function handleValidateChange(
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) {
-    setValidateUuid(event.target.value);
-    if (!event.target.value) {
+  function runUuidValidation(value: string) {
+    if (!value) {
       setValidateResult('');
       setValidateError(false);
       return;
     }
 
-    if (validate(event.target.value)) {
-      setValidateResult(`Valid UUID v${version(event.target.value)}`);
+    if (validate(value)) {
+      setValidateResult(`Valid UUID v${version(value)}`);
       setValidateError(false);
       return;
     }
@@ -107,9 +114,22 @@ export default function UuidPage() {
     setValidateError(true);
   }
 
+  function handleValidateChange(
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) {
+    setValidateUuid(event.target.value);
+    runUuidValidation(event.target.value);
+  }
+
   useEffect(() => {
     createUuid();
   }, [uuidVersion, namespace, namespaceType, name]);
+
+  useEffect(() => {
+    if (typeof navigator.clipboard?.readText === 'function') {
+      setShowPasteButton(true);
+    }
+  }, []);
 
   return (
     <Layout title='UUID'>
@@ -119,7 +139,8 @@ export default function UuidPage() {
         flexWrap='wrap'
         justifyContent='center'
         gap={4}
-        mb={4}
+        mb={6}
+        maxWidth='100%'
       >
         <Box
           display='flex'
@@ -146,10 +167,10 @@ export default function UuidPage() {
               }
               sx={{ minWidth: 120 }}
             >
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={1}>v1 (Pseudorandom)</MenuItem>
+              <MenuItem value={3}>v3 (MD5 Hash)</MenuItem>
+              <MenuItem value={4}>v4 (Random)</MenuItem>
+              <MenuItem value={5}>v5 (SHA-1 Hash)</MenuItem>
             </SelectInput>
           </FormControl>
           {uuidVersion === 5 ? (
@@ -179,6 +200,10 @@ export default function UuidPage() {
               label='Namespace'
               value={namespace}
               error={namespaceError}
+              inputProps={{
+                inputMode: 'numeric',
+                pattern: '[0-9-]*',
+              }}
               helperText={namespaceError ? 'Invalid UUID' : ''}
               onChange={(event) => {
                 setNamespace(event.target.value);
@@ -204,26 +229,59 @@ export default function UuidPage() {
               navigator.clipboard.writeText(uuid);
             }}
           />
-          <Button
-            variant='contained'
-            onClick={() => {
-              navigator.clipboard.writeText(uuid);
-            }}
+          <Box
+            display='flex'
+            gap={2}
           >
-            Copy
-          </Button>
-          {uuidVersion !== 5 && uuidVersion !== 3 ? (
+            {uuidVersion !== 5 && uuidVersion !== 3 ? (
+              <Button
+                startIcon={<RefreshIcon />}
+                variant='contained'
+                onClick={createUuid}
+              >
+                New UUID
+              </Button>
+            ) : (
+              <Button
+                startIcon={<ClearIcon />}
+                variant='contained'
+                onClick={() => {
+                  setName('');
+                  setNamespace('');
+                  setNamespaceError(false);
+                }}
+              >
+                Clear
+              </Button>
+            )}
             <Button
+              startIcon={<ContentCopyIcon />}
               variant='contained'
-              onClick={createUuid}
+              disabled={!uuid}
+              sx={{ mr: 0, ml: 'auto' }}
+              onClick={() => {
+                navigator.clipboard.writeText(uuid).then(
+                  () => {
+                    setAlertMessage('Copied to clipboard');
+                    setAlertSeverity('success');
+                    setAlertOpen(true);
+                  },
+                  () => {
+                    setAlertMessage('Failed to copy to clipboard');
+                    setAlertSeverity('error');
+                    setAlertOpen(true);
+                  },
+                );
+              }}
             >
-              New UUID
+              Copy
             </Button>
-          ) : null}
+          </Box>
         </Box>
         <Box
           display='flex'
           flexDirection='column'
+          alignItems='flex-end'
           gap={2}
           width={350}
           maxWidth='calc(100% - 48px)'
@@ -231,6 +289,7 @@ export default function UuidPage() {
           <Typography
             textAlign='center'
             component='h2'
+            alignSelf='center'
           >
             Check UUID Version and Validity
           </Typography>
@@ -239,9 +298,46 @@ export default function UuidPage() {
             value={validateUuid}
             error={validateError}
             helperText={validateResult}
+            inputProps={{
+              inputMode: 'numeric',
+              pattern: '[0-9-]*',
+            }}
             fullWidth
             onChange={handleValidateChange}
           />
+          <Box
+            display='flex'
+            justifyContent='space-between'
+            width='100%'
+          >
+            {showPasteButton ? (
+              <Button
+                startIcon={<ContentPasteGoIcon />}
+                variant='contained'
+                onClick={async () => {
+                  const text = await navigator.clipboard.readText();
+                  if (text) {
+                    setValidateUuid(text);
+                    runUuidValidation(text);
+                  }
+                }}
+              >
+                Paste
+              </Button>
+            ) : null}
+            <Button
+              startIcon={<ClearIcon />}
+              variant='contained'
+              sx={{ mr: 0, ml: 'auto' }}
+              onClick={() => {
+                setValidateUuid('');
+                setValidateResult('');
+                setValidateError(false);
+              }}
+            >
+              Clear
+            </Button>
+          </Box>
         </Box>
       </Box>
       <Box
@@ -284,6 +380,21 @@ export default function UuidPage() {
           OID or X.500 DN.
         </Typography>
       </Box>
+      <Snackbar
+        open={alertOpen}
+        autoHideDuration={3000}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        onClose={() => setAlertOpen(false)}
+      >
+        <Alert
+          onClose={() => setAlertOpen(false)}
+          variant='filled'
+          severity={alertSeverity as 'success' | 'error'}
+          sx={{ width: '100%' }}
+        >
+          {alertMessage}
+        </Alert>
+      </Snackbar>
     </Layout>
   );
 }

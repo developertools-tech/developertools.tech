@@ -247,6 +247,10 @@ export default function AspectRatioPage() {
               value={width || ''}
               name='width'
               onChange={handleChange}
+              inputProps={{
+                inputMode: 'numeric',
+                pattern: '[0-9]*',
+              }}
             />
             <TextField
               label='Source Height'
@@ -254,6 +258,10 @@ export default function AspectRatioPage() {
               value={height || ''}
               name='height'
               onChange={handleChange}
+              inputProps={{
+                inputMode: 'numeric',
+                pattern: '[0-9]*',
+              }}
             />
           </Box>
           <Box
@@ -270,6 +278,10 @@ export default function AspectRatioPage() {
               value={newWidth || ''}
               name='newWidth'
               onChange={handleChange}
+              inputProps={{
+                inputMode: 'numeric',
+                pattern: '[0-9]*',
+              }}
             />
             <TextField
               label='Target Height'
@@ -277,6 +289,10 @@ export default function AspectRatioPage() {
               value={newHeight || ''}
               name='newHeight'
               onChange={handleChange}
+              inputProps={{
+                inputMode: 'numeric',
+                pattern: '[0-9]*',
+              }}
             />
           </Box>
         </Box>
@@ -434,6 +450,10 @@ export default function AspectRatioPage() {
             variant='outlined'
             value={margins || ''}
             name='margin'
+            inputProps={{
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+            }}
             onChange={(event) => {
               const { value } = event.currentTarget;
               const number = Number(value.replace(/\D/g, ''));
@@ -445,6 +465,10 @@ export default function AspectRatioPage() {
             variant='outlined'
             value={gap || ''}
             name='gap'
+            inputProps={{
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+            }}
             onChange={(event) => {
               const { value } = event.currentTarget;
               const number = Number(value.replace(/\D/g, ''));
@@ -456,6 +480,10 @@ export default function AspectRatioPage() {
             variant='outlined'
             value={expand || ''}
             name='expand'
+            inputProps={{
+              inputMode: 'numeric',
+              pattern: '[0-9]*',
+            }}
             onChange={(event) => {
               const { value } = event.currentTarget;
               const number = Number(value.replace(/\D/g, ''));
