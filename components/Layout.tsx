@@ -32,7 +32,7 @@ const drawerWidth = 240;
 function Logo() {
   return (
     <Button
-      href='/'
+      href='https://www.dlford.io'
       component={Link}
       width={119}
       height={44}
@@ -190,23 +190,14 @@ export default function Layout({
           <Typography
             display='flex'
             justifyContent='center'
-            gap='0.5em'
             alignItems='center'
           >
-            CopyLeft
-            <a
-              href='https://www.dlford.io'
-              rel='noopener noreferrer'
-              target='_blank'
-            >
-              DL Ford
-            </a>
-            2022
+            CopyLeft DL Ford 2022{' '}
             <IconButton
               href='https://github.com/dlford/utils.dlford.io'
               target='_blank'
               rel='noopener noreferrer'
-              sx={{ ml: -0.5 }}
+              sx={{ mx: 0.5 }}
             >
               <GitHub />
             </IconButton>
