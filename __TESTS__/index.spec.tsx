@@ -5,16 +5,29 @@ import React from 'react';
 
 import Home from '../pages/index';
 
-// TODO: Test nav/etc
-
 describe('Home', () => {
   it('renders a heading', () => {
     render(<Home />);
 
-    const heading = screen.getByText(
-      /Choose a tool from the menu to get started/i,
-    );
+    const heading = screen.getByText(/Welcome/i);
 
     expect(heading).toBeInTheDocument();
+  });
+
+  it('renders the main navigation', () => {
+    render(<Home />);
+
+    const menu = screen.getByRole('navigation');
+    expect(menu).toBeInTheDocument();
+
+    const homeItem = screen.getByText(/Home/i);
+    expect(homeItem).toBeInTheDocument();
+  });
+
+  it('renders the footer', () => {
+    render(<Home />);
+
+    const footer = screen.getByText(/CopyLeft/i);
+    expect(footer).toBeInTheDocument();
   });
 });
