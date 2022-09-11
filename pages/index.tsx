@@ -5,8 +5,6 @@ import React from 'react';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 
-// TODO: Issue templates
-
 export default function IndexPage() {
   return (
     <Layout>
@@ -18,7 +16,7 @@ export default function IndexPage() {
         <Typography paragraph>
           Don&apos;t see the tool you need?{' '}
           <a
-            href='https://github.com/dlford/utils.dlford.io/issues/new'
+            href='https://github.com/developertools-tech/developertools.tech/issues/new?assignees=&labels=feature+request%2Ctriage&template=FEATURE_REQUEST.yml&title=%5BReq%5D%3A+'
             target='_blank'
             rel='noopener noreferrer'
           >

@@ -194,7 +194,7 @@ export default function Layout({
           >
             CopyLeft DL Ford 2022{' '}
             <IconButton
-              href='https://github.com/dlford/utils.dlford.io'
+              href='https://github.com/developertools-tech/developertools.tech'
               target='_blank'
               rel='noopener noreferrer'
               sx={{ mx: 0.5 }}

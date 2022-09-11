@@ -1,34 +1,86 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## DeveloperTools.Tech
 
-## Getting Started
+A collection of tools for developers.
+
+## Contributing
+
+This project is built with NextJS, TypeScript, and Material UI. Being a PWA, ideally all tools should work offline without any server side code.
+
+### Pull Requests
+
+Pull requests are welcome, please base your work on the `dev` branch, and make sure your pull request is submitted against the `dev` branch.
+
+### Getting Started
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Project Structure
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- Project Root
+  - `components`
+    - Create a directory here for your tool if needed
+  - `data`
+    - `nav.ts`
+      - Add your tool to this file to include it in the main navigation
+  - `hooks`
+    - Create a directory for your tool if needed, unless it is a generic/re-usable hook
+  - `pages`
+    - Create a page for your tool, note that the filename will be used as the page slug
+  - `styles`
+    - Create a directory for your tool if needed, but please stick with MUI styles as much as possible
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Code Quality
 
-## Learn More
+Please use the script `npm run precommit` before submitting a pull request.
+
+### Basic Example
+
+1. Take a look at some of the existing tools to see what tooling has already been built (e.g. toasts, local storage, window size, etc.)
+
+2. Create the file `pages/your-tool-slug.tsx`
+
+  ```tsx
+  import React from 'react';
+
+  import Heading from '../components/Heading';
+  import Layout from '../components/Layout';
+
+  export default function MyToolName() {
+    return (
+    <Layout title='My Tool Name'>
+      <Heading>My Tool Name</Heading>
+        {/* TODO - Build my tool */}
+      </Heading>
+    </Layout>
+    )
+  }
+  ```
+
+3. Add your tool to the main navigation
+
+  ```ts
+  //...
+  import SomeIcon from '@mui/icons-material/SomeIcon';
+
+  export default [
+    // ...
+    {
+      title: 'My Tool Name',
+      href: '/my-tool-slug',
+      Icon: SomeIcon,
+    },
+  ];
+  ```
+
+## More Resources
 
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Material UI](https://mui.com/material-ui) - learn about Material UI components and API.
