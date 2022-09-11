@@ -23,6 +23,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Project Structure
 
 - Project Root
+  - `__TESTS__`
+    - Create a file for testing your tool (required)
   - `components`
     - Create a directory here for your tool if needed
   - `data`
@@ -37,7 +39,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Code Quality
 
-Please use the script `npm run precommit` before submitting a pull request.
+Please use the script `npm run cq` before submitting a pull request.
 
 ### Basic Example
 
@@ -84,3 +86,5 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Material UI](https://mui.com/material-ui) - learn about Material UI components and API.
+- [Jest](https://jestjs.io/docs/getting-started) - learn about the Jest assertion library
+- [Testing Library](https://testing-library.com/docs/react-testing-library/intro) - learn about React Testing Library

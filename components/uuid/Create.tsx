@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import SelectInput from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { v1, v3, v4, v5, validate } from 'uuid';
 
 import useLocalState from '../../hooks/useLocalState';
@@ -45,7 +45,7 @@ export default function UuidCreate({
   const [uuid, setUuid] = useState<string>('');
   const [namespaceError, setNamespaceError] = useState<boolean>(false);
 
-  function createUuid() {
+  const createUuid = useCallback(() => {
     switch (uuidVersion) {
       case 1:
         setUuid(v1());
@@ -81,11 +81,11 @@ export default function UuidCreate({
             break;
         }
     }
-  }
+  }, [uuidVersion, namespace, namespaceType, name]);
 
   useEffect(() => {
     createUuid();
-  }, [uuidVersion, namespace, namespaceType, name]);
+  }, [uuidVersion, namespace, namespaceType, name, createUuid]);
 
   return (
     <Box
