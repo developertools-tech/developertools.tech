@@ -13,7 +13,8 @@ import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 
-const errorRegex = /line ([0-9]+) column ([0-9]+)/;
+const errorRegexFirefox = /line ([0-9]+) column ([0-9]+)/;
+const errorRegexChrome = /at position ([0-9]+)/;
 
 export default function JsonPage() {
   const supportsClipboardRead = useSupportsClipboardRead();
@@ -46,7 +47,7 @@ export default function JsonPage() {
     } catch (e: any) {
       setError(e.message);
       setOutput('');
-      const result = errorRegex.exec(e.message);
+      const result = errorRegexFirefox.exec(e.message);
       if (result) {
         const lineNumber = result[1];
         const columnNumber = result[2];
@@ -74,6 +75,26 @@ export default function JsonPage() {
           }
         }
         setOutput(outputText);
+      } else {
+        const chromeResult = errorRegexChrome.exec(e.message);
+        if (chromeResult) {
+          let positionCur = 0;
+          let found = false;
+          let outputText = '';
+          const positionTarget = +chromeResult[1];
+          const lines = input.split('\n');
+          for (const line of lines) {
+            positionCur += line.split('').length;
+            if (!found && positionCur >= positionTarget) {
+              found = true;
+              outputText += `<span class="bad-line">${line}</span>\n`;
+            } else {
+              outputText += `${line}\n`;
+            }
+            positionCur += 1;
+          }
+          setOutput(outputText);
+        }
       }
     }
   }, [input, setOutput]);
