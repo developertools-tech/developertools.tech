@@ -1,3 +1,4 @@
+import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 
 import Base64InputOutput from '../components/base64/Base64InputOutput';
@@ -26,6 +27,10 @@ export default function Base64Page() {
   return (
     <Layout title='Base64'>
       <Heading>Base64</Heading>
+      <Typography paragraph>
+        Paste or type in some ASCII text and it will be converted to
+        Base64 and vice-versa.
+      </Typography>
       <Base64InputOutput
         ascii={ascii}
         base64={base64}

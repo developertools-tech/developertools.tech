@@ -22,7 +22,11 @@ export default function useLocalState<T>({
       setLoaded(true);
       const jsonValue = localStorage.getItem(key);
       if (jsonValue != null) {
-        setValue(JSON.parse(jsonValue));
+        try {
+          setValue(JSON.parse(jsonValue));
+        } catch (_e) {
+          return undefined;
+        }
       }
     } else {
       localStorage.setItem(key, JSON.stringify(value));
