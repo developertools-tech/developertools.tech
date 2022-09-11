@@ -83,6 +83,7 @@ export default function AspectRatioPreview({
         {hasWidthHeight && (
           <Paper
             elevation={3}
+            data-testid='ratio-preview'
             sx={{
               width: previewSize.width,
               height: previewSize.height,
