@@ -215,6 +215,7 @@ export default function JsonPage() {
           >
             {/* eslint-disable react/no-danger */}
             <pre
+              data-testid='json-output'
               dangerouslySetInnerHTML={{
                 __html:
                   output || '<span class="placeholder">Output</span>',
