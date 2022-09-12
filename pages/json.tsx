@@ -277,6 +277,7 @@ export default function JsonPage() {
         <Typography
           color='#ff6246'
           paragraph
+          data-testid='json-error'
         >
           {error}
         </Typography>

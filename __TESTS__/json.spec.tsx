@@ -16,7 +16,24 @@ const goodTestOutput = `{
   }
 }`;
 
-describe('Base64', () => {
+const badTestInput = `{\\{}
+  "test": true,
+  "item": {\\{}
+    "thing": "yes",,
+    "count": 20
+  {\\}}
+{\\}}`;
+
+const badTestOutput = `{
+  "test": true,
+  "item": {
+<span class="bad-line">    "thing": "yes",,</span>
+    "count": 20
+  }
+}
+`;
+
+describe('JSON', () => {
   it('formats json', async () => {
     const user = userEvent.setup();
     render(<Json />);
@@ -30,40 +47,46 @@ describe('Base64', () => {
     expect(output.innerHTML).toBe(goodTestOutput);
   });
 
-  // TODO: More tests
-
-  /*
-  it('converts Base64 to Input', async () => {
+  it('detects invalid json', async () => {
     const user = userEvent.setup();
     render(<Json />);
 
     const input = screen.getByLabelText(/Input/i);
-    const base64 = screen.getByLabelText(/Base64/i);
+    const output = screen.getByTestId('json-output');
+    const errorCont = screen.getByTestId('json-error');
 
-    await user.clear(base64);
-    await user.type(base64, 'dGVzdCBwYXNzZWQ=');
-    expect(input).toHaveValue('test passed');
+    await user.clear(input);
+    await user.type(input, badTestInput);
+    expect(output.innerHTML).toBe(badTestOutput);
+    expect(errorCont.innerHTML).toMatch(
+      /Unexpected token , in JSON at position 49/i,
+    );
   });
 
-  it('clears inputs with either clear button', async () => {
+  it('clears inputs with clear buttons + shows placeholder', async () => {
     const user = userEvent.setup();
     render(<Json />);
 
     const input = screen.getByLabelText(/Input/i);
+    const output = screen.getByTestId('json-output');
     const clearBtns = screen.getAllByRole('button', { name: /Clear/i });
 
     await user.clear(input);
-    await user.type(input, 'Hello, world!');
+    await user.type(input, goodTestInput);
     await user.click(clearBtns[0]);
 
     expect(input).toHaveValue('');
-    expect(base64).toHaveValue('');
+    expect(output.innerHTML).toBe(
+      '<span class="placeholder">Output</span>',
+    );
 
-    await user.type(input, 'Hello, world!');
+    await user.type(input, goodTestInput);
     await user.click(clearBtns[1]);
 
     expect(input).toHaveValue('');
-    expect(base64).toHaveValue('');
+    expect(output.innerHTML).toBe(
+      '<span class="placeholder">Output</span>',
+    );
   });
 
   it('copies text to clipboard', async () => {
@@ -74,15 +97,14 @@ describe('Base64', () => {
     const copyBtns = screen.getAllByRole('button', { name: /Copy/i });
 
     await user.clear(input);
-    await user.type(input, 'Hello, world!');
+    await user.type(input, goodTestInput);
 
     await user.click(copyBtns[0]);
-    expect(await navigator.clipboard.readText()).toBe('Hello, world!');
+    expect(await navigator.clipboard.readText()).toBe(
+      goodTestInput.replaceAll('{\\{}', '{').replaceAll('{\\}}', '}'),
+    );
 
     await user.click(copyBtns[1]);
-    expect(await navigator.clipboard.readText()).toBe(
-      'SGVsbG8sIHdvcmxkIQ==',
-    );
+    expect(await navigator.clipboard.readText()).toBe(goodTestOutput);
   });
-  */
 });
