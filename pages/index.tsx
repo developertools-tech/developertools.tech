@@ -1,6 +1,4 @@
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 
@@ -48,16 +46,6 @@ export default function IndexPage() {
             contribute on GitHub
           </a>
         </Typography>
-        <Button
-          variant='outlined'
-          startIcon={<FavoriteIcon />}
-          target='_blank'
-          rel='noopener noreferrer'
-          href='https://github.com/sponsors/dlford'
-          sx={{ mt: 4 }}
-        >
-          Sponsor
-        </Button>
       </Box>
     </Layout>
   );

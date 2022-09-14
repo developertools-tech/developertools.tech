@@ -177,7 +177,7 @@ export default function AspectRatioLayoutSettings({
           ]}
           min={1}
           max={10}
-          sx={{ width: 240, mx: 8, my: 2 }}
+          sx={{ width: 240, mx: { xs: 4, sm: 8 }, my: 2 }}
           onChange={handleLayoutCountChange}
         />
       </Box>

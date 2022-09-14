@@ -1,3 +1,4 @@
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import GitHub from '@mui/icons-material/GitHub';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
@@ -96,7 +97,11 @@ export default function Layout({
   );
 
   return (
-    <Box height='100%'>
+    <Box
+      height='100%'
+      display='flex'
+      flexDirection='column'
+    >
       <Head>
         <title>{title}</title>
         <meta
@@ -161,16 +166,13 @@ export default function Layout({
         flexDirection='column'
         alignItems='center'
         sx={{
-          p: 3,
+          px: 3,
+          py: 6,
           pt: {
             xs: 12,
-            sm: 3,
+            sm: 6,
           },
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          minHeight: (theme) => ({
-            xs: `calc(100% - ${theme.mixins.toolbar.minHeight}px)`,
-            sm: `calc(100% - (${theme.mixins.toolbar.minHeight}px * 2) - 16px)`,
-          }),
         }}
       >
         {children}
@@ -178,45 +180,91 @@ export default function Layout({
       <Box
         position='relative'
         component='footer'
-        width={{ sm: `calc(100% - ${drawerWidth}px)` }}
+        mt='auto'
+        mb={0}
+        width={{ xs: '100%', sm: `calc(100% - ${drawerWidth}px)` }}
         display='flex'
         justifyContent='center'
+        flexDirection='column'
         alignItems='center'
-        bgcolor='grey.900'
+        pt={4}
+        sx={{
+          backgroundImage:
+            'linear-gradient(rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.09));',
+        }}
       >
-        <Toolbar>
+        <Box
+          display='flex'
+          justifyContent='center'
+          flexDirection='column'
+          alignItems='center'
+          pb={4}
+          width='100%'
+        >
           <Typography
+            variant='h6'
+            mb={3}
+            fontWeight='normal'
+          >
+            Sponsors
+          </Typography>
+          <Button
+            variant='outlined'
+            startIcon={<FavoriteIcon />}
+            target='_blank'
+            rel='noopener noreferrer'
+            href='https://github.com/sponsors/dlford'
+          >
+            Sponsor
+          </Button>
+        </Box>
+        <Box
+          display='flex'
+          justifyContent='center'
+          alignItems='center'
+          width='100%'
+          borderTop='1px solid #444'
+        >
+          <Box
+            px={2}
+            pt={1}
             display='flex'
             justifyContent='center'
             alignItems='center'
-            gap='0.125rem'
-            fontSize='0.75rem'
-            lineHeight={1}
           >
-            CopyLeft
-            <a
-              href='https://www.dlford.io'
-              rel='noopener noreferrer'
-              target='_blank'
+            <Typography
+              display='flex'
+              justifyContent='center'
+              alignItems='center'
+              gap='0.125rem'
+              fontSize='0.75rem'
+              lineHeight={1}
             >
-              <Button sx={{ px: 0, mb: 0.5 }}>
-                <Image
-                  src={dlfordLogo}
-                  width={90}
-                  height={34}
-                />
-              </Button>
-            </a>
-            2022
-            <IconButton
-              href='https://github.com/developertools-tech/developertools.tech'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <GitHub />
-            </IconButton>
-          </Typography>
-        </Toolbar>
+              CopyLeft
+              <a
+                href='https://www.dlford.io'
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                <Button sx={{ px: 0, mb: 0.5 }}>
+                  <Image
+                    src={dlfordLogo}
+                    width={90}
+                    height={34}
+                  />
+                </Button>
+              </a>
+              2022
+              <IconButton
+                href='https://github.com/developertools-tech/developertools.tech'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <GitHub />
+              </IconButton>
+            </Typography>
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
