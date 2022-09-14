@@ -1,4 +1,4 @@
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
 import GitHub from '@mui/icons-material/GitHub';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
@@ -209,7 +209,7 @@ export default function Layout({
             Sponsors
           </Typography>
           <Button
-            variant='outlined'
+            variant='contained'
             startIcon={<FavoriteIcon />}
             target='_blank'
             rel='noopener noreferrer'
@@ -227,7 +227,7 @@ export default function Layout({
         >
           <Box
             px={2}
-            pt={1}
+            py={1}
             display='flex'
             justifyContent='center'
             alignItems='center'

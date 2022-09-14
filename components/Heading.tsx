@@ -10,6 +10,7 @@ export default function Heading({
     <Typography
       variant='h1'
       component='h1'
+      color='primary.main'
       sx={{
         fontSize: {
           xs: '1.75rem',
