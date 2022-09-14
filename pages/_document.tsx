@@ -11,32 +11,42 @@ export default class MyDocument extends Document {
         <Head>
           <link
             rel='icon'
-            href='/favicon.ico'
+            href='/favicon.ico?v=2'
           />
           <link
-            rel='apple-touch-icon'
-            sizes='180x180'
-            href='/apple-touch-icon.png'
+            rel='icon'
+            type='image/svg+xml'
+            href='/favicon.svg?v=2'
+          />
+          <link
+            rel='icon'
+            type='image/png'
+            href='/favicon.png?v=2'
           />
           <link
             rel='icon'
             type='image/png'
             sizes='32x32'
-            href='/favicon-32x32.png'
+            href='/favicon-32x32.png?v=2'
           />
           <link
             rel='icon'
             type='image/png'
             sizes='16x16'
-            href='/favicon-16x16.png'
+            href='/favicon-16x16.png?v=2'
+          />
+          <link
+            rel='apple-touch-icon'
+            sizes='180x180'
+            href='/apple-touch-icon.png?v=2'
           />
           <link
             rel='manifest'
-            href='/site.webmanifest'
+            href='/site.webmanifest?v=2'
           />
           <link
             rel='mask-icon'
-            href='/safari-pinned-tab.svg'
+            href='/safari-pinned-tab.svg?v=2'
             color='#272727'
           />
           <meta
@@ -47,7 +57,86 @@ export default class MyDocument extends Document {
             name='theme-color'
             content='#272727'
           />
-          {/* FIX: social media meta tags */}
+          <link
+            rel='shortcut icon'
+            href='/favicon.ico?v=2'
+          />
+          <meta
+            name='apple-mobile-web-app-title'
+            content='Developer Tools'
+          />
+          <meta
+            name='application-name'
+            content='Developer Tools'
+          />
+          <meta
+            name='msapplication-TileColor'
+            content='#2b5797'
+          />
+          <meta
+            property='og:title'
+            content='DeveloperTools.Tech'
+          />
+          <meta
+            property='og:url'
+            content='https://www.developertools.tech/'
+          />
+          <meta
+            name='twitter:title'
+            content='DeveloperTools.Tech'
+          />
+          <meta
+            name='twitter:card'
+            content='summary_large_image'
+          />
+          <meta
+            name='twitter:url'
+            content='https://www.developertools.tech/'
+          />
+          <meta
+            name='web_author'
+            content='Dan Ford, https://www.dlford.io'
+          />
+          <meta
+            property='og:site_name'
+            content='DeveloperTools.Tech'
+          />
+          <meta
+            property='og:description'
+            content='Utilities for developers'
+          />
+          <meta
+            name='twitter:description'
+            content='Utilities for developers'
+          />
+          <meta
+            property='og:type'
+            content='website'
+          />
+          <meta
+            property='og:image'
+            content='/og-image.png'
+          />
+          <meta
+            name='twitter:image'
+            content='/og-image.png'
+          />
+          <meta
+            property='og:image:width'
+            content='2000'
+          />
+          <meta
+            property='og:image:height'
+            content='1333'
+          />
+          <meta
+            property='og:image:alt'
+            content='A screenshot of the Developer Tools website'
+          />
+          <meta
+            name='twitter:image:alt'
+            content='A screenshot of the Developer Tools website'
+          />
         </Head>
         <body>
           <Main />

@@ -1,8 +1,3 @@
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-
 import GitHub from '@mui/icons-material/GitHub';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
@@ -24,7 +19,8 @@ import React, { useState } from 'react';
 
 import navItems from '../data/nav';
 import useWindowSize from '../hooks/useWindowSize';
-import logo from '../public/logo-full.svg';
+import logo from '../public/logo.svg';
+import dlfordLogo from '../public/logo-full.svg';
 import Link from './Link';
 
 const drawerWidth = 240;
@@ -32,15 +28,25 @@ const drawerWidth = 240;
 function Logo() {
   return (
     <Button
-      href='https://www.dlford.io'
+      href='/'
       component={Link}
-      width={119}
       height={44}
+      sx={{ mr: 'auto', ml: 0 }}
     >
       <Image
         src={logo}
-        layout='fill'
+        width={36}
+        height={36}
+        alt=''
+        aria-hidden='true'
       />
+      <Typography
+        ml={1}
+        color='#fff'
+        textTransform='none'
+      >
+        Dev Tools
+      </Typography>
     </Button>
   );
 }
@@ -112,15 +118,7 @@ export default function Layout({
         }}
       >
         <Toolbar>
-          <Typography
-            variant='h6'
-            component='div'
-            sx={{
-              flexGrow: 1,
-            }}
-          >
-            <Logo />
-          </Typography>
+          <Logo />
           <IconButton
             color='inherit'
             aria-label='open drawer'
@@ -191,13 +189,29 @@ export default function Layout({
             display='flex'
             justifyContent='center'
             alignItems='center'
+            gap='0.125rem'
+            fontSize='0.75rem'
+            lineHeight={1}
           >
-            CopyLeft DL Ford 2022{' '}
+            CopyLeft
+            <a
+              href='https://www.dlford.io'
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              <Button sx={{ px: 0, mb: 0.5 }}>
+                <Image
+                  src={dlfordLogo}
+                  width={90}
+                  height={34}
+                />
+              </Button>
+            </a>
+            2022
             <IconButton
               href='https://github.com/developertools-tech/developertools.tech'
               target='_blank'
               rel='noopener noreferrer'
-              sx={{ mx: 0.5 }}
             >
               <GitHub />
             </IconButton>
