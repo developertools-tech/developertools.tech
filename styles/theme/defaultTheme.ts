@@ -5,7 +5,7 @@ const defaultTheme: ThemeOptions = {
   palette: {
     mode: 'dark',
     primary: {
-      main: indigo[200],
+      main: indigo[100],
     },
   },
   typography: {
