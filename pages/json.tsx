@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import React, { useCallback, useEffect, useState } from 'react';
 
+import Editor from '../components/Editor';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
@@ -110,6 +111,11 @@ export default function JsonPage() {
   return (
     <Layout title='JSON'>
       <Heading>JSON</Heading>
+      <Editor
+        name='JSON_INPUT'
+        mode='json'
+        onChange={(val) => console.log(val)}
+      />
       <Typography
         paragraph
         textAlign='center'
