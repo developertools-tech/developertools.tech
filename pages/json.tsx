@@ -1,3 +1,4 @@
+import { javascript } from '@codemirror/lang-javascript';
 import ClearIcon from '@mui/icons-material/Clear';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
@@ -5,6 +6,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { githubDark } from '@uiw/codemirror-theme-github';
+import CodeMirror from '@uiw/react-codemirror';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import Heading from '../components/Heading';
@@ -116,6 +119,14 @@ export default function JsonPage() {
       >
         Paste or type JSON to validate and format it.
       </Typography>
+      <CodeMirror
+        value="console.log('hello world!');"
+        height='60vh'
+        width='1440px'
+        maxWidth='75vw'
+        theme={githubDark}
+        extensions={[javascript({ jsx: true })]}
+      />
       <Box
         display='flex'
         flexDirection='column'
