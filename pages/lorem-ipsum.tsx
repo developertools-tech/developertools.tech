@@ -22,7 +22,7 @@ export default function LoremIpsumPage() {
   const paragraphLength = 1;
   const paragraphCount = 3;
 
-  function generateLoremParagraphs() {
+  function generateFromWords() {
     const result = [];
 
     function getWord() {
@@ -50,7 +50,7 @@ export default function LoremIpsumPage() {
     setParagraphs(result);
   }
 
-  function generateFunnyParagraphs() {
+  function generateFromFragments() {
     const result = [];
     const { starters, segments, endings } = wordlist;
 
@@ -63,19 +63,22 @@ export default function LoremIpsumPage() {
             sentenceData.push(
               `${starters[Math.floor(Math.random() * starters.length)]
                 .replace(/[.!?]/g, '')
-                .toLowerCase()}, `,
+                .toLowerCase()
+                .trim()}, `,
             );
           } else if (word === sentenceLength - 1) {
             sentenceData.push(
-              endings[
-                Math.floor(Math.random() * endings.length)
-              ].toLowerCase(),
+              `${endings[Math.floor(Math.random() * endings.length)]
+                .replace(/[.!?]/g, '')
+                .toLowerCase()
+                .trim()}. `,
             );
           } else {
             sentenceData.push(
               `${segments[Math.floor(Math.random() * segments.length)]
                 .replace(/[.!?]/g, '')
-                .toLowerCase()}, `,
+                .toLowerCase()
+                .trim()}, `,
             );
           }
         }
@@ -90,9 +93,7 @@ export default function LoremIpsumPage() {
     setParagraphs(result);
   }
 
-  const generator = isLorem
-    ? generateLoremParagraphs
-    : generateFunnyParagraphs;
+  const generator = isLorem ? generateFromWords : generateFromFragments;
 
   useEffect(generator, []);
 
