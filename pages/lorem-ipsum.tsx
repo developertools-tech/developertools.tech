@@ -1,11 +1,12 @@
 import Box from '@mui/material/Box';
+import random from 'random';
 import React, { useEffect, useState } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-import jeffGoldblumWords from '../lib/loremIpsum/jeffGoldblum';
+import jeffGoldblum from '../data/loremIpsum/jeffGoldblum';
 // import Toast, { ToastProps } from '../components/Toast';
-import loremIpsumWords from '../lib/loremIpsum/loremIpsum';
+import loremIpsumWords from '../data/loremIpsum/latin';
 
 export default function LoremIpsumPage() {
   const [paragraphs, setParagraphs] = useState<string[]>([]);
@@ -17,18 +18,16 @@ export default function LoremIpsumPage() {
   */
 
   const isLorem = false;
-  const wordlist = jeffGoldblumWords;
-  const sentenceLength = 10;
+  const wordlist = jeffGoldblum;
+  const sentenceLength = 30;
   const paragraphLength = 1;
-  const paragraphCount = 5;
+  const paragraphCount = 3;
 
   function generateFromWords() {
     const result = [];
 
     function getWord() {
-      return loremIpsumWords[
-        Math.floor(Math.random() * loremIpsumWords.length)
-      ];
+      return loremIpsumWords[random.int(0, loremIpsumWords.length - 1)];
     }
 
     for (let paragraph = 0; paragraph < paragraphCount; paragraph++) {
@@ -52,14 +51,31 @@ export default function LoremIpsumPage() {
 
   function generateFromFragments() {
     const result = [];
-    const { starters, segments, endings } = wordlist;
     const adjustedSentenceLength =
       Math.round(sentenceLength / 6) < 3
         ? 3
         : Math.round(sentenceLength / 6);
 
-    function getFragment(list: string[]): string {
-      return list[Math.floor(Math.random() * list.length)];
+    function getSeparator(): string {
+      const separators = [
+        '; ',
+        '; ',
+        '... ',
+        ', ',
+        ', ',
+        ', ',
+        ', ',
+        ', ',
+        ', ',
+      ];
+      return separators[random.int(0, separators.length - 1)];
+    }
+    function getEnder(): string {
+      const enders = ['. ', '! ', '? '];
+      return enders[random.int(0, enders.length - 1)];
+    }
+    function getFragment(): string {
+      return wordlist[random.int(0, wordlist.length - 1)];
     }
 
     for (let paragraph = 0; paragraph < paragraphCount; paragraph++) {
@@ -68,11 +84,11 @@ export default function LoremIpsumPage() {
         const sentenceData: string[] = [];
         for (let word = 0; word < adjustedSentenceLength; word++) {
           if (word === 0) {
-            sentenceData.push(getFragment(starters));
+            sentenceData.push(`${getFragment()}${getSeparator()}`);
           } else if (word === adjustedSentenceLength - 1) {
-            sentenceData.push(getFragment(endings));
+            sentenceData.push(`${getFragment()}${getEnder()}`);
           } else {
-            sentenceData.push(getFragment(segments));
+            sentenceData.push(`${getFragment()}${getSeparator()}`);
           }
         }
         sentenceData[0] =

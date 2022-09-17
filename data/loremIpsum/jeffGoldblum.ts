@@ -1,4 +1,13 @@
-const data = `I love the ocean. Boats, not so much.
+import quotesToFragments from '../../lib/loremIpsum/quotesToFragments';
+
+export default quotesToFragments(`
+But again, how do you know they're all female? Does somebody go out into the park and pull up the dinosaurs' skirts?
+Don't you see the danger, John, inherent in what you're doing here? Genetic power is the most awesome force the planet's ever seen, but you wield it like a kid that's found his dad's gun.
+You think they'll have that on the tour?
+If there is one thing the history of evolution has taught us it's that life will not be contained. Life breaks free, it expands to new territories and crashes through barriers, painfully, maybe even dangerously, but, uh... well, there it is.
+Remind me to thank John for a lovely weekend.
+Yeah, but John, if the Pirates of the Caribbean breaks down, the pirates don’t eat the tourists!
+I love the ocean. Boats, not so much.
 The original settlers of Alaska apparently were Russian.
 I, uh, don't think I'm, y'know, so different than your average, y'know, average.
 I don't go to these places where there are belly dancers and this and that.
@@ -46,7 +55,6 @@ I like the idea of being a student, and I play with very good musicians. So play
 Sometimes I think that people's characters get forged, at least in part, from their names.
 It's best not to stare at the sun during an eclipse.
 God help us we're in the hands of engineers.
-I had a brother who died early on - he was 23 when I was 19. And, boy, I certainly didn't expect that. That was utterly shocking.
 The marrying of an actor and his whimsical and theatrical vision is very enjoyable, because he wants it to be filled with something honest, truthful, human, soulful, substantial.
 Anybody can die, everything is fleeting, and you've just got to make sure that you catch up on what you can catch up on.
 I'm a humble student of acting myself and part of that studentship is teaching.
@@ -58,39 +66,9 @@ I'm always interested in craft and I was interested to see how people work. For 
 In fact you can begin to discover and investigate whether you are an actor or not, whether you're in my view, qualified for a life in this profession or in this endeavor by checking yourself out and acting every day, getting plays and scripts and getting together with people and divvying up the parts and acting in one way or another, or writing things.
 Actors don't necessarily want to be famous or rich or anything else. It's a very bad gamble if that's what you're after.
 I like little collaborations where the other thing happens, where it's half-baked or it's improvised, and let's develop it together. What do you want to wear? Do you have an idea? All that's fun to do, and I like that, but it doesn't take anything away
-You did it. You crazy son of a bitch, you did it.
+You did it. You crazy son of a gun, you did it.
 You want to be in a movie where your part works. That's the main thing. No matter how you beat yourself working on the thing, if it doesn't work, it doesn't work.
 Now eventually you do plan to have dinosaurs on your dinosaur tour, right?
 I like little collaborations where the other thing happens, where it's half-baked or it's improvised, and let's develop it together. What do you want to wear? Do you have an idea? All that's fun to do, and I like that, but it doesn't take anything away.
-Don't knock rationalization. Where would we be without it? I don't know anyone who'd get through the day without two or three juicy rationalizations. They're more important than sex. Have you ever gone a week without a rationalization?
-At its best, life is surprising. Maybe, because that's my appetite, the frontier is uncharted. But it suits me fine. I've gotten used to that. Some people couldn't bear it, but I like that life.`;
-
-const sentences = data.split('\n');
-
-const starters = [];
-const segments = [];
-const endings = [];
-
-function cleanup(str: string): string {
-  return str.replace(/[.!?]/g, '').toLowerCase().trim();
-}
-
-for (const sentence of sentences) {
-  const parts = sentence.split(/[,!?]/);
-
-  for (const part of parts) {
-    if (!part) {
-      break;
-    } else if (parts.length === 1) {
-      starters.push(`${cleanup(part)}, `);
-    } else if (part === parts[0]) {
-      starters.push(`${cleanup(part)}, `);
-    } else if (part === parts[parts.length - 1]) {
-      endings.push(`${cleanup(part)}. `);
-    } else {
-      segments.push(`${cleanup(part)}, `);
-    }
-  }
-}
-
-export default { starters, segments, endings };
+At its best, life is surprising. Maybe, because that's my appetite, the frontier is uncharted. But it suits me fine. I've gotten used to that. Some people couldn't bear it, but I like that life.
+`);
