@@ -16,6 +16,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 import navItems from '../data/nav';
@@ -62,6 +63,7 @@ export default function Layout({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const { width } = useWindowSize();
+  const { asPath } = useRouter();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -87,6 +89,7 @@ export default function Layout({
             <ListItemButton
               href={href}
               component={Link}
+              disabled={asPath === href}
             >
               <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
               <ListItemText primary={itemTitle} />
