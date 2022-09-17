@@ -8,7 +8,7 @@ export default function quotesToFragments(data: string): string[] {
   }
 
   for (const sentence of sentences) {
-    const parts = sentence.split(/[.,!?]/);
+    const parts = sentence.split(/[.,;!?-]/);
 
     for (const part of parts) {
       if (part.length > 2) {

@@ -4,9 +4,10 @@ import React, { useEffect, useState } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-import jeffGoldblum from '../data/loremIpsum/jeffGoldblum';
 // import Toast, { ToastProps } from '../components/Toast';
 import loremIpsumWords from '../data/loremIpsum/latin';
+// import jeffGoldblum from '../data/loremIpsum/jeffGoldblum';
+import willFerrell from '../data/loremIpsum/willFerrell';
 
 export default function LoremIpsumPage() {
   const [paragraphs, setParagraphs] = useState<string[]>([]);
@@ -18,7 +19,7 @@ export default function LoremIpsumPage() {
   */
 
   const isLorem = false;
-  const wordlist = jeffGoldblum;
+  const wordlist = willFerrell;
   const sentenceLength = 30;
   const paragraphLength = 1;
   const paragraphCount = 3;
