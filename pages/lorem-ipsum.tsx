@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
+import jeffGoldblumWords from '../lib/loremIpsum/jeffGoldblum';
 // import Toast, { ToastProps } from '../components/Toast';
 import loremIpsumWords from '../lib/loremIpsum/loremIpsum';
 
@@ -15,11 +16,13 @@ export default function LoremIpsumPage() {
     useState<ToastProps['severity']>('success');
   */
 
-  const sentenceLength = 10;
-  const paragraphLength = 5;
+  const isLorem = false;
+  const wordlist = jeffGoldblumWords;
+  const sentenceLength = 3;
+  const paragraphLength = 1;
   const paragraphCount = 3;
 
-  function generateParagraphs() {
+  function generateLoremParagraphs() {
     const result = [];
 
     function getWord() {
@@ -47,7 +50,51 @@ export default function LoremIpsumPage() {
     setParagraphs(result);
   }
 
-  useEffect(generateParagraphs, []);
+  function generateFunnyParagraphs() {
+    const result = [];
+    const { starters, segments, endings } = wordlist;
+
+    for (let paragraph = 0; paragraph < paragraphCount; paragraph++) {
+      const paragraphData: string[] = [];
+      for (let sentence = 0; sentence < paragraphLength; sentence++) {
+        const sentenceData: string[] = [];
+        for (let word = 0; word < sentenceLength; word++) {
+          if (word === 0) {
+            sentenceData.push(
+              `${starters[Math.floor(Math.random() * starters.length)]
+                .replace(/[.!?]/g, '')
+                .toLowerCase()}, `,
+            );
+          } else if (word === sentenceLength - 1) {
+            sentenceData.push(
+              endings[
+                Math.floor(Math.random() * endings.length)
+              ].toLowerCase(),
+            );
+          } else {
+            sentenceData.push(
+              `${segments[Math.floor(Math.random() * segments.length)]
+                .replace(/[.!?]/g, '')
+                .toLowerCase()}, `,
+            );
+          }
+        }
+        sentenceData[0] =
+          sentenceData[0].charAt(0).toUpperCase() +
+          sentenceData[0].slice(1);
+        paragraphData.push(sentenceData.join(' '));
+      }
+      result.push(paragraphData.join(''));
+    }
+
+    setParagraphs(result);
+  }
+
+  const generator = isLorem
+    ? generateLoremParagraphs
+    : generateFunnyParagraphs;
+
+  useEffect(generator, []);
 
   return (
     <Layout title='Lorem Ipsum'>
