@@ -1,13 +1,13 @@
 import ClearIcon from '@mui/icons-material/Clear';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import jsonFix from 'json-fixer-browser';
 import jsonFormat from 'json-format';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import Editor from '../components/Editor';
 import Heading from '../components/Heading';
@@ -15,9 +15,6 @@ import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
-
-const errorRegexFirefox = /line ([0-9]+) column ([0-9]+)/;
-const errorRegexChrome = /at position ([0-9]+)/;
 
 export default function JsonPage() {
   const supportsClipboardRead = useSupportsClipboardRead();
@@ -31,92 +28,28 @@ export default function JsonPage() {
     key: 'jsonInput',
     defaultValue: '',
   });
-  const [output, setOutput] = useLocalState<string | void>({
-    key: 'jsonOutput',
-    defaultValue: '',
-  });
 
-  const processJson = useCallback(() => {
-    if (!input) {
-      setOutput('');
-      setError('');
-      return;
-    }
-    try {
-      const data = JSON.parse(input);
-      setOutput(JSON.stringify(data, null, 2));
-      setError('');
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (e: any) {
-      setError(e.message);
-      setOutput('');
-      const result = errorRegexFirefox.exec(e.message);
-      if (result) {
-        const lineNumber = result[1];
-        const columnNumber = result[2];
-        const lines = input.split('\n');
-        let outputText = '';
-        for (const index in lines) {
-          if ({}.hasOwnProperty.call(lines, index)) {
-            const line = lines[index];
-            if (+index + 1 === +lineNumber) {
-              let markedLine = '';
-              for (const letterIndex in line.split('')) {
-                if ({}.hasOwnProperty.call(line, letterIndex)) {
-                  const letter = line[letterIndex];
-                  if (+letterIndex + 1 === +columnNumber) {
-                    markedLine += `<span class="bad-letter">${letter}</span>`;
-                  } else {
-                    markedLine += letter;
-                  }
-                }
-              }
-              outputText += `<span class="bad-line">${markedLine}</span>\n`;
-            } else {
-              outputText += `${line}\n`;
-            }
-          }
-        }
-        setOutput(outputText);
-      } else {
-        const chromeResult = errorRegexChrome.exec(e.message);
-        if (chromeResult) {
-          let positionCur = 0;
-          let found = false;
-          let outputText = '';
-          const positionTarget = +chromeResult[1];
-          const lines = input.split('\n');
-          for (const line of lines) {
-            positionCur += line.split('').length;
-            if (!found && positionCur >= positionTarget) {
-              found = true;
-              outputText += `<span class="bad-line">${line}</span>\n`;
-            } else {
-              outputText += `${line}\n`;
-            }
-            positionCur += 1;
-          }
-          setOutput(outputText);
+  const handleFormat = useCallback(() => {
+    setError('');
+    if (input) {
+      try {
+        const { data } = jsonFix(input);
+        const formatted = jsonFormat(data, { type: 'space', size: 2 });
+        setInput(formatted);
+      } catch (_e) {
+        try {
+          JSON.parse(input);
+        } catch (e) {
+          /* @ts-expect-error : error object is of type unknown */
+          setError(e?.message || 'Unknown error');
         }
       }
     }
-  }, [input, setOutput]);
+  }, [input, setInput]);
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setInput(event.target.value);
-  }
-
-  useEffect(() => {
-    processJson();
-  }, [input, processJson]);
-
-  function handleEditorChange(value: string) {
-    try {
-      const { data } = jsonFix(value);
-      setOutput(jsonFormat(data, { type: 'space', size: 2 }));
-    } catch (_e) {
-      setInput(value);
-    }
+  function handleChange(value: string) {
+    if (!value) setError('');
+    setInput(value || '');
   }
 
   return (
@@ -128,193 +61,76 @@ export default function JsonPage() {
       >
         Paste or type JSON to validate and format it.
       </Typography>
-      <Typography
-        paragraph
-        textAlign='center'
-      >
-        Input
-      </Typography>
       <Editor
-        value={`{\n  "item": "value",\n  "count": 1\n}`}
+        value={input || ''}
         extensions={['json']}
-        onChange={handleEditorChange}
-      />
-      <Typography
-        paragraph
-        textAlign='center'
-      >
-        Output
-      </Typography>
-      <Editor
-        extensions={['json']}
-        value={output || ''}
+        onChange={handleChange}
       />
       <Box
         display='flex'
-        flexDirection='column'
-        justifyContent='stretch'
-        gap={6}
-        width={1000}
-        maxWidth='100%'
+        flexWrap='wrap'
+        justifyContent='end'
+        gap={2}
+        my={2}
       >
-        <Box
-          display='flex'
-          flexDirection='column'
-          gap={2}
+        <Button
+          startIcon={<ClearIcon />}
+          disabled={!input}
+          onClick={() => {
+            setInput('');
+          }}
         >
-          <TextField
-            multiline
-            label='Input'
-            value={input}
-            name='input'
-            onChange={handleChange}
-          />
-          <Box
-            display='flex'
-            flexWrap='wrap'
-            justifyContent='end'
-            gap={2}
-          >
-            <Button
-              startIcon={<ClearIcon />}
-              disabled={!input}
-              onClick={() => {
-                setInput('');
-              }}
-            >
-              Clear
-            </Button>
-            <Button
-              startIcon={<ContentCopyIcon />}
-              disabled={!input}
-              onClick={() => {
-                navigator.clipboard.writeText(input || '').then(
-                  () => {
-                    setToastMessage('Copied to clipboard');
-                    setToastSeverity('success');
-                    setToastOpen(true);
-                  },
-                  () => {
-                    setToastMessage('Failed to copy to clipboard');
-                    setToastSeverity('error');
-                    setToastOpen(true);
-                  },
-                );
-              }}
-            >
-              Copy
-            </Button>
-            {!!supportsClipboardRead && (
-              <Button
-                startIcon={<ContentPasteGoIcon />}
-                onClick={async () => {
-                  const text = await navigator.clipboard.readText();
-                  if (text) {
-                    setInput(text);
-                    processJson();
-                  }
-                }}
-              >
-                Paste
-              </Button>
-            )}
-          </Box>
-        </Box>
-        <Box
-          display='flex'
-          flexDirection='column'
-          gap={2}
+          Clear
+        </Button>
+        <Button
+          startIcon={<ContentCopyIcon />}
+          disabled={!input}
+          onClick={() => {
+            navigator.clipboard.writeText(input || '').then(
+              () => {
+                setToastMessage('Copied to clipboard');
+                setToastSeverity('success');
+                setToastOpen(true);
+              },
+              () => {
+                setToastMessage('Failed to copy to clipboard');
+                setToastSeverity('error');
+                setToastOpen(true);
+              },
+            );
+          }}
         >
-          <Box
-            padding='16.5px 14px'
-            borderRadius='4px'
-            border='1px solid #494949'
-            sx={{
-              '& .bad-line': {
-                backgroundColor: '#ff330050',
-              },
-              '& .bad-letter': {
-                backgroundColor: '#ff000080',
-              },
-              '& pre': {
-                fontsize: '1rem',
-                lineHeight: '1.4375em',
-                letterSpacing: '0.00938em',
-              },
-              '& .placeholder': {
-                opacity: 0.7,
-              },
+          Copy
+        </Button>
+        {!!supportsClipboardRead && (
+          <Button
+            startIcon={<ContentPasteGoIcon />}
+            onClick={async () => {
+              const text = await navigator.clipboard.readText();
+              if (text) {
+                setInput(text);
+                handleFormat();
+              }
             }}
           >
-            {/* eslint-disable react/no-danger */}
-            <pre
-              data-testid='json-output'
-              dangerouslySetInnerHTML={{
-                __html:
-                  output || '<span class="placeholder">Output</span>',
-              }}
-            />
-            {/* eslint-enable react/no-danger */}
-          </Box>
-          <Box
-            display='flex'
-            flexWrap='wrap'
-            justifyContent='end'
-            gap={2}
-          >
-            <Button
-              startIcon={<ClearIcon />}
-              disabled={!input}
-              onClick={() => {
-                setInput('');
-              }}
-            >
-              Clear
-            </Button>
-            <Button
-              startIcon={<ContentCopyIcon />}
-              disabled={!output}
-              onClick={() => {
-                navigator.clipboard.writeText(output || '').then(
-                  () => {
-                    setToastMessage('Copied to clipboard');
-                    setToastSeverity('success');
-                    setToastOpen(true);
-                  },
-                  () => {
-                    setToastMessage('Failed to copy to clipboard');
-                    setToastSeverity('error');
-                    setToastOpen(true);
-                  },
-                );
-              }}
-            >
-              Copy
-            </Button>
-            {!!supportsClipboardRead && (
-              <Button
-                startIcon={<ContentPasteGoIcon />}
-                onClick={async () => {
-                  const text = await navigator.clipboard.readText();
-                  if (text) {
-                    setInput(text);
-                    processJson();
-                  }
-                }}
-              >
-                Paste
-              </Button>
-            )}
-          </Box>
-        </Box>
-        <Typography
-          color='#ff6246'
-          paragraph
-          data-testid='json-error'
+            Paste
+          </Button>
+        )}
+        <Button
+          startIcon={<PlayArrowIcon />}
+          disabled={!input}
+          onClick={handleFormat}
         >
-          {error}
-        </Typography>
+          Format
+        </Button>
       </Box>
+      <Typography
+        color='#ff6246'
+        paragraph
+        data-testid='json-error'
+      >
+        {error}
+      </Typography>
       <Toast
         open={toastOpen}
         message={toastMessage}
