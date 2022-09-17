@@ -1,4 +1,3 @@
-import { javascript } from '@codemirror/lang-javascript';
 import ClearIcon from '@mui/icons-material/Clear';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
@@ -6,10 +5,11 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import { githubDark } from '@uiw/codemirror-theme-github';
-import CodeMirror from '@uiw/react-codemirror';
+import jsonFix from 'json-fixer-browser';
+import jsonFormat from 'json-format';
 import React, { useCallback, useEffect, useState } from 'react';
 
+import Editor from '../components/Editor';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
@@ -110,6 +110,15 @@ export default function JsonPage() {
     processJson();
   }, [input, processJson]);
 
+  function handleEditorChange(value: string) {
+    try {
+      const { data } = jsonFix(value);
+      setOutput(jsonFormat(data, { type: 'space', size: 2 }));
+    } catch (_e) {
+      setInput(value);
+    }
+  }
+
   return (
     <Layout title='JSON'>
       <Heading>JSON</Heading>
@@ -119,13 +128,26 @@ export default function JsonPage() {
       >
         Paste or type JSON to validate and format it.
       </Typography>
-      <CodeMirror
-        value="console.log('hello world!');"
-        height='60vh'
-        width='1440px'
-        maxWidth='75vw'
-        theme={githubDark}
-        extensions={[javascript({ jsx: true })]}
+      <Typography
+        paragraph
+        textAlign='center'
+      >
+        Input
+      </Typography>
+      <Editor
+        value={`{\n  "item": "value",\n  "count": 1\n}`}
+        extensions={['json']}
+        onChange={handleEditorChange}
+      />
+      <Typography
+        paragraph
+        textAlign='center'
+      >
+        Output
+      </Typography>
+      <Editor
+        extensions={['json']}
+        value={output || ''}
       />
       <Box
         display='flex'
