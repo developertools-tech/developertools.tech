@@ -2,7 +2,6 @@ import quotesToFragments from '../../lib/loremIpsum/quotesToFragments';
 
 export default quotesToFragments(`
 But again, how do you know they're all female? Does somebody go out into the park and pull up the dinosaurs' skirts?
-Don't you see the danger, John, inherent in what you're doing here? Genetic power is the most awesome force the planet's ever seen, but you wield it like a kid that's found his dad's gun.
 You think they'll have that on the tour?
 If there is one thing the history of evolution has taught us it's that life will not be contained. Life breaks free, it expands to new territories and crashes through barriers, painfully, maybe even dangerously, but, uh... well, there it is.
 Remind me to thank John for a lovely weekend.
