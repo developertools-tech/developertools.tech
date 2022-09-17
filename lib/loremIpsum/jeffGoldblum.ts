@@ -76,10 +76,12 @@ function cleanup(str: string): string {
 }
 
 for (const sentence of sentences) {
-  const parts = sentence.split(',');
+  const parts = sentence.split(/[,!?]/);
 
   for (const part of parts) {
-    if (parts.length === 1) {
+    if (!part) {
+      break;
+    } else if (parts.length === 1) {
       starters.push(`${cleanup(part)}, `);
     } else if (part === parts[0]) {
       starters.push(`${cleanup(part)}, `);

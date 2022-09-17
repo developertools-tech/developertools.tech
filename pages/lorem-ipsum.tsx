@@ -18,7 +18,7 @@ export default function LoremIpsumPage() {
 
   const isLorem = false;
   const wordlist = jeffGoldblumWords;
-  const sentenceLength = 30;
+  const sentenceLength = 10;
   const paragraphLength = 1;
   const paragraphCount = 5;
 
