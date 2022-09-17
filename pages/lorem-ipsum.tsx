@@ -18,9 +18,9 @@ export default function LoremIpsumPage() {
 
   const isLorem = false;
   const wordlist = jeffGoldblumWords;
-  const sentenceLength = 3;
+  const sentenceLength = 30;
   const paragraphLength = 1;
-  const paragraphCount = 3;
+  const paragraphCount = 5;
 
   function generateFromWords() {
     const result = [];
@@ -53,33 +53,26 @@ export default function LoremIpsumPage() {
   function generateFromFragments() {
     const result = [];
     const { starters, segments, endings } = wordlist;
+    const adjustedSentenceLength =
+      Math.round(sentenceLength / 6) < 3
+        ? 3
+        : Math.round(sentenceLength / 6);
+
+    function getFragment(list: string[]): string {
+      return list[Math.floor(Math.random() * list.length)];
+    }
 
     for (let paragraph = 0; paragraph < paragraphCount; paragraph++) {
       const paragraphData: string[] = [];
       for (let sentence = 0; sentence < paragraphLength; sentence++) {
         const sentenceData: string[] = [];
-        for (let word = 0; word < sentenceLength; word++) {
+        for (let word = 0; word < adjustedSentenceLength; word++) {
           if (word === 0) {
-            sentenceData.push(
-              `${starters[Math.floor(Math.random() * starters.length)]
-                .replace(/[.!?]/g, '')
-                .toLowerCase()
-                .trim()}, `,
-            );
-          } else if (word === sentenceLength - 1) {
-            sentenceData.push(
-              `${endings[Math.floor(Math.random() * endings.length)]
-                .replace(/[.!?]/g, '')
-                .toLowerCase()
-                .trim()}. `,
-            );
+            sentenceData.push(getFragment(starters));
+          } else if (word === adjustedSentenceLength - 1) {
+            sentenceData.push(getFragment(endings));
           } else {
-            sentenceData.push(
-              `${segments[Math.floor(Math.random() * segments.length)]
-                .replace(/[.!?]/g, '')
-                .toLowerCase()
-                .trim()}, `,
-            );
+            sentenceData.push(getFragment(segments));
           }
         }
         sentenceData[0] =

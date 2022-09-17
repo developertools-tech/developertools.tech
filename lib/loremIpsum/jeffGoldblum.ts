@@ -71,16 +71,22 @@ const starters = [];
 const segments = [];
 const endings = [];
 
+function cleanup(str: string): string {
+  return str.replace(/[.!?]/g, '').toLowerCase().trim();
+}
+
 for (const sentence of sentences) {
   const parts = sentence.split(',');
 
   for (const part of parts) {
-    if (part === parts[0]) {
-      starters.push(part);
+    if (parts.length === 1) {
+      starters.push(`${cleanup(part)}, `);
+    } else if (part === parts[0]) {
+      starters.push(`${cleanup(part)}, `);
     } else if (part === parts[parts.length - 1]) {
-      endings.push(part);
+      endings.push(`${cleanup(part)}. `);
     } else {
-      segments.push(part);
+      segments.push(`${cleanup(part)}, `);
     }
   }
 }
