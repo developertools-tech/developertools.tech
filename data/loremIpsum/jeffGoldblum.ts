@@ -37,7 +37,6 @@ I've turned my guest house into this little studio, and we have actors come over
 I like the challenge. I like a good, meaty experience for me.
 I love to be directed. They can trust me and go.
 How can you say when you're attracted to something? It's not easy to articulate my tastes.
-Hawaii can be heaven and it can be hell.
 Even if I don't have a job, I work on plays and scenes.
 Even Scenes At the end of the movie all of us have this shared redemption.
 Yeah but your scientists were so preoccupied with whether or not they could they didn't stop to think if they should.
