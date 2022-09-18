@@ -9,9 +9,9 @@ export default function IndexPage() {
   return (
     <Layout>
       <Box textAlign='center'>
-        <Heading>Oof! You are offline!</Heading>
+        <Heading>Oof! Page not found!</Heading>
         <Typography paragraph>
-          Please try again when you have a network connection.
+          Choose a tool from the menu to get started!
         </Typography>
       </Box>
     </Layout>
