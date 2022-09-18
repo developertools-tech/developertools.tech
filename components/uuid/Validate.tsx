@@ -61,7 +61,7 @@ export default function UuidValidate() {
         Check UUID Version and Validity
       </Typography>
       <TextField
-        label='UUID'
+        label='UUID to Validate'
         value={validateUuid}
         error={validateError}
         helperText={validateResult}
@@ -92,6 +92,7 @@ export default function UuidValidate() {
           </Button>
         ) : null}
         <Button
+          data-testid='validate-uuid-clear-btn'
           startIcon={<ClearIcon />}
           sx={{ mr: 0, ml: 'auto' }}
           disabled={!validateUuid}

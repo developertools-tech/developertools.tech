@@ -141,7 +141,7 @@ export default function UuidCreate({
       {uuidVersion === 3 ||
       (uuidVersion === 5 && namespaceType === 'custom') ? (
         <TextField
-          label='Namespace'
+          label='Namespace UUID'
           value={namespace}
           error={namespaceError}
           inputProps={{
@@ -159,13 +159,13 @@ export default function UuidCreate({
       ) : null}
       {uuidVersion === 3 || uuidVersion === 5 ? (
         <TextField
-          label='Name'
+          label='UUID Name'
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
       ) : null}
       <TextField
-        label='UUID'
+        label='Generated UUID'
         value={uuid}
         disabled
         fullWidth
@@ -186,6 +186,7 @@ export default function UuidCreate({
           </Button>
         ) : (
           <Button
+            data-testid='generate-uuid-clear-btn'
             startIcon={<ClearIcon />}
             disabled={!namespace && !name}
             onClick={() => {
