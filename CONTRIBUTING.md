@@ -1,6 +1,11 @@
-## Contributing
+# How to Contribute
 
 This project is built with NextJS, TypeScript, and Material UI. Being a PWA, ideally all tools should work offline without any server side code.
+
+Please create an issue before submitting a pull request, it can be assigned to you if desired. This way we can ensure your idea will be approved before you work on it. Any issue with the `triage` label is still pending review.
+
+- Check the [issues](https://github.com/developertools-tech/developertools.tech/issues) page, any issue with the `help wanted` label is up for grabs.
+- Create a [feature request or bug report](https://github.com/developertools-tech/developertools.tech/issues/new/choose).
 
 ### Pull Requests
 
