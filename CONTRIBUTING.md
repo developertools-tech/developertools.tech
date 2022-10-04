@@ -59,7 +59,6 @@ Please use the script `npm run cq` before submitting a pull request.
     <Layout title='My Tool Name'>
       <Heading>My Tool Name</Heading>
         {/* TODO - Build my tool */}
-      </Heading>
     </Layout>
     )
   }
