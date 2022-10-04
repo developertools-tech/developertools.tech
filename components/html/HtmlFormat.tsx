@@ -116,13 +116,15 @@ export default function HtmlFormat({
           )}
         </Box>
         {error && (
-          <Typography
-            color='#ff6246'
-            paragraph
-            data-testid='html-error'
-          >
-            <pre>{error}</pre>
-          </Typography>
+          <pre>
+            <Typography
+              paragraph
+              color='#ff6246'
+              data-testid='html-error'
+            >
+              {error}
+            </Typography>
+          </pre>
         )}
       </Box>
       <Box
