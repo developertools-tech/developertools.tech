@@ -15,10 +15,6 @@ import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 
 export default function URLEncodeDecode() {
   const supportsClipboardRead = useSupportsClipboardRead();
-  const [text, setText] = useLocalState<string>({
-    key: 'urlEncodeDecodeText',
-    defaultValue: '',
-  });
   const [encoded, setEncoded] = useLocalState<string>({
     key: 'urlEncode',
     defaultValue: '',
@@ -33,23 +29,21 @@ export default function URLEncodeDecode() {
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
 
-  const handleEncode = () => {
-    setEncoded(encodeURIComponent(text));
-  };
-
-  const handleDecode = () => {
-    setDecoded(decodeURIComponent(text));
-  };
-
   const handleClear = () => {
-    setText('');
     setEncoded('');
     setDecoded('');
   };
 
-  const handlePaste = async () => {
+  const handlePasteEncode = async () => {
     const textCopied = await navigator.clipboard.readText();
-    setText(textCopied);
+    setEncoded(textCopied);
+    setDecoded(decodeURIComponent(textCopied));
+  };
+
+  const handlePasteDecode = async () => {
+    const textCopied = await navigator.clipboard.readText();
+    setDecoded(textCopied);
+    setEncoded(encodeURIComponent(textCopied));
   };
 
   return (
@@ -70,46 +64,52 @@ export default function URLEncodeDecode() {
         <Box
           display='flex'
           flexDirection='column'
-          gap={2}
         >
           <TextField
-            label='Text'
-            data-testid='Text'
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            label='Encoded'
+            value={encoded}
+            onChange={(e) => {
+              setDecoded(decodeURIComponent(e.target.value));
+              setEncoded(e.target.value);
+            }}
             multiline
           />
           <Box
             display='flex'
             flexWrap='wrap'
             justifyContent='end'
-            gap={2}
           >
-            <Button
-              name='Encode'
-              onClick={handleEncode}
-              disabled={!text}
-            >
-              Encode
-            </Button>
-            <Button
-              name='Decode'
-              onClick={handleDecode}
-              disabled={!text}
-            >
-              Decode
-            </Button>
             <Button
               startIcon={<ClearIcon />}
               onClick={handleClear}
-              disabled={!text}
             >
               Clear
             </Button>
+            <Button
+              startIcon={<ContentCopyIcon />}
+              disabled={!encoded}
+              onClick={() => {
+                navigator.clipboard.writeText(encoded || '').then(
+                  () => {
+                    setToastMessage('Copied to clipboard');
+                    setToastSeverity('success');
+                    setToastOpen(true);
+                  },
+                  () => {
+                    setToastMessage('Failed to copy to clipboard');
+                    setToastSeverity('error');
+                    setToastOpen(true);
+                  },
+                );
+              }}
+            >
+              Copy
+            </Button>
+
             {supportsClipboardRead && (
               <Button
                 startIcon={<ContentPasteGoIcon />}
-                onClick={handlePaste}
+                onClick={handlePasteEncode}
               >
                 Paste
               </Button>
@@ -117,73 +117,54 @@ export default function URLEncodeDecode() {
           </Box>
         </Box>
 
-        <TextField
-          label='Encoded'
-          data-testid='Output - Encoded'
-          value={encoded}
-          onChange={(e) => setEncoded(e.target.value)}
-          multiline
-        />
         <Box
           display='flex'
-          flexWrap='wrap'
-          justifyContent='end'
-          gap={2}
+          flexDirection='column'
         >
-          <Button
-            startIcon={<ContentCopyIcon />}
-            disabled={!text}
-            onClick={() => {
-              navigator.clipboard.writeText(encoded || '').then(
-                () => {
-                  setToastMessage('Copied to clipboard');
-                  setToastSeverity('success');
-                  setToastOpen(true);
-                },
-                () => {
-                  setToastMessage('Failed to copy to clipboard');
-                  setToastSeverity('error');
-                  setToastOpen(true);
-                },
-              );
+          <TextField
+            label='Decoded'
+            value={decoded}
+            onChange={(e) => {
+              setDecoded(e.target.value);
+              setEncoded(encodeURIComponent(e.target.value));
             }}
+            multiline
+          />
+          <Box
+            display='flex'
+            flexWrap='wrap'
+            justifyContent='end'
           >
-            Copy
-          </Button>
-        </Box>
-        <TextField
-          label='Decoded'
-          data-testid='Output - Decoded'
-          value={decoded}
-          onChange={(e) => setDecoded(e.target.value)}
-          multiline
-        />
-        <Box
-          display='flex'
-          flexWrap='wrap'
-          justifyContent='end'
-          gap={2}
-        >
-          <Button
-            startIcon={<ContentCopyIcon />}
-            disabled={!text}
-            onClick={() => {
-              navigator.clipboard.writeText(decoded || '').then(
-                () => {
-                  setToastMessage('Copied to clipboard');
-                  setToastSeverity('success');
-                  setToastOpen(true);
-                },
-                () => {
-                  setToastMessage('Failed to copy to clipboard');
-                  setToastSeverity('error');
-                  setToastOpen(true);
-                },
-              );
-            }}
-          >
-            Copy
-          </Button>
+            <Button
+              startIcon={<ContentCopyIcon />}
+              disabled={!decoded}
+              onClick={() => {
+                navigator.clipboard.writeText(decoded || '').then(
+                  () => {
+                    setToastMessage('Copied to clipboard');
+                    setToastSeverity('success');
+                    setToastOpen(true);
+                  },
+                  () => {
+                    setToastMessage('Failed to copy to clipboard');
+                    setToastSeverity('error');
+                    setToastOpen(true);
+                  },
+                );
+              }}
+            >
+              Copy
+            </Button>
+
+            {supportsClipboardRead && (
+              <Button
+                startIcon={<ContentPasteGoIcon />}
+                onClick={handlePasteDecode}
+              >
+                Paste
+              </Button>
+            )}
+          </Box>
         </Box>
       </Box>
       <Toast

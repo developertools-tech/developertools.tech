@@ -10,21 +10,24 @@ describe('URLEncodeDecode', () => {
   it('should encode and decode', () => {
     render(<URLEncodeDecode />);
 
-    const urlInput = screen.getByTestId('Text') as HTMLInputElement;
-    const encodeButton = screen.getByRole('button', { name: 'Encode' });
-    const decodeButton = screen.getByRole('button', { name: 'Decode' });
-    userEvent.type(urlInput, 'https://example.com');
-    userEvent.click(encodeButton).then(() => {
-      const encodedOutput = screen.getByTestId('Output - Encoded');
-      expect(encodedOutput).toHaveTextContent(
-        'https%3A%2F%2Fexample.com',
-      );
-    });
-    userEvent.type(urlInput, 'https%3A%2F%2Fexample.com').then(() => {
-      userEvent.click(decodeButton).then(() => {
-        const decodedOutput = screen.getByTestId('Output - Decoded');
+    const encodedOutput = screen.getByLabelText(
+      'Encoded',
+    ) as HTMLInputElement;
+    userEvent
+      .type(encodedOutput, 'https%3A%2F%2Fexample.com')
+      .then(() => {
+        const decodedOutput = screen.getByLabelText('Decoded');
         expect(decodedOutput.innerText).toBe('https://example.com');
       });
+
+    const decodedOutput = screen.getByLabelText(
+      'Decoded',
+    ) as HTMLInputElement;
+    userEvent.type(decodedOutput, 'https://example2.com').then(() => {
+      const encodedOutput2 = screen.getByLabelText('Encoded');
+      expect(encodedOutput2.innerText).toBe(
+        'https%3A%2F%2Fexample2.com',
+      );
     });
   });
 });
