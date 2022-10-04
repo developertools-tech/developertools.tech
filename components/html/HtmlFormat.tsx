@@ -49,8 +49,8 @@ export default function HtmlFormat({
 
       setError('');
       setFormattedHtml(formatted);
-    } catch (e) {
-      setError(e.message);
+    } catch (e: unknown) {
+      setError((e as { message: string })?.message ?? '');
       setFormattedHtml('');
     }
   }
