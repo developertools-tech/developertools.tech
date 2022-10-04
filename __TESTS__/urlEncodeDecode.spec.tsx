@@ -10,19 +10,19 @@ describe('URLEncodeDecode', () => {
   it('should encode and decode', () => {
     render(<URLEncodeDecode />);
 
-    const urlInput = screen.getByTestId('URL') as HTMLInputElement;
+    const urlInput = screen.getByTestId('Text') as HTMLInputElement;
     const encodeButton = screen.getByRole('button', { name: 'Encode' });
     const decodeButton = screen.getByRole('button', { name: 'Decode' });
     userEvent.type(urlInput, 'https://example.com');
     userEvent.click(encodeButton).then(() => {
-      const encodedOutput = screen.getByTestId('Encoded');
+      const encodedOutput = screen.getByTestId('Output - Encoded');
       expect(encodedOutput).toHaveTextContent(
         'https%3A%2F%2Fexample.com',
       );
     });
     userEvent.type(urlInput, 'https%3A%2F%2Fexample.com').then(() => {
       userEvent.click(decodeButton).then(() => {
-        const decodedOutput = screen.getByTestId('Decoded');
+        const decodedOutput = screen.getByTestId('Output - Decoded');
         expect(decodedOutput.innerText).toBe('https://example.com');
       });
     });

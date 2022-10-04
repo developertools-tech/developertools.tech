@@ -9,13 +9,29 @@ import React, { useState } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
+import Toast, { ToastProps } from '../components/Toast';
+import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 
 export default function URLEncodeDecode() {
   const supportsClipboardRead = useSupportsClipboardRead();
-  const [text, setText] = useState('');
-  const [encoded, setEncoded] = useState('');
-  const [decoded, setDecoded] = useState('');
+  const [text, setText] = useLocalState<string>({
+    key: 'urlEncodeDecodeText',
+    defaultValue: '',
+  });
+  const [encoded, setEncoded] = useLocalState<string>({
+    key: 'urlEncode',
+    defaultValue: '',
+  });
+  const [decoded, setDecoded] = useLocalState<string>({
+    key: 'urlDecode',
+    defaultValue: '',
+  });
+
+  const [toastOpen, setToastOpen] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string>('');
+  const [toastSeverity, setToastSeverity] =
+    useState<ToastProps['severity']>('success');
 
   const handleEncode = () => {
     setEncoded(encodeURIComponent(text));
@@ -57,8 +73,8 @@ export default function URLEncodeDecode() {
           gap={2}
         >
           <TextField
-            label='URL'
-            data-testid='URL'
+            label='Text'
+            data-testid='Text'
             value={text}
             onChange={(e) => setText(e.target.value)}
             multiline
@@ -90,15 +106,6 @@ export default function URLEncodeDecode() {
             >
               Clear
             </Button>
-            <Button
-              startIcon={<ContentCopyIcon />}
-              disabled={!text}
-              onClick={() => {
-                navigator.clipboard.writeText(text || '');
-              }}
-            >
-              Copy
-            </Button>
             {supportsClipboardRead && (
               <Button
                 startIcon={<ContentPasteGoIcon />}
@@ -109,21 +116,82 @@ export default function URLEncodeDecode() {
             )}
           </Box>
         </Box>
+
         <TextField
           label='Encoded'
-          data-testid='Encoded'
+          data-testid='Output - Encoded'
           value={encoded}
           onChange={(e) => setEncoded(e.target.value)}
           multiline
         />
+        <Box
+          display='flex'
+          flexWrap='wrap'
+          justifyContent='end'
+          gap={2}
+        >
+          <Button
+            startIcon={<ContentCopyIcon />}
+            disabled={!text}
+            onClick={() => {
+              navigator.clipboard.writeText(encoded || '').then(
+                () => {
+                  setToastMessage('Copied to clipboard');
+                  setToastSeverity('success');
+                  setToastOpen(true);
+                },
+                () => {
+                  setToastMessage('Failed to copy to clipboard');
+                  setToastSeverity('error');
+                  setToastOpen(true);
+                },
+              );
+            }}
+          >
+            Copy
+          </Button>
+        </Box>
         <TextField
           label='Decoded'
-          data-testid='Decoded'
+          data-testid='Output - Decoded'
           value={decoded}
           onChange={(e) => setDecoded(e.target.value)}
           multiline
         />
+        <Box
+          display='flex'
+          flexWrap='wrap'
+          justifyContent='end'
+          gap={2}
+        >
+          <Button
+            startIcon={<ContentCopyIcon />}
+            disabled={!text}
+            onClick={() => {
+              navigator.clipboard.writeText(decoded || '').then(
+                () => {
+                  setToastMessage('Copied to clipboard');
+                  setToastSeverity('success');
+                  setToastOpen(true);
+                },
+                () => {
+                  setToastMessage('Failed to copy to clipboard');
+                  setToastSeverity('error');
+                  setToastOpen(true);
+                },
+              );
+            }}
+          >
+            Copy
+          </Button>
+        </Box>
       </Box>
+      <Toast
+        open={toastOpen}
+        message={toastMessage}
+        severity={toastSeverity}
+        onClose={() => setToastOpen(false)}
+      />
     </Layout>
   );
 }
