@@ -33,6 +33,10 @@ const badTestOutput = `{
 }
 `;
 
+beforeEach((): void => {
+  jest.setTimeout(10000);
+});
+
 describe('JSON', () => {
   it('formats json', async () => {
     const user = userEvent.setup();
