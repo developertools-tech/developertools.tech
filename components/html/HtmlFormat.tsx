@@ -4,6 +4,7 @@ import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import prettier from 'prettier';
 import parserHtml from 'prettier/parser-html';
 import React from 'react';
@@ -14,10 +15,10 @@ import type { ToastProps } from '../Toast';
 export interface HtmlFormatProps {
   html: string | void;
   formattedHtml: string | void;
-  isError: boolean;
+  error: string;
   setHtml: (_html: string | void) => void;
   setFormattedHtml: (_formattedHtml: string | void) => void;
-  setIsError: (_isError: boolean) => void;
+  setError: (_error: string) => void;
   setToastMessage: (_toastMessage: string) => void;
   setToastOpen: (_toastOpen: boolean) => void;
   setToastSeverity: (_toastSeverity: ToastProps['severity']) => void;
@@ -26,10 +27,10 @@ export interface HtmlFormatProps {
 export default function HtmlFormat({
   html,
   formattedHtml,
-  isError,
+  error,
   setHtml,
   setFormattedHtml,
-  setIsError,
+  setError,
   setToastMessage,
   setToastOpen,
   setToastSeverity,
@@ -46,10 +47,10 @@ export default function HtmlFormat({
         plugins: [parserHtml],
       });
 
-      setIsError(false);
+      setError('');
       setFormattedHtml(formatted);
     } catch (e) {
-      setIsError(true);
+      setError(e.message);
       setFormattedHtml('');
     }
   }
@@ -77,6 +78,7 @@ export default function HtmlFormat({
       >
         <TextField
           multiline
+          error={error.length > 0}
           label='HTML'
           name='html'
           onChange={handleChange}
@@ -113,6 +115,15 @@ export default function HtmlFormat({
             </Button>
           )}
         </Box>
+        {error && (
+          <Typography
+            color='#ff6246'
+            paragraph
+            data-testid='html-error'
+          >
+            <pre>{error}</pre>
+          </Typography>
+        )}
       </Box>
       <Box
         display='flex'
@@ -123,7 +134,6 @@ export default function HtmlFormat({
           multiline
           label='FormattedHTML'
           name='formattedHtml'
-          error={isError}
           value={formattedHtml}
         />
         <Box

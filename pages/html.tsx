@@ -20,7 +20,7 @@ export default function HtmlPage() {
     defaultValue: '',
   });
 
-  const [isError, setIsError] = React.useState(false);
+  const [error, setError] = React.useState('');
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
@@ -35,10 +35,10 @@ export default function HtmlPage() {
       <HtmlFormat
         html={html}
         formattedHtml={formattedHtml}
-        isError={isError}
+        error={error}
         setHtml={setHtml}
         setFormattedHtml={setFormattedHtml}
-        setIsError={setIsError}
+        setError={setError}
         setToastMessage={setToastMessage}
         setToastOpen={setToastOpen}
         setToastSeverity={setToastSeverity}
