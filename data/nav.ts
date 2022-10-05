@@ -1,5 +1,6 @@
 import AspectRatio from '@mui/icons-material/AspectRatio';
 import Code from '@mui/icons-material/Code';
+import Css from '@mui/icons-material/Css';
 import DataObject from '@mui/icons-material/DataObject';
 import Fingerprint from '@mui/icons-material/Fingerprint';
 import HomeIcon from '@mui/icons-material/Home';
@@ -18,6 +19,11 @@ export default [
     title: 'Aspect Ratio',
     href: '/aspect-ratio',
     Icon: AspectRatio,
+  },
+  {
+    title: 'CSS Minifier',
+    href: '/cssMinify',
+    Icon: Css,
   },
   {
     title: 'UUID',
