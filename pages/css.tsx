@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 
-import MinifyCss from '../components/cssMinify/MinifyCss';
+import CssForm from '../components/css/CssForm';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
@@ -27,9 +27,9 @@ export default function CssMinifyPage() {
     <Layout>
       <Heading>Minify CSS</Heading>
       <Typography paragraph>
-        Paste or type in some CSS to minify it
+        Paste or type in some CSS to format or minify it
       </Typography>
-      <MinifyCss
+      <CssForm
         css={css}
         formattedCss={formattedCss}
         error={error}

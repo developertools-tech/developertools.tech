@@ -21,8 +21,8 @@ export default [
     Icon: AspectRatio,
   },
   {
-    title: 'CSS Minifier',
-    href: '/cssMinify',
+    title: 'CSS',
+    href: '/css',
     Icon: Css,
   },
   {
