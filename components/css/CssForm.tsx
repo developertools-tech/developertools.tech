@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { minify } from 'csso';
 import prettier from 'prettier';
 import parserCss from 'prettier/parser-postcss';
 import React from 'react';
@@ -42,7 +43,10 @@ export default function CssForm({
   setToastSeverity,
 }: CssFormProps) {
   const supportsClipboardRead = useSupportsClipboardRead();
-  function calculateFormattedCss(value: string | void) {
+  function calculateFormattedCss(
+    value: string | void,
+    minification: boolean | false,
+  ) {
     setCss(value);
     if (!value) {
       setFormattedCss('');
@@ -53,8 +57,13 @@ export default function CssForm({
         plugins: [parserCss],
       });
 
+      if (minification) {
+        const minified = minify(formatted).css;
+        setFormattedCss(minified);
+      } else {
+        setFormattedCss(formatted);
+      }
       setError('');
-      setFormattedCss(formatted);
     } catch (e: unknown) {
       setError((e as { message: string })?.message ?? '');
       setFormattedCss('');
@@ -64,9 +73,10 @@ export default function CssForm({
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { value, name } = event.target;
     if (name === 'css') {
-      calculateFormattedCss(value);
+      calculateFormattedCss(value, minifyCss);
     }
     if (name === 'minifySwitch') {
+      calculateFormattedCss(css, !minifyCss);
       setMinifyCss(!minifyCss);
     }
   }
@@ -116,7 +126,7 @@ export default function CssForm({
                 const text = await navigator.clipboard.readText();
                 if (text) {
                   setCss(text);
-                  calculateFormattedCss(text);
+                  calculateFormattedCss(text, minifyCss);
                 }
               }}
             >

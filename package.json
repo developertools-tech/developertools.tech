@@ -21,6 +21,7 @@
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.3",
     "clsx": "^1.2.1",
+    "csso": "^5.0.5",
     "js-base64": "^3.7.2",
     "next": "12.2.5",
     "next-images": "^1.8.4",

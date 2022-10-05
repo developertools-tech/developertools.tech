@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 
-export default function CssMinifyPage() {
+export default function CssPage() {
   const [css, setCss] = useLocalState<string | void>({
     key: 'css',
     defaultValue: '',
@@ -31,7 +31,11 @@ export default function CssMinifyPage() {
     <Layout>
       <Heading>Minify CSS</Heading>
       <Typography paragraph>
-        Paste or type in some CSS to format or minify it
+        Paste or type in some CSS to format or minify it.
+      </Typography>
+      <Typography paragraph>
+        Note: Formatting works with CSS, SCSS, and LESS. Minification
+        only works for raw CSS.
       </Typography>
       <CssForm
         css={css}
