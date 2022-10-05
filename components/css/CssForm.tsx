@@ -98,7 +98,7 @@ export default function CssForm({
         <TextField
           multiline
           error={error.length > 0}
-          label='Css'
+          label='CSS'
           name='css'
           onChange={handleChange}
           value={css}
@@ -169,8 +169,8 @@ export default function CssForm({
       >
         <TextField
           multiline
-          label='FormattedCss'
-          name='formattedCss'
+          label={minifyCss ? 'MinifiedCSS' : 'FormattedCSS'}
+          name='outputCss'
           value={formattedCss}
         />
         <Box
