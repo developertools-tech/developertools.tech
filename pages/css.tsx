@@ -9,12 +9,16 @@ import useLocalState from '../hooks/useLocalState';
 
 export default function CssMinifyPage() {
   const [css, setCss] = useLocalState<string | void>({
-    key: 'html',
+    key: 'css',
     defaultValue: '',
   });
   const [formattedCss, setFormattedCss] = useLocalState<string | void>({
     key: 'cssFormatted',
     defaultValue: '',
+  });
+  const [minifyCss, setMinifyCss] = useLocalState<boolean>({
+    key: 'cssMinify',
+    defaultValue: false,
   });
 
   const [error, setError] = React.useState('');
@@ -33,9 +37,11 @@ export default function CssMinifyPage() {
         css={css}
         formattedCss={formattedCss}
         error={error}
+        minifyCss={minifyCss}
         setCss={setCss}
         setFormattedCss={setFormattedCss}
         setError={setError}
+        setMinifyCss={setMinifyCss}
         setToastMessage={setToastMessage}
         setToastOpen={setToastOpen}
         setToastSeverity={setToastSeverity}

@@ -3,6 +3,8 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import prettier from 'prettier';
@@ -12,29 +14,33 @@ import React from 'react';
 import useSupportsClipboardRead from '../../hooks/useSupportsClipboardRead';
 import type { ToastProps } from '../Toast';
 
-export interface MinifyCssProps {
+export interface CssFormProps {
   css: string | void;
   formattedCss: string | void;
   error: string;
+  minifyCss: boolean;
   setCss: (_css: string | void) => void;
   setFormattedCss: (_formattedCss: string | void) => void;
   setError: (_error: string) => void;
+  setMinifyCss: (_minifyCss: boolean) => void;
   setToastMessage: (_toastMessage: string) => void;
   setToastOpen: (_toastOpen: boolean) => void;
   setToastSeverity: (_toastSeverity: ToastProps['severity']) => void;
 }
 
-export default function MinifyCss({
+export default function CssForm({
   css,
   formattedCss,
   error,
+  minifyCss,
   setCss,
   setFormattedCss,
   setError,
+  setMinifyCss,
   setToastMessage,
   setToastOpen,
   setToastSeverity,
-}: MinifyCssProps) {
+}: CssFormProps) {
   const supportsClipboardRead = useSupportsClipboardRead();
   function calculateFormattedCss(value: string | void) {
     setCss(value);
@@ -59,6 +65,9 @@ export default function MinifyCss({
     const { value, name } = event.target;
     if (name === 'css') {
       calculateFormattedCss(value);
+    }
+    if (name === 'minifySwitch') {
+      setMinifyCss(!minifyCss);
     }
   }
 
@@ -127,6 +136,22 @@ export default function MinifyCss({
           </pre>
         )}
       </Box>
+      <Grid
+        component='label'
+        container
+        alignItems='center'
+        spacing={1}
+      >
+        <Grid item>Format</Grid>
+        <Grid item>
+          <Switch
+            checked={minifyCss}
+            name='minifySwitch'
+            onChange={handleChange}
+          />
+        </Grid>
+        <Grid item>Minify</Grid>
+      </Grid>
       <Box
         display='flex'
         flexDirection='column'
