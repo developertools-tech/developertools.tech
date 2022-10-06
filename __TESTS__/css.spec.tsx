@@ -7,7 +7,7 @@ import React from 'react';
 import Css from '../pages/css';
 
 describe('CSS', () => {
-  it('formats CSS and adds newlines', async () => {
+  it('formats CSS correctly', async () => {
     const user = userEvent.setup();
     render(<Css />);
 
@@ -19,9 +19,35 @@ describe('CSS', () => {
       css,
       'body{background:#ffffff;}'.replace(/[{[]/g, '$&$&'),
     );
-    expect(formattedCss.innerHTML).toContain('body {');
-    expect(formattedCss.innerHTML).toContain('background: #ffffff;');
-    expect(formattedCss.innerHTML).toContain('\n');
+    expect(formattedCss.innerHTML).toBe(`body {
+  background: #ffffff;
+}
+`);
+  });
+
+  it('minifies CSS correctly', async () => {
+    const user = userEvent.setup();
+    render(<Css />);
+
+    const css = screen.getByLabelText(/^CSS$/i);
+    const minifySwitch = screen.getByRole('checkbox', {
+      name: /Minify/i,
+    });
+
+    await user.clear(css);
+    await user.type(
+      css,
+      `body{
+        background:#ffffff;
+      }`.replace(/[{[]/g, '$&$&'),
+    );
+
+    await user.click(minifySwitch);
+    const minifiedCss = screen.getByLabelText(/MinifiedCSS/i);
+
+    expect(minifiedCss.innerHTML).toBe('body{background:#fff}');
+
+    await user.click(minifySwitch);
   });
 
   it('clears inputs with either clear button', async () => {
