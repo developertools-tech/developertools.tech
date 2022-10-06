@@ -9,7 +9,8 @@
   "extensions": [
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "wayou.vscode-todo-highlight"
   ],
   "forwardPorts": [
     3000
