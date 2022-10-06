@@ -24,7 +24,10 @@ export default function URLEncodeDecode() {
     key: 'urlDecode',
     defaultValue: '',
   });
-  const [decodeError, setDecodeError] = useState<boolean>(false);
+  const [decodeError, setDecodeError] = useLocalState<boolean>({
+    key: 'urlDecodeError',
+    defaultValue: false,
+  });
 
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
