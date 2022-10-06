@@ -148,15 +148,6 @@ export default function URLEncodeDecode() {
             flexWrap='wrap'
             justifyContent='end'
           >
-            {decodeError && (
-              <Typography
-                marginRight='auto'
-                variant='caption'
-                color={red[500]}
-              >
-                Error: Invalid URL Encoded Text
-              </Typography>
-            )}
             <Button
               disabled={!encoded}
               startIcon={<ClearIcon />}
@@ -194,6 +185,15 @@ export default function URLEncodeDecode() {
               </Button>
             )}
           </Box>
+          {decodeError && (
+            <Typography
+              textAlign='right'
+              variant='caption'
+              color={red[500]}
+            >
+              Error: Invalid URL Encoded Text
+            </Typography>
+          )}
         </Box>
       </Box>
       <Toast
