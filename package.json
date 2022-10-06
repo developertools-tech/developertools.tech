@@ -6,11 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "cq": "npm run lint:ci && npm run test:ci",
+    "cq": "npm run ts:ci && npm run lint:ci && npm run test:ci",
     "test": "jest --watch",
     "test:ci": "jest --ci",
     "lint": "eslint --ignore-path .gitignore --ignore-path .eslintignore --fix . --ext js --ext jsx --ext ts --ext tsx",
-    "lint:ci": "eslint --ignore-path .gitignore --ignore-path .eslintignore . --ext js --ext jsx --ext ts --ext tsx"
+    "lint:ci": "eslint --ignore-path .gitignore --ignore-path .eslintignore . --ext js --ext jsx --ext ts --ext tsx",
+    "ts:ci": "tsc --noEmit"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.3",
