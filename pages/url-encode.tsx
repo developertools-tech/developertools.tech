@@ -4,6 +4,7 @@ import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
 import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import { red } from '@mui/material/colors';
 import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
 
@@ -22,6 +23,10 @@ export default function URLEncodeDecode() {
   const [decoded, setDecoded] = useLocalState<string>({
     key: 'urlDecode',
     defaultValue: '',
+  });
+  const [decodeError, setDecodeError] = useLocalState<boolean>({
+    key: 'urlDecodeError',
+    defaultValue: false,
   });
 
   const [toastOpen, setToastOpen] = useState<boolean>(false);
@@ -126,13 +131,20 @@ export default function URLEncodeDecode() {
             label='Encoded'
             value={encoded}
             onChange={(e) => {
-              setDecoded(decodeURIComponent(e.target.value));
               setEncoded(e.target.value);
+
+              try {
+                setDecoded(decodeURIComponent(e.target.value));
+                setDecodeError(false);
+              } catch {
+                setDecodeError(true);
+              }
             }}
             multiline
           />
           <Box
             display='flex'
+            alignItems='center'
             flexWrap='wrap'
             justifyContent='end'
           >
@@ -173,6 +185,15 @@ export default function URLEncodeDecode() {
               </Button>
             )}
           </Box>
+          {decodeError && (
+            <Typography
+              textAlign='right'
+              variant='caption'
+              color={red[500]}
+            >
+              Error: Invalid URL Encoded Text
+            </Typography>
+          )}
         </Box>
       </Box>
       <Toast
