@@ -50,6 +50,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+> **Note** this project includes a `devcontainer` configuration, so it's possible to contribute and do development work in both GitHub Codespaces as well as VS Code Dev Containers.
+
 ### Project Structure
 
 - Project Root
