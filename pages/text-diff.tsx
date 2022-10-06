@@ -22,11 +22,11 @@ export default function TextDiffPage() {
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
-  const [input1, setInput1] = useLocalState<string | void>({
+  const [input1, setInput1] = useLocalState<string>({
     key: 'textInput',
     defaultValue: '',
   });
-  const [input2, setInput2] = useLocalState<string | void>({
+  const [input2, setInput2] = useLocalState<string>({
     key: 'textInput',
     defaultValue: '',
   });
