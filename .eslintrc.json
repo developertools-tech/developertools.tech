@@ -54,12 +54,6 @@
     }
   },
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ],
     "import/extensions": "off",
     "react/prop-types": "off",
     "no-plusplus": "off",
