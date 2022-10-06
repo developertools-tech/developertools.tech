@@ -10,6 +10,7 @@ Please create an issue before submitting a pull request, it can be assigned to y
 ### General Guidelines
 
 - Please base your work on the `dev` branch, and make sure your pull request is submitted against the `dev` branch.
+  - If needed, the `dev` branch branch is hosted at [dev.developertools.tech](https://dev.developertools.tech).
 - Write tests for your tool or changes before submitting a PR.
 - Run the code quality script locally before submitting a PR, and address any issues (`npm run cq`).
 - Try to match the UI, style, and practices laid out in the existing tools.
