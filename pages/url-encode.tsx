@@ -47,10 +47,10 @@ export default function URLEncodeDecode() {
   };
 
   return (
-    <Layout>
-      <Heading>URL Encode/Decode</Heading>
+    <Layout title='URL Encode'>
+      <Heading>URL Encode</Heading>
       <Typography paragraph>
-        Paste or Type an URL to Encode or Decode it
+        Paste or Type text to URL Encode or Decode it
       </Typography>
 
       <Box
@@ -61,6 +61,63 @@ export default function URLEncodeDecode() {
         width={1000}
         maxWidth='100%'
       >
+        <Box
+          display='flex'
+          flexDirection='column'
+        >
+          <TextField
+            label='Decoded'
+            value={decoded}
+            onChange={(e) => {
+              setDecoded(e.target.value);
+              setEncoded(encodeURIComponent(e.target.value));
+            }}
+            multiline
+          />
+          <Box
+            display='flex'
+            flexWrap='wrap'
+            justifyContent='end'
+          >
+            <Button
+              disabled={!decoded}
+              startIcon={<ClearIcon />}
+              onClick={handleClear}
+            >
+              Clear
+            </Button>
+            <Button
+              startIcon={<ContentCopyIcon />}
+              disabled={!decoded}
+              onClick={() => {
+                navigator.clipboard.writeText(decoded || '').then(
+                  () => {
+                    setToastMessage('Copied to clipboard');
+                    setToastSeverity('success');
+                    setToastOpen(true);
+                  },
+                  () => {
+                    setToastMessage('Failed to copy to clipboard');
+                    setToastSeverity('error');
+                    setToastOpen(true);
+                  },
+                );
+              }}
+            >
+              Copy
+            </Button>
+
+            {supportsClipboardRead && (
+              <Button
+                startIcon={<ContentPasteGoIcon />}
+                onClick={handlePasteDecode}
+              >
+                Paste
+              </Button>
+            )}
+          </Box>
+        </Box>
+
         <Box
           display='flex'
           flexDirection='column'
@@ -80,6 +137,7 @@ export default function URLEncodeDecode() {
             justifyContent='end'
           >
             <Button
+              disabled={!encoded}
               startIcon={<ClearIcon />}
               onClick={handleClear}
             >
@@ -110,56 +168,6 @@ export default function URLEncodeDecode() {
               <Button
                 startIcon={<ContentPasteGoIcon />}
                 onClick={handlePasteEncode}
-              >
-                Paste
-              </Button>
-            )}
-          </Box>
-        </Box>
-
-        <Box
-          display='flex'
-          flexDirection='column'
-        >
-          <TextField
-            label='Decoded'
-            value={decoded}
-            onChange={(e) => {
-              setDecoded(e.target.value);
-              setEncoded(encodeURIComponent(e.target.value));
-            }}
-            multiline
-          />
-          <Box
-            display='flex'
-            flexWrap='wrap'
-            justifyContent='end'
-          >
-            <Button
-              startIcon={<ContentCopyIcon />}
-              disabled={!decoded}
-              onClick={() => {
-                navigator.clipboard.writeText(decoded || '').then(
-                  () => {
-                    setToastMessage('Copied to clipboard');
-                    setToastSeverity('success');
-                    setToastOpen(true);
-                  },
-                  () => {
-                    setToastMessage('Failed to copy to clipboard');
-                    setToastSeverity('error');
-                    setToastOpen(true);
-                  },
-                );
-              }}
-            >
-              Copy
-            </Button>
-
-            {supportsClipboardRead && (
-              <Button
-                startIcon={<ContentPasteGoIcon />}
-                onClick={handlePasteDecode}
               >
                 Paste
               </Button>

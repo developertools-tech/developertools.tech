@@ -28,7 +28,7 @@ export default function CssPage() {
     useState<ToastProps['severity']>('success');
 
   return (
-    <Layout>
+    <Layout title='CSS'>
       <Heading>Minify CSS</Heading>
       <Typography paragraph>
         Paste or type in some CSS to format or minify it.

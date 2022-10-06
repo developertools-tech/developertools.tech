@@ -41,8 +41,8 @@ export default [
     Icon: DataObject,
   },
   {
-    title: 'URL Encode Decode',
-    href: '/urlEncodeDecode',
+    title: 'URL Encode',
+    href: '/url-encode',
     Icon: LinkIcon,
   },
   {
