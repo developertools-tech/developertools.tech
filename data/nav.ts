@@ -1,4 +1,5 @@
 import AspectRatio from '@mui/icons-material/AspectRatio';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
 import DataObject from '@mui/icons-material/DataObject';
 import Fingerprint from '@mui/icons-material/Fingerprint';
 import HomeIcon from '@mui/icons-material/Home';
@@ -31,5 +32,10 @@ export default [
     title: 'JSON',
     href: '/json',
     Icon: DataObject,
+  },
+  {
+    title: 'Colors',
+    href: '/colors',
+    Icon: ColorLensIcon,
   },
 ];
