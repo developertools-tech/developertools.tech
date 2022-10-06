@@ -6,6 +6,7 @@ import Fingerprint from '@mui/icons-material/Fingerprint';
 import HomeIcon from '@mui/icons-material/Home';
 import LinkIcon from '@mui/icons-material/Link';
 import Looks6 from '@mui/icons-material/Looks6';
+import DifferenceIcon from '@mui/icons-material/Difference';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
 
@@ -49,5 +50,10 @@ export default [
     title: 'HTML',
     href: '/html',
     Icon: Code,
+  },
+  {
+    title: 'Text Diff',
+    href: '/text-diff',
+    Icon: DifferenceIcon,
   },
 ];
