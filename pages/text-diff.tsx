@@ -6,15 +6,16 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import * as Diff from 'diff';
 import React, { useCallback, useEffect, useState } from 'react';
+
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
-import * as Diff from "diff";
 
-export default function TextDiffPage() { 
+export default function TextDiffPage() {
   const supportsClipboardRead = useSupportsClipboardRead();
   const [error, setError] = React.useState<string>('');
   const [toastOpen, setToastOpen] = useState<boolean>(false);
@@ -33,7 +34,7 @@ export default function TextDiffPage() {
     key: 'textOutput',
     defaultValue: '',
   });
- 
+
   function handleChange1(event: React.ChangeEvent<HTMLInputElement>) {
     setInput1(event.target.value);
   }
@@ -43,87 +44,88 @@ export default function TextDiffPage() {
 
   const diff = Diff.diffChars(input1, input2);
 
-function compare(){
-  let value="";
-  diff.forEach((part) => {
-    // green for additions, red for deletions
-    // grey for common parts
+  function compare() {
+    let value = '';
+    diff.forEach((part) => {
+      // green for additions, red for deletions
+      // grey for common parts
 
-    const clr = part.added ? 'green' :
-    part.removed ? 'red' : 'grey';
-  
-    value += `<span style="color:${clr}">${part.value}</span>`
+      let clr = 'grey';
+      if (part.added) {
+        clr = 'green';
+      } else if (part.removed) {
+        clr = 'red';
+      } else {
+        clr = 'grey';
+      }
 
-  });
-  setOutput(value);
-}
-  
+      value += `<span style="color:${clr}">${part.value}</span>`;
+    });
+    setOutput(value);
+  }
 
   const processJson = useCallback(() => {
     if (!input1 || !input2) {
       setOutput('');
       setError('');
-      return;
     }
-  }, [input1,input2, setOutput]);
+  }, [input1, input2, setOutput]);
 
   useEffect(() => {
- compare();
+    compare();
     processJson();
-  }, [input1,input2, processJson, setOutput]);
+  }, [compare, processJson]);
 
   return (
     <Layout title='Text Difference'>
-    <Heading>Text Diff</Heading>
-    <Typography
-      paragraph
-      textAlign='center'
-    >
-      Paste the texts to check the difference.
-    </Typography>
-    <Box
-      display='flex'
-      flexDirection='row'
-      justifyContent='space-between'
-      paddingBottom={3}
-      width={1000}
-      maxWidth='100%'
-    >
+      <Heading>Text Diff</Heading>
+      <Typography
+        paragraph
+        textAlign='center'
+      >
+        Paste the texts to check the difference.
+      </Typography>
       <Box
         display='flex'
-        flexDirection='column'
-     width="48%"
-   
+        flexDirection='row'
+        justifyContent='space-between'
+        paddingBottom={3}
+        width={1000}
+        maxWidth='100%'
       >
-        <TextField
-          multiline
-          label='Text1'
-          value={input1}
-          name='first text'
-          onChange={handleChange1}
-        />
-           <Box
+        <Box
           display='flex'
-          flexWrap='wrap'
-          justifyContent='end'
-          gap={2}
+          flexDirection='column'
+          width='48%'
         >
-        
-          {!!supportsClipboardRead && (
+          <TextField
+            multiline
+            label='Text1'
+            value={input1}
+            name='first text'
+            onChange={handleChange1}
+          />
+          <Box
+            display='flex'
+            flexWrap='wrap'
+            justifyContent='end'
+            gap={2}
+          >
+            {!!supportsClipboardRead && (
+              <Button
+                startIcon={<ContentPasteGoIcon />}
+                onClick={async () => {
+                  const text = await navigator.clipboard.readText();
+                  if (text) {
+                    setInput1(text);
+                    processJson();
+                  }
+                }}
+              >
+                Paste
+              </Button>
+            )}
             <Button
-              startIcon={<ContentPasteGoIcon />}
-              onClick={async () => {
-                const text = await navigator.clipboard.readText();
-                if (text) {
-                  setInput1(text);
-                  processJson();
-                }
-              }}
-            >
-              Paste
-            </Button>
-          )}
-                 <Button
               startIcon={<ClearIcon />}
               disabled={!input1}
               onClick={() => {
@@ -132,42 +134,41 @@ function compare(){
             >
               Clear
             </Button>
+          </Box>
         </Box>
-      </Box>
-      <Box
-        display='flex'
-        flexDirection='column'
-      width="48%"
-      >
-        <TextField
-          multiline
-          label='Text2'
-          value={input2}
-          name='second text'
-          onChange={handleChange2}
-        />
         <Box
           display='flex'
-          flexWrap='wrap'
-          justifyContent='end'
-          gap={2}
+          flexDirection='column'
+          width='48%'
         >
-        
-          {!!supportsClipboardRead && (
+          <TextField
+            multiline
+            label='Text2'
+            value={input2}
+            name='second text'
+            onChange={handleChange2}
+          />
+          <Box
+            display='flex'
+            flexWrap='wrap'
+            justifyContent='end'
+            gap={2}
+          >
+            {!!supportsClipboardRead && (
+              <Button
+                startIcon={<ContentPasteGoIcon />}
+                onClick={async () => {
+                  const text = await navigator.clipboard.readText();
+                  if (text) {
+                    setInput2(text);
+                    processJson();
+                  }
+                }}
+              >
+                Paste
+              </Button>
+            )}
             <Button
-              startIcon={<ContentPasteGoIcon />}
-              onClick={async () => {
-                const text = await navigator.clipboard.readText();
-                if (text) {
-                  setInput2(text);
-                  processJson();
-                }
-              }}
-            >
-              Paste
-            </Button>
-          )}
-                 <Button
               startIcon={<ClearIcon />}
               disabled={!input2}
               onClick={() => {
@@ -176,8 +177,8 @@ function compare(){
             >
               Clear
             </Button>
+          </Box>
         </Box>
-      </Box>
       </Box>
       <Box
         display='flex'
@@ -208,7 +209,6 @@ function compare(){
             },
           }}
         >
-           
           {/* eslint-disable react/no-danger */}
           <pre
             data-testid='text-difference-output'
@@ -225,28 +225,27 @@ function compare(){
           justifyContent='end'
           gap={2}
         >
-           <Button
-              startIcon={<ContentCopyIcon />}
-              disabled={!input2}
-              onClick={() => {
-                navigator.clipboard.writeText(input2 || '').then(
-                  () => {
-                    setToastMessage('Copied to clipboard');
-                    setToastSeverity('success');
-                    setToastOpen(true);
-                  },
-                  () => {
-                    setToastMessage('Failed to copy to clipboard');
-                    setToastSeverity('error');
-                    setToastOpen(true);
-                  },
-                );
-              }}
-            >
-              Copy
-            </Button>
+          <Button
+            startIcon={<ContentCopyIcon />}
+            disabled={!input2}
+            onClick={() => {
+              navigator.clipboard.writeText(input2 || '').then(
+                () => {
+                  setToastMessage('Copied to clipboard');
+                  setToastSeverity('success');
+                  setToastOpen(true);
+                },
+                () => {
+                  setToastMessage('Failed to copy to clipboard');
+                  setToastSeverity('error');
+                  setToastOpen(true);
+                },
+              );
+            }}
+          >
+            Copy
+          </Button>
         </Box>
-        
       </Box>
       <Typography
         color='#ff6246'
@@ -255,14 +254,13 @@ function compare(){
       >
         {error}
       </Typography>
-      
+
       <Toast
         open={toastOpen}
         message={toastMessage}
         severity={toastSeverity}
         onClose={() => setToastOpen(false)}
       />
-  </Layout>
-  )
+    </Layout>
+  );
 }
-
