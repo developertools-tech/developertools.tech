@@ -238,6 +238,7 @@ export default function TextDiffPage() {
           </Button>
         </Box>
       </Box>
+      
       <Toast
         open={toastOpen}
         message={toastMessage}
