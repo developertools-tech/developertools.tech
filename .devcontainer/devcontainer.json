@@ -18,7 +18,7 @@
   "portsAttributes": {
     "3000": {
       "label": "Dev Server",
-      "onAutoForward": "openPreview"
+      "onAutoForward": "openBrowserOnce"
     }
   }
 }
