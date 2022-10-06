@@ -1,4 +1,3 @@
-// import React from 'react';
 import ClearIcon from '@mui/icons-material/Clear';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
@@ -7,7 +6,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as Diff from 'diff';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
@@ -17,7 +16,6 @@ import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 
 export default function TextDiffPage() {
   const supportsClipboardRead = useSupportsClipboardRead();
-  const [error, setError] = React.useState<string>('');
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
@@ -64,17 +62,13 @@ export default function TextDiffPage() {
     setOutput(value);
   }
 
-  const processJson = useCallback(() => {
+  useEffect(() => {
     if (!input1 || !input2) {
       setOutput('');
-      setError('');
+    } else {
+      compare();
     }
-  }, [input1, input2, setOutput]);
-
-  useEffect(() => {
-    compare();
-    processJson();
-  }, [compare, processJson]);
+  }, [input1, input2, compare, setOutput]);
 
   return (
     <Layout title='Text Difference'>
@@ -87,16 +81,16 @@ export default function TextDiffPage() {
       </Typography>
       <Box
         display='flex'
-        flexDirection='row'
+        flexDirection={{ xs: 'column', sm: 'row' }}
         justifyContent='space-between'
-        paddingBottom={3}
+        paddingBottom={2}
         width={1000}
         maxWidth='100%'
       >
         <Box
           display='flex'
           flexDirection='column'
-          width='48%'
+          width={{ xs: '100%', sm: '45%' }}
         >
           <TextField
             multiline
@@ -108,7 +102,7 @@ export default function TextDiffPage() {
           <Box
             display='flex'
             flexWrap='wrap'
-            justifyContent='end'
+            justifyContent={{ xs: 'center', sm: 'flex-end' }}
             gap={2}
           >
             {!!supportsClipboardRead && (
@@ -118,7 +112,6 @@ export default function TextDiffPage() {
                   const text = await navigator.clipboard.readText();
                   if (text) {
                     setInput1(text);
-                    processJson();
                   }
                 }}
               >
@@ -139,7 +132,7 @@ export default function TextDiffPage() {
         <Box
           display='flex'
           flexDirection='column'
-          width='48%'
+          width={{ xs: '100%', sm: '45%' }}
         >
           <TextField
             multiline
@@ -151,7 +144,7 @@ export default function TextDiffPage() {
           <Box
             display='flex'
             flexWrap='wrap'
-            justifyContent='end'
+            justifyContent={{ xs: 'center', sm: 'flex-end' }}
             gap={2}
           >
             {!!supportsClipboardRead && (
@@ -161,7 +154,6 @@ export default function TextDiffPage() {
                   const text = await navigator.clipboard.readText();
                   if (text) {
                     setInput2(text);
-                    processJson();
                   }
                 }}
               >
@@ -227,9 +219,8 @@ export default function TextDiffPage() {
         >
           <Button
             startIcon={<ContentCopyIcon />}
-            disabled={!input2}
             onClick={() => {
-              navigator.clipboard.writeText(input2 || '').then(
+              navigator.clipboard.writeText(output || '').then(
                 () => {
                   setToastMessage('Copied to clipboard');
                   setToastSeverity('success');
@@ -247,14 +238,6 @@ export default function TextDiffPage() {
           </Button>
         </Box>
       </Box>
-      <Typography
-        color='#ff6246'
-        paragraph
-        data-testid='json-error'
-      >
-        {error}
-      </Typography>
-
       <Toast
         open={toastOpen}
         message={toastMessage}
