@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
-import URLEncodeDecode from '../pages/urlEncodeDecode';
+import URLEncodeDecode from '../pages/url-encode';
 
 describe('URLEncodeDecode', () => {
   it('should encode and decode', () => {
