@@ -6,6 +6,7 @@ import Fingerprint from '@mui/icons-material/Fingerprint';
 import HomeIcon from '@mui/icons-material/Home';
 import LinkIcon from '@mui/icons-material/Link';
 import Looks6 from '@mui/icons-material/Looks6';
+import SubjectIcon from '@mui/icons-material/Subject';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
 
@@ -49,5 +50,10 @@ export default [
     title: 'HTML',
     href: '/html',
     Icon: Code,
+  },
+  {
+    title: 'YAML',
+    href: '/yaml',
+    Icon: SubjectIcon,
   },
 ];
