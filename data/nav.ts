@@ -5,6 +5,7 @@ import Fingerprint from '@mui/icons-material/Fingerprint';
 import HomeIcon from '@mui/icons-material/Home';
 import LinkIcon from '@mui/icons-material/Link';
 import Looks6 from '@mui/icons-material/Looks6';
+import NumbersIcon from '@mui/icons-material/Numbers';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
 
@@ -44,4 +45,9 @@ export default [
     href: '/html',
     Icon: Code,
   },
+  {
+    title: 'Number Base Converter',
+    href: '/numberbaseconverter',
+    Icon: NumbersIcon,
+  }
 ];
