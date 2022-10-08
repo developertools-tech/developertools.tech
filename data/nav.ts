@@ -10,7 +10,7 @@ import Looks6 from '@mui/icons-material/Looks6';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
 
-export default [
+const navItems = [
   {
     title: 'Home',
     href: '/',
@@ -57,3 +57,5 @@ export default [
     Icon: ArticleIcon,
   },
 ];
+
+export default navItems;

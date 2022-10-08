@@ -225,12 +225,14 @@ export default function LoremIpsumPage() {
             />
           </Box>
         </Box>
-        {paragraphs.map((paragraph, index) => (
-          <>
-            {/* eslint-disable-next-line react/no-array-index-key */}
-            <Typography key={index}>{paragraph}</Typography>
-          </>
-        ))}
+        <div data-testid='lorem-ipsum-text'>
+          {paragraphs.map((paragraph, index) => (
+            <>
+              {/* eslint-disable-next-line react/no-array-index-key */}
+              <Typography key={index}>{paragraph}</Typography>
+            </>
+          ))}
+        </div>
       </Box>
       <Toast
         open={toastOpen}

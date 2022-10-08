@@ -1,4 +1,4 @@
-export default [
+const words = [
   'ad',
   'adipisicing',
   'aliqua',
@@ -62,3 +62,5 @@ export default [
   'veniam',
   'voluptate',
 ];
+
+export default words;
