@@ -177,6 +177,7 @@ export default function ImageConverterPage() {
                 onChange={(e, value) => setQuality(value as number)}
                 valueLabelDisplay='auto'
                 valueLabelFormat={formatSliderLabel}
+                disabled={fileType === FileType.PNG}
                 aria-labelledby='quality-slider'
               />
             </Box>
