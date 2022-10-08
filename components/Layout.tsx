@@ -64,7 +64,6 @@ export default function Layout({
   children: React.ReactNode;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchIsOpen, setSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
   const { width } = useWindowSize();
@@ -79,14 +78,14 @@ export default function Layout({
     <List id='nav-sidebar'>
       {[
         {
-          title: 'Home',
-          href: '/',
-          Icon: HomeIcon,
-        },
-        {
           title: 'Search',
           href: '',
           Icon: SearchIcon,
+        },
+        {
+          title: 'Home',
+          href: '/',
+          Icon: HomeIcon,
         },
       ].map(({ title: itemTitle, href, Icon }) => (
         <>
@@ -95,23 +94,17 @@ export default function Layout({
             key={itemTitle.toLowerCase()}
           >
             <ListItemButton
-              {...(itemTitle === 'Search'
-                ? { onClick: () => setSearchOpen(!searchIsOpen) }
-                : {
-                    href: href,
-                    component: Link,
-                  })}
+              {...(itemTitle !== 'Search' && {
+                href: href,
+                component: Link,
+              })}
             >
               <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
               <ListItemText primary={itemTitle} />
             </ListItemButton>
           </ListItem>
           {itemTitle === 'Search' && (
-            <ListItem
-              sx={{
-                display: searchIsOpen ? 'initial' : 'none',
-              }}
-            >
+            <ListItem>
               <TextField
                 variant='standard'
                 placeholder='Search...'
@@ -127,16 +120,13 @@ export default function Layout({
                   if (e.keyCode === 13 && curHref !== null) {
                     router.push(String(curHref));
                   }
-                  if ([38, 40].indexOf(e.keyCode) > -1) {
-                    e.preventDefault();
-                  }
                 }}
               />
             </ListItem>
           )}
         </>
       ))}
-      {[...navItems].sort().map(({ title: itemTitle, href, Icon }) => {
+      {[...navItems].map(({ title: itemTitle, href, Icon }) => {
         if (itemTitle.toLowerCase().includes(searchTerm.toLowerCase()))
           return (
             <ListItem
