@@ -1,3 +1,4 @@
+import ArticleIcon from '@mui/icons-material/Article';
 import AspectRatio from '@mui/icons-material/AspectRatio';
 import Code from '@mui/icons-material/Code';
 import Css from '@mui/icons-material/Css';
@@ -10,7 +11,7 @@ import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
 
-export default [
+const navItems = [
   {
     title: 'Home',
     href: '/',
@@ -56,4 +57,11 @@ export default [
     href: '/html',
     Icon: Code,
   },
+  {
+    title: 'Lorem Ipsum',
+    href: '/lorem-ipsum',
+    Icon: ArticleIcon,
+  },
 ];
+
+export default navItems;

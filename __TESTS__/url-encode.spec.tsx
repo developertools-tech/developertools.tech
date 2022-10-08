@@ -30,4 +30,19 @@ describe('URLEncodeDecode', () => {
       );
     });
   });
+  it('should detect invalid encoded text', () => {
+    render(<URLEncodeDecode />);
+
+    const encodedOutput = screen.getByLabelText(
+      'Encoded',
+    ) as HTMLInputElement;
+    userEvent
+      .type(encodedOutput, 'https%3A%2F%2Fexample.com%')
+      .then(() => {
+        const errorMessage = screen.getByText(
+          'Error: Invalid URL Encoded Text',
+        );
+        expect(errorMessage).toBeInTheDocument();
+      });
+  });
 });
