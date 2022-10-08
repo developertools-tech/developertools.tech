@@ -1,3 +1,4 @@
+import ArticleIcon from '@mui/icons-material/Article';
 import AspectRatio from '@mui/icons-material/AspectRatio';
 import Code from '@mui/icons-material/Code';
 import Css from '@mui/icons-material/Css';
@@ -10,7 +11,7 @@ import Looks6 from '@mui/icons-material/Looks6';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
 
-export default [
+const navItems = [
   {
     title: 'Home',
     href: '/',
@@ -55,5 +56,13 @@ export default [
     title: 'Text Diff',
     href: '/text-diff',
     Icon: DifferenceIcon,
+    },
+  {
+    title: 'Lorem Ipsum',
+    href: '/lorem-ipsum',
+    Icon: ArticleIcon,
+
   },
 ];
+
+export default navItems;
