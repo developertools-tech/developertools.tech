@@ -14,6 +14,7 @@ import React, { useState } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
+import useLocalState from '../hooks/useLocalState';
 
 enum FileType {
   PNG = 'image/png',
@@ -48,8 +49,14 @@ const PreviewImage = styled('img')({});
 
 export default function ImageConverterPage() {
   const [file, setFile] = useState<{ raw: File; imageSrc: string }>();
-  const [fileType, setFileType] = useState<FileType>(FileType.WEBP);
-  const [quality, setQuality] = useState(0.7);
+  const [fileType, setFileType] = useLocalState<FileType>({
+    key: 'image-converter-file-type',
+    defaultValue: FileType.WEBP,
+  });
+  const [quality, setQuality] = useLocalState<number>({
+    key: 'image-converter-quality',
+    defaultValue: 0.7,
+  });
   const handleInputChange: React.ChangeEventHandler<
     HTMLInputElement
   > = (event) => {
