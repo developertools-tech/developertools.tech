@@ -68,14 +68,15 @@ export default function Layout({
   const [searchTerm, setSearchTerm] = useState('');
 
   const { width } = useWindowSize();
-  const { asPath } = useRouter();
+  const router = useRouter();
+  const asPath = router.asPath;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
-    <List>
+    <List id='nav-sidebar'>
       {[
         {
           title: 'Home',
@@ -115,6 +116,21 @@ export default function Layout({
                 variant='standard'
                 placeholder='Search...'
                 onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => {
+                  const curHref = navItems.filter(
+                    ({ title: _itemTitle }) => {
+                      return _itemTitle
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase());
+                    },
+                  )[0]?.href;
+                  if (e.keyCode === 13 && curHref !== null) {
+                    router.push(String(curHref));
+                  }
+                  if ([38, 40].indexOf(e.keyCode) > -1) {
+                    e.preventDefault();
+                  }
+                }}
               />
             </ListItem>
           )}
