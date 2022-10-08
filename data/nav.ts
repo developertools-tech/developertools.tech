@@ -52,7 +52,7 @@ const navItems = [
     href: '/html',
     Icon: Code,
   },
-   {
+  {
     title: 'Lorem Ipsum',
     href: '/lorem-ipsum',
     Icon: ArticleIcon,
@@ -61,7 +61,7 @@ const navItems = [
     title: 'Text Diff',
     href: '/text-diff',
     Icon: DifferenceIcon,
-    },
+  },
 ];
 
 export default navItems;
