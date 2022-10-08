@@ -1,6 +1,8 @@
 import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
 import GitHub from '@mui/icons-material/GitHub';
+import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -12,6 +14,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Head from 'next/head';
@@ -61,6 +64,8 @@ export default function Layout({
   children: React.ReactNode;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchIsOpen, setSearchOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const { width } = useWindowSize();
   const { asPath } = useRouter();
@@ -71,31 +76,65 @@ export default function Layout({
 
   const drawer = (
     <List>
-      {[...navItems]
-        .sort((a, b) => {
-          if (a.title === 'Home') {
-            return -1;
-          }
-          if (b.title === 'Home') {
-            return 1;
-          }
-          return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
-        })
-        .map(({ title: itemTitle, href, Icon }) => (
+      {[
+        {
+          title: 'Home',
+          href: '/',
+          Icon: HomeIcon,
+        },
+        {
+          title: 'Search',
+          href: '',
+          Icon: SearchIcon,
+        },
+      ].map(({ title: itemTitle, Icon }) => (
+        <>
           <ListItem
-            key={href}
             disablePadding
+            key={itemTitle.toLowerCase()}
           >
             <ListItemButton
-              href={href}
-              component={Link}
-              disabled={asPath === href}
+              {...(itemTitle === 'Search'
+                ? { onClick: () => setSearchOpen(!searchIsOpen) }
+                : {})}
             >
               <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
               <ListItemText primary={itemTitle} />
             </ListItemButton>
           </ListItem>
-        ))}
+          {itemTitle === 'Search' && (
+            <ListItem
+              sx={{
+                display: searchIsOpen ? 'initial' : 'none',
+              }}
+            >
+              <TextField
+                variant='standard'
+                placeholder='Search...'
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </ListItem>
+          )}
+        </>
+      ))}
+      {[...navItems].sort().map(({ title: itemTitle, href, Icon }) => {
+        if (itemTitle.toLowerCase().includes(searchTerm.toLowerCase()))
+          return (
+            <ListItem
+              key={href}
+              disablePadding
+            >
+              <ListItemButton
+                href={href}
+                component={Link}
+                disabled={asPath === href}
+              >
+                <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
+                <ListItemText primary={itemTitle} />
+              </ListItemButton>
+            </ListItem>
+          );
+      })}
     </List>
   );
 
