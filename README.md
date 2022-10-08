@@ -12,7 +12,10 @@ If you have any questions about contributing after reading the guide, please cre
 
 I'm also looking for co-maintainers, if you are interested please contact me via the contact form on [dlford.io](https://www.dlford.io).
 
-#Contributors
+
+##Contributors
+
+
 <a href = "https://github.com/developertools-tech/developertools.tech/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=developertools-tech/developertools.tech"/>
 </a>
