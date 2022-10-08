@@ -4,16 +4,76 @@ import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
 import { Button, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import YAML from 'yaml';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
+import Toast, { ToastProps } from '../components/Toast';
+import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 
 export default function YamlPage() {
   const supportsClipboardRead = useSupportsClipboardRead();
 
   const [error, setError] = React.useState<string>('');
+  const [toastOpen, setToastOpen] = useState<boolean>(false);
+  const [toastMessage, setToastMessage] = useState<string>('');
+  const [toastSeverity, setToastSeverity] =
+    useState<ToastProps['severity']>('success');
+  const [input, setInput] = useLocalState<string | void>({
+    key: 'yamlInput',
+    defaultValue: '',
+  });
+  const [output, setOutput] = useLocalState<string | void>({
+    key: 'yamlOutput',
+    defaultValue: '',
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(event.target.value);
+  };
+
+  const handleClickCopyButton = (text: string | void) => {
+    navigator.clipboard.writeText(text || '').then(
+      () => {
+        setToastMessage('Copied to clipboard');
+        setToastSeverity('success');
+        setToastOpen(true);
+      },
+      () => {
+        setToastMessage('Failed to copy to clipboard');
+        setToastSeverity('error');
+        setToastOpen(true);
+      },
+    );
+  };
+
+  const handleClickPasteButton = async () => {
+    const text = await navigator.clipboard.readText();
+    if (text) {
+      setInput(text);
+    }
+  };
+
+  const processYaml = useCallback(() => {
+    if (!input) {
+      setOutput('');
+      setError('');
+      return;
+    }
+    try {
+      const data = YAML.parse(input);
+      setOutput(YAML.stringify(data));
+      setError('');
+    } catch (err: any) {
+      setError(err.message);
+    }
+  }, [input, setOutput]);
+
+  useEffect(() => {
+    processYaml();
+  }, [input, processYaml]);
 
   return (
     <Layout title='YAML'>
@@ -40,6 +100,8 @@ export default function YamlPage() {
             multiline
             label='Input'
             name='input'
+            value={input}
+            onChange={handleChange}
           />
           <Box
             display='flex'
@@ -47,10 +109,29 @@ export default function YamlPage() {
             justifyContent='end'
             gap={2}
           >
-            <Button startIcon={<ClearIcon />}>Clear</Button>
-            <Button startIcon={<ContentCopyIcon />}>Copy</Button>
+            <Button
+              startIcon={<ClearIcon />}
+              disabled={!input}
+              onClick={() => {
+                setInput('');
+              }}
+            >
+              Clear
+            </Button>
+            <Button
+              startIcon={<ContentCopyIcon />}
+              disabled={!input}
+              onClick={() => handleClickCopyButton(input)}
+            >
+              Copy
+            </Button>
             {!!supportsClipboardRead && (
-              <Button startIcon={<ContentPasteGoIcon />}>Paste</Button>
+              <Button
+                startIcon={<ContentPasteGoIcon />}
+                onClick={handleClickPasteButton}
+              >
+                Paste
+              </Button>
             )}
           </Box>
         </Box>
@@ -85,7 +166,8 @@ export default function YamlPage() {
             <pre
               data-testid='json-output'
               dangerouslySetInnerHTML={{
-                __html: '<span class="placeholder">Output</span>',
+                __html:
+                  output || '<span class="placeholder">Output</span>',
               }}
             />
             {/* eslint-enable react/no-danger */}
@@ -96,10 +178,29 @@ export default function YamlPage() {
             justifyContent='end'
             gap={2}
           >
-            <Button startIcon={<ClearIcon />}>Clear</Button>
-            <Button startIcon={<ContentCopyIcon />}>Copy</Button>
+            <Button
+              startIcon={<ClearIcon />}
+              disabled={!input}
+              onClick={() => {
+                setInput('');
+              }}
+            >
+              Clear
+            </Button>
+            <Button
+              startIcon={<ContentCopyIcon />}
+              disabled={!output}
+              onClick={() => handleClickCopyButton(output)}
+            >
+              Copy
+            </Button>
             {!!supportsClipboardRead && (
-              <Button startIcon={<ContentPasteGoIcon />}>Paste</Button>
+              <Button
+                startIcon={<ContentPasteGoIcon />}
+                onClick={handleClickPasteButton}
+              >
+                Paste
+              </Button>
             )}
           </Box>
         </Box>
@@ -111,6 +212,12 @@ export default function YamlPage() {
           {error}
         </Typography>
       </Box>
+      <Toast
+        open={toastOpen}
+        message={toastMessage}
+        severity={toastSeverity}
+        onClose={() => setToastOpen(false)}
+      />
     </Layout>
   );
 }
