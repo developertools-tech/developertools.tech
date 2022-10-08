@@ -80,9 +80,8 @@ export default function Sorting() {
 
     let inputTextArray;
 
-    if (separator === 'lineBreak') {
+    if (separator === 'newLine') {
       inputTextArray = inputText.split(/\r\n|\n\r|\n|\r/);
-      setSeparator('\n');
     } else {
       inputTextArray = inputText.split(separator);
     }
@@ -111,8 +110,9 @@ export default function Sorting() {
             return 0;
           });
 
-    setOutputText(outputTextArray.join(separator));
-    if (separator === '\n') setSeparator('lineBreak');
+    if (separator === 'newLine')
+      setOutputText(outputTextArray.join('\n'));
+    else setOutputText(outputTextArray.join(separator));
   };
 
   return (
@@ -195,7 +195,7 @@ export default function Sorting() {
                 <MenuItem value={' '}>Space ( )</MenuItem>
                 <MenuItem value='.'>Full Stop (.)</MenuItem>
                 <MenuItem value=';'>Semicolon (;)</MenuItem>
-                <MenuItem value='lineBreak'>New Line</MenuItem>
+                <MenuItem value='newLine'>New Line</MenuItem>
               </Select>
             </FormControl>
 
