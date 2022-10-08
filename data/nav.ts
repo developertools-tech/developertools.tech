@@ -1,5 +1,6 @@
 import AspectRatio from '@mui/icons-material/AspectRatio';
 import DataObject from '@mui/icons-material/DataObject';
+import DocumentScanner from '@mui/icons-material/DocumentScanner';
 import Fingerprint from '@mui/icons-material/Fingerprint';
 import HomeIcon from '@mui/icons-material/Home';
 import Looks6 from '@mui/icons-material/Looks6';
@@ -31,5 +32,10 @@ export default [
     title: 'JSON',
     href: '/json',
     Icon: DataObject,
+  },
+  {
+    title: 'Markdown Preview',
+    href: '/markdown',
+    Icon: DocumentScanner,
   },
 ];
