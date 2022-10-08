@@ -238,7 +238,8 @@ export default function TextDiffPage() {
           </Button>
         </Box>
       </Box>
-      <Toast
+      
+<Toast
         open={toastOpen}
         message={toastMessage}
         severity={toastSeverity}
@@ -247,3 +248,4 @@ export default function TextDiffPage() {
     </Layout>
   );
 }
+      

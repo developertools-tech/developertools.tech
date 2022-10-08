@@ -1,0 +1,24 @@
+{
+  "name": "dtt",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "dtt",
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "mkdir -p node_modules && sudo chown -R node:node node_modules && npm ci",
+  "remoteUser": "node",
+  "settings": {},
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+    "esbenp.prettier-vscode",
+    "wayou.vscode-todo-highlight"
+  ],
+  "forwardPorts": [
+    3000
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Dev Server",
+      "onAutoForward": "openBrowserOnce"
+    }
+  }
+}

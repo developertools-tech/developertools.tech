@@ -1,5 +1,7 @@
+import ArticleIcon from '@mui/icons-material/Article';
 import AspectRatio from '@mui/icons-material/AspectRatio';
 import Code from '@mui/icons-material/Code';
+import Css from '@mui/icons-material/Css';
 import DataObject from '@mui/icons-material/DataObject';
 import DifferenceIcon from '@mui/icons-material/Difference';
 import Fingerprint from '@mui/icons-material/Fingerprint';
@@ -9,7 +11,7 @@ import Looks6 from '@mui/icons-material/Looks6';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
 
-export default [
+const navItems = [
   {
     title: 'Home',
     href: '/',
@@ -19,6 +21,11 @@ export default [
     title: 'Aspect Ratio',
     href: '/aspect-ratio',
     Icon: AspectRatio,
+  },
+  {
+    title: 'CSS',
+    href: '/css',
+    Icon: Css,
   },
   {
     title: 'UUID',
@@ -36,8 +43,8 @@ export default [
     Icon: DataObject,
   },
   {
-    title: 'URL Encode Decode',
-    href: '/urlEncodeDecode',
+    title: 'URL Encode',
+    href: '/url-encode',
     Icon: LinkIcon,
   },
   {
@@ -45,9 +52,16 @@ export default [
     href: '/html',
     Icon: Code,
   },
+   {
+    title: 'Lorem Ipsum',
+    href: '/lorem-ipsum',
+    Icon: ArticleIcon,
+  },
   {
     title: 'Text Diff',
     href: '/text-diff',
     Icon: DifferenceIcon,
-  },
+    },
 ];
+
+export default navItems;

@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
-import URLEncodeDecode from '../pages/urlEncodeDecode';
+import URLEncodeDecode from '../pages/url-encode';
 
 describe('URLEncodeDecode', () => {
   it('should encode and decode', () => {
@@ -29,5 +29,20 @@ describe('URLEncodeDecode', () => {
         'https%3A%2F%2Fexample2.com',
       );
     });
+  });
+  it('should detect invalid encoded text', () => {
+    render(<URLEncodeDecode />);
+
+    const encodedOutput = screen.getByLabelText(
+      'Encoded',
+    ) as HTMLInputElement;
+    userEvent
+      .type(encodedOutput, 'https%3A%2F%2Fexample.com%')
+      .then(() => {
+        const errorMessage = screen.getByText(
+          'Error: Invalid URL Encoded Text',
+        );
+        expect(errorMessage).toBeInTheDocument();
+      });
   });
 });

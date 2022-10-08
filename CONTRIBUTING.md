@@ -10,6 +10,7 @@ Please create an issue before submitting a pull request, it can be assigned to y
 ### General Guidelines
 
 - Please base your work on the `dev` branch, and make sure your pull request is submitted against the `dev` branch.
+  - If needed, the `dev` branch branch is hosted at [dev.developertools.tech](https://dev.developertools.tech).
 - Write tests for your tool or changes before submitting a PR.
 - Run the code quality script locally before submitting a PR, and address any issues (`npm run cq`).
 - Try to match the UI, style, and practices laid out in the existing tools.
@@ -48,6 +49,8 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+> **Note** this project includes a `devcontainer` configuration, so it's possible to contribute and do development work in both GitHub Codespaces as well as VS Code Dev Containers.
 
 ### Project Structure
 

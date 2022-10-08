@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/450fcc5c-7c10-4648-9b8e-e2a780345c66/deploy-status)](https://app.netlify.com/sites/developertools-tech/deploys)
+
 # DeveloperTools.Tech
 
 A collection of tools for developers.

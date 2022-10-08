@@ -1,0 +1,122 @@
+{
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "all",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "editor.formatOnPaste": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "css.format.spaceAroundSelectorSeparator": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.lintTask.enable": true,
+  "eslint.format.enable": true,
+  "prettier.bracketSameLine": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.printWidth": 72,
+  "prettier.singleAttributePerLine": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "todohighlight.include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.html",
+    "**/*.php",
+    "**/*.css",
+    "**/*.scss"
+  ],
+  "todohighlight.exclude": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.vscode/**",
+    "**/.github/**",
+    "**/_output/**",
+    "**/*.min.*",
+    "**/*.map",
+    "**/.next/**"
+  ],
+  "todohighlight.defaultStyle": {
+    "color": "white",
+    "backgroundColor": "#AC2C2C",
+    "overviewRulerColor": "#ffab00",
+    "cursor": "pointer",
+    // "border": "1px solid #eee",
+    "borderRadius": "3px",
+    "isWholeLine": false
+  },
+  "todohighlight.keywords": [
+    {
+      "text": "NOTE:",
+      "backgroundColor": "#3E63AD"
+    },
+    {
+      "text": "INFO:",
+      "backgroundColor": "#3E63AD"
+    },
+    {
+      "text": "TODO:",
+      "color": "black",
+      "backgroundColor": "yellow"
+    },
+    {
+      "text": "BACKLOG:",
+      "color": "black",
+      "backgroundColor": "#BA9B2D"
+    },
+    {
+      "text": "HACK:",
+      "color": "black",
+      "backgroundColor": "#BA9B2D"
+    },
+    {
+      "text": "WARN:",
+      "color": "black",
+      "backgroundColor": "#BA9B2D"
+    },
+    {
+      "text": "WARNING:",
+      "color": "black",
+      "backgroundColor": "#BA9B2D"
+    },
+    {
+      "text": "FIXME:",
+      "backgroundColor": "#AC2C2C"
+    },
+    "DEBUG:",
+    "REVIEW:",
+    "FIX:",
+    "FIXIT:",
+    "ISSUE:",
+    "PERF:",
+    "PERFORMANCE:",
+    "OPTIM:",
+    "OPTIMIZE:",
+    "BUG:"
+  ],
+}
