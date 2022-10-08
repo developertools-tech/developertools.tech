@@ -13,6 +13,8 @@ import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 
+const errorRegex = /line ([0-9]+), column ([0-9]+)/;
+
 export default function YamlPage() {
   const supportsClipboardRead = useSupportsClipboardRead();
 
@@ -66,8 +68,39 @@ export default function YamlPage() {
       const data = YAML.parse(input);
       setOutput(YAML.stringify(data));
       setError('');
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setError(err.message);
+      setOutput('');
+      const result = errorRegex.exec(err.message);
+      if (result) {
+        const lineNumber = result[1];
+        const columnNumber = result[2];
+        const lines = input.split('\n');
+        let outputText = '';
+        for (const index in lines) {
+          if ({}.hasOwnProperty.call(lines, index)) {
+            const line = lines[index];
+            if (+index + 1 === +lineNumber) {
+              let markedLine = '';
+              for (const letterIndex in line.split('')) {
+                if ({}.hasOwnProperty.call(line, letterIndex)) {
+                  const letter = line[letterIndex];
+                  if (+letterIndex + 1 === +columnNumber) {
+                    markedLine += `<span class="bad-letter">${letter}</span>`;
+                  } else {
+                    markedLine += letter;
+                  }
+                }
+              }
+              outputText += `<span class="bad-line">${markedLine}</span>\n`;
+            } else {
+              outputText += `${line}\n`;
+            }
+          }
+        }
+        setOutput(outputText);
+      }
     }
   }, [input, setOutput]);
 
@@ -168,6 +201,10 @@ export default function YamlPage() {
               dangerouslySetInnerHTML={{
                 __html:
                   output || '<span class="placeholder">Output</span>',
+              }}
+              style={{
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word',
               }}
             />
             {/* eslint-enable react/no-danger */}
