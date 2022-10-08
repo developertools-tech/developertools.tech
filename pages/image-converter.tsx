@@ -46,7 +46,7 @@ function formatSliderLabel(value: number) {
 
 const PreviewImage = styled('img')({});
 
-export default function JsonPage() {
+export default function ImageConverterPage() {
   const [file, setFile] = useState<{ raw: File; imageSrc: string }>();
   const [fileType, setFileType] = useState<FileType>(FileType.WEBP);
   const [quality, setQuality] = useState(0.7);
