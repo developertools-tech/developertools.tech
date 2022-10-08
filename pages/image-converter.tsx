@@ -121,6 +121,7 @@ export default function ImageConverterPage() {
           >
             {file && (
               <PreviewImage
+                data-testid='image-preview'
                 alt=''
                 src={file?.imageSrc}
                 sx={{
