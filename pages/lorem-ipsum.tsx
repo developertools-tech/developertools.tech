@@ -229,7 +229,12 @@ export default function LoremIpsumPage() {
           {paragraphs.map((paragraph, index) => (
             <>
               {/* eslint-disable-next-line react/no-array-index-key */}
-              <Typography key={index}>{paragraph}</Typography>
+              <Typography
+                mb={3}
+                key={index}
+              >
+                {paragraph}
+              </Typography>
             </>
           ))}
         </div>
