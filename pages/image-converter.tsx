@@ -62,7 +62,6 @@ export default function ImageConverterPage() {
     }
     const eventFile = event.currentTarget.files[0];
     const reader = new FileReader();
-    console.log(eventFile);
     reader.onloadend = () => {
       setFile({ raw: eventFile, imageSrc: reader.result as string });
     };
