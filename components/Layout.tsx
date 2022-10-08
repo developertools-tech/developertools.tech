@@ -87,7 +87,7 @@ export default function Layout({
           href: '',
           Icon: SearchIcon,
         },
-      ].map(({ title: itemTitle, Icon }) => (
+      ].map(({ title: itemTitle, href, Icon }) => (
         <>
           <ListItem
             disablePadding
@@ -96,7 +96,10 @@ export default function Layout({
             <ListItemButton
               {...(itemTitle === 'Search'
                 ? { onClick: () => setSearchOpen(!searchIsOpen) }
-                : {})}
+                : {
+                    href: href,
+                    component: Link,
+                  })}
             >
               <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
               <ListItemText primary={itemTitle} />
