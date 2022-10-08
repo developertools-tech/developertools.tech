@@ -1,35 +1,29 @@
 import ClearIcon from '@mui/icons-material/Clear';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as Diff from 'diff';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 
 export default function TextDiffPage() {
   const supportsClipboardRead = useSupportsClipboardRead();
-  const [toastOpen, setToastOpen] = useState<boolean>(false);
-  const [toastMessage, setToastMessage] = useState<string>('');
-  const [toastSeverity, setToastSeverity] =
-    useState<ToastProps['severity']>('success');
   const [input1, setInput1] = useLocalState<string>({
-    key: 'textInput',
+    key: 'textDiff_input1',
     defaultValue: '',
   });
   const [input2, setInput2] = useLocalState<string>({
-    key: 'textInput',
+    key: 'textDiff_input2',
     defaultValue: '',
   });
   const [output, setOutput] = useLocalState<string | void>({
-    key: 'textOutput',
+    key: 'textDiff_output',
     defaultValue: '',
   });
 
@@ -42,7 +36,7 @@ export default function TextDiffPage() {
 
   const diff = Diff.diffChars(input1, input2);
 
-  function compare() {
+  const compare = useCallback(() => {
     let value = '';
     diff.forEach((part) => {
       // green for additions, red for deletions
@@ -60,7 +54,7 @@ export default function TextDiffPage() {
       value += `<span style="color:${clr}">${part.value}</span>`;
     });
     setOutput(value);
-  }
+  }, [diff, setOutput]);
 
   useEffect(() => {
     if (!input1 || !input2) {
@@ -77,7 +71,7 @@ export default function TextDiffPage() {
         paragraph
         textAlign='center'
       >
-        Paste the texts to check the difference.
+        Type or paste text into both fields to check the difference.
       </Typography>
       <Box
         display='flex'
@@ -94,7 +88,7 @@ export default function TextDiffPage() {
         >
           <TextField
             multiline
-            label='Text1'
+            label='Text 1'
             value={input1}
             name='first text'
             onChange={handleChange1}
@@ -102,7 +96,7 @@ export default function TextDiffPage() {
           <Box
             display='flex'
             flexWrap='wrap'
-            justifyContent={{ xs: 'center', sm: 'flex-end' }}
+            justifyContent='flex-end'
             gap={2}
           >
             {!!supportsClipboardRead && (
@@ -136,7 +130,7 @@ export default function TextDiffPage() {
         >
           <TextField
             multiline
-            label='Text2'
+            label='Text 2'
             value={input2}
             name='second text'
             onChange={handleChange2}
@@ -144,7 +138,7 @@ export default function TextDiffPage() {
           <Box
             display='flex'
             flexWrap='wrap'
-            justifyContent={{ xs: 'center', sm: 'flex-end' }}
+            justifyContent='flex-end'
             gap={2}
           >
             {!!supportsClipboardRead && (
@@ -211,39 +205,7 @@ export default function TextDiffPage() {
           />
           {/* eslint-enable react/no-danger */}
         </Box>
-        <Box
-          display='flex'
-          flexWrap='wrap'
-          justifyContent='end'
-          gap={2}
-        >
-          <Button
-            startIcon={<ContentCopyIcon />}
-            onClick={() => {
-              navigator.clipboard.writeText(output || '').then(
-                () => {
-                  setToastMessage('Copied to clipboard');
-                  setToastSeverity('success');
-                  setToastOpen(true);
-                },
-                () => {
-                  setToastMessage('Failed to copy to clipboard');
-                  setToastSeverity('error');
-                  setToastOpen(true);
-                },
-              );
-            }}
-          >
-            Copy
-          </Button>
-        </Box>
       </Box>
-      <Toast
-        open={toastOpen}
-        message={toastMessage}
-        severity={toastSeverity}
-        onClose={() => setToastOpen(false)}
-      />
     </Layout>
   );
 }

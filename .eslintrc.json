@@ -55,6 +55,7 @@
     }
   },
   "rules": {
+    "no-console": "error",
     "import/extensions": "off",
     "react/prop-types": "off",
     "no-plusplus": "off",
