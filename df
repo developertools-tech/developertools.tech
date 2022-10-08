@@ -1,0 +1,841 @@
+[33mcommit ff2cfc151d68337eb32436dd716ab82588a2ed71[m[33m ([m[1;36mHEAD -> [m[1;32mtext-diff[m[33m)[m
+Merge: e64a7b1 1a02ddd
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Sat Oct 8 12:24:16 2022 +0530
+
+    text-diff
+
+[33mcommit 1a02ddd58bc1e64984ce6e28c07c1e5592d3ffe0[m[33m ([m[1;31morigin/text-diff[m[33m)[m
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Sat Oct 8 11:52:23 2022 +0530
+
+    Update nav.ts
+
+[33mcommit b606f38c8173b1de7efc5297beb16040709b6970[m
+Merge: 71a333e d692f54
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Sat Oct 8 11:47:55 2022 +0530
+
+    Merge branch 'dev' into text-diff
+
+[33mcommit d692f54a200e6bd01a711f7c3a08591fdb579187[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31mdevtoolstech/main[m[33m, [m[1;31mdevtoolstech/dev[m[33m)[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Fri Oct 7 17:19:40 2022 -0700
+
+    fix: lorem ipsum tool missing gap between paragraphs
+
+[33mcommit 25e5c4acdcdfd1b7ba9586d5a35399bb64dc33cc[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Fri Oct 7 17:06:34 2022 -0700
+
+    cq lorem ipsum tool
+
+[33mcommit c66bfefd2e42360bbf3c330ac70a0db791a1d3ed[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Fri Oct 7 16:01:25 2022 -0700
+
+    finish lorem ipsum tool
+
+[33mcommit 81f6cc5b93b98dbe2a30a810d6f1ab95df0b7167[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 17 15:32:06 2022 -0700
+
+    progress on lorem ipsum tool
+
+[33mcommit 3f44ec1b4d3832f623b8b9d939b9e16912216ec4[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 17 10:28:18 2022 -0700
+
+    progress on lorem ipsum tool
+
+[33mcommit fb518eff9ec46114c25b5d0817bf072998bbff4b[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 17 10:26:13 2022 -0700
+
+    progress on lorem ipsum tool
+
+[33mcommit afe223ea0782aaccb426ba180d28eeca16fa1e14[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 17 10:23:43 2022 -0700
+
+    progress on lorem ipsum tool
+
+[33mcommit ba658d8da32ee0f9bfbd91600d50b541d8984056[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 17 01:49:44 2022 -0700
+
+    progress on lorem ipsum tool
+
+[33mcommit 92800b6d193aa9b5abd27899d99483593e4cb118[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 17 01:40:11 2022 -0700
+
+    progress on lorem ipsum tool
+
+[33mcommit 6e393c748fc62984efb90d90c7ea7ee4be86f242[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Fri Sep 16 23:37:06 2022 -0700
+
+    progress on lorem ipsum tool
+
+[33mcommit 4ef41c387a7c15fe4a84dcacb97ed8402367768f[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Fri Sep 16 23:05:30 2022 -0700
+
+    progress on lorem ipsum tool
+
+[33mcommit 8f9c45f12c6728aec15e51a2d30c9af9fd9f7be5[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Fri Sep 16 22:06:18 2022 -0700
+
+    start on lorem ipsum
+
+[33mcommit 71a333e44599b5260d822b6cf3b42b3e86c9a78c[m[33m ([m[1;31mdevtoolstech/text-diff-rebase[m[33m, [m[1;32mtext-diff-rebase[m[33m)[m
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Thu Oct 6 22:47:49 2022 +0530
+
+    changed text-diff
+
+[33mcommit e476ff9d926d4b06977909e220ecab740866b194[m
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Thu Oct 6 21:42:20 2022 +0530
+
+    modified text-diff again
+
+[33mcommit 7af4cba00c1ff9895dcb3881fd0edf5fb1765a7a[m
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Thu Oct 6 20:00:58 2022 +0530
+
+    modified text-diff
+
+[33mcommit eb28433710df58d7614898a6728c7d6343ee991b[m
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Thu Oct 6 19:46:50 2022 +0530
+
+    modified favourite section
+
+[33mcommit c2b195f80dfef518ccde46e8de8a7f544f870bd9[m
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Thu Oct 6 12:42:59 2022 +0530
+
+    added text-diff tool
+
+[33mcommit 81696507c85de1cce637a2de83d51c0dd0423807[m
+Merge: a7020d3 c4fdfe4
+Author: DL Ford <dan-github2@dlford.co>
+Date:   Thu Oct 6 14:03:10 2022 -0700
+
+    Merge pull request #37 from andrewbrey/feat/devcontainers
+    
+    feat(devcontainer): add devcontainer configuration for GH Codespaces
+
+[33mcommit c4fdfe47584b8175e0ec16a6052e284541bf0fa3[m
+Author: Andrew Brey <34140052+andrewbrey@users.noreply.github.com>
+Date:   Thu Oct 6 13:32:30 2022 -0700
+
+    fix(devcontainer): use openBrowser instead of openPreview
+
+[33mcommit 8b40e6d0b2b315df11df5d999f5d1cd5bfdb5b7f[m
+Author: Andrew Brey <34140052+andrewbrey@users.noreply.github.com>
+Date:   Thu Oct 6 13:28:44 2022 -0700
+
+    feat(devcontainer): add todo-highlight to the container
+
+[33mcommit 61d3d7525235afbe7afdb64b3ed0091543ee6b91[m
+Author: Andrew Brey <34140052+andrewbrey@users.noreply.github.com>
+Date:   Thu Oct 6 13:25:38 2022 -0700
+
+    feat(devcontainer): add dockerignore to reduce engine transfer size
+
+[33mcommit f8037811dcb635cb3c1325fe6f311621aeb38a5b[m
+Author: Andrew Brey <34140052+andrewbrey@users.noreply.github.com>
+Date:   Thu Oct 6 13:23:40 2022 -0700
+
+    style(devcontainer): add trailing newline to file
+
+[33mcommit 38afc87239ff2e736591d8fc5224a2bdc7accf97[m
+Author: Andrew Brey <34140052+andrewbrey@users.noreply.github.com>
+Date:   Thu Oct 6 13:19:52 2022 -0700
+
+    feat(devcontainer): add devcontainer configuration for GH Codespaces
+
+[33mcommit a7020d31f39cc970d3cc4ac00f077507378e7d7e[m
+Merge: 1133124 f4e506e
+Author: DL Ford <dan-github2@dlford.co>
+Date:   Thu Oct 6 11:21:14 2022 -0700
+
+    Merge pull request #34 from TGlide/fix/url-encode
+    
+    Fix: URL Encode tool doesn't catch input error
+
+[33mcommit f4e506e948cf8057b445198bfb94adfa42f241d6[m
+Author: tglide <26071571+TGlide@users.noreply.github.com>
+Date:   Thu Oct 6 18:53:34 2022 +0100
+
+    refactor: url-encode error positioning
+
+[33mcommit aebf7fe76b001021696d164bb4bd09d82eb5064f[m
+Author: tglide <26071571+TGlide@users.noreply.github.com>
+Date:   Thu Oct 6 17:18:41 2022 +0100
+
+    refactor: use local state on url encode error
+
+[33mcommit 3a5e45b9499b0ba0ff26a2a4831e0ddbed7379f1[m
+Author: tglide <26071571+TGlide@users.noreply.github.com>
+Date:   Thu Oct 6 17:16:51 2022 +0100
+
+    test: url encode error detection
+
+[33mcommit 41d71df5df89915a5855f5adb8c5d482e2baa35e[m
+Author: tglide <26071571+TGlide@users.noreply.github.com>
+Date:   Thu Oct 6 17:14:22 2022 +0100
+
+    fix: url encode error
+
+[33mcommit e64a7b1df1adb8eb49b250078cc977f1b75d2052[m
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Thu Oct 6 21:42:20 2022 +0530
+
+    modified text-diff again
+
+[33mcommit 113312422c7adaa72d968fd8de9d5b46250fcc4d[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Oct 6 08:24:42 2022 -0700
+
+    fix: ci lint broken
+
+[33mcommit 6a1148c05597562a5931797b124c83921bb863c7[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Oct 6 08:23:24 2022 -0700
+
+    fix: ci lint broken
+
+[33mcommit 543707edcc391e56a11fa256020ca47a9073a48e[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Oct 6 07:44:50 2022 -0700
+
+    Add TS compiler check to cq script
+
+[33mcommit ae6486a9af93004dbd76f569ce3deb98dedbb709[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Oct 6 07:41:36 2022 -0700
+
+    add workspace vscode settings
+
+[33mcommit a6eb4a726f7629a0a19e602f87cb9779650b5fa2[m
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Thu Oct 6 20:00:58 2022 +0530
+
+    modified text-diff
+
+[33mcommit 40ffcdcd7b16aa3779f29349a314bfcc6e7c5727[m
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Thu Oct 6 19:46:50 2022 +0530
+
+    modified favourite section
+
+[33mcommit 56a7de7fa3c1745ef57cb9dfe83a3e774def2361[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Oct 6 07:03:20 2022 -0700
+
+    Add vscode extension suggestions
+
+[33mcommit acce1a5c14e7fdc1569b9f49234429eb54ee4acb[m
+Author: Ankita Malik <80139836+AnkitaMalik22@users.noreply.github.com>
+Date:   Thu Oct 6 12:42:59 2022 +0530
+
+    added text-diff tool
+
+[33mcommit fbe51c48dd204b0afdea760ee7ca447584c4b80c[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Oct 5 22:43:19 2022 -0700
+
+    update contributer guide
+
+[33mcommit 56af9973def3693021d2d91182bc55bfdbf10f6a[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Oct 5 22:31:36 2022 -0700
+
+    fix broken tests
+
+[33mcommit 0a27c51475c290ebae8b9c2b530587e81bb6ca81[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Oct 5 22:23:56 2022 -0700
+
+    clean up UI a bit
+
+[33mcommit 9e33220be3bf4df1fc1e8e42c9a711791a9eba73[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Oct 5 18:01:47 2022 -0700
+
+    add Netflify status badge to readme
+
+[33mcommit 73258b992d7ae9ae78dfc84e185be1991edc33c7[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Oct 5 17:59:29 2022 -0700
+
+    fix tsc error
+
+[33mcommit 60e9c146944df3b365e1636e89b4a7af1a942e2a[m
+Merge: 23ce0c3 f1c2189
+Author: DL Ford <dan-github2@dlford.co>
+Date:   Wed Oct 5 17:45:36 2022 -0700
+
+    Merge pull request #29 from nosecreek/css-minify
+    
+    CSS Format/Minify Tool
+
+[33mcommit f1c2189db0bc1d8ba02d7a1b508926af083a265a[m
+Author: Dustin Lammiman <dustin@nosecreekweb.ca>
+Date:   Wed Oct 5 18:07:11 2022 -0600
+
+    Improve tests
+
+[33mcommit 0de2a8fd639bfb7b8d27da0c0c54eea326292b9d[m
+Author: Dustin Lammiman <dustin@nosecreekweb.ca>
+Date:   Wed Oct 5 16:32:35 2022 -0600
+
+    Add tests for CSS
+
+[33mcommit 407b7577d81402949b559b9155e8585efc8506c7[m
+Author: Dustin Lammiman <dustin@nosecreekweb.ca>
+Date:   Wed Oct 5 16:07:53 2022 -0600
+
+    Change labels for CSS textfields
+
+[33mcommit d1a3a650e5cc1c994e727904872c4154c4c4da2f[m
+Author: Dustin Lammiman <dustin@nosecreekweb.ca>
+Date:   Wed Oct 5 15:58:03 2022 -0600
+
+    Add minification support for css
+
+[33mcommit 9282670c325950ac8571a47b54a14165f6893018[m
+Author: Dustin Lammiman <dustin@nosecreekweb.ca>
+Date:   Wed Oct 5 15:24:34 2022 -0600
+
+    Add minify/format switch
+
+[33mcommit fe7a02a6ddc3357b546b70a6577565fce36aa2c4[m
+Author: Dustin Lammiman <dustin@nosecreekweb.ca>
+Date:   Wed Oct 5 14:45:52 2022 -0600
+
+    Rename files
+
+[33mcommit a5c8c2009e270515beea1ed2864019cb9a8ae60f[m
+Author: Dustin Lammiman <dustin@nosecreekweb.ca>
+Date:   Wed Oct 5 14:42:06 2022 -0600
+
+    Add support for css formatting
+
+[33mcommit d8592580caed303d75cac7ddc2745d4b690d4fe1[m
+Author: Dustin Lammiman <dustin@nosecreekweb.ca>
+Date:   Wed Oct 5 14:02:34 2022 -0600
+
+    Add minifier to nav menu
+
+[33mcommit 736490082b756e650f380be1d8ad7589de1d0b77[m
+Author: Dustin Lammiman <dustin@nosecreekweb.ca>
+Date:   Wed Oct 5 13:59:31 2022 -0600
+
+    Add cssMinify Page
+
+[33mcommit 23ce0c3482af4c70ce4563e10cbd4e193b4048b1[m
+Merge: 66e5061 f32a03f
+Author: DL Ford <dan-github2@dlford.co>
+Date:   Wed Oct 5 08:25:54 2022 -0700
+
+    Merge pull request #26 from Mohammed-Shoaib01/patch-1
+    
+    Create CODE_OF_CONDUCT.md
+
+[33mcommit f32a03fce53045f2aeba89d474502151f4714951[m
+Author: Mohammed-Shoaib01 <65510889+Mohammed-Shoaib01@users.noreply.github.com>
+Date:   Wed Oct 5 08:20:37 2022 -0700
+
+    Update CODE_OF_CONDUCT.md
+    
+    Hope this looks better
+
+[33mcommit 7e9be1575d8e89de336c5dd01586e2ddd53af3c3[m
+Author: Mohammed-Shoaib01 <65510889+Mohammed-Shoaib01@users.noreply.github.com>
+Date:   Wed Oct 5 20:21:49 2022 +0530
+
+    Create CODE_OF_CONDUCT.md
+    
+    Couldn't find the Code of Conduct on this repo, hope this helps!
+
+[33mcommit 66e50611f36da4f65ff17d7c4e9eacdc759084c6[m[33m ([m[1;32mmain[m[33m)[m
+Author: DL Ford <dan-github2@dlford.co>
+Date:   Wed Oct 5 07:07:09 2022 -0700
+
+    Update CONTRIBUTING.md
+
+[33mcommit c96a485ba86663304c8621ea44516dda556e54be[m
+Merge: 7d85898 5d067c5
+Author: DL Ford <dan-github2@dlford.co>
+Date:   Tue Oct 4 15:14:08 2022 -0700
+
+    Merge pull request #20 from developertools-tech/dev
+    
+    Merge dev branch
+
+[33mcommit 5d067c50a494889e5c99f11c4d1162c55e8623b6[m
+Merge: 7d85898 f24d47d
+Author: DL Ford <dan-github2@dlford.co>
+Date:   Tue Oct 4 15:07:37 2022 -0700
+
+    Merge pull request #18 from mvarrieur/main
+    
+    HTML Format
+
+[33mcommit f24d47d1241c13330e89e337584812ecb3441e96[m
+Author: Michael Varrieur <mike.varrieur@gmail.com>
+Date:   Tue Oct 4 18:00:07 2022 -0400
+
+    Move pre tag outside of p tag
+
+[33mcommit 9cb6523ba1011a9e7e32b5588f673ff27e53714e[m
+Author: Michael Varrieur <mike.varrieur@gmail.com>
+Date:   Tue Oct 4 17:55:00 2022 -0400
+
+    Fix TS error
+
+[33mcommit 61f68f5bafa2d796b7a0eecf912d72d5b7b4dcf2[m
+Author: Michael Varrieur <mike.varrieur@gmail.com>
+Date:   Tue Oct 4 17:48:13 2022 -0400
+
+    Add error message to page
+
+[33mcommit 7d85898c7e3aa0b88301fff07e81153415de7d4d[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Oct 4 08:24:45 2022 -0700
+
+    Increase timeout for JSON tests
+
+[33mcommit 072907ce4e4325cffcc9a8b294d24821f5c60088[m
+Merge: e106059 b04a5dd
+Author: DL Ford <dan-github2@dlford.co>
+Date:   Tue Oct 4 08:16:25 2022 -0700
+
+    Merge pull request #19 from TechSpiritSS/patch-1
+    
+    Fixed bug in the Demo Code
+
+[33mcommit 14cc7016b9da817fe1b3833e99ce4ff446cd2d51[m
+Author: Michael Varrieur <mike.varrieur@gmail.com>
+Date:   Mon Oct 3 20:44:05 2022 -0400
+
+    Add HTML formatter component
+
+[33mcommit b04a5dd51b27d7d67fa687ee197ebe0fc28302a0[m
+Author: Sidharth Sethi <76687985+TechSpiritSS@users.noreply.github.com>
+Date:   Tue Oct 4 20:29:10 2022 +0530
+
+    Fixed bug in the Demo Code
+
+[33mcommit e106059c987e8d928aa71d95448f564570e21842[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Oct 4 07:48:54 2022 -0700
+
+    remove .vscode directory
+
+[33mcommit 3fbb4e23987a5112a63a3813c4a447549d100141[m
+Merge: 44c6592 3bcf074
+Author: DL Ford <dan-github2@dlford.co>
+Date:   Tue Oct 4 07:43:32 2022 -0700
+
+    Merge pull request #17 from TechSpiritSS/URL-Encode-Decode
+    
+    Added URL Encode Decode tool
+
+[33mcommit 3bcf074ffc75facc11e88bb44a82d73428ea2610[m
+Author: Sidharth Sethi <techspirit@duck.com>
+Date:   Tue Oct 4 20:06:31 2022 +0530
+
+    Remade the UI as Stated
+
+[33mcommit 425834cefc46bedbb49001579f871639aa60d558[m
+Author: Sidharth Sethi <techspirit@duck.com>
+Date:   Tue Oct 4 17:02:19 2022 +0530
+
+    Made all the Tweaks
+
+[33mcommit 0457a7d69dc655522dd85729e563404f899d843e[m
+Author: Sidharth Sethi <techspirit@duck.com>
+Date:   Tue Oct 4 01:09:28 2022 +0530
+
+    Added URL Encode Decode
+
+[33mcommit 44c65921984357aae655aba96e890279522f6372[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Oct 3 07:41:30 2022 -0700
+
+    update readme/contributing
+
+[33mcommit e8a4263c956c8132b71e9c02d93cb9a909d3f6ca[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Oct 3 07:20:28 2022 -0700
+
+    add contributing.md
+
+[33mcommit 0f6854c0f3184b5a9dee794c3d1096c617f2bcea[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 17 18:49:22 2022 -0700
+
+    finish writing tests
+
+[33mcommit 51b8f9377e45722d832538447ff0dcb0ebea2394[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 17 17:57:45 2022 -0700
+
+    style 404 and offline pages
+
+[33mcommit 2bc28ea48e9aa18e9b5c9c5cdad3ef8d4caba209[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Sep 13 22:10:33 2022 -0700
+
+    adjust theme color
+
+[33mcommit fdb3f64d8811a4c21efc5f8305b993db43402f38[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Sep 13 22:09:18 2022 -0700
+
+    add theme color
+
+[33mcommit 3f8cc7af4c6ae289acda0a1350a4c153bcf4d159[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Sep 13 20:27:31 2022 -0700
+
+    move sponsor button to footer
+
+[33mcommit 319f9849451d0895a11162c45be831cfecf022c7[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Sep 13 18:12:24 2022 -0700
+
+    add logo, meta image, update font
+
+[33mcommit bf55f77ed1e5aa16880b474629c4800f8e193d56[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Sep 13 06:11:37 2022 -0700
+
+    update PR template
+
+[33mcommit 9617daa6fe0257c1be919c3200ac9d1f61a76764[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Sep 12 18:36:46 2022 -0700
+
+    Add sponsor button
+
+[33mcommit 6ab4ed6b2fe915cd390b8ee11402ea0950cc4529[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sun Sep 11 22:13:24 2022 -0700
+
+    progress on tests
+
+[33mcommit c3a076d132ca4d32b58085ecf455fddb01299bbb[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sun Sep 11 20:25:31 2022 -0700
+
+    progress on tests
+
+[33mcommit f5878cb90ce1aad7e3d60f2def25fab9fdff6474[m
+Author: DL Ford <dan-github2@dlford.co>
+Date:   Mon Sep 12 09:00:46 2022 -0700
+
+    Create FUNDING.yml
+
+[33mcommit d389f3f825a0a16aa13aa7151d9c81a473c70781[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sun Sep 11 17:05:50 2022 -0700
+
+    fix GitHub workflow for code quality
+
+[33mcommit a8dd29dc31686510ff43e2ca7298ddaf539f3f2a[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sun Sep 11 17:01:33 2022 -0700
+
+    add GitHub workflow for code quality
+
+[33mcommit f306478c9acaa2fb51ec1459b7f3d36908eeaa8e[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sun Sep 11 16:56:26 2022 -0700
+
+    fix: json not showing error output on chrome
+
+[33mcommit f3dcbdd0e2b676445dc4b89746bd7205e8db731d[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sun Sep 11 15:25:03 2022 -0700
+
+    progress on tests
+
+[33mcommit 707613f942acd2f2ce138504a4f30e50a2ea35d8[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sun Sep 11 14:11:54 2022 -0700
+
+    progress on tests
+
+[33mcommit 2dc8f2d95f5016f17b4c1b2f4741ed86d688b16b[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sun Sep 11 10:08:24 2022 -0700
+
+    progress on tests
+
+[33mcommit fbb9f23824860d533babc116c3cb71b38bba0b3c[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sun Sep 11 01:44:50 2022 -0700
+
+    progress on tests
+
+[33mcommit e501ea54b50fb71a13e362d3f89a004145d91b99[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sun Sep 11 00:08:19 2022 -0700
+
+    setup testing library
+
+[33mcommit a1048e6cd88249ff1235970f13d39e7ad2db7bc2[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 10 22:52:56 2022 -0700
+
+    update homepage
+
+[33mcommit 817cfeff2fe4e14f476a893f7de4f68c85f2af7b[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 10 22:38:07 2022 -0700
+
+    update GitHub templates
+
+[33mcommit e42cf4295c0c74d8719e149307cc4ac78f45a3f6[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 10 22:31:17 2022 -0700
+
+    changes for GitHub org
+
+[33mcommit 6c1e8154f9097d5ae40abeed90252b3de29a0f87[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 10 18:37:34 2022 -0700
+
+    add gh issue templates
+
+[33mcommit 7d44507a4b0206156bd0815fb105017c6103c034[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 10 18:22:43 2022 -0700
+
+    Revert "link footer to dlford.io, header logo to utils homepage"
+    
+    This reverts commit d89e1269c67103cc166348aa372a69ae8401be7a.
+
+[33mcommit d89e1269c67103cc166348aa372a69ae8401be7a[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 10 18:00:04 2022 -0700
+
+    link footer to dlford.io, header logo to utils homepage
+
+[33mcommit e5376e0ca0c6f00cae3b031e0695e0756207a133[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sat Sep 10 17:53:56 2022 -0700
+
+    json tool working
+
+[33mcommit cb3602ae0d3995e7b41d61705dc5d44b1e7ac8c1[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Fri Sep 9 15:27:07 2022 -0700
+
+    refactor uuid/aspect ratio/base64 for readability
+
+[33mcommit 4570c356821c530d56ca34c1a4d3c9cd995edf07[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Fri Sep 9 09:37:27 2022 -0700
+
+    improvements to uuid and base64
+
+[33mcommit 3a1c594016ac2bac543596aaf0b34ae3d36e0432[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Sep 8 22:20:33 2022 -0700
+
+    uuid finished
+
+[33mcommit acff447e976763ba7856306c7be7834c2b0dcf11[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Sep 8 19:55:49 2022 -0700
+
+    add copy uuid button
+
+[33mcommit 4290e8774fec04c0cf9a95fa81e06f5804b24443[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Sep 8 19:15:11 2022 -0700
+
+    progress on uuid
+
+[33mcommit 406446f5456bee16714cc117c08cea178d41ebb2[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Sep 8 17:46:04 2022 -0700
+
+    progress on uuid tool
+
+[33mcommit 61d10d97f17a1df87a4161724a4d2d37da31d805[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Sep 8 08:26:06 2022 -0700
+
+    fix: main area height pushing footer down
+
+[33mcommit 314d05721513f90555d56b712f794d546c0bb87d[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Sep 8 08:18:10 2022 -0700
+
+    base64 working
+
+[33mcommit 9a7dde3f22afbe2e927303ef964bc87598a3cab0[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Thu Sep 8 06:45:19 2022 -0700
+
+    remove sticky app bar on desktop
+
+[33mcommit 30d055ad3d362a4750480204199947a022128f7b[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Sep 7 22:35:10 2022 -0700
+
+    fix CI
+
+[33mcommit 2d54fe29f0eea2488b9086e647796a28fcfdf870[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Sep 7 22:32:27 2022 -0700
+
+    save layoutCount setting in aspect ratio
+
+[33mcommit f202de59d96b208ec90e66a890d07337fe0aafea[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Sep 7 21:02:34 2022 -0700
+
+    save some states in local storage
+
+[33mcommit 9c2966984d5f8f42a2486a335f33ad2b12eb8cf5[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Sep 7 19:23:58 2022 -0700
+
+    fix CI
+
+[33mcommit 5a7e354dd3bcc150f39d6411233a34ce4024217c[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Sep 7 19:20:33 2022 -0700
+
+    fix nextjs complaints
+
+[33mcommit f7510ab7a06a6ab16a7b06f3f42a2c1d0fd462a2[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Sep 7 17:50:19 2022 -0700
+
+    PWA setup
+
+[33mcommit 4f67bbda4e52fa348fa9eadcbdf5bee0eb413417[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Sep 7 17:11:24 2022 -0700
+
+    fix: chrome showing menu out of order
+
+[33mcommit 2e09862f2dcb450c37252db1f333f4d7bccf4fdd[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Sep 7 07:19:09 2022 -0700
+
+    sort menu itemse
+
+[33mcommit 40dcf12b139c7a6ee60d54a80ecb58ddbecf3999[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Wed Sep 7 06:39:50 2022 -0700
+
+    add margin, gap, and expand controls
+
+[33mcommit 6de784916b7ca210baea9375f421464fe5af26af[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Sep 6 21:48:01 2022 -0700
+
+    add margin, gap, and expand to getLayoutData
+
+[33mcommit b5afbb62cf235e75235ddb99c3819b9114003e61[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Sep 6 18:52:12 2022 -0700
+
+    progress on aspect ratio
+
+[33mcommit 1dc900233e863f944dab6ad86d03f21f958dabde[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Sep 6 08:10:58 2022 -0700
+
+    add todos
+
+[33mcommit 1b563b03416260ba07cb92e56705e77600df511b[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Sep 6 08:04:12 2022 -0700
+
+    progress on aspect ratio
+
+[33mcommit a93392425f598c2f94d683c5969cb3e68f08ddf8[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Tue Sep 6 06:53:21 2022 -0700
+
+    progress on aspect ratio
+
+[33mcommit 6f08ea88003ab16295d39f4ca14530ca085a1c74[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Sep 5 22:35:59 2022 -0700
+
+    progress on aspect ratio
+
+[33mcommit d2e8163fe00eaa09317fc7d52597417c0a353c03[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Sep 5 20:28:15 2022 -0700
+
+    Start on aspect layout table
+
+[33mcommit 1af18c01ad31b762d6f49cad6bdc018e2e7f76d7[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Sep 5 18:40:11 2022 -0700
+
+    Tweak aspect ratio
+
+[33mcommit 51590c36aa69ee64a5dc39a91fa9e1acc16dcfc1[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Sep 5 18:18:50 2022 -0700
+
+    progress on aspect ratio
+
+[33mcommit 99c794bba8c47ae157ddb9aae5e75bfa73ee2f40[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Sep 5 14:54:12 2022 -0700
+
+    start on aspect ratio
+
+[33mcommit d8e6719f463d07377689dc040c81963b2490a170[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Sep 5 12:48:09 2022 -0700
+
+    Fix footer flash on desktop
+
+[33mcommit db341734161404f5e3a0125c774ff9d9fb8e91e9[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Sep 5 12:31:37 2022 -0700
+
+    Tweaking menu system
+
+[33mcommit 1ca3b807f9e2d7201e0cd24538b74b9746589b89[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Sep 5 09:19:21 2022 -0700
+
+    add note about icon search
+
+[33mcommit 685b87ec512d3b22a998c7472bc99964c3f298f9[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Sep 5 09:18:24 2022 -0700
+
+    scaffold out existing tools
+
+[33mcommit 1649fda62acf24cb21ecff39972285f8b344f7c5[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Mon Sep 5 08:28:18 2022 -0700
+
+    Refactor nav bar
+
+[33mcommit 85655862c4aaf38091f4a842ebd4f41608716c46[m
+Author: dlford <dan-github2@dlford.co>
+Date:   Sun Sep 4 21:57:35 2022 -0700
+
+    initial commit
