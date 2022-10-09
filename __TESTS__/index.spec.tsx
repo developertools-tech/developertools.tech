@@ -20,6 +20,9 @@ describe('Home', () => {
     const menu = screen.getByRole('navigation');
     expect(menu).toBeInTheDocument();
 
+    const homeItem = screen.getByText(/Home/i);
+    expect(homeItem).toBeInTheDocument();
+
     const search = screen.getByPlaceholderText(
       'Search...',
     ) as HTMLInputElement;
@@ -34,9 +37,6 @@ describe('Home', () => {
         element.childNodes[0].childNodes[1].childNodes[0].textContent,
       ).toContain('a');
     });
-
-    const homeItem = screen.getByText(/Home/i);
-    expect(homeItem).toBeInTheDocument();
   });
 
   it('renders the footer', () => {
