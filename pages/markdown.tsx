@@ -20,8 +20,8 @@ export default function MarkDownPreview() {
         Paste or type markdown style to preview it.
       </Typography>
       <Box
+        className='mainBox'
         display='flex'
-        flexDirection='row'
         justifyContent='stretch'
         gap={3}
         width='80%'
@@ -38,8 +38,8 @@ export default function MarkDownPreview() {
         {/* eslint-disable react/no-danger */}
         <Typography
           data-testid='markdown-output'
+          className='markdownOutput'
           paragraph
-          width='60%'
           dangerouslySetInnerHTML={{ __html: marked(output) }}
         />
       </Box>
