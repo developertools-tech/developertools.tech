@@ -79,10 +79,17 @@ export default function Layout({
         <TextField
           variant='standard'
           placeholder='Search...'
+          label='Search Tools'
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={(e) => {
             const curHref = navItems
               .sort((a, b) => {
+                if (a.title === 'Home') {
+                  return -1;
+                }
+                if (b.title === 'Home') {
+                  return 1;
+                }
                 return a.title.toLowerCase() > b.title.toLowerCase()
                   ? 1
                   : -1;
@@ -100,6 +107,12 @@ export default function Layout({
       </ListItem>
       {[...navItems]
         .sort((a, b) => {
+          if (a.title === 'Home') {
+            return -1;
+          }
+          if (b.title === 'Home') {
+            return 1;
+          }
           return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
         })
         .map(({ title: itemTitle, href, Icon }) => {
@@ -116,7 +129,11 @@ export default function Layout({
                   component={Link}
                   disabled={asPath === href}
                 >
-                  <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
+                  {!!Icon && (
+                    <ListItemIcon>
+                      <Icon />
+                    </ListItemIcon>
+                  )}
                   <ListItemText primary={itemTitle} />
                 </ListItemButton>
               </ListItem>
