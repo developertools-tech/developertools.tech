@@ -25,6 +25,9 @@ export default function MarkDownPreview() {
         justifyContent='stretch'
         gap={3}
         width='80%'
+        sx={{
+          flexDirection: { md: 'row', xs: 'column' },
+        }}
       >
         <TextField
           multiline
@@ -32,6 +35,7 @@ export default function MarkDownPreview() {
           value={output}
           onChange={(ev) => setOutput(ev.target.value)}
           sx={{
+            width: { md: '60%', xs: '100%' },
             minWidth: '50%',
           }}
         />
