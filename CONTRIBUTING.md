@@ -7,19 +7,50 @@ Please create an issue before submitting a pull request, it can be assigned to y
 - Check the [issues](https://github.com/developertools-tech/developertools.tech/issues) page, any issue with the `help wanted` label is up for grabs.
 - Create a [feature request or bug report](https://github.com/developertools-tech/developertools.tech/issues/new/choose).
 
-### Pull Requests
+### General Guidelines
 
-Pull requests are welcome, please base your work on the `dev` branch, and make sure your pull request is submitted against the `dev` branch.
+- Please base your work on the `dev` branch, and make sure your pull request is submitted against the `dev` branch.
+  - If needed, the `dev` branch branch is hosted at [dev.developertools.tech](https://dev.developertools.tech).
+- Write tests for your tool or changes before submitting a PR.
+- Run the code quality script locally before submitting a PR, and address any issues (`npm run cq`).
+- Try to match the UI, style, and practices laid out in the existing tools.
+- Prefer automatic execution on text entry over buttons when feasable, unless calculation is computationally expensive.
+- Use `useLocalState` where appropriate to store values when the user leaves the page. Include the tool name in the local state key to prevent naming collisions.
+- Add copy, paste, and clear buttons where appropriate to make the tools easy to use.
+- Use the `Toast` component when a button or action does not otherwise indicate that anything happened (e.g. the copy button).
+- Use the `useSupportsClipboardRead` hook to conditionally show a paste button, this feature is not supported on all browsers.
 
 ### Getting Started
 
-First, run the development server:
+First, fork this repository on GitHub, and clone your fork to your local machine.
 
-```bash
+Create a branch for your work:
+
+```sh
+git checkout -b my_branch_name
+```
+
+Set the upstream for your fork:
+
+```sh
+git push -u origin my_branch_name
+```
+
+Install dependencies:
+
+```sh
+npm install
+```
+
+Run the development server:
+
+```sh
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+> **Note** this project includes a `devcontainer` configuration, so it's possible to contribute and do development work in both GitHub Codespaces as well as VS Code Dev Containers.
 
 ### Project Structure
 
@@ -38,10 +69,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
   - `styles`
     - Create a directory for your tool if needed, but please stick with MUI styles as much as possible
 
-### Code Quality
-
-Please use the script `npm run cq` before submitting a pull request.
-
 ### Basic Example
 
 1. Take a look at some of the existing tools to see what tooling has already been built (e.g. toasts, local storage, window size, etc.)
@@ -58,14 +85,13 @@ Please use the script `npm run cq` before submitting a pull request.
     return (
     <Layout title='My Tool Name'>
       <Heading>My Tool Name</Heading>
-        {/* TODO - Build my tool */}
-      </Heading>
+      {/* TODO - Build my tool */}
     </Layout>
     )
   }
   ```
 
-3. Add your tool to the main navigation
+3. Add your tool to the main navigation (`data/nav.ts`)
 
   ```ts
   //...

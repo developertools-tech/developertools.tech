@@ -7,7 +7,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "next/core-web-vitals",
-    "airbnb",
+    "airbnb-typescript",
     "airbnb/hooks",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
@@ -47,6 +47,7 @@
     "jest": true
   },
   "parserOptions": {
+    "project": "./tsconfig.json",
     "ecmaVersion": "latest",
     "sourceType": "module",
     "ecmaFeatures": {
@@ -54,6 +55,7 @@
     }
   },
   "rules": {
+    "no-console": "error",
     "import/extensions": "off",
     "react/prop-types": "off",
     "no-plusplus": "off",
@@ -94,7 +96,8 @@
         "message": "Must use `useLayoutEffect` as the name of the import from `useIsomorphicLayoutEffect` to leverage `eslint-plugin-react-hooks"
       }
     ],
-    "no-unused-vars": [
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
       "error",
       {
         "argsIgnorePattern": "^_"
