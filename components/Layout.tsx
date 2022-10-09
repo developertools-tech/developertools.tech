@@ -12,6 +12,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Head from 'next/head';
@@ -62,16 +63,48 @@ export default function Layout({
   children: React.ReactNode;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const { width } = useWindowSize();
-  const { asPath } = useRouter();
+  const router = useRouter();
+  const asPath = router.asPath;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const drawer = (
-    <List>
+    <List id='nav-sidebar'>
+      <ListItem>
+        <TextField
+          variant='standard'
+          placeholder='Search...'
+          label='Search Tools'
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => {
+            const curHref = navItems
+              .sort((a, b) => {
+                if (a.title === 'Home') {
+                  return -1;
+                }
+                if (b.title === 'Home') {
+                  return 1;
+                }
+                return a.title.toLowerCase() > b.title.toLowerCase()
+                  ? 1
+                  : -1;
+              })
+              .filter(({ title: _itemTitle }) => {
+                return _itemTitle
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase());
+              })[0]?.href;
+            if (e.keyCode === 13 && curHref !== null) {
+              router.push(String(curHref));
+            }
+          }}
+        />
+      </ListItem>
       {[...navItems]
         .sort((a, b) => {
           if (a.title === 'Home') {
@@ -82,21 +115,30 @@ export default function Layout({
           }
           return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
         })
-        .map(({ title: itemTitle, href, Icon }) => (
-          <ListItem
-            key={href}
-            disablePadding
-          >
-            <ListItemButton
-              href={href}
-              component={Link}
-              disabled={asPath === href}
-            >
-              <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
-              <ListItemText primary={itemTitle} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        .map(({ title: itemTitle, href, Icon }) => {
+          if (
+            itemTitle.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+            return (
+              <ListItem
+                key={href}
+                disablePadding
+              >
+                <ListItemButton
+                  href={href}
+                  component={Link}
+                  disabled={asPath === href}
+                >
+                  {!!Icon && (
+                    <ListItemIcon>
+                      <Icon />
+                    </ListItemIcon>
+                  )}
+                  <ListItemText primary={itemTitle} />
+                </ListItemButton>
+              </ListItem>
+            );
+        })}
     </List>
   );
 
