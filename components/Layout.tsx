@@ -81,35 +81,47 @@ export default function Layout({
           placeholder='Search...'
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={(e) => {
-            const curHref = navItems.filter(({ title: _itemTitle }) => {
-              return _itemTitle
-                .toLowerCase()
-                .includes(searchTerm.toLowerCase());
-            })[0]?.href;
+            const curHref = navItems
+              .sort((a, b) => {
+                return a.title.toLowerCase() > b.title.toLowerCase()
+                  ? 1
+                  : -1;
+              })
+              .filter(({ title: _itemTitle }) => {
+                return _itemTitle
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase());
+              })[0]?.href;
             if (e.keyCode === 13 && curHref !== null) {
               router.push(String(curHref));
             }
           }}
         />
       </ListItem>
-      {[...navItems].map(({ title: itemTitle, href, Icon }) => {
-        if (itemTitle.toLowerCase().includes(searchTerm.toLowerCase()))
-          return (
-            <ListItem
-              key={href}
-              disablePadding
-            >
-              <ListItemButton
-                href={href}
-                component={Link}
-                disabled={asPath === href}
+      {[...navItems]
+        .sort((a, b) => {
+          return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
+        })
+        .map(({ title: itemTitle, href, Icon }) => {
+          if (
+            itemTitle.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+            return (
+              <ListItem
+                key={href}
+                disablePadding
               >
-                <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
-                <ListItemText primary={itemTitle} />
-              </ListItemButton>
-            </ListItem>
-          );
-      })}
+                <ListItemButton
+                  href={href}
+                  component={Link}
+                  disabled={asPath === href}
+                >
+                  <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
+                  <ListItemText primary={itemTitle} />
+                </ListItemButton>
+              </ListItem>
+            );
+        })}
     </List>
   );
 
