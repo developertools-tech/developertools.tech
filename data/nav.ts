@@ -6,6 +6,7 @@ import DataObject from '@mui/icons-material/DataObject';
 import DifferenceIcon from '@mui/icons-material/Difference';
 import Fingerprint from '@mui/icons-material/Fingerprint';
 import HomeIcon from '@mui/icons-material/Home';
+import Image from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 import Looks6 from '@mui/icons-material/Looks6';
 
@@ -56,6 +57,11 @@ const navItems = [
     title: 'Lorem Ipsum',
     href: '/lorem-ipsum',
     Icon: ArticleIcon,
+  },
+  {
+    title: 'Image Converter',
+    href: '/image-converter',
+    Icon: Image,
   },
   {
     title: 'Text Diff',
