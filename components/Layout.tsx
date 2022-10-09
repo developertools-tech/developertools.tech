@@ -198,28 +198,83 @@ export default function Layout({
       >
         <Box
           display='flex'
-          justifyContent='center'
-          flexDirection='column'
-          alignItems='center'
-          pb={4}
+          justifyContent='space-evenly'
+          alignItems='flex-start'
+          flexWrap='wrap'
+          gap={3}
+          px={3}
           width='100%'
         >
-          <Typography
-            variant='h6'
-            mb={3}
-            fontWeight='normal'
+          <Box
+            display='flex'
+            justifyContent='center'
+            flexDirection='column'
+            alignItems='center'
+            pb={4}
           >
-            Sponsors
-          </Typography>
-          <Button
-            variant='contained'
-            startIcon={<FavoriteIcon />}
-            target='_blank'
-            rel='noopener noreferrer'
-            href='https://github.com/sponsors/dlford'
+            <Typography
+              variant='h6'
+              mb={3}
+              fontWeight='normal'
+            >
+              Sponsors
+            </Typography>
+            <Button
+              variant='contained'
+              startIcon={<FavoriteIcon />}
+              target='_blank'
+              rel='noopener noreferrer'
+              href='https://github.com/sponsors/dlford'
+            >
+              Sponsor
+            </Button>
+          </Box>
+          <Box
+            display='flex'
+            justifyContent='center'
+            flexDirection='column'
+            alignItems='center'
+            pb={4}
           >
-            Sponsor
-          </Button>
+            <Typography
+              variant='h6'
+              mb={3}
+              fontWeight='normal'
+            >
+              Contributors
+            </Typography>
+            <Box
+              width={240}
+              maxWidth='100%'
+              sx={{
+                '& a > span': {
+                  position: 'unset !important',
+                },
+                '& img': {
+                  position: 'relative !important',
+                  width: '100% !important',
+                  height: 'unset !important',
+                },
+              }}
+            >
+              <a
+                aria-label='View Contributors'
+                target='_blank'
+                rel='noopener noreferrer'
+                href='https://github.com/developertools-tech/developertools.tech/graphs/contributors'
+              >
+                <Image
+                  alt='Contributors'
+                  layout='fill'
+                  objectFit='contain'
+                  src='contributors.svg'
+                  loader={() =>
+                    'https://contrib.rocks/image?repo=developertools-tech/developertools.tech'
+                  }
+                />
+              </a>
+            </Box>
+          </Box>
         </Box>
         <Box
           display='flex'
