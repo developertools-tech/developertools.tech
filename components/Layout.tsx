@@ -20,6 +20,7 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
 import navItems from '../data/nav';
+import sponsors from '../data/sponsors';
 import useWindowSize from '../hooks/useWindowSize';
 import logo from '../public/logo.svg';
 import dlfordLogo from '../public/logo-full.svg';
@@ -219,6 +220,60 @@ export default function Layout({
             >
               Sponsors
             </Typography>
+            <Box
+              maxWidth={600}
+              display='flex'
+              justifyContent='center'
+              alignItems='center'
+              flexWrap='wrap'
+              gap={3}
+              mb={3}
+              sx={{
+                '& > .sponsor-wrap': {
+                  border: '1px solid #ffffff30',
+                  padding: '5px',
+                  width: 100,
+                  height: 100,
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  borderRadius: 1,
+                  textDecoration: 'none',
+                },
+              }}
+            >
+              {sponsors.map(
+                ({ title: sponsorTitle, link, logo: sponsorLogo }) => {
+                  const Content = sponsorLogo
+                    ? () => (
+                        <Image
+                          src={sponsorLogo}
+                          alt={sponsorTitle}
+                          width={90}
+                          height={90}
+                          objectFit='contain'
+                        />
+                      )
+                    : () => <Typography>{sponsorTitle}</Typography>;
+
+                  return link ? (
+                    <a
+                      className='sponsor-wrap'
+                      href={link}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      <Content />
+                    </a>
+                  ) : (
+                    <div className='sponsor-wrap'>
+                      <Content />
+                    </div>
+                  );
+                },
+              )}
+            </Box>
             <Button
               variant='contained'
               startIcon={<FavoriteIcon />}
@@ -234,7 +289,7 @@ export default function Layout({
             justifyContent='center'
             flexDirection='column'
             alignItems='center'
-            pb={4}
+            pb={8}
           >
             <Typography
               variant='h6'
