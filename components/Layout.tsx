@@ -1,8 +1,6 @@
 import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
 import GitHub from '@mui/icons-material/GitHub';
-import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -77,56 +75,23 @@ export default function Layout({
 
   const drawer = (
     <List id='nav-sidebar'>
-      {[
-        {
-          title: 'Search',
-          href: '',
-          Icon: SearchIcon,
-        },
-        {
-          title: 'Home',
-          href: '/',
-          Icon: HomeIcon,
-        },
-      ].map(({ title: itemTitle, href, Icon }) => (
-        <>
-          <ListItem
-            disablePadding
-            key={itemTitle.toLowerCase()}
-          >
-            <ListItemButton
-              {...(itemTitle !== 'Search' && {
-                href: href,
-                component: Link,
-              })}
-            >
-              <ListItemIcon>{!!Icon && <Icon />}</ListItemIcon>
-              <ListItemText primary={itemTitle} />
-            </ListItemButton>
-          </ListItem>
-          {itemTitle === 'Search' && (
-            <ListItem>
-              <TextField
-                variant='standard'
-                placeholder='Search...'
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onKeyDown={(e) => {
-                  const curHref = navItems.filter(
-                    ({ title: _itemTitle }) => {
-                      return _itemTitle
-                        .toLowerCase()
-                        .includes(searchTerm.toLowerCase());
-                    },
-                  )[0]?.href;
-                  if (e.keyCode === 13 && curHref !== null) {
-                    router.push(String(curHref));
-                  }
-                }}
-              />
-            </ListItem>
-          )}
-        </>
-      ))}
+      <ListItem>
+        <TextField
+          variant='standard'
+          placeholder='Search...'
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => {
+            const curHref = navItems.filter(({ title: _itemTitle }) => {
+              return _itemTitle
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase());
+            })[0]?.href;
+            if (e.keyCode === 13 && curHref !== null) {
+              router.push(String(curHref));
+            }
+          }}
+        />
+      </ListItem>
       {[...navItems].map(({ title: itemTitle, href, Icon }) => {
         if (itemTitle.toLowerCase().includes(searchTerm.toLowerCase()))
           return (
