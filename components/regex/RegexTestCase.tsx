@@ -95,7 +95,7 @@ function RegexTestCase({
       <TextField
         fullWidth
         multiline
-        aria-label='empty textarea'
+        aria-label='Test case content'
         placeholder='Lorem ipsum...'
         maxRows={8}
         value={testCase}
