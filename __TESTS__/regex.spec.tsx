@@ -62,7 +62,7 @@ describe('Regex Tester', () => {
     render(<RegexTester />);
     const user = userEvent.setup();
 
-    await user.type(screen.getByLabelText('Regex'), `\/\Dog\/i`);
+    await user.type(screen.getByLabelText('Regex'), `/Dog/i`);
     await user.type(screen.getByTestId('editor-latitude'), `dog`);
 
     expect(screen.getByTestId('match-result')).toHaveTextContent(
@@ -74,7 +74,7 @@ describe('Regex Tester', () => {
     render(<RegexTester />);
     const user = userEvent.setup();
 
-    await user.type(screen.getByLabelText('Regex'), `\/\\w+\/g`);
+    await user.type(screen.getByLabelText('Regex'), `/\\w+/g`);
     await user.type(
       screen.getByTestId('editor-latitude'),
       `dog cat sheep`,

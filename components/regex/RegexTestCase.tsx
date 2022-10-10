@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import DeleteIcon from '@mui/icons-material/Delete';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -58,14 +59,13 @@ interface RegexTestCaseProps {
 function getAllMatches(text: string, regex: RegExp | null) {
   if (!regex) {
     return [];
-  } else {
-    if (regex.global) {
-      const matches = text.matchAll(regex);
-      return Array.from(matches);
-    }
-    const match = text.match(regex);
-    return match ? [match] : [];
   }
+  if (regex.global) {
+    const matches = text.matchAll(regex);
+    return Array.from(matches);
+  }
+  const match = text.match(regex);
+  return match ? [match] : [];
 }
 
 function RegexTestCase({
