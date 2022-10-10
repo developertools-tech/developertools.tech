@@ -9,6 +9,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Image from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 import Looks6 from '@mui/icons-material/Looks6';
+import SubjectIcon from '@mui/icons-material/Subject';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
 
@@ -52,6 +53,11 @@ const navItems = [
     title: 'HTML',
     href: '/html',
     Icon: Code,
+  },
+  {
+    title: 'YAML',
+    href: '/yaml',
+    Icon: SubjectIcon,
   },
   {
     title: 'Lorem Ipsum',
