@@ -349,6 +349,9 @@ export default function Layout({
             <Box
               width={240}
               maxWidth='100%'
+              display='flex'
+              flexDirection='column'
+              alignItems='center'
               sx={{
                 '& a > span': {
                   position: 'unset !important',
@@ -388,10 +391,12 @@ export default function Layout({
         >
           <Box
             px={2}
-            py={1}
+            py={2}
             display='flex'
             justifyContent='center'
             alignItems='center'
+            flexWrap='wrap'
+            gap={1}
           >
             <Typography
               display='flex'
@@ -425,6 +430,26 @@ export default function Layout({
                 <GitHub />
               </IconButton>
             </Typography>
+            <Box
+              mt={1}
+              mx={{ xs: 1, md: 6 }}
+            >
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                href='https://www.netlify.com'
+              >
+                <Image
+                  alt='Deploys by Netlify'
+                  width={114}
+                  height={51}
+                  src='netlify.svg'
+                  loader={() =>
+                    'https://www.netlify.com/v3/img/components/netlify-color-accent.svg'
+                  }
+                />
+              </a>
+            </Box>
           </Box>
         </Box>
       </Box>
