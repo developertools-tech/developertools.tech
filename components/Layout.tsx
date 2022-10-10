@@ -67,7 +67,7 @@ export default function Layout({
 
   const { width } = useWindowSize();
   const router = useRouter();
-  const asPath = router.asPath;
+  const { asPath } = router;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -138,6 +138,8 @@ export default function Layout({
                 </ListItemButton>
               </ListItem>
             );
+
+          return undefined;
         })}
     </List>
   );

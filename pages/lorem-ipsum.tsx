@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
+import hash from 'hash-sum';
 import React, { useEffect, useState } from 'react';
 
 import Heading from '../components/Heading';
@@ -226,17 +227,17 @@ export default function LoremIpsumPage() {
           </Box>
         </Box>
         <div data-testid='lorem-ipsum-text'>
-          {paragraphs.map((paragraph, index) => (
-            <>
-              {/* eslint-disable-next-line react/no-array-index-key */}
+          {paragraphs.map((paragraph) => {
+            const id = hash(paragraph);
+            return (
               <Typography
                 mb={3}
-                key={index}
+                key={id}
               >
                 {paragraph}
               </Typography>
-            </>
-          ))}
+            );
+          })}
         </div>
       </Box>
       <Toast
