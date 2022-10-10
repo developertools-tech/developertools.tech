@@ -10,6 +10,37 @@ import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import RegexTestCase from '../components/regex/RegexTestCase';
 
+const REGEX_REGEX = /^\/(.+)\/([gimsuy]*)$/;
+
+function parseRegex(text: string) {
+  const trimmedText = text.trim();
+  if (!trimmedText) {
+    return { regex: null, error: null };
+  }
+  try {
+    const match = trimmedText.match(REGEX_REGEX);
+    if (match) {
+      const [, expression, flags] = match;
+      return {
+        regex: new RegExp(expression, flags),
+        error: null,
+      };
+    }
+    return {
+      regex: new RegExp(trimmedText),
+      error: null,
+    };
+  } catch (e) {
+    return {
+      regex: null,
+      error: e as Error,
+    };
+  }
+}
+
+const HELPER_TEXT =
+  'Expressions with and without trailing slashes are supported. Add trailing slashes to use flags, ie /w+/ig';
+
 export default function RegexTesterPage() {
   const [regexInput, setRegexInput] = useState('');
   const [testCases, setTestCases] = useState<string[]>(['']);
@@ -33,22 +64,10 @@ export default function RegexTesterPage() {
     },
     [],
   );
-  const { regex, error } = useMemo(() => {
-    if (!regexInput) {
-      return { regex: null, error: null };
-    }
-    try {
-      return {
-        regex: new RegExp(regexInput),
-        error: null,
-      };
-    } catch (e) {
-      return {
-        regex: null,
-        error: e as Error,
-      };
-    }
-  }, [regexInput]);
+  const { regex, error } = useMemo(
+    () => parseRegex(regexInput),
+    [regexInput],
+  );
   return (
     <Layout title='Regex Tester'>
       <Heading>Regex Tester</Heading>
@@ -61,7 +80,7 @@ export default function RegexTesterPage() {
             maxRows={8}
             value={regexInput}
             error={!!error}
-            helperText={error && error.message}
+            helperText={error ? error.message : HELPER_TEXT}
             onChange={(event) =>
               setRegexInput(event.currentTarget.value)
             }
