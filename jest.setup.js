@@ -4,5 +4,11 @@
 // Used for __tests__/testing-library.js
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
+import * as nextRouter from 'next/router';
 
 jest.setTimeout(30000); // in milliseconds
+
+beforeEach(() => {
+  nextRouter.useRouter = jest.fn();
+  nextRouter.useRouter.mockImplementation(() => ({ route: '/' }));
+});
