@@ -16,6 +16,7 @@ function RegexMatch({ match }: RegexMatchProps) {
       <Typography
         color='grey.600'
         sx={{ mb: 1 }}
+        data-testid='match-result'
       >
         Full match:{' '}
         <Typography
@@ -30,6 +31,7 @@ function RegexMatch({ match }: RegexMatchProps) {
           key={index}
           color='grey.600'
           sx={{ mt: 1 }}
+          data-testid='match-group'
         >
           Group #{index + 1}:{' '}
           <Typography
@@ -114,6 +116,10 @@ function RegexTestCase({
         maxRows={8}
         value={testCase}
         onChange={(event) => onInput(index, event.currentTarget.value)}
+        InputProps={{
+          // @ts-expect-error Unknown props will be passed as-is, needed for tests to work
+          'data-testid': 'editor-latitude',
+        }}
       />
       {matches &&
         matches.map((match, key) => (
