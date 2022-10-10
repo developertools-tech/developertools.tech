@@ -53,11 +53,11 @@ export default function RegexTesterPage() {
     <Layout title='Regex Tester'>
       <Heading>Regex Tester</Heading>
       <Container>
-        <Box sx={{ m: 2 }}>
+        <Box sx={{ mb: 2 }}>
           <TextField
             fullWidth
             label='Regex'
-            placeholder='^(\d+)$.'
+            placeholder='^(\d+)$'
             maxRows={8}
             value={regexInput}
             error={!!error}
