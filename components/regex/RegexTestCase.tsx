@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+// TODO: Figure out a better way to replace array index keys
 import DeleteIcon from '@mui/icons-material/Delete';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -28,7 +30,6 @@ function RegexMatch({ match }: RegexMatchProps) {
       </Typography>
       {groups.map((group, index) => (
         <Typography
-          // eslint-disable-next-line react/no-array-index-key
           key={index}
           color='grey.600'
           sx={{ mt: 1 }}
@@ -124,7 +125,6 @@ function RegexTestCase({
       {matches &&
         matches.map((match, key) => (
           <RegexMatch
-            // eslint-disable-next-line react/no-array-index-key
             key={key}
             match={match}
           />

@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+// TODO: Figure out a better way to replace array index keys
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -95,7 +97,6 @@ export default function RegexTesterPage() {
         <Stack spacing={2}>
           {testCases.map((testCase, index) => (
             <RegexTestCase
-              // eslint-disable-next-line react/no-array-index-key
               key={index}
               index={index}
               testCase={testCase}
