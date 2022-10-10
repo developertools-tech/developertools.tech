@@ -1,4 +1,4 @@
-import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import GitHub from '@mui/icons-material/GitHub';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
@@ -279,11 +279,23 @@ export default function Layout({
                   width: 100,
                   height: 100,
                   display: 'flex',
+                  flexDirection: 'column',
+                  gap: 0.5,
                   justifyContent: 'center',
                   alignItems: 'center',
                   textAlign: 'center',
-                  borderRadius: 1,
+                  borderRadius: 1.5,
                   textDecoration: 'none',
+                  transition: 'border-color 0.2s ease-in-out',
+                },
+                '& > .sponsor-wrap.cta': {
+                  border: '1px solid #f4433675',
+                },
+                '& > a.sponsor-wrap:hover': {
+                  border: '1px solid #ffffff75',
+                },
+                '& > a.sponsor-wrap.cta:hover': {
+                  border: '1px solid #f44336ba',
                 },
               }}
             >
@@ -321,16 +333,16 @@ export default function Layout({
                   );
                 },
               )}
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                className='sponsor-wrap cta'
+                href='https://github.com/sponsors/dlford'
+              >
+                <FavoriteIcon color='error' />
+                <Typography>Become a Sponsor</Typography>
+              </a>
             </Box>
-            <Button
-              variant='contained'
-              startIcon={<FavoriteIcon />}
-              target='_blank'
-              rel='noopener noreferrer'
-              href='https://github.com/sponsors/dlford'
-            >
-              Sponsor
-            </Button>
           </Box>
           <Box
             display='flex'
@@ -355,6 +367,7 @@ export default function Layout({
               sx={{
                 '& a > span': {
                   position: 'unset !important',
+                  width: '100% !important',
                 },
                 '& img': {
                   position: 'relative !important',
