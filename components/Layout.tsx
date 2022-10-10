@@ -301,6 +301,7 @@ export default function Layout({
 
                   return link ? (
                     <a
+                      key={title}
                       className='sponsor-wrap'
                       href={link}
                       target='_blank'
@@ -309,7 +310,10 @@ export default function Layout({
                       <Content />
                     </a>
                   ) : (
-                    <div className='sponsor-wrap'>
+                    <div
+                      key={title}
+                      className='sponsor-wrap'
+                    >
                       <Content />
                     </div>
                   );
