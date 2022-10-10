@@ -366,7 +366,7 @@ export default function Layout({
                   objectFit='contain'
                   src='contributors.svg'
                   loader={() =>
-                    'https://contrib.rocks/image?repo=developertools-tech/developertools.tech'
+                    'https://contrib.rocks/image?repo=developertools-tech/developertools.tech&columns=6&anon=1'
                   }
                 />
               </a>
