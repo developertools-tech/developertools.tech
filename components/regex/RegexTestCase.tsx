@@ -53,6 +53,19 @@ interface RegexTestCaseProps {
   deleteDisabled: boolean;
 }
 
+function getAllMatches(text: string, regex: RegExp | null) {
+  if (!regex) {
+    return [];
+  } else {
+    if (regex.global) {
+      const matches = text.matchAll(regex);
+      return Array.from(matches);
+    }
+    const match = text.match(regex);
+    return match ? [match] : [];
+  }
+}
+
 function RegexTestCase({
   index,
   testCase,
@@ -61,13 +74,14 @@ function RegexTestCase({
   onInput,
   deleteDisabled,
 }: RegexTestCaseProps) {
-  const match = regex && testCase.match(regex);
+  const matches = getAllMatches(testCase, regex);
+  const hasMatch = matches.length > 0;
   return (
     <Box
       p={2}
       border={1}
       borderRadius={1}
-      borderColor={match ? 'success.main' : 'grey.900'}
+      borderColor={hasMatch ? 'success.main' : 'grey.900'}
     >
       <Box
         sx={{
@@ -79,7 +93,7 @@ function RegexTestCase({
       >
         <Typography
           component='h3'
-          color={match ? 'success.main' : 'grey.300'}
+          color={hasMatch ? 'success.main' : 'grey.300'}
         >
           Case #{index + 1}
         </Typography>
@@ -101,7 +115,13 @@ function RegexTestCase({
         value={testCase}
         onChange={(event) => onInput(index, event.currentTarget.value)}
       />
-      {match && <RegexMatch match={match} />}
+      {matches &&
+        matches.map((match, key) => (
+          <RegexMatch
+            key={key}
+            match={match}
+          />
+        ))}
     </Box>
   );
 }
