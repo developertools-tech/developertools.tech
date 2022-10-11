@@ -29,6 +29,7 @@
     "csso": "^5.0.5",
     "diff": "^5.1.0",
     "hash-sum": "^2.0.0",
+    "html-entities": "^2.3.3",
     "js-base64": "^3.7.2",
     "next": "12.2.5",
     "next-images": "^1.8.4",
