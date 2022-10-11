@@ -10,63 +10,33 @@ import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 import Toast, { ToastProps } from './Toast';
 
 type Props = {
-  isCopy: boolean;
+  hasCopy: boolean;
   label: string;
   value: string;
   onClearClick?: () => void;
   onPasteCleck?: (text: string) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: React.FocusEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  >;
 };
 
-export default function TextFieldWithCopyOrPaste(props: Props) {
-  const { isCopy, label, value, onClearClick, onPasteCleck, onChange } =
-    props;
+export default function TextFieldWithCopyPaste(props: Props) {
+  const {
+    hasCopy,
+    label,
+    value,
+    onClearClick,
+    onPasteCleck,
+    onChange,
+    onBlur,
+  } = props;
 
   const supportsClipboardRead = useSupportsClipboardRead();
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
-
-  let copyOrPaste: false | JSX.Element;
-  if (isCopy) {
-    copyOrPaste = (
-      <Button
-        startIcon={<ContentCopyIcon />}
-        disabled={!value}
-        onClick={() => {
-          navigator.clipboard.writeText(value || '').then(
-            () => {
-              setToastMessage('Copied to clipboard');
-              setToastSeverity('success');
-              setToastOpen(true);
-            },
-            () => {
-              setToastMessage('Failed to copy to clipboard');
-              setToastSeverity('error');
-              setToastOpen(true);
-            },
-          );
-        }}
-      >
-        Copy
-      </Button>
-    );
-  } else {
-    copyOrPaste = !!supportsClipboardRead && !!onPasteCleck && (
-      <Button
-        startIcon={<ContentPasteGoIcon />}
-        onClick={async () => {
-          const text = await navigator.clipboard.readText();
-          if (text) {
-            onPasteCleck?.(text);
-          }
-        }}
-      >
-        Paste
-      </Button>
-    );
-  }
 
   return (
     <Box
@@ -80,6 +50,7 @@ export default function TextFieldWithCopyOrPaste(props: Props) {
         value={value}
         name={label}
         onChange={onChange}
+        onBlur={onBlur}
         disabled={onChange === undefined}
       />
       <Box
@@ -97,7 +68,41 @@ export default function TextFieldWithCopyOrPaste(props: Props) {
             Clear
           </Button>
         )}
-        {copyOrPaste}
+        {props.hasCopy && (
+          <Button
+            startIcon={<ContentCopyIcon />}
+            disabled={!value}
+            onClick={() => {
+              navigator.clipboard.writeText(value || '').then(
+                () => {
+                  setToastMessage('Copied to clipboard');
+                  setToastSeverity('success');
+                  setToastOpen(true);
+                },
+                () => {
+                  setToastMessage('Failed to copy to clipboard');
+                  setToastSeverity('error');
+                  setToastOpen(true);
+                },
+              );
+            }}
+          >
+            Copy
+          </Button>
+        )}
+        {!!supportsClipboardRead && !!onPasteCleck && (
+          <Button
+            startIcon={<ContentPasteGoIcon />}
+            onClick={async () => {
+              const text = await navigator.clipboard.readText();
+              if (text) {
+                onPasteCleck?.(text);
+              }
+            }}
+          >
+            Paste
+          </Button>
+        )}
       </Box>
       <Toast
         open={toastOpen}
