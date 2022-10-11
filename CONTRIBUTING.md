@@ -2,9 +2,11 @@
 
 This project is built with NextJS, TypeScript, and Material UI. Being a PWA, ideally all tools should work offline without any server side code.
 
-Please create an issue before submitting a pull request, it can be assigned to you if desired. This way we can ensure your idea will be approved before you work on it. Any issue with the `triage` label is still pending review.
+Please do not start working on something until you have an issue assigned to you, nobody wants you to waste your time and effort. If you see an issue you want to work on please add a comment asking for it to be assigned to you. If there is no issue, please create one first.
 
-- Check the [issues](https://github.com/developertools-tech/developertools.tech/issues) page, any issue with the `help wanted` label is up for grabs.
+- Check the [issues](https://github.com/developertools-tech/developertools.tech/issues).
+  - Any issue with the `triage` label is pending review and not ready to be worked on or claimed.
+  - Any issue with the `help wanted` label is ready to be claimed.
 - Create a [feature request or bug report](https://github.com/developertools-tech/developertools.tech/issues/new/choose).
 
 ### General Guidelines
