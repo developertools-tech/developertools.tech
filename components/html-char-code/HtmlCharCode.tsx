@@ -1,43 +1,24 @@
 import Box from '@mui/material/Box';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
 import { decode, encode } from 'html-entities';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import useLocalState from '../../hooks/useLocalState';
-import TextFieldWithCopyOrPaste from '../TextFieldWithCopyOrPaste';
-
-type MODE = 'encode' | 'decode';
+import TextFieldWithCopyPaste from '../TextFieldWithCopyPaste';
 
 export default function HtmlCharCodes() {
-  const [mode, setMode] = useLocalState<MODE>({
-    key: 'htmlCharCode-mode',
-    defaultValue: 'encode',
-  });
-  const [input, setInput] = useLocalState<string>({
-    key: 'htmlCharCode-input',
+  const [unescaped, setUnescaped] = useLocalState<string>({
+    key: 'htmlCharCode-unescaped',
     defaultValue: '',
   });
-  const [output, setOutput] = useLocalState<string>({
-    key: 'htmlCharCode-output',
+  const [escaped, setEscaped] = useLocalState<string>({
+    key: 'htmlCharCode-escaped',
     defaultValue: '',
   });
 
-  useEffect(() => {
-    const convert = (text: string): string => {
-      switch (mode) {
-        case 'encode':
-          return encode(text, { mode: 'extensive' });
-        default:
-          return decode(text);
-      }
-    };
-
-    setOutput(convert(input));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [input, mode]);
+  const clearBoth = () => {
+    setUnescaped('');
+    setEscaped('');
+  };
 
   return (
     <Box
@@ -48,34 +29,33 @@ export default function HtmlCharCodes() {
       width={1000}
       maxWidth='100%'
     >
-      <Box paddingBottom={2}>
-        <FormControl>
-          <InputLabel id='mode-select-label'>Mode</InputLabel>
-          <Select
-            labelId='mode-select-label'
-            id='mode-select'
-            data-testid='mode-select'
-            value={mode}
-            label='Mode'
-            onChange={(e) => setMode(e.target.value as MODE)}
-          >
-            <MenuItem value='encode'>Encode</MenuItem>
-            <MenuItem value='decode'>Decode</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
-      <TextFieldWithCopyOrPaste
-        isCopy={false}
-        label='Input'
-        value={input}
-        onClearClick={() => setInput('')}
-        onPasteCleck={(text) => setInput(text)}
-        onChange={(event) => setInput(event.target.value)}
+      <TextFieldWithCopyPaste
+        hasCopy
+        label='Unescaped'
+        value={unescaped}
+        onClearClick={clearBoth}
+        onPasteCleck={(text) => {
+          setUnescaped(text);
+          setEscaped(encode(text, { mode: 'extensive' }));
+        }}
+        onChange={(event) => {
+          setUnescaped(event.target.value);
+          setEscaped(encode(event.target.value, { mode: 'extensive' }));
+        }}
       />
-      <TextFieldWithCopyOrPaste
-        isCopy
-        label='Output'
-        value={output}
+      <TextFieldWithCopyPaste
+        hasCopy
+        label='Escaped'
+        value={escaped}
+        onClearClick={clearBoth}
+        onPasteCleck={(text) => {
+          setEscaped(text);
+          setUnescaped(decode(text));
+        }}
+        onChange={(event) => setEscaped(event.target.value)}
+        onBlur={(e) => {
+          setUnescaped(decode(e.target.value));
+        }}
       />
     </Box>
   );

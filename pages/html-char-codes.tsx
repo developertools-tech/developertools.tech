@@ -10,8 +10,8 @@ export default function HtmlCharCodesPage() {
     <Layout title='HTML Character Codes'>
       <Heading>HTML Character Codes</Heading>
       <Typography paragraph>
-        Paste or type in some text and it will be encode or decode all
-        HTML character codes
+        Paste or type each to escape or unescape HTML character codes
+        from each other
       </Typography>
       <HtmlCharCodes />
     </Layout>
