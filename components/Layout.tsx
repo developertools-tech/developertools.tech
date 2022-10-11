@@ -94,11 +94,11 @@ export default function Layout({
                   ? 1
                   : -1;
               })
-              .filter(({ title: _itemTitle }) => {
-                return _itemTitle
+              .filter(({ title: _itemTitle }) =>
+                _itemTitle
                   .toLowerCase()
-                  .includes(searchTerm.toLowerCase());
-              })[0]?.href;
+                  .includes(searchTerm.toLowerCase()),
+              )[0]?.href;
             if (e.keyCode === 13 && curHref !== null) {
               router.push(String(curHref));
             }
