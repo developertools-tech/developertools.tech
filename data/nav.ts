@@ -74,6 +74,11 @@ const navItems = [
     href: '/regex',
     Icon: Search,
   },
+  {
+    title: 'Case Converter',
+    href: '/case-converter',
+    Icon: Search,
+  },
 ];
 
 export default navItems;
