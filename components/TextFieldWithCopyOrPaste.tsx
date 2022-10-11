@@ -13,9 +13,9 @@ type Props = {
   label: string;
   value: string;
   setValue: (newValue: string) => void;
-  onClearClick: () => void;
-  onPasteCleck: (text: string) => void;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onClearClick?: () => void;
+  onPasteCleck?: (text: string) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function TextFieldWithCopyOrPaste(props: Props) {
@@ -50,13 +50,13 @@ export default function TextFieldWithCopyOrPaste(props: Props) {
       </Button>
     );
   } else {
-    copyOrPaste = !!supportsClipboardRead && (
+    copyOrPaste = !!supportsClipboardRead && !!props.onPasteCleck && (
       <Button
         startIcon={<ContentPasteGoIcon />}
         onClick={async () => {
           const text = await navigator.clipboard.readText();
           if (text) {
-            props.onPasteCleck(text);
+            props.onPasteCleck?.(text);
           }
         }}
       >
@@ -77,6 +77,7 @@ export default function TextFieldWithCopyOrPaste(props: Props) {
         value={props.value}
         name={props.label}
         onChange={props.onChange}
+        disabled={props.onChange == undefined}
       />
       <Box
         display='flex'
@@ -84,13 +85,15 @@ export default function TextFieldWithCopyOrPaste(props: Props) {
         justifyContent='end'
         gap={2}
       >
-        <Button
-          startIcon={<ClearIcon />}
-          disabled={!props.value}
-          onClick={props.onClearClick}
-        >
-          Clear
-        </Button>
+        {!!props.onClearClick && (
+          <Button
+            startIcon={<ClearIcon />}
+            disabled={!props.value}
+            onClick={props.onClearClick}
+          >
+            Clear
+          </Button>
+        )}
         {copyOrPaste}
       </Box>
       <Toast
