@@ -1,24 +1,27 @@
-import Box from '@mui/material/Box';
-import Button, { ButtonTypeMap } from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import ClearIcon from '@mui/icons-material/Clear';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
-import { useState } from 'react';
-import Toast, { ToastProps } from './Toast';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import React, { useState } from 'react';
+
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
+import Toast, { ToastProps } from './Toast';
 
 type Props = {
   isCopy: boolean;
   label: string;
   value: string;
-  setValue: (newValue: string) => void;
   onClearClick?: () => void;
   onPasteCleck?: (text: string) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function TextFieldWithCopyOrPaste(props: Props) {
+  const { isCopy, label, value, onClearClick, onPasteCleck, onChange } =
+    props;
+
   const supportsClipboardRead = useSupportsClipboardRead();
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
@@ -26,13 +29,13 @@ export default function TextFieldWithCopyOrPaste(props: Props) {
     useState<ToastProps['severity']>('success');
 
   let copyOrPaste: false | JSX.Element;
-  if (props.isCopy) {
+  if (isCopy) {
     copyOrPaste = (
       <Button
         startIcon={<ContentCopyIcon />}
-        disabled={!props.value}
+        disabled={!value}
         onClick={() => {
-          navigator.clipboard.writeText(props.value || '').then(
+          navigator.clipboard.writeText(value || '').then(
             () => {
               setToastMessage('Copied to clipboard');
               setToastSeverity('success');
@@ -50,13 +53,13 @@ export default function TextFieldWithCopyOrPaste(props: Props) {
       </Button>
     );
   } else {
-    copyOrPaste = !!supportsClipboardRead && !!props.onPasteCleck && (
+    copyOrPaste = !!supportsClipboardRead && !!onPasteCleck && (
       <Button
         startIcon={<ContentPasteGoIcon />}
         onClick={async () => {
           const text = await navigator.clipboard.readText();
           if (text) {
-            props.onPasteCleck?.(text);
+            onPasteCleck?.(text);
           }
         }}
       >
@@ -73,11 +76,11 @@ export default function TextFieldWithCopyOrPaste(props: Props) {
     >
       <TextField
         multiline
-        label={props.label}
-        value={props.value}
-        name={props.label}
-        onChange={props.onChange}
-        disabled={props.onChange == undefined}
+        label={label}
+        value={value}
+        name={label}
+        onChange={onChange}
+        disabled={onChange === undefined}
       />
       <Box
         display='flex'
@@ -85,11 +88,11 @@ export default function TextFieldWithCopyOrPaste(props: Props) {
         justifyContent='end'
         gap={2}
       >
-        {!!props.onClearClick && (
+        {!!onClearClick && (
           <Button
             startIcon={<ClearIcon />}
-            disabled={!props.value}
-            onClick={props.onClearClick}
+            disabled={!value}
+            onClick={onClearClick}
           >
             Clear
           </Button>

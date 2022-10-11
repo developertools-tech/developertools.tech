@@ -77,7 +77,7 @@ const navItems = [
   },
   {
     title: 'Html Character Codes',
-    href: '/html-char-code',
+    href: '/html-char-codes',
     Icon: Abc,
   },
 ];

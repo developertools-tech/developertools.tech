@@ -3,14 +3,15 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { ChangeEvent, useEffect, useState } from 'react';
-import TextFieldWithCopyOrPaste from '../TextFieldWithCopyOrPaste';
-import { encode, decode } from 'html-entities';
+import { decode, encode } from 'html-entities';
+import React, { useEffect } from 'react';
+
 import useLocalState from '../../hooks/useLocalState';
+import TextFieldWithCopyOrPaste from '../TextFieldWithCopyOrPaste';
 
 type MODE = 'encode' | 'decode';
 
-export default function HtmlCharCode() {
+export default function HtmlCharCodes() {
   const [mode, setMode] = useLocalState<MODE>({
     key: 'htmlCharCode-mode',
     defaultValue: 'encode',
@@ -24,17 +25,18 @@ export default function HtmlCharCode() {
     defaultValue: '',
   });
 
-  const convert = (text: string): string => {
-    switch (mode) {
-      case 'encode':
-        return encode(text, { mode: 'extensive' });
-      case 'decode':
-        return decode(text);
-    }
-  };
-
   useEffect(() => {
+    const convert = (text: string): string => {
+      switch (mode) {
+        case 'encode':
+          return encode(text, { mode: 'extensive' });
+        default:
+          return decode(text);
+      }
+    };
+
     setOutput(convert(input));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input, mode]);
 
   return (
@@ -56,25 +58,23 @@ export default function HtmlCharCode() {
             label='Mode'
             onChange={(e) => setMode(e.target.value as MODE)}
           >
-            <MenuItem value={'encode'}>Encode</MenuItem>
-            <MenuItem value={'decode'}>Decode</MenuItem>
+            <MenuItem value='encode'>Encode</MenuItem>
+            <MenuItem value='decode'>Decode</MenuItem>
           </Select>
         </FormControl>
       </Box>
       <TextFieldWithCopyOrPaste
         isCopy={false}
-        label={'Input'}
+        label='Input'
         value={input}
-        setValue={setInput}
         onClearClick={() => setInput('')}
         onPasteCleck={(text) => setInput(text)}
         onChange={(event) => setInput(event.target.value)}
       />
       <TextFieldWithCopyOrPaste
-        isCopy={true}
-        label={'Output'}
+        isCopy
+        label='Output'
         value={output}
-        setValue={setOutput}
       />
     </Box>
   );
