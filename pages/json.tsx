@@ -47,10 +47,12 @@ export default function JsonPage() {
     }
   }, [input, setInput]);
 
+  /*
   function handleChange(value: string) {
     if (!value) setError('');
     setInput(value || '');
   }
+  */
 
   return (
     <Layout title='JSON'>
@@ -62,9 +64,9 @@ export default function JsonPage() {
         Paste or type JSON to validate and format it.
       </Typography>
       <Editor
-        value={input || ''}
-        extensions={['json']}
-        onChange={handleChange}
+      // value={input || ''}
+      // extensions={['json']}
+      // onChange={handleChange}
       />
       <Box
         display='flex'

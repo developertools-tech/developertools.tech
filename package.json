@@ -18,9 +18,10 @@
     "prettier:ci": "prettier --check components pages hooks lib utility data"
   },
   "dependencies": {
-    "@codemirror/commands": "^6.1.0",
-    "@codemirror/lang-javascript": "^6.0.2",
     "@codemirror/lang-json": "^6.0.0",
+    "@codemirror/language": "^6.2.1",
+    "@codemirror/state": "^6.1.2",
+    "@codemirror/view": "^6.3.1",
     "@emotion/cache": "^11.10.3",
     "@emotion/react": "^11.10.4",
     "@emotion/server": "^11.10.0",
@@ -29,8 +30,6 @@
     "@lezer/highlight": "^1.0.0",
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.3",
-    "@uiw/codemirror-themes": "^4.12.3",
-    "@uiw/react-codemirror": "^4.12.3",
     "clsx": "^1.2.1",
     "csso": "^5.0.5",
     "diff": "^5.1.0",

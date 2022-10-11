@@ -1,3 +1,5 @@
+export {};
+/*
 import { tags as t } from '@lezer/highlight';
 import { createTheme } from '@uiw/codemirror-themes';
 
@@ -31,3 +33,4 @@ const theme = createTheme({
 });
 
 export default theme;
+*/

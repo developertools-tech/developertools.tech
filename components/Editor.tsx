@@ -1,4 +1,41 @@
 import { json } from '@codemirror/lang-json';
+import {
+  defaultHighlightStyle,
+  syntaxHighlighting,
+} from '@codemirror/language';
+import type { Extension } from '@codemirror/state';
+import { EditorView, lineNumbers } from '@codemirror/view';
+import React, { useEffect, useRef } from 'react';
+
+export interface EditorProps {
+  extensions?: Extension[];
+}
+
+export default function Editor({ extensions = [] }: EditorProps) {
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!ref.current) return undefined;
+
+    const view = new EditorView({
+      extensions: [
+        json(),
+        ...extensions,
+        lineNumbers(),
+        syntaxHighlighting(defaultHighlightStyle),
+      ],
+      parent: ref.current,
+    });
+
+    return () => view?.destroy();
+  }, [ref, extensions]);
+
+  return <div ref={ref} />;
+}
+
+/*
+
+import { json } from '@codemirror/lang-json';
 import type { ViewUpdate } from '@codemirror/view';
 import CodeMirror from '@uiw/react-codemirror';
 import React from 'react';
@@ -41,3 +78,5 @@ export default function Editor({
     />
   );
 }
+
+*/
