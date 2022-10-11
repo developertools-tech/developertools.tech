@@ -365,6 +365,9 @@ export default function Layout({
               flexDirection='column'
               alignItems='center'
               sx={{
+                '& a': {
+                  width: '100%',
+                },
                 '& a > span': {
                   position: 'unset !important',
                   width: '100% !important',
