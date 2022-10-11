@@ -1,0 +1,7 @@
+__TESTS__/
+.git/
+.devcontainer/
+.github/
+.vscode/
+node_modules/
+*.md
