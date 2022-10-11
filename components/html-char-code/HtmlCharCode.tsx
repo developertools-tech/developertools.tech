@@ -54,6 +54,7 @@ export default function HtmlCharCodes() {
           <Select
             labelId='mode-select-label'
             id='mode-select'
+            data-testid='mode-select'
             value={mode}
             label='Mode'
             onChange={(e) => setMode(e.target.value as MODE)}
