@@ -7,8 +7,8 @@ import React from 'react';
 
 import HtmlCharCode from '../pages/html-char-codes';
 
-const specialChars = '<>"\'&©∆';
-const encodedChars = '&lt;&gt;&quot;&apos;&amp;&copy;&#8710;';
+const unescapedChars = '<>"\'&©∆';
+const escapedChars = '&lt;&gt;&quot;&apos;&amp;&copy;&#8710;';
 
 let user: UserEvent;
 beforeEach(() => {
@@ -20,70 +20,68 @@ afterEach(() => {
 });
 
 describe('HtmlCharCodes', () => {
-  it('encode', async () => {
+  it('input unescaped', async () => {
     render(<HtmlCharCode />);
-    const input = screen.getByLabelText(/Input/i);
-    const output = screen.getByLabelText(/Output/i);
+    const unescaped = screen.getByLabelText(/Unescaped/i);
+    const escaped = screen.getByLabelText(/^Escaped/i);
 
-    await user.clear(input);
-    await user.type(input, specialChars);
-    expect(output).toHaveValue(encodedChars);
+    await user.clear(unescaped);
+    await user.type(unescaped, unescapedChars);
+    expect(escaped).toHaveValue(escapedChars);
   });
 
-  it('decode', async () => {
+  it('input escaped', async () => {
     render(<HtmlCharCode />);
-    const input = screen.getByLabelText(/Input/i);
-    const output = screen.getByLabelText(/Output/i);
+    const unescaped = screen.getByLabelText(/Unescaped/i);
+    const escaped = screen.getByLabelText(/^Escaped/i);
 
-    await user.click(screen.getByRole('button', { name: /Mode .*/i }));
-    await user.click(
-      screen.getByRole('option', {
-        name: 'Decode',
-      }),
-    );
-
-    await user.click(input);
-    await user.clear(input);
-    await user.type(input, encodedChars);
-    expect(output).toHaveValue(specialChars);
+    await user.clear(escaped);
+    await user.type(escaped, escapedChars);
+    expect(unescaped).toHaveValue(unescapedChars);
   });
 
-  it('clears input and output with clear button', async () => {
+  it('clears unescaped and escaped with clear button', async () => {
     render(<HtmlCharCode />);
-    const input = screen.getByLabelText(/Input/i);
-    const output = screen.getByLabelText(/Output/i);
+    const unescaped = screen.getByLabelText(/Unescaped/i);
+    const escaped = screen.getByLabelText(/^Escaped/i);
 
-    await user.clear(input);
-    await user.type(input, specialChars);
-    expect(input).not.toHaveValue('');
-    expect(output).not.toHaveValue('');
+    await user.clear(unescaped);
+    await user.type(unescaped, unescapedChars);
+    expect(unescaped).not.toHaveValue('');
+    expect(escaped).not.toHaveValue('');
 
-    const clearButton = screen.getByRole('button', {
+    const clearButtons = screen.getAllByRole('button', {
       name: /Clear/i,
     });
 
-    await user.click(clearButton);
-    expect(input).toHaveValue('');
-    expect(output).toHaveValue('');
+    await user.click(clearButtons[0]);
+    expect(unescaped).toHaveValue('');
+    expect(escaped).toHaveValue('');
+
+    // other clear button case
+    await user.type(unescaped, unescapedChars);
+    expect(unescaped).not.toHaveValue('');
+    expect(escaped).not.toHaveValue('');
+
+    await user.click(clearButtons[1]);
+    expect(unescaped).toHaveValue('');
+    expect(escaped).toHaveValue('');
   });
 
   it('copies text to clipboard', async () => {
     render(<HtmlCharCode />);
-    const input = screen.getByLabelText(/Input/i);
-    await user.click(screen.getByRole('button', { name: /Mode .*/i }));
-    await user.click(
-      screen.getByRole('option', {
-        name: 'Encode',
-      }),
-    );
+    const unescaped = screen.getByLabelText(/Unescaped/i);
 
-    await user.clear(input);
-    await user.type(input, specialChars);
+    await user.clear(unescaped);
+    await user.type(unescaped, unescapedChars);
 
-    const copyButton = screen.getByRole('button', {
+    const copyButtons = screen.getAllByRole('button', {
       name: /Copy/i,
     });
-    await user.click(copyButton);
-    expect(await navigator.clipboard.readText()).toBe(encodedChars);
+
+    await user.click(copyButtons[0]);
+    expect(await navigator.clipboard.readText()).toBe(unescapedChars);
+    await user.click(copyButtons[1]);
+    expect(await navigator.clipboard.readText()).toBe(escapedChars);
   });
 });
