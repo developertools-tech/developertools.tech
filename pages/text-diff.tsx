@@ -2,21 +2,31 @@ import ClearIcon from '@mui/icons-material/Clear';
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import MenuItem from '@mui/material/MenuItem';
-import InputLabel from '@mui/material/InputLabel';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 import * as Diff from 'diff';
-import React, { useState, useCallback, useEffect } from 'react';
+import { Change } from 'diff';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
-import { DiffOptions } from '../types/text-diff-types';
+
+interface DiffOptions {
+  label: string;
+  description: string;
+  value: (
+    oldString: string,
+    newString: string,
+    options?: Diff.BaseOptions | undefined,
+  ) => Change[];
+}
 
 const diffOptions: DiffOptions[] = [
   {
@@ -104,7 +114,7 @@ export default function TextDiffPage() {
   function handleChange2(event: React.ChangeEvent<HTMLInputElement>) {
     setInput2(event.target.value);
   }
-  function handleSelectChange(event: SelectChangeEvent<any>) {
+  function handleSelectChange(event: SelectChangeEvent) {
     const selected = diffOptions.find(
       (diffOption) =>
         diffOption.label === (event.target.value as string),
@@ -144,7 +154,7 @@ export default function TextDiffPage() {
 
   return (
     <Layout title='Text Difference'>
-      <Heading>Text Diff {selectedOptions?.label}</Heading>
+      <Heading>Text Diff</Heading>
       <Typography
         paragraph
         textAlign='center'

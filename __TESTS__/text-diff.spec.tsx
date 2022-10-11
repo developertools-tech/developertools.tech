@@ -6,12 +6,13 @@ import React from 'react';
 
 import TextDiff from '../pages/text-diff';
 
+const testInput1 = 'I am the Lorax';
+const testInput2 = 'I speak for the trees';
+const testOutput =
+  '<span style="color:grey">I </span><span style="color:green">spe</span><span style="color:grey">a</span><span style="color:red">m</span><span style="color:green">k</span><span style="color:grey"> </span><span style="color:green">for </span><span style="color:grey">the </span><span style="color:red">Lo</span><span style="color:green">t</span><span style="color:grey">r</span><span style="color:red">ax</span><span style="color:green">ees</span>';
+
 describe('TextDiff', () => {
   it('Shows different characters', async () => {
-    const testInput1 = 'I am the Lorax';
-    const testInput2 = 'I speak for the trees';
-    const testOutput =
-      '<span style="color:grey">I </span><span style="color:green">spe</span><span style="color:grey">a</span><span style="color:red">m</span><span style="color:green">k</span><span style="color:grey"> </span><span style="color:green">for </span><span style="color:grey">the </span><span style="color:red">Lo</span><span style="color:green">t</span><span style="color:grey">r</span><span style="color:red">ax</span><span style="color:green">ees</span>';
     const user = userEvent.setup();
     render(<TextDiff />);
 
@@ -39,15 +40,10 @@ describe('TextDiff', () => {
         .join();
 
     userEvent.selectOptions(
-      // screen.getByLabelText(/diff-select-label/i),
-      screen.getByTestId('text-difference-options'),
+      screen.getByLabelText(/Choose Diff Options/i),
       ['Characters Ignore Case'],
     );
 
-    const testInput1 = 'I am the Lorax';
-    const testInput2 = 'I speak for the trees';
-    const testOutput =
-      '<span style="color:grey">I </span><span style="color:green">spe</span><span style="color:grey">a</span><span style="color:red">m</span><span style="color:green">k</span><span style="color:grey"> </span><span style="color:green">for </span><span style="color:grey">the </span><span style="color:red">Lo</span><span style="color:green">t</span><span style="color:grey">r</span><span style="color:red">ax</span><span style="color:green">ees</span>';
     const user = userEvent.setup();
     render(<TextDiff />);
 
