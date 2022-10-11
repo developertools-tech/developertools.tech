@@ -68,7 +68,7 @@ export default function TextFieldWithCopyPaste(props: Props) {
             Clear
           </Button>
         )}
-        {props.hasCopy && (
+        {hasCopy && (
           <Button
             startIcon={<ContentCopyIcon />}
             disabled={!value}
