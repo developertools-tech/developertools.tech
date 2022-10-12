@@ -15,6 +15,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
+import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 
@@ -30,13 +31,13 @@ interface DiffOptions {
 
 const diffOptions: DiffOptions[] = [
   {
-    label: 'Charaters',
+    label: 'Characters',
     description:
       'Two blocks of text, comparing character by character.',
     value: Diff.diffChars,
   },
   {
-    label: 'Charaters Ignore Case',
+    label: 'Characters Ignore Case',
     description:
       'Two blocks of text, comparing character by character ignoring case.',
     value: (oldStr: string, newStr: string) =>
@@ -91,9 +92,12 @@ const diffOptions: DiffOptions[] = [
 ];
 export default function TextDiffPage() {
   const supportsClipboardRead = useSupportsClipboardRead();
-  const [selectedOptions, setSelectedOptions] = useState<
+  const [selectedOptions, setSelectedOptions] = useLocalState<
     DiffOptions | undefined
-  >(diffOptions[0]);
+  >({
+    key: 'textDiff_option',
+    defaultValue: diffOptions[0],
+  });
 
   const [input1, setInput1] = useLocalState<string>({
     key: 'textDiff_input1',
@@ -107,12 +111,46 @@ export default function TextDiffPage() {
     key: 'textDiff_output',
     defaultValue: '',
   });
+  const [toastProps, setToastProps] = useState<ToastProps>({
+    open: false,
+    severity: 'success',
+    message: '',
+    onClose() {},
+  });
 
   function handleChange1(event: React.ChangeEvent<HTMLInputElement>) {
-    setInput1(event.target.value);
+    const input = event.target.value;
+    if (selectedOptions?.label === 'JSON') {
+      try {
+        const inputJSON = JSON.parse(event.target.value);
+        setInput1(inputJSON);
+      } catch (err) {
+        setToastProps({
+          ...toastProps,
+          open: true,
+          message: 'Please ensure you have a valid JSON object',
+          severity: 'error',
+        });
+      }
+    }
+    setInput1(input);
   }
   function handleChange2(event: React.ChangeEvent<HTMLInputElement>) {
-    setInput2(event.target.value);
+    const input = event.target.value;
+    if (selectedOptions?.label === 'JSON') {
+      try {
+        const inputJSON = JSON.parse(event.target.value);
+        setInput2(inputJSON);
+      } catch (err) {
+        setToastProps({
+          ...toastProps,
+          open: true,
+          message: 'Please ensure you have a valid JSON object',
+          severity: 'error',
+        });
+      }
+    }
+    setInput2(input);
   }
   function handleSelectChange(event: SelectChangeEvent) {
     const selected = diffOptions.find(
@@ -122,7 +160,9 @@ export default function TextDiffPage() {
     setSelectedOptions(selected);
   }
 
-  const diff = selectedOptions?.value(input1, input2);
+  const diff = diffOptions
+    .find((diffOption) => diffOption.label === selectedOptions?.label)
+    ?.value(input1, input2);
 
   const compare = useCallback(() => {
     let value = '';
@@ -155,6 +195,12 @@ export default function TextDiffPage() {
   return (
     <Layout title='Text Difference'>
       <Heading>Text Diff</Heading>
+      <Toast
+        open={toastProps.open}
+        message={toastProps.message}
+        severity={toastProps.severity}
+        onClose={() => setToastProps({ ...toastProps, open: false })}
+      />
       <Typography
         paragraph
         textAlign='center'
