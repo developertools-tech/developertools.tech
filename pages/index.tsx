@@ -4,46 +4,48 @@ import React from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
+import useLocale from '../hooks/useLocale';
 
 export default function IndexPage() {
+  const texts = useLocale().home;
   return (
     <Layout>
       <Box textAlign='center'>
-        <Heading>Welcome</Heading>
+        <Heading>{texts.welcome}</Heading>
         <Typography paragraph>
-          Choose a tool from the menu to get started!
+          {texts.chooseFromMenu}
         </Typography>
         <Typography
           paragraph
           mt={8}
         >
-          Don&apos;t see the tool you need?{' '}
+          {texts.dontSeeTheToolYouNeed}{' '}
           <a
             href='https://github.com/developertools-tech/developertools.tech/issues/new?assignees=&labels=feature+request%2Ctriage&template=FEATURE_REQUEST.yml&title=%5BReq%5D%3A+'
             target='_blank'
             rel='noopener noreferrer'
           >
-            request it here
+            {texts.requestItHere}
           </a>
         </Typography>
         <Typography paragraph>
-          Found a bug?{' '}
+          {texts.foundBug}{' '}
           <a
             href='https://github.com/developertools-tech/developertools.tech/issues/new?assignees=&labels=bug%2Ctriage&template=BUG.yml&title=%5BBug%5D%3A+'
             target='_blank'
             rel='noopener noreferrer'
           >
-            report it here
+           {texts.reportItHere}
           </a>
         </Typography>
         <Typography paragraph>
-          Want to help?{' '}
+          {texts.wantToHelp}{' '}
           <a
             href='https://github.com/developertools-tech/developertools.tech'
             target='_blank'
             rel='noopener noreferrer'
           >
-            contribute on GitHub
+           {texts.contributeOnGit}
           </a>
         </Typography>
       </Box>

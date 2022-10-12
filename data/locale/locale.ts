@@ -1,6 +1,6 @@
 export type LocaleText = {
   drawer: DrawerText;
-  indexPage: IndexText;
+  home: HomeText;
 };
 
 type DrawerText = {
@@ -8,7 +8,7 @@ type DrawerText = {
   search: string;
 };
 
-type IndexText = {
+type HomeText = {
   welcome: string;
   chooseFromMenu: string;
   dontSeeTheToolYouNeed: string;

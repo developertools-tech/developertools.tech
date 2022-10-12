@@ -17,6 +17,10 @@ const nextConfig = withImages({
   images: {
     disableStaticImages: true,
   },
+  i18n: {
+    locales: ['en', 'ja'],
+    defaultLocale: 'en',
+  },
 });
 
 module.exports = withPWA(nextConfig);

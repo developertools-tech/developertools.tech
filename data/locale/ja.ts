@@ -5,7 +5,7 @@ const ja: LocaleText = {
     searchTools: 'ツールの検索',
     search: '検索...',
   },
-  indexPage: {
+  home: {
     welcome: 'ようこそ',
     chooseFromMenu: 'メニューからツールを選んで開始します',
     dontSeeTheToolYouNeed: 'どんなツールが必要ですか?',

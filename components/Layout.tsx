@@ -22,6 +22,7 @@ import React, { useState } from 'react';
 
 import navItems from '../data/nav';
 import sponsors from '../data/sponsors';
+import useLocale from '../hooks/useLocale';
 import useWindowSize from '../hooks/useWindowSize';
 import logo from '../public/logo.svg';
 import dlfordLogo from '../public/logo-full.svg';
@@ -62,6 +63,7 @@ export default function Layout({
   title?: string;
   children: React.ReactNode;
 }) {
+  const texts = useLocale().drawer;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -78,8 +80,8 @@ export default function Layout({
       <ListItem>
         <TextField
           variant='standard'
-          placeholder='Search...'
-          label='Search Tools'
+          placeholder={texts.search}
+          label={texts.searchTools}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={(e) => {
             const curHref = navItems

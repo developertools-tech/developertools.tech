@@ -5,7 +5,7 @@ const en: LocaleText = {
     searchTools: 'Search Tools',
     search: 'Search...',
   },
-  indexPage: {
+  home: {
     welcome: 'Welcome',
     chooseFromMenu: 'Choose a tool from the menu to get started',
     dontSeeTheToolYouNeed: "Don't see the tool you need?",
