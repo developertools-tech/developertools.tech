@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 import Toast, { ToastProps } from './Toast';
 
-type Props = {
+export type TextFieldWithCopyPasteProps = {
   hasCopy: boolean;
   label: string;
   value: string;
@@ -21,7 +21,9 @@ type Props = {
   >;
 };
 
-export default function TextFieldWithCopyPaste(props: Props) {
+export default function TextFieldWithCopyPaste(
+  props: TextFieldWithCopyPasteProps,
+) {
   const {
     hasCopy,
     label,

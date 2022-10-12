@@ -76,7 +76,7 @@ const navItems = [
     Icon: Search,
   },
   {
-    title: 'Html Character Codes',
+    title: 'HTML Char Codes',
     href: '/html-char-codes',
     Icon: Abc,
   },
