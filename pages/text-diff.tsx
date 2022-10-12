@@ -11,11 +11,10 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as Diff from 'diff';
 import { Change } from 'diff';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
-import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 
@@ -111,45 +110,20 @@ export default function TextDiffPage() {
     key: 'textDiff_output',
     defaultValue: '',
   });
-  const [toastProps, setToastProps] = useState<ToastProps>({
-    open: false,
-    severity: 'success',
+  const [input1ValidityMessage, setInput1ValidityMessage] = useState({
+    show: false,
     message: '',
-    onClose() {},
+  });
+  const [input2ValidityMessage, setInput2ValidityMessage] = useState({
+    show: false,
+    message: '',
   });
 
   function handleChange1(event: React.ChangeEvent<HTMLInputElement>) {
-    const input = event.target.value;
-    if (selectedOptions?.label === 'JSON') {
-      try {
-        const inputJSON = JSON.parse(event.target.value);
-        setInput1(inputJSON);
-      } catch (err) {
-        setToastProps({
-          ...toastProps,
-          open: true,
-          message: 'Please ensure you have a valid JSON object',
-          severity: 'error',
-        });
-      }
-    }
-    setInput1(input);
+    setInput1(event.target.value);
   }
   function handleChange2(event: React.ChangeEvent<HTMLInputElement>) {
     const input = event.target.value;
-    if (selectedOptions?.label === 'JSON') {
-      try {
-        const inputJSON = JSON.parse(event.target.value);
-        setInput2(inputJSON);
-      } catch (err) {
-        setToastProps({
-          ...toastProps,
-          open: true,
-          message: 'Please ensure you have a valid JSON object',
-          severity: 'error',
-        });
-      }
-    }
     setInput2(input);
   }
   function handleSelectChange(event: SelectChangeEvent) {
@@ -160,13 +134,59 @@ export default function TextDiffPage() {
     setSelectedOptions(selected);
   }
 
-  const diff = diffOptions
-    .find((diffOption) => diffOption.label === selectedOptions?.label)
-    ?.value(input1, input2);
+  const diffRef = useRef<Change[] | undefined>(
+    Diff.diffChars(input1, input2),
+  );
+  useEffect(() => {
+    let inputJSON1: Record<string, unknown> | null = null;
+    let inputJSON2: Record<string, unknown> | null = null;
+    if (selectedOptions?.label === 'JSON') {
+      try {
+        inputJSON1 = JSON.parse(input1);
+        setInput1ValidityMessage({
+          ...input1ValidityMessage,
+          show: false,
+        });
+      } catch (err) {
+        setInput1ValidityMessage({
+          show: true,
+          message: 'Please ensure you entered a valid JSON object',
+        });
+      }
+      try {
+        inputJSON2 = JSON.parse(input2);
+        setInput2ValidityMessage({
+          ...input2ValidityMessage,
+          show: false,
+        });
+      } catch (err) {
+        setInput2ValidityMessage({
+          show: true,
+          message: 'Please ensure you entered a valid JSON object',
+        });
+      }
+    }
+
+    if (inputJSON1 && inputJSON2) {
+      diffRef.current = Diff.diffJson(inputJSON1, inputJSON2);
+    } else {
+      diffRef.current = diffOptions
+        .find(
+          (diffOption) => diffOption.label === selectedOptions?.label,
+        )
+        ?.value(input1, input2);
+    }
+  }, [
+    selectedOptions,
+    input1,
+    input2,
+    input1ValidityMessage,
+    input2ValidityMessage,
+  ]);
 
   const compare = useCallback(() => {
     let value = '';
-    diff?.forEach((part) => {
+    diffRef.current?.forEach((part) => {
       // green for additions, red for deletions
       // grey for common parts
 
@@ -182,7 +202,7 @@ export default function TextDiffPage() {
       value += `<span style="color:${clr}">${part.value}</span>`;
     });
     setOutput(value);
-  }, [diff, setOutput]);
+  }, [diffRef, setOutput]);
 
   useEffect(() => {
     if (!input1 || !input2) {
@@ -195,12 +215,6 @@ export default function TextDiffPage() {
   return (
     <Layout title='Text Difference'>
       <Heading>Text Diff</Heading>
-      <Toast
-        open={toastProps.open}
-        message={toastProps.message}
-        severity={toastProps.severity}
-        onClose={() => setToastProps({ ...toastProps, open: false })}
-      />
       <Typography
         paragraph
         textAlign='center'
@@ -290,6 +304,11 @@ export default function TextDiffPage() {
             >
               Clear
             </Button>
+            {input1ValidityMessage.show && (
+              <Typography sx={{ color: 'red' }}>
+                {input1ValidityMessage.message}
+              </Typography>
+            )}
           </Box>
         </Box>
         <Box
@@ -332,6 +351,11 @@ export default function TextDiffPage() {
             >
               Clear
             </Button>
+            {input2ValidityMessage.show && (
+              <Typography sx={{ color: 'red' }}>
+                {input2ValidityMessage.message}
+              </Typography>
+            )}
           </Box>
         </Box>
       </Box>
