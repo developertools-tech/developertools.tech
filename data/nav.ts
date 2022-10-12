@@ -1,3 +1,4 @@
+import Abc from '@mui/icons-material/Abc';
 import ArticleIcon from '@mui/icons-material/Article';
 import AspectRatio from '@mui/icons-material/AspectRatio';
 import Code from '@mui/icons-material/Code';
@@ -73,6 +74,11 @@ const navItems = [
     title: 'Regex Tester',
     href: '/regex',
     Icon: Search,
+  },
+  {
+    title: 'HTML Char Codes',
+    href: '/html-char-codes',
+    Icon: Abc,
   },
 ];
 
