@@ -52,9 +52,9 @@ export default function HtmlCharCodes() {
           setEscaped(text);
           setUnescaped(decode(text));
         }}
-        onChange={(event) => setEscaped(event.target.value)}
-        onBlur={(e) => {
-          setUnescaped(decode(e.target.value));
+        onChange={(event) => {
+          setEscaped(event.target.value);
+          setUnescaped(decode(event.target.value));
         }}
       />
     </Box>
