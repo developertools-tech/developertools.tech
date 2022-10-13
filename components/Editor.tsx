@@ -5,14 +5,32 @@ import {
 } from '@codemirror/language';
 import type { Extension } from '@codemirror/state';
 import { EditorView, lineNumbers } from '@codemirror/view';
+import { styled } from '@mui/material/styles';
+import { materialDark } from 'cm6-theme-material-dark';
 import React, { useEffect, useRef } from 'react';
+
+import useWindowSize from '../hooks/useWindowSize';
 
 export interface EditorProps {
   extensions?: Extension[];
 }
 
 export default function Editor({ extensions = [] }: EditorProps) {
+  const { width } = useWindowSize();
   const ref = useRef<HTMLDivElement | null>(null);
+
+  const Wrapper = styled('div')({
+    maxWidth: '1000px',
+    width:
+      (width || 0) > 600
+        ? `${(width || 0) - 240 - 48}px`
+        : `${(width || 0) - 48}px`,
+    height: '60vh',
+    '& .cm-editor': {
+      height: '100%',
+      width: '100%',
+    },
+  });
 
   useEffect(() => {
     if (!ref.current) return undefined;
@@ -23,6 +41,7 @@ export default function Editor({ extensions = [] }: EditorProps) {
         ...extensions,
         lineNumbers(),
         syntaxHighlighting(defaultHighlightStyle),
+        materialDark,
       ],
       parent: ref.current,
     });
@@ -30,7 +49,7 @@ export default function Editor({ extensions = [] }: EditorProps) {
     return () => view?.destroy();
   }, [ref, extensions]);
 
-  return <div ref={ref} />;
+  return <Wrapper ref={ref} />;
 }
 
 /*

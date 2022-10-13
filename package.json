@@ -31,6 +31,7 @@
     "@mui/icons-material": "^5.10.3",
     "@mui/material": "^5.10.3",
     "clsx": "^1.2.1",
+    "cm6-theme-material-dark": "^0.2.0",
     "csso": "^5.0.5",
     "diff": "^5.1.0",
     "hash-sum": "^2.0.0",

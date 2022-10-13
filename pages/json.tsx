@@ -63,11 +63,6 @@ export default function JsonPage() {
       >
         Paste or type JSON to validate and format it.
       </Typography>
-      <Editor
-      // value={input || ''}
-      // extensions={['json']}
-      // onChange={handleChange}
-      />
       <Box
         display='flex'
         flexWrap='wrap'
@@ -126,6 +121,11 @@ export default function JsonPage() {
           Format
         </Button>
       </Box>
+      <Editor
+      // value={input || ''}
+      // extensions={['json']}
+      // onChange={handleChange}
+      />
       <Typography
         color='#ff6246'
         paragraph
