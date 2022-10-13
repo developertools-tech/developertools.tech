@@ -5,6 +5,7 @@ import Heading from '../components/Heading';
 import HtmlFormat from '../components/html/HtmlFormat';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
+import useLocale from '../hooks/useLocale';
 import useLocalState from '../hooks/useLocalState';
 
 export default function HtmlPage() {
@@ -29,9 +30,7 @@ export default function HtmlPage() {
   return (
     <Layout title='HTML'>
       <Heading>HTML</Heading>
-      <Typography paragraph>
-        Paste or type in some unformatted HTML to format it
-      </Typography>
+      <Typography paragraph>{useLocale().html.description}</Typography>
       <HtmlFormat
         html={html}
         formattedHtml={formattedHtml}

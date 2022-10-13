@@ -11,8 +11,8 @@ import { minify } from 'csso';
 import prettier from 'prettier';
 import parserCss from 'prettier/parser-postcss';
 import React from 'react';
-import useLocale from '../../hooks/useLocale';
 
+import useLocale from '../../hooks/useLocale';
 import useSupportsClipboardRead from '../../hooks/useSupportsClipboardRead';
 import type { ToastProps } from '../Toast';
 

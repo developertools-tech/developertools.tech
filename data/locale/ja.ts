@@ -33,6 +33,10 @@ const ja: LocaleText = {
     formattedCss: 'フォーマット済みCSS',
     minifiedCss: 'minify済みCSS',
   },
+  html: {
+    description: 'HTMLを貼り付けまたはタイプするとフォーマットされます',
+    formattedHtml: 'フォーマット済みHTML',
+  },
 };
 
 export default ja;

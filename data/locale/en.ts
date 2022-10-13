@@ -32,6 +32,10 @@ const en: LocaleText = {
     formattedCss: 'FormattedCSS',
     minifiedCss: 'MinifiedCSS',
   },
+  html: {
+    description: 'Paste or type in some unformatted HTML to format it',
+    formattedHtml: 'FormattedHTML',
+  },
 };
 
 export default en;

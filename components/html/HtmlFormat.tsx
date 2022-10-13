@@ -9,6 +9,7 @@ import prettier from 'prettier';
 import parserHtml from 'prettier/parser-html';
 import React from 'react';
 
+import useLocale from '../../hooks/useLocale';
 import useSupportsClipboardRead from '../../hooks/useSupportsClipboardRead';
 import type { ToastProps } from '../Toast';
 
@@ -36,6 +37,7 @@ export default function HtmlFormat({
   setToastSeverity,
 }: HtmlFormatProps) {
   const supportsClipboardRead = useSupportsClipboardRead();
+  const texts = useLocale();
   function calculateFormattedHtml(value: string | void) {
     setHtml(value);
     if (!value) {
@@ -98,7 +100,7 @@ export default function HtmlFormat({
               setFormattedHtml('');
             }}
           >
-            Clear
+            {texts.common.clear}
           </Button>
           {!!supportsClipboardRead && (
             <Button
@@ -111,7 +113,7 @@ export default function HtmlFormat({
                 }
               }}
             >
-              Paste
+              {texts.common.paste}
             </Button>
           )}
         </Box>
@@ -134,7 +136,7 @@ export default function HtmlFormat({
       >
         <TextField
           multiline
-          label='FormattedHTML'
+          label={texts.html.formattedHtml}
           name='formattedHtml'
           value={formattedHtml}
         />
@@ -152,7 +154,7 @@ export default function HtmlFormat({
               setHtml('');
             }}
           >
-            Clear
+            {texts.common.clear}
           </Button>
           <Button
             startIcon={<ContentCopyIcon />}
@@ -173,7 +175,7 @@ export default function HtmlFormat({
               );
             }}
           >
-            Copy
+            {texts.common.copy}
           </Button>
         </Box>
       </Box>

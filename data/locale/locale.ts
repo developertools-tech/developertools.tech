@@ -4,6 +4,7 @@ export type LocaleText = {
   base64: Base64Text;
   common: CommonText;
   css: CssText;
+  html: HtmlText;
 };
 
 type CommonText = {
@@ -39,4 +40,9 @@ type CssText = {
   format: string;
   formattedCss: string;
   minifiedCss: string;
+};
+
+type HtmlText = {
+  description: string;
+  formattedHtml: string;
 };
