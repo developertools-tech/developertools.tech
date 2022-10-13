@@ -5,6 +5,7 @@ import Base64InputOutput from '../components/base64/Base64InputOutput';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
+import useLocale from '../hooks/useLocale';
 import useLocalState from '../hooks/useLocalState';
 
 export default function Base64Page() {
@@ -23,14 +24,11 @@ export default function Base64Page() {
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
-
+  const texts = useLocale().base64;
   return (
     <Layout title='Base64'>
       <Heading>Base64</Heading>
-      <Typography paragraph>
-        Paste or type in some ASCII text and it will be converted to
-        Base64 and vice-versa.
-      </Typography>
+      <Typography paragraph>{texts.description}</Typography>
       <Base64InputOutput
         ascii={ascii}
         base64={base64}

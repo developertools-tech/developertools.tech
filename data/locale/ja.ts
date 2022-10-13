@@ -5,6 +5,11 @@ const ja: LocaleText = {
     searchTools: 'ツールの検索',
     search: '検索...',
   },
+  common: {
+    copy: 'コピー',
+    paste: '貼り付け',
+    clear: 'クリア',
+  },
   home: {
     welcome: 'ようこそ',
     chooseFromMenu: 'メニューからツールを選んで開始します',
@@ -14,6 +19,10 @@ const ja: LocaleText = {
     reportItHere: 'ここに報告してください',
     wantToHelp: '貢献したい?',
     contributeOnGit: 'GitHubからコントリビュートしてください',
+  },
+  base64: {
+    description:
+      'ASCIIテキストを貼り付けるまたはタイプするとBase64に変換、またその逆も可能です',
   },
 };
 

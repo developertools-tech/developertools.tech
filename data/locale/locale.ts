@@ -1,6 +1,14 @@
 export type LocaleText = {
   drawer: DrawerText;
   home: HomeText;
+  base64: Base64Text;
+  common: CommonText;
+};
+
+type CommonText = {
+  copy: string;
+  paste: string;
+  clear: string;
 };
 
 type DrawerText = {
@@ -17,4 +25,8 @@ type HomeText = {
   reportItHere: string;
   wantToHelp: string;
   contributeOnGit: string;
+};
+
+type Base64Text = {
+  description: string;
 };
