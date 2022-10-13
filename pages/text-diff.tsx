@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as Diff from 'diff';
 import { Change } from 'diff';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
@@ -110,14 +110,22 @@ export default function TextDiffPage() {
     key: 'textDiff_output',
     defaultValue: '',
   });
-  const [input1ValidityMessage, setInput1ValidityMessage] = useState({
-    show: false,
-    message: '',
-  });
-  const [input2ValidityMessage, setInput2ValidityMessage] = useState({
-    show: false,
-    message: '',
-  });
+  const [input1ValidityMessage, setInput1ValidityMessage] =
+    useLocalState({
+      key: 'textDiff_input1Valid',
+      defaultValue: {
+        show: false,
+        message: '',
+      },
+    });
+  const [input2ValidityMessage, setInput2ValidityMessage] =
+    useLocalState({
+      key: 'textDiff_input2Valid',
+      defaultValue: {
+        show: false,
+        message: '',
+      },
+    });
 
   function handleChange1(event: React.ChangeEvent<HTMLInputElement>) {
     setInput1(event.target.value);
@@ -144,7 +152,7 @@ export default function TextDiffPage() {
       try {
         inputJSON1 = JSON.parse(input1);
         setInput1ValidityMessage({
-          ...input1ValidityMessage,
+          message: '',
           show: false,
         });
       } catch (err) {
@@ -156,7 +164,7 @@ export default function TextDiffPage() {
       try {
         inputJSON2 = JSON.parse(input2);
         setInput2ValidityMessage({
-          ...input2ValidityMessage,
+          message: '',
           show: false,
         });
       } catch (err) {
@@ -180,9 +188,11 @@ export default function TextDiffPage() {
     selectedOptions,
     input1,
     input2,
-    input1ValidityMessage,
-    input2ValidityMessage,
+    setInput1ValidityMessage,
+    setInput2ValidityMessage,
   ]);
+
+  useEffect(() => {}, []);
 
   const compare = useCallback(() => {
     let value = '';

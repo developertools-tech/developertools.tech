@@ -252,35 +252,35 @@ border: 2px </span><span style="color:red">solid</span><span style="color:green"
     expect(output.innerHTML).toBe(testOutputLocal);
   });
 
-  // it.only('Show different JSON', async () => {
-  //   const user = userEvent.setup();
-  //   render(<TextDiff />);
+  it('Show different JSON', async () => {
+    const user = userEvent.setup();
+    render(<TextDiff />);
 
-  //   const selectedOption = 'JSON';
-  //   fireEvent.mouseDown(screen.getByLabelText(/Choose Diff Options/i));
-  //   const listbox = within(screen.getByRole('listbox'));
-  //   fireEvent.click(listbox.getByText(selectedOption));
+    const selectedOption = 'JSON';
+    fireEvent.mouseDown(screen.getByLabelText(/Choose Diff Options/i));
+    const listbox = within(screen.getByRole('listbox'));
+    fireEvent.click(listbox.getByText(selectedOption));
 
-  //   const inputBox = screen.getByTestId('text-difference-options');
-  //   expect(inputBox).toHaveValue(selectedOption);
+    const inputBox = screen.getByTestId('text-difference-options');
+    expect(inputBox).toHaveValue(selectedOption);
 
-  //   const input1 = screen.getByLabelText(/Text 1/i);
-  //   const input2 = screen.getByLabelText(/Text 2/i);
-  //   const output = screen.getByTestId('text-difference-output');
+    const input1 = screen.getByLabelText(/Text 1/i);
+    const input2 = screen.getByLabelText(/Text 2/i);
+    const output = screen.getByTestId('text-difference-output');
 
-  //   const testInputT1 = `{{"name":"John", "age":30, "car":null}`;
-  //   const testInputT2 = `{{"age":30, "name":"John", "car":null}`;
-  //   const testOutputLocal = `<span style="color:grey">{"age": 30,"car": null,"name": "John"}</span>`;
+    const testInputT1 = `{{"name":"John", "age":30, "car":null}`;
+    const testInputT2 = `{{"age":30, "name":"John", "car":null}`;
+    const testOutputLocal = `<span style="color:grey">{
+  "age": 30,
+  "car": null,
+  "name": "John"
+}</span>`;
 
-  //   console.log('here');
+    await user.clear(input1);
+    await user.clear(input2);
+    await user.type(input1, testInputT1);
+    await user.type(input2, testInputT2);
 
-  //   await user.clear(input1);
-  //   await user.clear(input2);
-  //   await user.type(input1, testInputT1);
-  //   await user.type(input2, testInputT2);
-
-  //   console.log('here2');
-
-  //   expect(output.innerHTML).toBe(testOutputLocal);
-  // });
+    expect(output.innerHTML).toBe(testOutputLocal);
+  });
 });
