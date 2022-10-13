@@ -6,7 +6,7 @@
 import '@testing-library/jest-dom/extend-expect';
 import * as nextRouter from 'next/router';
 
-jest.setTimeout(30000); // in milliseconds
+jest.setTimeout(300000); // in milliseconds
 
 beforeEach(() => {
   nextRouter.useRouter = jest.fn();
