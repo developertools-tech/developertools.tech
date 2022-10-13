@@ -5,6 +5,7 @@ export type LocaleText = {
   common: CommonText;
   css: CssText;
   html: HtmlText;
+  htmlCharCode: HtmlCharCodeText;
 };
 
 type CommonText = {
@@ -45,4 +46,9 @@ type CssText = {
 type HtmlText = {
   description: string;
   formattedHtml: string;
+};
+type HtmlCharCodeText = {
+  description: string;
+  unescaped: string;
+  escaped: string;
 };

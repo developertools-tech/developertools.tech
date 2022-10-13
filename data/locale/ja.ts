@@ -37,6 +37,12 @@ const ja: LocaleText = {
     description: 'HTMLを貼り付けまたはタイプするとフォーマットされます',
     formattedHtml: 'フォーマット済みHTML',
   },
+  htmlCharCode: {
+    description:
+      '貼り付けまたはタイプすることで、テキストとHTML文字コードを相互に変換します',
+    unescaped: 'エスケープ前',
+    escaped: 'エスケープ後',
+  },
 };
 
 export default ja;

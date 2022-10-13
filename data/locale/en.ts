@@ -36,6 +36,12 @@ const en: LocaleText = {
     description: 'Paste or type in some unformatted HTML to format it',
     formattedHtml: 'FormattedHTML',
   },
+  htmlCharCode: {
+    description:
+      'Paste or type each to escape or unescape HTML character codes from each other',
+    unescaped: 'Unescaped',
+    escaped: 'Escaped',
+  },
 };
 
 export default en;

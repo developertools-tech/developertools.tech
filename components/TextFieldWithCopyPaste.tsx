@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
 
+import useLocale from '../hooks/useLocale';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
 import Toast, { ToastProps } from './Toast';
 
@@ -39,6 +40,7 @@ export default function TextFieldWithCopyPaste(
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
+  const texts = useLocale();
 
   return (
     <Box
@@ -67,7 +69,7 @@ export default function TextFieldWithCopyPaste(
             disabled={!value}
             onClick={onClearClick}
           >
-            Clear
+            {texts.common.clear}
           </Button>
         )}
         {hasCopy && (
@@ -89,7 +91,7 @@ export default function TextFieldWithCopyPaste(
               );
             }}
           >
-            Copy
+            {texts.common.copy}
           </Button>
         )}
         {!!supportsClipboardRead && !!onPasteCleck && (
@@ -102,7 +104,7 @@ export default function TextFieldWithCopyPaste(
               }
             }}
           >
-            Paste
+            {texts.common.paste}
           </Button>
         )}
       </Box>
