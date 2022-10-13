@@ -3,6 +3,7 @@ export type LocaleText = {
   home: HomeText;
   base64: Base64Text;
   common: CommonText;
+  css: CssText;
 };
 
 type CommonText = {
@@ -29,4 +30,13 @@ type HomeText = {
 
 type Base64Text = {
   description: string;
+};
+
+type CssText = {
+  description: string;
+  note: string;
+  minify: string;
+  format: string;
+  formattedCss: string;
+  minifiedCss: string;
 };

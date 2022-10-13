@@ -24,6 +24,15 @@ const ja: LocaleText = {
     description:
       'ASCIIテキストを貼り付けるまたはタイプするとBase64に変換、またその逆も可能です',
   },
+  css: {
+    description:
+      'CSSを貼り付けまたはタイプするとフォーマットまたはminifyされます',
+    note: 'フォーマットはCSS, SCSS, LESSに有効ですが、minifyはCSSのみ有効です',
+    minify: 'minify',
+    format: 'フォーマット',
+    formattedCss: 'フォーマット済みCSS',
+    minifiedCss: 'minify済みCSS',
+  },
 };
 
 export default ja;

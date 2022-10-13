@@ -5,6 +5,7 @@ import CssForm from '../components/css/CssForm';
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
+import useLocale from '../hooks/useLocale';
 import useLocalState from '../hooks/useLocalState';
 
 export default function CssPage() {
@@ -26,17 +27,12 @@ export default function CssPage() {
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
-
+  const texts = useLocale().css;
   return (
     <Layout title='CSS'>
       <Heading>Minify CSS</Heading>
-      <Typography paragraph>
-        Paste or type in some CSS to format or minify it.
-      </Typography>
-      <Typography paragraph>
-        Note: Formatting works with CSS, SCSS, and LESS. Minification
-        only works for raw CSS.
-      </Typography>
+      <Typography paragraph>{texts.description}</Typography>
+      <Typography paragraph>{texts.note}</Typography>
       <CssForm
         css={css}
         formattedCss={formattedCss}
