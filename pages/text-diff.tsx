@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as Diff from 'diff';
 import { Change } from 'diff';
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
@@ -126,6 +126,10 @@ export default function TextDiffPage() {
         message: '',
       },
     });
+  const [diff, setDiff] = useLocalState<Change[]>({
+    key: 'textDiff_diff',
+    defaultValue: [],
+  });
 
   function handleChange1(event: React.ChangeEvent<HTMLInputElement>) {
     setInput1(event.target.value);
@@ -142,9 +146,6 @@ export default function TextDiffPage() {
     setSelectedOptions(selected);
   }
 
-  const diffRef = useRef<Change[] | undefined>(
-    Diff.diffChars(input1, input2),
-  );
   useEffect(() => {
     let inputJSON1: Record<string, unknown> | null = null;
     let inputJSON2: Record<string, unknown> | null = null;
@@ -176,13 +177,17 @@ export default function TextDiffPage() {
     }
 
     if (inputJSON1 && inputJSON2) {
-      diffRef.current = Diff.diffJson(inputJSON1, inputJSON2);
+      setDiff(Diff.diffJson(inputJSON1, inputJSON2));
     } else {
-      diffRef.current = diffOptions
-        .find(
-          (diffOption) => diffOption.label === selectedOptions?.label,
-        )
-        ?.value(input1, input2);
+      let newdiff: Change[] = [];
+      const selectedOption = diffOptions.find(
+        (diffOption) => diffOption.label === selectedOptions?.label,
+      );
+      if (selectedOption) {
+        newdiff = selectedOption.value(input1, input2);
+      }
+
+      setDiff(newdiff);
     }
   }, [
     selectedOptions,
@@ -190,13 +195,12 @@ export default function TextDiffPage() {
     input2,
     setInput1ValidityMessage,
     setInput2ValidityMessage,
+    setDiff,
   ]);
-
-  useEffect(() => {}, []);
 
   const compare = useCallback(() => {
     let value = '';
-    diffRef.current?.forEach((part) => {
+    diff.forEach((part) => {
       // green for additions, red for deletions
       // grey for common parts
 
@@ -212,7 +216,7 @@ export default function TextDiffPage() {
       value += `<span style="color:${clr}">${part.value}</span>`;
     });
     setOutput(value);
-  }, [diffRef, setOutput]);
+  }, [diff, setOutput]);
 
   useEffect(() => {
     if (!input1 || !input2) {
