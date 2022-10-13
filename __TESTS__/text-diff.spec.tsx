@@ -1,10 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import {
-  fireEvent,
-  render,
-  screen,
-  within,
-} from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
@@ -23,9 +18,9 @@ describe('TextDiff', () => {
 
     const selectedOption = 'Characters';
 
-    fireEvent.mouseDown(screen.getByLabelText(/Choose Diff Options/i));
+    await user.click(screen.getByLabelText(/Choose Diff Options/i));
     const listbox = within(screen.getByRole('listbox'));
-    fireEvent.click(listbox.getByText(selectedOption));
+    await user.click(listbox.getByText(selectedOption));
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
 
@@ -56,9 +51,9 @@ describe('TextDiff', () => {
     render(<TextDiff />);
 
     const selectedOption = 'Characters Ignore Case';
-    fireEvent.mouseDown(screen.getByLabelText(/Choose Diff Options/i));
+    await user.click(screen.getByLabelText(/Choose Diff Options/i));
     const listbox = within(screen.getByRole('listbox'));
-    fireEvent.click(listbox.getByText(selectedOption));
+    await user.click(listbox.getByText(selectedOption));
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
 
@@ -84,9 +79,9 @@ describe('TextDiff', () => {
     render(<TextDiff />);
 
     const selectedOption = 'Words';
-    fireEvent.mouseDown(screen.getByLabelText(/Choose Diff Options/i));
+    await user.click(screen.getByLabelText(/Choose Diff Options/i));
     const listbox = within(screen.getByRole('listbox'));
-    fireEvent.click(listbox.getByText(selectedOption));
+    await user.click(listbox.getByText(selectedOption));
 
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
@@ -113,9 +108,9 @@ describe('TextDiff', () => {
     render(<TextDiff />);
 
     const selectedOption = 'Words Ignore Case';
-    fireEvent.mouseDown(screen.getByLabelText(/Choose Diff Options/i));
+    await user.click(screen.getByLabelText(/Choose Diff Options/i));
     const listbox = within(screen.getByRole('listbox'));
-    fireEvent.click(listbox.getByText(selectedOption));
+    await user.click(listbox.getByText(selectedOption));
 
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
@@ -142,9 +137,9 @@ describe('TextDiff', () => {
     render(<TextDiff />);
 
     const selectedOption = 'Words with Space';
-    fireEvent.mouseDown(screen.getByLabelText(/Choose Diff Options/i));
+    await user.click(screen.getByLabelText(/Choose Diff Options/i));
     const listbox = within(screen.getByRole('listbox'));
-    fireEvent.click(listbox.getByText(selectedOption));
+    await user.click(listbox.getByText(selectedOption));
 
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
@@ -171,9 +166,9 @@ describe('TextDiff', () => {
     render(<TextDiff />);
 
     const selectedOption = 'Trimmed Lines';
-    fireEvent.mouseDown(screen.getByLabelText(/Choose Diff Options/i));
+    await user.click(screen.getByLabelText(/Choose Diff Options/i));
     const listbox = within(screen.getByRole('listbox'));
-    fireEvent.click(listbox.getByText(selectedOption));
+    await user.click(listbox.getByText(selectedOption));
 
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
@@ -215,9 +210,9 @@ this is another line.
     render(<TextDiff />);
 
     const selectedOption = 'CSS';
-    fireEvent.mouseDown(screen.getByLabelText(/Choose Diff Options/i));
+    await user.click(screen.getByLabelText(/Choose Diff Options/i));
     const listbox = within(screen.getByRole('listbox'));
-    fireEvent.click(listbox.getByText(selectedOption));
+    await user.click(listbox.getByText(selectedOption));
 
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
@@ -257,9 +252,9 @@ border: 2px </span><span style="color:red">solid</span><span style="color:green"
     render(<TextDiff />);
 
     const selectedOption = 'JSON';
-    fireEvent.mouseDown(screen.getByLabelText(/Choose Diff Options/i));
+    await user.click(screen.getByLabelText(/Choose Diff Options/i));
     const listbox = within(screen.getByRole('listbox'));
-    fireEvent.click(listbox.getByText(selectedOption));
+    await user.click(listbox.getByText(selectedOption));
 
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
