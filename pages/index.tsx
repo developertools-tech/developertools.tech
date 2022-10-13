@@ -12,9 +12,7 @@ export default function IndexPage() {
     <Layout>
       <Box textAlign='center'>
         <Heading>{texts.welcome}</Heading>
-        <Typography paragraph>
-          {texts.chooseFromMenu}
-        </Typography>
+        <Typography paragraph>{texts.chooseFromMenu}</Typography>
         <Typography
           paragraph
           mt={8}
@@ -35,7 +33,7 @@ export default function IndexPage() {
             target='_blank'
             rel='noopener noreferrer'
           >
-           {texts.reportItHere}
+            {texts.reportItHere}
           </a>
         </Typography>
         <Typography paragraph>
@@ -45,7 +43,7 @@ export default function IndexPage() {
             target='_blank'
             rel='noopener noreferrer'
           >
-           {texts.contributeOnGit}
+            {texts.contributeOnGit}
           </a>
         </Typography>
       </Box>

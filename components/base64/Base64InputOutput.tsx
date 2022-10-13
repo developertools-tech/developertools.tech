@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { decode, encode } from 'js-base64';
 import React from 'react';
-import useLocale from '../../hooks/useLocale';
 
+import useLocale from '../../hooks/useLocale';
 import useSupportsClipboardRead from '../../hooks/useSupportsClipboardRead';
 import type { ToastProps } from '../Toast';
 
