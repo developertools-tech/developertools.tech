@@ -2,7 +2,7 @@ import { Container, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import * as convert from 'colors-convert';
 import { HEX, HSL, RGB } from 'colors-convert/dist/cjs/lib/types/types';
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { SketchPicker } from 'react-color';
 
 import Heading from '../components/Heading';
@@ -31,6 +31,7 @@ export default function Colors() {
       b: parseInt(valArr[2], 10),
     };
     setRGBColor(rgb);
+    setColorPickerColor(convert.rgbToHex(rgb));
     setHexColor(convert.rgbToHex(rgb));
     setHslColor(convert.rgbToHsl(rgb));
   }
@@ -43,6 +44,7 @@ export default function Colors() {
       l: parseInt(valArr[2], 10),
     };
     setHslColor(hsl);
+    setColorPickerColor(convert.hslToHex(hsl));
     setRGBColor(convert.hslToRgb(hsl));
     setHexColor(convert.hslToHex(hsl));
   }
@@ -102,7 +104,7 @@ export default function Colors() {
             <TextField
               label='HEX'
               name='hex'
-              defaultValue={hexColor}
+              value={hexColor}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -126,6 +128,7 @@ export default function Colors() {
               label='RGB'
               name='rgb'
               defaultValue={`${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}`}
+              value={`${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}`}
               onChange={(e) => {
                 updateColors(e);
               }}
