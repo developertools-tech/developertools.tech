@@ -2,7 +2,9 @@ import { json } from '@codemirror/lang-json';
 import {
   defaultHighlightStyle,
   syntaxHighlighting,
+  // syntaxTree,
 } from '@codemirror/language';
+import { Diagnostic, linter } from '@codemirror/lint';
 import type { Extension } from '@codemirror/state';
 import { EditorView, lineNumbers } from '@codemirror/view';
 import { styled } from '@mui/material/styles';
@@ -14,6 +16,24 @@ import useWindowSize from '../hooks/useWindowSize';
 export interface EditorProps {
   extensions?: Extension[];
 }
+
+const lint = linter((_view) => {
+  const diagnostics: Diagnostic[] = [];
+  /*
+  syntaxTree(view.state).cursor().iterate(node => {
+    console.log(node.from, node.to, node._tree)
+  })
+  */
+
+  diagnostics.push({
+    from: 0,
+    to: 0,
+    message: 'test',
+    severity: 'error',
+  });
+
+  return diagnostics;
+});
 
 export default function Editor({ extensions = [] }: EditorProps) {
   const { width } = useWindowSize();
@@ -40,6 +60,7 @@ export default function Editor({ extensions = [] }: EditorProps) {
         json(),
         ...extensions,
         lineNumbers(),
+        lint,
         syntaxHighlighting(defaultHighlightStyle),
         materialDark,
       ],
