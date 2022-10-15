@@ -11,6 +11,7 @@ import Image from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 import Looks6 from '@mui/icons-material/Looks6';
 import Search from '@mui/icons-material/Search';
+import SortByAlpha from '@mui/icons-material/SortByAlpha';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
 
@@ -78,7 +79,7 @@ const navItems = [
   {
     title: 'Case Converter',
     href: '/case-converter',
-    Icon: Search,
+    Icon: SortByAlpha,
   },
   {
     title: 'HTML Char Codes',
