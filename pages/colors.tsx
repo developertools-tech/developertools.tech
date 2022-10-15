@@ -3,22 +3,19 @@ import Box from '@mui/material/Box';
 import * as convert from 'colors-convert';
 import { HEX, HSL, RGB } from 'colors-convert/dist/cjs/lib/types/types';
 import React, { ChangeEvent, useState } from 'react';
-import { SketchPicker } from 'react-color';
+import { HexColorPicker } from 'react-colorful';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 
 export default function Colors() {
-  const [colorPickerColor, setColorPickerColor] =
-    useState<HEX>('#000000');
-  const [hexColor, setHexColor] = useState<HEX>(colorPickerColor);
+  const [hexColor, setHexColor] = useState<HEX>('#000000');
   const [hslColor, setHslColor] = useState<HSL>({ h: 0, s: 0, l: 0 });
   const [rgbColor, setRGBColor] = useState<RGB>({ r: 0, g: 0, b: 0 });
   const [err, setErr] = useState<string>();
 
   function HandleHexChange(hex: HEX) {
     setHexColor(hex);
-    setColorPickerColor(hex);
     setHslColor(convert.hexToHsl(hex));
     setRGBColor(convert.hexToRgb(hex));
   }
@@ -31,7 +28,6 @@ export default function Colors() {
       b: parseInt(valArr[2], 10),
     };
     setRGBColor(rgb);
-    setColorPickerColor(convert.rgbToHex(rgb));
     setHexColor(convert.rgbToHex(rgb));
     setHslColor(convert.rgbToHsl(rgb));
   }
@@ -44,7 +40,6 @@ export default function Colors() {
       l: parseInt(valArr[2], 10),
     };
     setHslColor(hsl);
-    setColorPickerColor(convert.hslToHex(hsl));
     setRGBColor(convert.hslToRgb(hsl));
     setHexColor(convert.hslToHex(hsl));
   }
@@ -84,12 +79,11 @@ export default function Colors() {
           display='flex'
           gap='2rem'
         >
-          <SketchPicker
-            disableAlpha
-            color={colorPickerColor}
+          <HexColorPicker
+            color={hexColor}
             onChange={(color) => {
               updateColors({
-                target: { name: 'hex', value: color.hex },
+                target: { name: 'hex', value: color },
               });
             }}
           />
@@ -115,7 +109,6 @@ export default function Colors() {
             <TextField
               label='HSL'
               name='hsl'
-              defaultValue={`${hslColor?.h}, ${hslColor?.s}, ${hslColor?.l}`}
               value={`${hslColor?.h}, ${hslColor?.s}, ${hslColor?.l}`}
               InputLabelProps={{
                 shrink: true,
@@ -127,7 +120,6 @@ export default function Colors() {
             <TextField
               label='RGB'
               name='rgb'
-              defaultValue={`${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}`}
               value={`${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}`}
               onChange={(e) => {
                 updateColors(e);
