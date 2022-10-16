@@ -126,11 +126,16 @@ export default function CaseConverterPage() {
       conversionFunction: () => {
         convert((inputStr: string) => {
           let sarcasmCaseOutput = '';
+          let counter = 0;
           for (let i = 0; i < inputStr.length; i++) {
-            sarcasmCaseOutput +=
-              i % 2 === 0
-                ? upperCase(inputStr[i])
-                : lowerCase(inputStr[i]);
+            const ch = inputStr[i];
+            if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+              sarcasmCaseOutput +=
+                counter % 2 === 0 ? upperCase(ch) : lowerCase(ch);
+              counter += 1;
+            } else {
+              sarcasmCaseOutput += ch;
+            }
           }
           return sarcasmCaseOutput;
         }, input);
@@ -203,14 +208,13 @@ export default function CaseConverterPage() {
       </Box>
       <Box width={600}>
         <FormControl fullWidth>
-          <InputLabel id='case_list_field_label__'>
-            Case List
-          </InputLabel>
+          <InputLabel id='case_list_field_label'>Case List</InputLabel>
           <Select
             fullWidth
             labelId='case_list_field_label'
             value={caseSelected}
             label='Case List'
+            inputProps={{ 'data-testid': 'case-convert-options' }}
             onChange={(event: SelectChangeEvent) => {
               const selectedCase = event.target.value;
               setCaseSelected(selectedCase);
@@ -268,11 +272,10 @@ export default function CaseConverterPage() {
           }}
         >
           <pre
-            data-testid='text-difference-output'
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: output
-                ? `<span style="color:white">${output}</span>`
+                ? `<span data-testid='case-convert-output' style="color:white">${output}</span>`
                 : '<span class="placeholder">Output</span>',
             }}
           />
