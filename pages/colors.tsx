@@ -129,6 +129,8 @@ export default function Colors() {
       <Container>
         <Box
           display='flex'
+          flexDirection='column'
+          alignItems='center'
           gap='2rem'
         >
           <HexColorPicker
