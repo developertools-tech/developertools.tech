@@ -10,11 +10,15 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Slider from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
+import { Namespace, useTranslation } from 'react-i18next';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 enum FileType {
   PNG = 'image/png',
@@ -48,6 +52,7 @@ function formatSliderLabel(value: number) {
 const PreviewImage = styled('img')({});
 
 export default function ImageConverterPage() {
+  const { t } = useTranslation('imageConverter');
   const [file, setFile] = useState<{ raw: File; imageSrc: string }>();
   const [fileType, setFileType] = useLocalState<FileType>({
     key: 'image-converter-file-type',
@@ -141,7 +146,7 @@ export default function ImageConverterPage() {
               variant='contained'
               component='label'
             >
-              Upload image
+              {t('uploadImage')}
               <input
                 type='file'
                 accept='image/*'
@@ -151,7 +156,9 @@ export default function ImageConverterPage() {
             </Button>
 
             <FormControl sx={{ display: 'flex', my: 3 }}>
-              <FormLabel id='image-type-label'>File Type</FormLabel>
+              <FormLabel id='image-type-label'>
+                {t('fileType')}
+              </FormLabel>
               <RadioGroup
                 aria-labelledby='image-type-label'
                 name='image-type'
@@ -174,7 +181,7 @@ export default function ImageConverterPage() {
                 id='quality-slider'
                 gutterBottom
               >
-                Quality
+                {t('quality')}
               </Typography>
               <Slider
                 value={quality}
@@ -193,7 +200,7 @@ export default function ImageConverterPage() {
               onClick={handleDownload}
               disabled={!file}
             >
-              Download
+              {t('download')}
             </Button>
           </Grid>
         </Grid>
@@ -201,3 +208,18 @@ export default function ImageConverterPage() {
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['imageConverter'];
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale!,
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+    ['en', 'ja'],
+  );
+  return {
+    props: { ...translation },
+    revalidate: 3600,
+  };
+};
