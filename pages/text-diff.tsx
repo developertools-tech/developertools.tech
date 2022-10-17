@@ -11,12 +11,16 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as Diff from 'diff';
 import { Change } from 'diff';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useCallback, useEffect } from 'react';
+import { Namespace, useTranslation } from 'react-i18next';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 interface DiffOptions {
   label: string;
@@ -225,7 +229,7 @@ export default function TextDiffPage() {
       compare();
     }
   }, [input1, input2, compare, setOutput]);
-
+  const { t } = useTranslation(['common', 'textDiff']);
   return (
     <Layout title='Text Difference'>
       <Heading>Text Diff</Heading>
@@ -233,7 +237,7 @@ export default function TextDiffPage() {
         paragraph
         textAlign='center'
       >
-        Type or paste text into both fields to check the difference.
+        {t('textDiff:description')}
       </Typography>
       <Box
         display='flex'
@@ -285,7 +289,7 @@ export default function TextDiffPage() {
         >
           <TextField
             multiline
-            label='Text 1'
+            label={`${t('textDiff:text')} 1`}
             value={input1}
             name='first text'
             onChange={handleChange1}
@@ -306,7 +310,7 @@ export default function TextDiffPage() {
                   }
                 }}
               >
-                Paste
+                {t('common:paste')}
               </Button>
             )}
             <Button
@@ -316,7 +320,7 @@ export default function TextDiffPage() {
                 setInput1('');
               }}
             >
-              Clear
+              {t('common:clear')}
             </Button>
             {input1ValidityMessage.show && (
               <Typography sx={{ color: 'red' }}>
@@ -332,7 +336,7 @@ export default function TextDiffPage() {
         >
           <TextField
             multiline
-            label='Text 2'
+            label={`${t('textDiff:text')} 2`}
             value={input2}
             name='second text'
             onChange={handleChange2}
@@ -353,7 +357,7 @@ export default function TextDiffPage() {
                   }
                 }}
               >
-                Paste
+                {t('common:paste')}
               </Button>
             )}
             <Button
@@ -363,7 +367,7 @@ export default function TextDiffPage() {
                 setInput2('');
               }}
             >
-              Clear
+              {t('common:clear')}
             </Button>
             {input2ValidityMessage.show && (
               <Typography sx={{ color: 'red' }}>
@@ -407,7 +411,10 @@ export default function TextDiffPage() {
             data-testid='text-difference-output'
             dangerouslySetInnerHTML={{
               __html:
-                output || '<span class="placeholder">Difference</span>',
+                output ||
+                `<span class="placeholder">${t(
+                  'textDiff:difference',
+                )}</span>`,
             }}
           />
           {/* eslint-enable react/no-danger */}
@@ -416,3 +423,18 @@ export default function TextDiffPage() {
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['common', 'textDiff'];
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale!,
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+    ['en', 'ja'],
+  );
+  return {
+    props: { ...translation },
+    revalidate: 3600,
+  };
+};
