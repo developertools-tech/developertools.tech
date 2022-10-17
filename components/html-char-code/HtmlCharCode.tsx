@@ -1,13 +1,13 @@
 import Box from '@mui/material/Box';
 import { decode, encode } from 'html-entities';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import useLocale from '../../hooks/useLocale';
 import useLocalState from '../../hooks/useLocalState';
 import TextFieldWithCopyPaste from '../TextFieldWithCopyPaste';
 
 export default function HtmlCharCodes() {
-  const texts = useLocale();
+  const { t } = useTranslation('htmlCharCodes');
   const [unescaped, setUnescaped] = useLocalState<string>({
     key: 'htmlCharCode-unescaped',
     defaultValue: '',
@@ -33,7 +33,7 @@ export default function HtmlCharCodes() {
     >
       <TextFieldWithCopyPaste
         hasCopy
-        label={texts.htmlCharCode.unescaped}
+        label={t('unescaped')}
         value={unescaped}
         onClearClick={clearBoth}
         onPasteCleck={(text) => {
@@ -47,7 +47,7 @@ export default function HtmlCharCodes() {
       />
       <TextFieldWithCopyPaste
         hasCopy
-        label={texts.htmlCharCode.escaped}
+        label={t('escaped')}
         value={escaped}
         onClearClick={clearBoth}
         onPasteCleck={(text) => {

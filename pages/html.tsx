@@ -1,12 +1,15 @@
 import Typography from '@mui/material/Typography';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
+import { Namespace, useTranslation } from 'react-i18next';
 
 import Heading from '../components/Heading';
 import HtmlFormat from '../components/html/HtmlFormat';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
-import useLocale from '../hooks/useLocale';
 import useLocalState from '../hooks/useLocalState';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 export default function HtmlPage() {
   const [html, setHtml] = useLocalState<string | void>({
@@ -26,11 +29,12 @@ export default function HtmlPage() {
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
+  const { t } = useTranslation('html');
 
   return (
     <Layout title='HTML'>
       <Heading>HTML</Heading>
-      <Typography paragraph>{useLocale().html.description}</Typography>
+      <Typography paragraph>{t('description')}</Typography>
       <HtmlFormat
         html={html}
         formattedHtml={formattedHtml}
@@ -51,3 +55,18 @@ export default function HtmlPage() {
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['common', 'html'];
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale!,
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+    ['en', 'ja'],
+  );
+  return {
+    props: { ...translation },
+    revalidate: 3600,
+  };
+};

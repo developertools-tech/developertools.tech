@@ -11,8 +11,8 @@ import { minify } from 'csso';
 import prettier from 'prettier';
 import parserCss from 'prettier/parser-postcss';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import useLocale from '../../hooks/useLocale';
 import useSupportsClipboardRead from '../../hooks/useSupportsClipboardRead';
 import type { ToastProps } from '../Toast';
 
@@ -44,7 +44,7 @@ export default function CssForm({
   setToastSeverity,
 }: CssFormProps) {
   const supportsClipboardRead = useSupportsClipboardRead();
-  const texts = useLocale();
+  const { t } = useTranslation(['css', 'common']);
   function calculateFormattedCss(
     value: string | void,
     minification: boolean | false,
@@ -119,7 +119,7 @@ export default function CssForm({
               setFormattedCss('');
             }}
           >
-            {texts.common.clear}
+            {t('common:clear')}
           </Button>
           {!!supportsClipboardRead && (
             <Button
@@ -132,7 +132,7 @@ export default function CssForm({
                 }
               }}
             >
-              {texts.common.paste}
+              {t('common:paste')}
             </Button>
           )}
         </Box>
@@ -154,7 +154,7 @@ export default function CssForm({
         alignItems='center'
         spacing={1}
       >
-        <Grid item>{texts.css.format}</Grid>
+        <Grid item>{t('css:format')}</Grid>
         <Grid item>
           <Switch
             checked={minifyCss}
@@ -162,7 +162,7 @@ export default function CssForm({
             onChange={handleChange}
           />
         </Grid>
-        <Grid item>{texts.css.minify}</Grid>
+        <Grid item>{t('css:minify')}</Grid>
       </Grid>
       <Box
         display='flex'
@@ -172,7 +172,7 @@ export default function CssForm({
         <TextField
           multiline
           label={
-            minifyCss ? texts.css.minifiedCss : texts.css.formattedCss
+            minifyCss ? t('css:minifiedCss') : t('css:formattedCss')
           }
           name='outputCss'
           value={formattedCss}
@@ -191,7 +191,7 @@ export default function CssForm({
               setCss('');
             }}
           >
-            {texts.common.clear}
+            {t('common:clear')}
           </Button>
           <Button
             startIcon={<ContentCopyIcon />}
@@ -212,7 +212,7 @@ export default function CssForm({
               );
             }}
           >
-            {texts.common.copy}
+            {t('common:copy')}
           </Button>
         </Box>
       </Box>

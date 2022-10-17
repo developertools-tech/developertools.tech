@@ -18,11 +18,11 @@ import Typography from '@mui/material/Typography';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
 
 import navItems from '../data/nav';
 import sponsors from '../data/sponsors';
-import useLocale from '../hooks/useLocale';
 import useWindowSize from '../hooks/useWindowSize';
 import logo from '../public/logo.svg';
 import dlfordLogo from '../public/logo-full.svg';
@@ -63,7 +63,7 @@ export default function Layout({
   title?: string;
   children: React.ReactNode;
 }) {
-  const texts = useLocale().drawer;
+  const { t } = useTranslation('common');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -80,8 +80,8 @@ export default function Layout({
       <ListItem>
         <TextField
           variant='standard'
-          placeholder={texts.search}
-          label={texts.searchTools}
+          placeholder={t('search')}
+          label={t('searchTools')}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={(e) => {
             const curHref = navItems

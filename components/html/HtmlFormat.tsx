@@ -8,8 +8,8 @@ import Typography from '@mui/material/Typography';
 import prettier from 'prettier';
 import parserHtml from 'prettier/parser-html';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import useLocale from '../../hooks/useLocale';
 import useSupportsClipboardRead from '../../hooks/useSupportsClipboardRead';
 import type { ToastProps } from '../Toast';
 
@@ -37,7 +37,7 @@ export default function HtmlFormat({
   setToastSeverity,
 }: HtmlFormatProps) {
   const supportsClipboardRead = useSupportsClipboardRead();
-  const texts = useLocale();
+  const { t } = useTranslation(['common', 'html']);
   function calculateFormattedHtml(value: string | void) {
     setHtml(value);
     if (!value) {
@@ -100,7 +100,7 @@ export default function HtmlFormat({
               setFormattedHtml('');
             }}
           >
-            {texts.common.clear}
+            {t('common:clear')}
           </Button>
           {!!supportsClipboardRead && (
             <Button
@@ -113,7 +113,7 @@ export default function HtmlFormat({
                 }
               }}
             >
-              {texts.common.paste}
+              {t('common:paste')}
             </Button>
           )}
         </Box>
@@ -136,7 +136,7 @@ export default function HtmlFormat({
       >
         <TextField
           multiline
-          label={texts.html.formattedHtml}
+          label={t('html:formattedHtml')}
           name='formattedHtml'
           value={formattedHtml}
         />
@@ -154,7 +154,7 @@ export default function HtmlFormat({
               setHtml('');
             }}
           >
-            {texts.common.clear}
+            {t('common:clear')}
           </Button>
           <Button
             startIcon={<ContentCopyIcon />}
@@ -175,7 +175,7 @@ export default function HtmlFormat({
               );
             }}
           >
-            {texts.common.copy}
+            {t('common:copy')}
           </Button>
         </Box>
       </Box>
