@@ -14,6 +14,7 @@ import regex from '../public/locales/en/regex.json';
 import textDiff from '../public/locales/en/textDiff.json';
 import top from '../public/locales/en/top.json';
 import urlEncode from '../public/locales/en/urlEncode.json';
+import uuid from '../public/locales/en/uuid.json';
 
 declare module 'react-i18next' {
   interface CustomTypeOptions {
@@ -32,6 +33,7 @@ declare module 'react-i18next' {
       regex: typeof regex;
       textDiff: typeof textDiff;
       urlEncode: typeof urlEncode;
+      uuid: typeof uuid;
     };
   }
 }
