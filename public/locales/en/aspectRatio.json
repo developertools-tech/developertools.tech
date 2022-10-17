@@ -1,0 +1,16 @@
+{
+  "ratioPreview": "Ratio Preview",
+  "sourceDimensions": "Source Dimensions",
+  "sourceWidth": "Source Width",
+  "sourceHeight": "Source Height",
+  "targetDimensions": "Target Dimensions",
+  "targetWidth": "Target Width",
+  "targetHeight": "Target Height",
+  "layouts": "Layouts",
+  "layout": "Layout",
+  "screenWidth": "Screen Width",
+  "across": "Across",
+  "marginPixels": "Margin Pixels",
+  "gapPixels": "Gap Pixels",
+  "expandPercent": "Expand Percent"
+}

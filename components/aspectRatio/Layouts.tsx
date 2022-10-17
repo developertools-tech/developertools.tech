@@ -1,5 +1,6 @@
 import Typography from '@mui/material/Typography';
 import React, { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import useLocalState from '../../hooks/useLocalState';
 import AspectRatioLayoutSettings from './LayoutSettings';
@@ -14,6 +15,7 @@ export default function AspectRatioLayouts({
   width,
   height,
 }: AspectRatioLayoutsProps) {
+  const { t } = useTranslation('aspectRatio');
   const [margins, setMargins] = useLocalState({
     key: 'aspectRatioMargins',
     defaultValue: 0,
@@ -40,7 +42,7 @@ export default function AspectRatioLayouts({
     const result = [];
     for (let row = 0; row < layoutCount; row++) {
       const layout: LayoutData = {
-        layout: `${row + 1} Across`,
+        layout: `${row + 1} ${t('across')}`,
         columns: [],
       };
       const aspectRatio = width / height;
@@ -75,7 +77,7 @@ export default function AspectRatioLayouts({
         mb={2}
         component='h2'
       >
-        Layouts
+        {t('layouts')}
       </Typography>
       <AspectRatioLayoutSettings
         layoutCount={layoutCount}

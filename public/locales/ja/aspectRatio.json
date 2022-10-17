@@ -1,0 +1,16 @@
+{
+  "ratioPreview": "比率プレビュー",
+  "sourceDimensions": "ソース次元",
+  "sourceWidth": "ソース幅",
+  "sourceHeight": "ソース高さ",
+  "targetDimensions": "目標次元",
+  "targetWidth": "目標幅",
+  "targetHeight": "目標高さ",
+  "layouts": "レイアウト",
+  "layout": "レイアウト",
+  "screenWidth": "スクリーン幅",
+  "across": "アクロス",
+  "marginPixels": "マージンpx",
+  "gapPixels": "ギャップpx",
+  "expandPercent": "拡大率%"
+}
