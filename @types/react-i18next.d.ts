@@ -10,6 +10,7 @@ import htmlCharCodes from '../public/locales/en/htmlCharCodes.json';
 import imageConverter from '../public/locales/en/imageConverter.json';
 import jsonFormat from '../public/locales/en/json.json';
 import loremIpsum from '../public/locales/en/loremIpsum.json';
+import regex from '../public/locales/en/regex.json';
 import top from '../public/locales/en/top.json';
 
 declare module 'react-i18next' {
@@ -26,6 +27,7 @@ declare module 'react-i18next' {
       imageConverter: typeof imageConverter;
       jsonFormat: typeof jsonFormat;
       loremIpsum: typeof loremIpsum;
+      regex: typeof regex;
     };
   }
 }

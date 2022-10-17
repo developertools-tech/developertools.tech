@@ -6,11 +6,15 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useCallback, useMemo, useState } from 'react';
+import { Namespace, useTranslation } from 'react-i18next';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import RegexTestCase from '../components/regex/RegexTestCase';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 const REGEX_REGEX = /^\/(.+)\/([gimsuy]*)$/;
 
@@ -40,15 +44,13 @@ function parseRegex(text: string) {
   }
 }
 
-const HELPER_TEXT =
-  'Expressions with and without trailing slashes are supported. Add trailing slashes to use flags, ie /w+/ig';
-
 export default function RegexTesterPage() {
   const [regexInput, setRegexInput] = useState('');
   const [testCases, setTestCases] = useState<string[]>(['']);
   const handleAddTestCase = useCallback(() => {
     setTestCases((cases) => [...cases, '']);
   }, []);
+  const { t } = useTranslation('regex');
   const handleRemoveTestCase = useCallback((index: number) => {
     setTestCases((cases) => {
       const newCases = [...cases];
@@ -77,12 +79,12 @@ export default function RegexTesterPage() {
         <Box sx={{ mb: 2 }}>
           <TextField
             fullWidth
-            label='Regex'
+            label={t('regex')}
             placeholder='^(\d+)$'
             maxRows={8}
             value={regexInput}
             error={!!error}
-            helperText={error ? error.message : HELPER_TEXT}
+            helperText={error ? error.message : t('description')}
             onChange={(event) =>
               setRegexInput(event.currentTarget.value)
             }
@@ -92,7 +94,7 @@ export default function RegexTesterPage() {
           component='h2'
           sx={{ mb: 1, mt: 4, mx: 2 }}
         >
-          Test Cases
+          {t('testCases')}
         </Typography>
         <Stack spacing={2}>
           {testCases.map((testCase, index) => (
@@ -111,9 +113,23 @@ export default function RegexTesterPage() {
           sx={{ m: 2 }}
           onClick={handleAddTestCase}
         >
-          Add test case
+          {t('addTestCase')}
         </Button>
       </Container>
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['regex'];
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale!,
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+    ['en', 'ja'],
+  );
+  return {
+    props: { ...translation },
+    revalidate: 3600,
+  };
+};
