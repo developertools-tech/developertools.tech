@@ -5,18 +5,23 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useCallback, useEffect, useState } from 'react';
+import { Namespace, useTranslation } from 'react-i18next';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 const errorRegexFirefox = /line ([0-9]+) column ([0-9]+)/;
 const errorRegexChrome = /at position ([0-9]+)/;
 
 export default function JsonPage() {
+  const { t } = useTranslation(['common', 'jsonFormat']);
   const supportsClipboardRead = useSupportsClipboardRead();
 
   const [error, setError] = React.useState<string>('');
@@ -114,7 +119,7 @@ export default function JsonPage() {
         paragraph
         textAlign='center'
       >
-        Paste or type JSON to validate and format it.
+        {t('jsonFormat:description')}
       </Typography>
       <Box
         display='flex'
@@ -131,7 +136,7 @@ export default function JsonPage() {
         >
           <TextField
             multiline
-            label='Input'
+            label={t('jsonFormat:input')}
             value={input}
             name='input'
             onChange={handleChange}
@@ -149,7 +154,7 @@ export default function JsonPage() {
                 setInput('');
               }}
             >
-              Clear
+              {t('common:clear')}
             </Button>
             <Button
               startIcon={<ContentCopyIcon />}
@@ -169,7 +174,7 @@ export default function JsonPage() {
                 );
               }}
             >
-              Copy
+              {t('common:copy')}
             </Button>
             {!!supportsClipboardRead && (
               <Button
@@ -182,7 +187,7 @@ export default function JsonPage() {
                   }
                 }}
               >
-                Paste
+                {t('common:paste')}
               </Button>
             )}
           </Box>
@@ -218,7 +223,10 @@ export default function JsonPage() {
               data-testid='json-output'
               dangerouslySetInnerHTML={{
                 __html:
-                  output || '<span class="placeholder">Output</span>',
+                  output ||
+                  `<span class="placeholder">${t(
+                    'jsonFormat:output',
+                  )}</span>`,
               }}
             />
             {/* eslint-enable react/no-danger */}
@@ -236,7 +244,7 @@ export default function JsonPage() {
                 setInput('');
               }}
             >
-              Clear
+              {t('common:clear')}
             </Button>
             <Button
               startIcon={<ContentCopyIcon />}
@@ -256,7 +264,7 @@ export default function JsonPage() {
                 );
               }}
             >
-              Copy
+              {t('common:copy')}
             </Button>
             {!!supportsClipboardRead && (
               <Button
@@ -269,7 +277,7 @@ export default function JsonPage() {
                   }
                 }}
               >
-                Paste
+                {t('common:paste')}
               </Button>
             )}
           </Box>
@@ -291,3 +299,18 @@ export default function JsonPage() {
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['common', 'jsonFormat'];
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale!,
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+    ['en', 'ja'],
+  );
+  return {
+    props: { ...translation },
+    revalidate: 3600,
+  };
+};
