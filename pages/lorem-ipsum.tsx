@@ -8,7 +8,10 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
 import hash from 'hash-sum';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useEffect, useState } from 'react';
+import { Namespace, useTranslation } from 'react-i18next';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
@@ -19,6 +22,7 @@ import willFerrellFragments from '../data/loremIpsum/willFerrell';
 import useLocalState from '../hooks/useLocalState';
 import generateFromFragments from '../lib/loremIpsum/generateFromFragments';
 import generateFromWords from '../lib/loremIpsum/generateFromWords';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 export enum WordListTypes {
   words = 'WORDS',
@@ -93,6 +97,7 @@ export default function LoremIpsumPage() {
     }
   }, [wordList, sentenceLength, paragraphLength, paragraphCount]);
 
+  const { t } = useTranslation('loremIpsum');
   return (
     <Layout title='Lorem Ipsum'>
       <Heading>Lorem Ipsum</Heading>
@@ -119,7 +124,7 @@ export default function LoremIpsumPage() {
           <Box flex='1 1 100%'>
             <FormControl fullWidth>
               <InputLabel id='word_list_field_label'>
-                Word List
+                {t('wordList')}
               </InputLabel>
               <Select
                 labelId='word_list_field_label'
@@ -164,7 +169,7 @@ export default function LoremIpsumPage() {
                   );
               }}
             >
-              Copy Text
+              {t('copyText')}
             </Button>
           </Box>
         </Box>
@@ -180,7 +185,7 @@ export default function LoremIpsumPage() {
           gap={4}
         >
           <Box flex='1 1 100%'>
-            <Typography>Sentence Length</Typography>
+            <Typography>{t('sentenceLength')}</Typography>
             <Slider
               aria-label='Sentence Length'
               value={sentenceLength}
@@ -196,7 +201,7 @@ export default function LoremIpsumPage() {
             />
           </Box>
           <Box flex='1 1 100%'>
-            <Typography>Paragraph Length</Typography>
+            <Typography>{t('paragraphLength')}</Typography>
             <Slider
               aria-label='Paragraph Length'
               value={paragraphLength}
@@ -211,7 +216,7 @@ export default function LoremIpsumPage() {
             />
           </Box>
           <Box flex='1 1 100%'>
-            <Typography>Paragraph Count</Typography>
+            <Typography>{t('ParagraphCount')}</Typography>
             <Slider
               aria-label='Paragraph Count'
               value={paragraphCount}
@@ -249,3 +254,18 @@ export default function LoremIpsumPage() {
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['common', 'loremIpsum'];
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale!,
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+    ['en', 'ja'],
+  );
+  return {
+    props: { ...translation },
+    revalidate: 3600,
+  };
+};
