@@ -13,6 +13,7 @@ import loremIpsum from '../public/locales/en/loremIpsum.json';
 import regex from '../public/locales/en/regex.json';
 import textDiff from '../public/locales/en/textDiff.json';
 import top from '../public/locales/en/top.json';
+import urlEncode from '../public/locales/en/urlEncode.json';
 
 declare module 'react-i18next' {
   interface CustomTypeOptions {
@@ -30,6 +31,7 @@ declare module 'react-i18next' {
       loremIpsum: typeof loremIpsum;
       regex: typeof regex;
       textDiff: typeof textDiff;
+      urlEncode: typeof urlEncode;
     };
   }
 }
