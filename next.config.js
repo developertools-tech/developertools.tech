@@ -16,7 +16,7 @@ const nextConfig = withImages({
   swcMinify: true,
   images: {
     disableStaticImages: true,
-  }
+  },
 });
 
 module.exports = withPWA(nextConfig);

@@ -2,6 +2,7 @@ import Abc from '@mui/icons-material/Abc';
 import ArticleIcon from '@mui/icons-material/Article';
 import AspectRatio from '@mui/icons-material/AspectRatio';
 import Code from '@mui/icons-material/Code';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
 import Css from '@mui/icons-material/Css';
 import DataObject from '@mui/icons-material/DataObject';
 import DifferenceIcon from '@mui/icons-material/Difference';
@@ -44,6 +45,11 @@ const navItems = [
     title: 'JSON',
     href: '/json',
     Icon: DataObject,
+  },
+  {
+    title: 'Colors',
+    href: '/colors',
+    Icon: ColorLensIcon,
   },
   {
     title: 'URL Encode',
