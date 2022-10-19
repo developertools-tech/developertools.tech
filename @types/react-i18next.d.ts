@@ -10,6 +10,7 @@ import htmlCharCodes from '../public/locales/en/htmlCharCodes.json';
 import imageConverter from '../public/locales/en/imageConverter.json';
 import jsonFormat from '../public/locales/en/jsonFormat.json';
 import loremIpsum from '../public/locales/en/loremIpsum.json';
+import notFound from '../public/locales/en/notFound.json';
 import regex from '../public/locales/en/regex.json';
 import textDiff from '../public/locales/en/textDiff.json';
 import top from '../public/locales/en/top.json';
@@ -34,6 +35,7 @@ declare module 'react-i18next' {
       textDiff: typeof textDiff;
       urlEncode: typeof urlEncode;
       uuid: typeof uuid;
+      notFound: typeof notFound;
     };
   }
 }
