@@ -14,7 +14,7 @@
   "newUuid": "NEW UUID",
   "checkUuidVersionAndValidity": "Check UUID Version and Validity",
   "uuidToValidate": "UUID to Validate",
-  "aboudUuids": "Aboud UUIDs",
+  "aboudUuids": "About UUIDs",
   "overview": "A Universally Unique Identifier (UUID) is a 128-bit number used as a unique identifier.",
   "aboutUuid1": "UUID v1 is pseudorandom, created using the time of creation and the MAC address of the computer that created it.",
   "aboutUuid3": "UUID v3 is an MD5 hash, created using a namespace and a name. The namespace must be a UUID, and the name can be any string. Given the same namespace and name, you will always get the same UUID.",
