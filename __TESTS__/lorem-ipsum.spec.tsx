@@ -5,6 +5,12 @@ import React from 'react';
 
 import LoremIpsum from '../pages/lorem-ipsum';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+  }),
+}));
+
 describe('Base64', () => {
   it('Displays Lorem Ipsum Text', async () => {
     render(<LoremIpsum />);

@@ -11,6 +11,12 @@ const testInput2 = 'I speak for the trees';
 const testOutput =
   '<span style="color:grey">I </span><span style="color:green">spe</span><span style="color:grey">a</span><span style="color:red">m</span><span style="color:green">k</span><span style="color:grey"> </span><span style="color:green">for </span><span style="color:grey">the </span><span style="color:red">Lo</span><span style="color:green">t</span><span style="color:grey">r</span><span style="color:red">ax</span><span style="color:green">ees</span>';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+  }),
+}));
+
 describe('TextDiff', () => {
   it('Shows different characters', async () => {
     const user = userEvent.setup();
