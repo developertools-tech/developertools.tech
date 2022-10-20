@@ -5,4 +5,5 @@ module.exports = {
     defaultLocale: 'en',
     locales: ['en', 'ja'],
   },
+  localePath: 'i18n',
 };

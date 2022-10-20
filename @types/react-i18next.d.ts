@@ -1,21 +1,21 @@
 // @types/react-i18next.d.ts
 import 'react-i18next';
 
-import aspectRatio from '../public/locales/en/aspectRatio.json';
-import base64 from '../public/locales/en/base64.json';
-import common from '../public/locales/en/common.json';
-import css from '../public/locales/en/css.json';
-import html from '../public/locales/en/html.json';
-import htmlCharCodes from '../public/locales/en/htmlCharCodes.json';
-import imageConverter from '../public/locales/en/imageConverter.json';
-import jsonFormat from '../public/locales/en/jsonFormat.json';
-import loremIpsum from '../public/locales/en/loremIpsum.json';
-import notFound from '../public/locales/en/notFound.json';
-import regex from '../public/locales/en/regex.json';
-import textDiff from '../public/locales/en/textDiff.json';
-import top from '../public/locales/en/top.json';
-import urlEncode from '../public/locales/en/urlEncode.json';
-import uuid from '../public/locales/en/uuid.json';
+import aspectRatio from '../i18n/en/aspectRatio.json';
+import base64 from '../i18n/en/base64.json';
+import common from '../i18n/en/common.json';
+import css from '../i18n/en/css.json';
+import html from '../i18n/en/html.json';
+import htmlCharCodes from '../i18n/en/htmlCharCodes.json';
+import imageConverter from '../i18n/en/imageConverter.json';
+import jsonFormat from '../i18n/en/jsonFormat.json';
+import loremIpsum from '../i18n/en/loremIpsum.json';
+import notFound from '../i18n/en/notFound.json';
+import regex from '../i18n/en/regex.json';
+import textDiff from '../i18n/en/textDiff.json';
+import top from '../i18n/en/top.json';
+import urlEncode from '../i18n/en/urlEncode.json';
+import uuid from '../i18n/en/uuid.json';
 
 declare module 'react-i18next' {
   interface CustomTypeOptions {
