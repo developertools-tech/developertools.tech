@@ -169,15 +169,25 @@ export default function Colors() {
         alignItems={{ xs: 'center', md: 'flex-start' }}
         gap='4rem'
       >
-        <Box>
-          <HexColorPicker
-            color={pickerColor}
-            onChange={(color) => {
-              updateColors({
-                target: { name: 'hex', value: color },
-              });
-            }}
+        <Box
+          display='flex'
+          flexDirection='column'
+        >
+          <Box
+            width='200px'
+            height='200px'
+            sx={{ backgroundColor: `#${hexColor}` }}
           />
+          <Box>
+            <HexColorPicker
+              color={pickerColor}
+              onChange={(color) => {
+                updateColors({
+                  target: { name: 'hex', value: color },
+                });
+              }}
+            />
+          </Box>
         </Box>
         <Box
           display='flex'
