@@ -15,5 +15,5 @@ I'm also looking for co-maintainers, if you are interested please contact me via
 ## Contributors
 
 <a href = "https://github.com/developertools-tech/developertools.tech/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo=developertools-tech/developertools.tech"/>
+  <img src = "https://contrib.rocks/image?repo=developertools-tech/developertools.tech&columns=6&anon=1"/>
 </a>

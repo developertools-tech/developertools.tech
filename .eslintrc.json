@@ -5,21 +5,20 @@
   "parser": "@typescript-eslint/parser",
   "extends": [
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
     "next/core-web-vitals",
+    "airbnb",
     "airbnb-typescript",
     "airbnb/hooks",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended",
-    "plugin:testing-library/react"
+    "plugin:testing-library/react",
+    "prettier"
   ],
   "plugins": [
     "@typescript-eslint",
     "react",
     "react-hooks",
-    "prettier",
     "simple-import-sort",
     "testing-library"
   ],
@@ -102,6 +101,7 @@
       {
         "argsIgnorePattern": "^_"
       }
-    ]
+    ],
+    "prefer-arrow-callback": "off"
   }
 }

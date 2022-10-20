@@ -40,7 +40,7 @@ describe('Home', () => {
 
     expect(getByText(/Aspect Ratio/i)).toBeVisible();
     expect(getByText(/Base64/i)).toBeVisible();
-    expect(queryByText(/HTML/i)).not.toBeInTheDocument();
+    expect(queryByText(/^HTML$/i)).not.toBeInTheDocument();
     expect(queryByText(/JSON/i)).not.toBeInTheDocument();
 
     await user.clear(search);
@@ -48,12 +48,12 @@ describe('Home', () => {
     expect(getByText(/Home/i)).toBeVisible();
     expect(queryByText(/Aspect Ratio/i)).toBeVisible();
     expect(queryByText(/Base64/i)).toBeVisible();
-    expect(queryByText(/HTML/i)).toBeVisible();
+    expect(queryByText(/^HTML$/i)).toBeVisible();
 
     await user.type(search, 'json');
 
     expect(getByText(/JSON/i)).toBeVisible();
-    expect(queryByText(/HTML/i)).not.toBeInTheDocument();
+    expect(queryByText(/^HTML$/i)).not.toBeInTheDocument();
     expect(queryByText(/Aspect Ratio/i)).not.toBeInTheDocument();
     expect(queryByText(/Base64/i)).not.toBeInTheDocument();
   });

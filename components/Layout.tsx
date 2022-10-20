@@ -1,4 +1,4 @@
-import FavoriteIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import GitHub from '@mui/icons-material/GitHub';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
@@ -67,7 +67,7 @@ export default function Layout({
 
   const { width } = useWindowSize();
   const router = useRouter();
-  const asPath = router.asPath;
+  const { asPath } = router;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -94,11 +94,11 @@ export default function Layout({
                   ? 1
                   : -1;
               })
-              .filter(({ title: _itemTitle }) => {
-                return _itemTitle
+              .filter(({ title: _itemTitle }) =>
+                _itemTitle
                   .toLowerCase()
-                  .includes(searchTerm.toLowerCase());
-              })[0]?.href;
+                  .includes(searchTerm.toLowerCase()),
+              )[0]?.href;
             if (e.keyCode === 13 && curHref !== null) {
               router.push(String(curHref));
             }
@@ -138,6 +138,8 @@ export default function Layout({
                 </ListItemButton>
               </ListItem>
             );
+
+          return undefined;
         })}
     </List>
   );
@@ -277,11 +279,23 @@ export default function Layout({
                   width: 100,
                   height: 100,
                   display: 'flex',
+                  flexDirection: 'column',
+                  gap: 0.5,
                   justifyContent: 'center',
                   alignItems: 'center',
                   textAlign: 'center',
-                  borderRadius: 1,
+                  borderRadius: 1.5,
                   textDecoration: 'none',
+                  transition: 'border-color 0.2s ease-in-out',
+                },
+                '& > .sponsor-wrap.cta': {
+                  border: '1px solid #f4433675',
+                },
+                '& > a.sponsor-wrap:hover': {
+                  border: '1px solid #ffffff75',
+                },
+                '& > a.sponsor-wrap.cta:hover': {
+                  border: '1px solid #f44336ba',
                 },
               }}
             >
@@ -301,6 +315,7 @@ export default function Layout({
 
                   return link ? (
                     <a
+                      key={title}
                       className='sponsor-wrap'
                       href={link}
                       target='_blank'
@@ -309,22 +324,25 @@ export default function Layout({
                       <Content />
                     </a>
                   ) : (
-                    <div className='sponsor-wrap'>
+                    <div
+                      key={title}
+                      className='sponsor-wrap'
+                    >
                       <Content />
                     </div>
                   );
                 },
               )}
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                className='sponsor-wrap cta'
+                href='https://github.com/sponsors/dlford'
+              >
+                <FavoriteIcon color='error' />
+                <Typography>Become a Sponsor</Typography>
+              </a>
             </Box>
-            <Button
-              variant='contained'
-              startIcon={<FavoriteIcon />}
-              target='_blank'
-              rel='noopener noreferrer'
-              href='https://github.com/sponsors/dlford'
-            >
-              Sponsor
-            </Button>
           </Box>
           <Box
             display='flex'
@@ -343,9 +361,16 @@ export default function Layout({
             <Box
               width={240}
               maxWidth='100%'
+              display='flex'
+              flexDirection='column'
+              alignItems='center'
               sx={{
+                '& a': {
+                  width: '100%',
+                },
                 '& a > span': {
                   position: 'unset !important',
+                  width: '100% !important',
                 },
                 '& img': {
                   position: 'relative !important',
@@ -366,7 +391,7 @@ export default function Layout({
                   objectFit='contain'
                   src='contributors.svg'
                   loader={() =>
-                    'https://contrib.rocks/image?repo=developertools-tech/developertools.tech'
+                    'https://contrib.rocks/image?repo=developertools-tech/developertools.tech&columns=6&anon=1'
                   }
                 />
               </a>
@@ -382,10 +407,12 @@ export default function Layout({
         >
           <Box
             px={2}
-            py={1}
+            py={2}
             display='flex'
             justifyContent='center'
             alignItems='center'
+            flexWrap='wrap'
+            gap={1}
           >
             <Typography
               display='flex'
@@ -419,6 +446,26 @@ export default function Layout({
                 <GitHub />
               </IconButton>
             </Typography>
+            <Box
+              mt={1}
+              mx={{ xs: 1, md: 6 }}
+            >
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                href='https://www.netlify.com'
+              >
+                <Image
+                  alt='Deploys by Netlify'
+                  width={114}
+                  height={51}
+                  src='netlify.svg'
+                  loader={() =>
+                    'https://www.netlify.com/v3/img/components/netlify-color-accent.svg'
+                  }
+                />
+              </a>
+            </Box>
           </Box>
         </Box>
       </Box>
