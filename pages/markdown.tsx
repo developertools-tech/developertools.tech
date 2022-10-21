@@ -30,7 +30,7 @@ export default function MarkDownPreview() {
         }}
       >
         <TextField
-          label='# Hello World!'
+          label='Markdown'
           id='inputText'
           multiline
           rows={10}
