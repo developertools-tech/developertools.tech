@@ -23,7 +23,7 @@ const goodTestOutput = `<h1 id="this-is-a-first-header">This is a first header</
 
 test('previews markdown correctly', async () => {
   render(<MarkDownPreview />);
-  const input = screen.getByRole('textbox');
+  const input = screen.getByLabelText('');
   const output = screen.getByTestId('markdown-output');
   fireEvent.change(input, { target: { value: goodTestInput } });
   expect(output.innerHTML).toBe(goodTestOutput);
