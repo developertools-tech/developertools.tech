@@ -29,9 +29,8 @@ export default function MarkDownPreview() {
           flexDirection: { md: 'row', xs: 'column' },
         }}
       >
-        {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-        <label htmlFor='inputText' />
         <TextField
+          label='# Hello World!'
           id='inputText'
           multiline
           rows={10}
