@@ -7,6 +7,7 @@ import '../styles/globals.css';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
+import { appWithTranslation } from 'next-i18next';
 import React from 'react';
 
 import defaultTheme from '../styles/theme/defaultTheme';
@@ -20,7 +21,7 @@ const clientSideEmotionCache = createEmotionCache();
 
 const theme = createTheme(defaultTheme);
 
-export default function MyApp(props: MyAppProps) {
+function MyApp(props: MyAppProps) {
   const {
     Component,
     emotionCache = clientSideEmotionCache,
@@ -36,3 +37,5 @@ export default function MyApp(props: MyAppProps) {
     </CacheProvider>
   );
 }
+
+export default appWithTranslation(MyApp);

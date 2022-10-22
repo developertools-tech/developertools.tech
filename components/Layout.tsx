@@ -18,6 +18,7 @@ import Typography from '@mui/material/Typography';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
 
 import navItems from '../data/nav';
@@ -62,6 +63,7 @@ export default function Layout({
   title?: string;
   children: React.ReactNode;
 }) {
+  const { t } = useTranslation('common');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -78,8 +80,8 @@ export default function Layout({
       <ListItem>
         <TextField
           variant='standard'
-          placeholder='Search...'
-          label='Search Tools'
+          placeholder={t('search')}
+          label={t('searchTools')}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={(e) => {
             const curHref = navItems

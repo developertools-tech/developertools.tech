@@ -6,13 +6,17 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { red } from '@mui/material/colors';
 import TextField from '@mui/material/TextField';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
+import { Namespace, useTranslation } from 'react-i18next';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 export default function URLEncodeDecode() {
   const supportsClipboardRead = useSupportsClipboardRead();
@@ -50,13 +54,12 @@ export default function URLEncodeDecode() {
     setDecoded(textCopied);
     setEncoded(encodeURIComponent(textCopied));
   };
+  const { t } = useTranslation(['common', 'urlEncode']);
 
   return (
     <Layout title='URL Encode'>
       <Heading>URL Encode</Heading>
-      <Typography paragraph>
-        Paste or Type text to URL Encode or Decode it
-      </Typography>
+      <Typography paragraph>{t('urlEncode:description')}</Typography>
 
       <Box
         display='flex'
@@ -71,7 +74,7 @@ export default function URLEncodeDecode() {
           flexDirection='column'
         >
           <TextField
-            label='Decoded'
+            label={t('urlEncode:decoded')}
             value={decoded}
             onChange={(e) => {
               setDecoded(e.target.value);
@@ -89,7 +92,7 @@ export default function URLEncodeDecode() {
               startIcon={<ClearIcon />}
               onClick={handleClear}
             >
-              Clear
+              {t('common:clear')}
             </Button>
             <Button
               startIcon={<ContentCopyIcon />}
@@ -109,7 +112,7 @@ export default function URLEncodeDecode() {
                 );
               }}
             >
-              Copy
+              {t('common:copy')}
             </Button>
 
             {supportsClipboardRead && (
@@ -117,7 +120,7 @@ export default function URLEncodeDecode() {
                 startIcon={<ContentPasteGoIcon />}
                 onClick={handlePasteDecode}
               >
-                Paste
+                {t('common:paste')}
               </Button>
             )}
           </Box>
@@ -128,7 +131,7 @@ export default function URLEncodeDecode() {
           flexDirection='column'
         >
           <TextField
-            label='Encoded'
+            label={t('urlEncode:encoded')}
             value={encoded}
             onChange={(e) => {
               setEncoded(e.target.value);
@@ -153,7 +156,7 @@ export default function URLEncodeDecode() {
               startIcon={<ClearIcon />}
               onClick={handleClear}
             >
-              Clear
+              {t('common:clear')}
             </Button>
             <Button
               startIcon={<ContentCopyIcon />}
@@ -173,7 +176,7 @@ export default function URLEncodeDecode() {
                 );
               }}
             >
-              Copy
+              {t('common:copy')}
             </Button>
 
             {supportsClipboardRead && (
@@ -181,7 +184,7 @@ export default function URLEncodeDecode() {
                 startIcon={<ContentPasteGoIcon />}
                 onClick={handlePasteEncode}
               >
-                Paste
+                {t('common:paste')}
               </Button>
             )}
           </Box>
@@ -205,3 +208,17 @@ export default function URLEncodeDecode() {
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['common', 'urlEncode'];
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale!,
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+    ['en', 'ja'],
+  );
+  return {
+    props: { ...translation },
+  };
+};

@@ -1,22 +1,23 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 /* eslint-enable import/no-extraneous-dependencies */
 import { validate, version } from 'uuid';
 
 import UUID from '../pages/uuid';
+import { renderWithI18n } from './helper/i18n';
 
 describe('UUID', () => {
   it('shows the about section', () => {
-    render(<UUID />);
+    renderWithI18n(<UUID />);
 
     expect(screen.getByText(/About UUIDs/i)).toBeInTheDocument();
   });
 
   it('generates a valid v1 UUID', async () => {
     const user = userEvent.setup();
-    render(<UUID />);
+    renderWithI18n(<UUID />);
 
     const versionSelect = screen.getByLabelText(/UUID Version/i);
     await user.click(versionSelect);
@@ -34,13 +35,13 @@ describe('UUID', () => {
     expect(versioned).toBe(1);
 
     const old = output.value;
-    await user.click(screen.getByRole('button', { name: 'New UUID' }));
+    await user.click(screen.getByRole('button', { name: 'NEW UUID' }));
     expect(output.value).not.toBe(old);
   });
 
   it('generates a valid v3 UUID', async () => {
     const user = userEvent.setup();
-    render(<UUID />);
+    renderWithI18n(<UUID />);
 
     const namespace = '3fa9646d-627b-43db-b8cb-98939a51b35d';
     const name = 'test version three';
@@ -70,7 +71,7 @@ describe('UUID', () => {
 
   it('generates a valid v4 UUID', async () => {
     const user = userEvent.setup();
-    render(<UUID />);
+    renderWithI18n(<UUID />);
 
     const versionSelect = screen.getByLabelText(/UUID Version/i);
     await user.click(versionSelect);
@@ -88,13 +89,13 @@ describe('UUID', () => {
     expect(versioned).toBe(4);
 
     const old = output.value;
-    await user.click(screen.getByRole('button', { name: 'New UUID' }));
+    await user.click(screen.getByRole('button', { name: 'NEW UUID' }));
     expect(output.value).not.toBe(old);
   });
 
   it('generates a valid v5 UUID', async () => {
     const user = userEvent.setup();
-    render(<UUID />);
+    renderWithI18n(<UUID />);
 
     const name = 'test version five';
     const namespaceOutput = '5cdbc07f-e32e-55cf-9cc7-5619fbe1be53';
@@ -127,7 +128,7 @@ describe('UUID', () => {
 
   it('copies to clipboard', async () => {
     const user = userEvent.setup();
-    render(<UUID />);
+    renderWithI18n(<UUID />);
 
     await user.click(screen.getByTestId('generate-uuid-clear-btn'));
 
@@ -146,7 +147,7 @@ describe('UUID', () => {
     await user.type(namespaceInput, namespace);
     await user.type(nameInput, name);
 
-    const copyBtn = screen.getByRole('button', { name: 'Copy' });
+    const copyBtn = screen.getByRole('button', { name: 'COPY' });
     await user.click(copyBtn);
 
     expect(await navigator.clipboard.readText()).toBe(namespaceOutput);
@@ -154,7 +155,7 @@ describe('UUID', () => {
 
   it('properly validates UUIDs', async () => {
     const user = userEvent.setup();
-    render(<UUID />);
+    renderWithI18n(<UUID />);
 
     const input = 'fb1d5d8f-3c80-459d-b30e-d38bd9397a21';
 

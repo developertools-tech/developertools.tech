@@ -142,9 +142,27 @@ Fix the highlighted errors, `git add` your files, and try again. You can manuall
 
 #### Tests
 
-You must write tests for your tool or changes before submitting a PR. Running `npm test` will start [Jest](https://jestjs.io/docs/getting-started) in watch mode, allowing you to run only tests related to files changed since the last commit. 
+You must write tests for your tool or changes before submitting a PR. Running `npm test` will start [Jest](https://jestjs.io/docs/getting-started) in watch mode, allowing you to run only tests related to files changed since the last commit.
 
 You can run all the tests in the project with `npm run test:ci`. Github Actions will run them for you once you submit your PR, so this is not required.
+
+## i18n
+
+This App is internationalized. This section describes the addition of translations.
+
+### Add translation file
+
+Translation JSON files should be added to the `i18n/{en, ja, ..etc}/{PageName}.json`
+
+Then update two files `@types/react-i18next.d.ts` and `__TEST__/helper.i18n.tsx`
+
+### Use translation
+
+1. Add getStaticProps
+2. UseTranslation hook
+3. Get string from t function
+
+Please refer to [this](https://github.com/shu1007/developertools.tech/blob/make-i18n/pages/base64.tsx)
 
 ## More Resources
 
@@ -154,3 +172,4 @@ To learn more about Next.js, take a look at the following resources:
 - [Material UI](https://mui.com/material-ui) - learn about Material UI components and API.
 - [Jest](https://jestjs.io/docs/getting-started) - learn about the Jest assertion library
 - [Testing Library](https://testing-library.com/docs/react-testing-library/intro) - learn about React Testing Library
+- [next-i18next](https://github.com/i18next/next-i18next) - learn about next-i18next

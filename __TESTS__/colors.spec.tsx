@@ -6,6 +6,12 @@ import React from 'react';
 
 import Colors from '../pages/colors';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+  }),
+}));
+
 describe('Colors', () => {
   it('reacts to HEX change correctly', async () => {
     const user = userEvent.setup();

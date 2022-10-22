@@ -6,6 +6,12 @@ import React from 'react';
 
 import Html from '../pages/html';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+  }),
+}));
+
 describe('HTML', () => {
   it('formats HTML and adds newlines', async () => {
     const user = userEvent.setup();
