@@ -6,6 +6,7 @@ import ColorLensIcon from '@mui/icons-material/ColorLens';
 import Css from '@mui/icons-material/Css';
 import DataObject from '@mui/icons-material/DataObject';
 import DifferenceIcon from '@mui/icons-material/Difference';
+import DocumentScanner from '@mui/icons-material/DocumentScanner';
 import Fingerprint from '@mui/icons-material/Fingerprint';
 import HomeIcon from '@mui/icons-material/Home';
 import Image from '@mui/icons-material/Image';
@@ -45,6 +46,11 @@ const navItems = [
     title: 'JSON',
     href: '/json',
     Icon: DataObject,
+  },
+  {
+    title: 'Markdown Preview',
+    href: '/markdown',
+    Icon: DocumentScanner,
   },
   {
     title: 'Colors',
