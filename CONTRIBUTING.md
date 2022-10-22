@@ -66,6 +66,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
       - Add your tool to this file to include it in the main navigation
   - `hooks`
     - Create a directory for your tool if needed, unless it is a generic/re-usable hook
+  - `i18n`
+    - Translations, organized by language code
   - `pages`
     - Create a page for your tool, note that the filename will be used as the page slug
   - `styles`
@@ -75,25 +77,96 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 1. Take a look at some of the existing tools to see what tooling has already been built (e.g. toasts, local storage, window size, etc.)
 
-2. Create the file `pages/your-tool-slug.tsx`
+2. Create a translation namespace for your tool in `i18n/en/myToolName.json`, add an entry for any hard-coded text as you work on your tool
+
+  ```json
+  {
+    "title": "My Tool Name",
+    // ...
+  }
+  ```
+
+3. Add your namespace to `@types/react-i18next.d.ts`
+
+  ```ts
+  // ...
+  import myToolName from '../i18n/en/myToolName.json';
+
+  declare module 'react-i18next' {
+    interface CustomTypeOptions {
+      defaultNS: 'common';
+      resources: {
+        // ...
+        myToolName: typeof myToolName;
+      };
+    }
+  }
+  ```
+
+4. Add your namespace to `__TESTS__/helper/i18n.tsx`
+
+  ```tsx
+  // ...
+  import myToolName from '../../i18n/en/myToolName.json';
+
+  i18n.use(initReactI18next).init({
+    // ...
+
+    ns: [
+      // ...
+      'myToolName',
+    ],
+
+    // ...
+
+    resources: {
+      en: {
+        // ...
+        myToolName,
+      },
+    },
+  });
+
+  ```
+
+5. Create the file `pages/your-tool-slug.tsx`
 
   ```tsx
   import React from 'react';
+  import { Namespace, useTranslation } from 'react-i18next';
 
+  import nextI18NextConfig from '../next-i18next.config.js';
   import Heading from '../components/Heading';
   import Layout from '../components/Layout';
 
   export default function MyToolName() {
+    const { t } = useTranslation(['common', 'myToolName']);
+
     return (
-    <Layout title='My Tool Name'>
-      <Heading>My Tool Name</Heading>
+    <Layout title={t('myToolName:title')}>
+      <Heading>{t('myToolName:title')}</Heading>
       {/* TODO - Build my tool */}
     </Layout>
     )
   }
+
+  const i18nextNameSpaces: Namespace[] = ['common', 'myToolName'];
+
+  export const getStaticProps: GetStaticProps = async ({ locale }) => {
+    const translation = await serverSideTranslations(
+      locale!,
+      i18nextNameSpaces as string[],
+      nextI18NextConfig,
+      ['en'], // Add any additionally supported languages here
+    );
+    return {
+      props: { ...translation },
+    };
+  };
+
   ```
 
-3. Add your tool to the main navigation (`data/nav.ts`)
+6. Add your tool to the main navigation (`data/nav.ts`)
 
   ```ts
   //...
@@ -146,7 +219,7 @@ You must write tests for your tool or changes before submitting a PR. Running `n
 
 You can run all the tests in the project with `npm run test:ci`. Github Actions will run them for you once you submit your PR, so this is not required.
 
-## i18n
+## Internationalization (i18n)
 
 This App is internationalized. This section describes the addition of translations.
 
@@ -158,11 +231,20 @@ Then update two files `@types/react-i18next.d.ts` and `__TEST__/helper.i18n.tsx`
 
 ### Use translation
 
-1. Add getStaticProps
-2. UseTranslation hook
-3. Get string from t function
+1. Add `getStaticProps` to the page
+2. Utilize the `UseTranslation` hook
+3. Get translated string values from the `t` function
 
-Please refer to [this](https://github.com/shu1007/developertools.tech/blob/make-i18n/pages/base64.tsx)
+Please refer to [the base64 tool](https://github.com/developertools-tech/developertools.tech/blob/main/pages/base64.tsx) as an example
+
+### Add a language
+
+Adding a language does not require adding every translation for the entire app, missing translations will fall back to english.
+
+1. Create a directory at `i18n/{short-language-code}/`
+2. Create the namespace JSON files to match the `en` directory
+3. Add the translated text to each namespace file
+4. Add the locale to `next-i18next.config.js`
 
 ## More Resources
 
