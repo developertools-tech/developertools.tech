@@ -109,10 +109,10 @@ export default function Layout({
       </ListItem>
       {[...navItems]
         .sort((a, b) => {
-          if (a.title === 'Home') {
+          if (a.title === 'home') {
             return -1;
           }
-          if (b.title === 'Home') {
+          if (b.title === 'home') {
             return 1;
           }
           return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
@@ -136,7 +136,8 @@ export default function Layout({
                       <Icon />
                     </ListItemIcon>
                   )}
-                  <ListItemText primary={itemTitle} />
+                  {/* @ts-expect-error value is unknown */}
+                  <ListItemText primary={t(itemTitle)} />
                 </ListItemButton>
               </ListItem>
             );

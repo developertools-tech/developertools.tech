@@ -3,5 +3,20 @@
   "paste": "PASTE",
   "clear": "CLEAR",
   "searchTools": "Search Tools",
-  "search": "Search..."
+  "search": "Search...",
+  "home": "Home",
+  "aspectRatio": "Aspect Ratio",
+  "base64": "Base64",
+  "colors": "Colors",
+  "css": "CSS",
+  "html": "HTML",
+  "htmlCharCodes": "HTML Char Codes",
+  "imageConverter": "Image Converter",
+  "json": "JSON",
+  "loremIpsum": "Lorem Ipsum",
+  "markdownPreview": "Markdown Preview",
+  "regexTester": "Regex Tester",
+  "textDiff": "Text Diff",
+  "urlEncode": "URL Encode",
+  "uuid": "UUID"
 }

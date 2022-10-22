@@ -28,9 +28,12 @@ export default function Base64Page() {
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
   const { t } = useTranslation('base64');
+
+  const pageTitle = t('title');
+
   return (
-    <Layout title='Base64'>
-      <Heading>Base64</Heading>
+    <Layout title={pageTitle}>
+      <Heading>{pageTitle}</Heading>
       <Typography paragraph>{t('description')}</Typography>
       <Base64InputOutput
         ascii={ascii}

@@ -166,7 +166,16 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
   ```
 
-6. Add your tool to the main navigation (`data/nav.ts`)
+6. Add your tool name to the common namespace (`i18n/en/common.json`)
+
+  ```json
+  {
+    // ...
+    "myToolName": "My Tool Name",
+  }
+  ```
+
+7. Add your tool to the main navigation (`data/nav.ts`)
 
   ```ts
   //...
@@ -175,7 +184,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
   export default [
     // ...
     {
-      title: 'My Tool Name',
+      title: 'myToolName', // This is the translation key from the common namespace
       href: '/my-tool-slug',
       Icon: SomeIcon,
     },

@@ -12,7 +12,7 @@ import nextI18NextConfig from '../next-i18next.config.js';
 export default function IndexPage() {
   const { t } = useTranslation('top');
   return (
-    <Layout>
+    <Layout title={t('home')}>
       <Box textAlign='center'>
         <Heading>{t('welcome')}</Heading>
         <Typography paragraph>{t('chooseFromMenu')}</Typography>
