@@ -154,7 +154,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
   export const getStaticProps: GetStaticProps = async ({ locale }) => {
     const translation = await serverSideTranslations(
-      locale!,
+      locale || 'en',
       i18nextNameSpaces as string[],
       nextI18NextConfig,
       ['en'], // Add any additionally supported languages here

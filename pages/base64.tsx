@@ -60,7 +60,7 @@ const i18nextNameSpaces: Namespace[] = ['common', 'base64'];
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const translation = await serverSideTranslations(
-    locale!,
+    locale || 'en',
     i18nextNameSpaces as string[],
     nextI18NextConfig,
     ['en', 'ja'],
