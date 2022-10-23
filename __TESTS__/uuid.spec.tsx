@@ -6,7 +6,7 @@ import React from 'react';
 import { validate, version } from 'uuid';
 
 import UUID from '../pages/uuid';
-import { renderWithI18n } from './helper/i18n';
+import renderWithI18n from './helper/i18n';
 
 describe('UUID', () => {
   it('shows the about section', () => {

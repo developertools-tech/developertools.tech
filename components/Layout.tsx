@@ -136,7 +136,6 @@ export default function Layout({
                       <Icon />
                     </ListItemIcon>
                   )}
-                  {/* @ts-expect-error value is unknown */}
                   <ListItemText primary={t(itemTitle)} />
                 </ListItemButton>
               </ListItem>
