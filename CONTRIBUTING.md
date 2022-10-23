@@ -26,6 +26,12 @@ Please do not start working on something until you have an issue assigned to you
 
 First, fork this repository on GitHub, and clone your fork to your local machine.
 
+Checkout the `dev` branch to base your work on:
+
+```sh
+git checkout dev
+```
+
 Create a branch for your work:
 
 ```sh
@@ -220,10 +226,12 @@ Please refer to [the base64 tool](https://github.com/developertools-tech/develop
 
 Adding a language does not require adding every translation for the entire app, missing translations will fall back to english.
 
-1. Create a directory at `i18n/{short-language-code}/`
-2. Create the namespace JSON files to match the `en` directory
-3. Add the translated text to each namespace file
-4. Add the locale to `next-i18next.config.js`
+1. See [Getting Started](#getting-started) to create a fork and a new branch based on the `dev` branch
+2. Create a directory at `i18n/{short-language-code}/`, use [language codes](https://www.science.co.il/language/Locale-codes.php) here
+3. Create the namespace JSON files to match the `en` directory
+4. Add the translated text to each namespace file
+5. Add the locale to `next-i18next.config.js`
+6. Create a pull request against the `dev` branch on GitHub
 
     ```js
     module.exports = {
