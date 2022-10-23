@@ -1,0 +1,22 @@
+{
+  "copy": "कॉपी",
+  "paste": "पेस्ट",
+  "clear": "क्लियर",
+  "searchTools": "खोज के टूल्स",
+  "search": "खोज करें...",
+  "home": "होम",
+  "aspectRatio": "ऐस्पेक्ट रेश्यो",
+  "base64": "बेस 64",
+  "colors": "कलर",
+  "css": "CSS",
+  "html": "HTML",
+  "htmlCharCodes": "HTML Char Codes",
+  "imageConverter": "इमेज कनवर्टर",
+  "json": "JSON",
+  "loremIpsum": "लोरेम इप्सम",
+  "markdownPreview": "मार्कडाउन प्रीव्यू",
+  "regexTester": "रेगेक्स टेस्टर",
+  "textDiff": "टेक्सट Diff",
+  "urlEncode": "URL एन्कोड",
+  "uuid": "UUID"
+}
