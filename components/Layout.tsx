@@ -102,6 +102,7 @@ function LanguageToggle() {
               padding: '6px 16px',
               textAlign: 'center',
               textDecoration: 'none',
+              textTransform: 'uppercase',
             },
           },
         }}
