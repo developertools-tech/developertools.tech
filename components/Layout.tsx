@@ -1,5 +1,6 @@
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import GitHub from '@mui/icons-material/GitHub';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,6 +13,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -53,6 +56,69 @@ function Logo({ title }: { title: string }) {
         {title}
       </Typography>
     </Button>
+  );
+}
+
+function LanguageToggle() {
+  const router = useRouter();
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(
+    null,
+  );
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div>
+      <Button
+        id='language-toggle-button'
+        aria-controls={open ? 'language-toggle-menu' : undefined}
+        aria-haspopup='true'
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        endIcon={<KeyboardArrowDownIcon />}
+        sx={{
+          background: 'none',
+          color: '#fff',
+        }}
+      >
+        {router.locale}
+      </Button>
+      <Menu
+        id='language-toggle-menu'
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        onClick={handleClose}
+        disableScrollLock
+        sx={{
+          '& .MuiMenuItem-root': {
+            padding: 0,
+            '& a': {
+              padding: '6px 16px',
+              textAlign: 'center',
+              textDecoration: 'none',
+              textTransform: 'uppercase',
+            },
+          },
+        }}
+      >
+        {(router.locales || []).map((locale) => (
+          <MenuItem key={locale}>
+            <Link
+              href={router.asPath}
+              locale={locale}
+            >
+              {locale}
+            </Link>
+          </MenuItem>
+        ))}
+      </Menu>
+    </div>
   );
 }
 
@@ -174,6 +240,7 @@ export default function Layout({
       >
         <Toolbar>
           <Logo title={t('shortTitle')} />
+          <LanguageToggle />
           <IconButton
             color='inherit'
             aria-label='open drawer'
