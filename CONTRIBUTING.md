@@ -128,7 +128,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
         locale || 'en',
         i18nextNameSpaces as string[],
         nextI18NextConfig,
-        ['en'], // Add any additionally supported languages here
       );
       return {
         props: { ...translation },
@@ -232,18 +231,6 @@ Adding a language does not require adding every translation for the entire app, 
         // ...
         locales: ['en', 'ja', 'YOUR_LOCALE_HERE'],
       },
-      // ...
-    };
-    ```
-
-5. For each page that should support the new language, edit the `getStaticProps` function to include the new locale.
-
-    ```tsx
-    export const getStaticProps: GetStaticProps = async ({ locale }) => {
-      const translation = await serverSideTranslations(
-        // ...
-        ['en', 'ja', 'YOUR_LOCALE_HERE'],
-      );
       // ...
     };
     ```
