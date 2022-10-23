@@ -120,7 +120,7 @@ export default function RegexTesterPage() {
   );
 }
 
-const i18nextNameSpaces: Namespace[] = ['regex'];
+const i18nextNameSpaces: Namespace[] = ['regex', 'common'];
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const translation = await serverSideTranslations(
     locale || 'en',
