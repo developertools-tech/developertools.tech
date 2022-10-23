@@ -1,0 +1,16 @@
+{
+  "ratioPreview": "Proporção de Tela",
+  "sourceDimensions": "Dimensões da origem",
+  "sourceWidth": "Largura da origem",
+  "sourceHeight": "Altura da origem",
+  "targetDimensions": "Dimensões do destino",
+  "targetWidth": "Largura do destino",
+  "targetHeight": "Altura do destino",
+  "layouts": "Layouts",
+  "layout": "Layout",
+  "screenWidth": "Larguras da tela",
+  "across": "Através",
+  "marginPixels": "Pixels de margem",
+  "gapPixels": "Pixels de intervalo",
+  "expandPercent": "Expandir Porcentagem"
+}
