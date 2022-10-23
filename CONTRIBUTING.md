@@ -227,17 +227,22 @@ Please refer to [the base64 tool](https://github.com/developertools-tech/develop
 Adding a language does not require adding every translation for the entire app, missing translations will fall back to english.
 
 1. See [Getting Started](#getting-started) to create a fork and a new branch based on the `dev` branch
-2. Create a directory at `i18n/{short-language-code}/`, use [language codes](https://www.science.co.il/language/Locale-codes.php) here
+2. Create a directory at `i18n/{short-language-code}/`, use a [language code or LCID string](https://wiki.freepascal.org/Language_Codes) for the directory name
 3. Create the namespace JSON files to match the `en` directory
 4. Add the translated text to each namespace file
-5. Add the locale to `next-i18next.config.js`
+5. Add the locale language code or LCID string from step 2 to `next-i18next.config.js`
 
 
     ```js
     module.exports = {
       i18n: {
         // ...
-        locales: ['en', 'ja', 'YOUR_LOCALE_HERE'],
+        locales: [
+          'en',
+          'ja',
+          'pt-BR',
+          'YOUR_LOCALE_HERE'
+        ],
       },
       // ...
     };
