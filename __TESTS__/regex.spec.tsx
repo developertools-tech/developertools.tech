@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import RegexTester from '../pages/regex';
-import { renderWithI18n } from './helper/i18n';
+import renderWithI18n from './helper/i18n';
 
 describe('Regex Tester', () => {
   it('can add and remove test cases', async () => {

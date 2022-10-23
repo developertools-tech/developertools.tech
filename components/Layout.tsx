@@ -33,7 +33,7 @@ import Link from './Link';
 
 const drawerWidth = 240;
 
-function Logo() {
+function Logo({ title }: { title: string }) {
   return (
     <Button
       href='/'
@@ -53,7 +53,7 @@ function Logo() {
         color='#fff'
         textTransform='none'
       >
-        Dev Tools
+        {title}
       </Typography>
     </Button>
   );
@@ -122,7 +122,7 @@ function LanguageToggle() {
 }
 
 export default function Layout({
-  title = 'Developer Utilities',
+  title,
   children,
 }: {
   title?: string;
@@ -174,10 +174,10 @@ export default function Layout({
       </ListItem>
       {[...navItems]
         .sort((a, b) => {
-          if (a.title === 'Home') {
+          if (a.title === 'home') {
             return -1;
           }
-          if (b.title === 'Home') {
+          if (b.title === 'home') {
             return 1;
           }
           return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
@@ -201,7 +201,7 @@ export default function Layout({
                       <Icon />
                     </ListItemIcon>
                   )}
-                  <ListItemText primary={itemTitle} />
+                  <ListItemText primary={t(itemTitle)} />
                 </ListItemButton>
               </ListItem>
             );
@@ -218,7 +218,7 @@ export default function Layout({
       flexDirection='column'
     >
       <Head>
-        <title>{title}</title>
+        <title>{title || t('longTitle')}</title>
         <meta
           name='description'
           content='Developer utilities by DL Ford'
@@ -238,7 +238,7 @@ export default function Layout({
         }}
       >
         <Toolbar>
-          <Logo />
+          <Logo title={t('shortTitle')} />
           <LanguageToggle />
           <IconButton
             color='inherit'
@@ -330,7 +330,7 @@ export default function Layout({
               mb={3}
               fontWeight='normal'
             >
-              Sponsors
+              {t('sponsors')}
             </Typography>
             <Box
               maxWidth={600}
@@ -383,7 +383,7 @@ export default function Layout({
 
                   return link ? (
                     <a
-                      key={title}
+                      key={sponsorTitle}
                       className='sponsor-wrap'
                       href={link}
                       target='_blank'
@@ -393,7 +393,7 @@ export default function Layout({
                     </a>
                   ) : (
                     <div
-                      key={title}
+                      key={sponsorTitle}
                       className='sponsor-wrap'
                     >
                       <Content />
@@ -408,7 +408,7 @@ export default function Layout({
                 href='https://github.com/sponsors/dlford'
               >
                 <FavoriteIcon color='error' />
-                <Typography>Become a Sponsor</Typography>
+                <Typography>{t('becomeASponsor')}</Typography>
               </a>
             </Box>
           </Box>
@@ -424,7 +424,7 @@ export default function Layout({
               mb={3}
               fontWeight='normal'
             >
-              Contributors
+              {t('contributors')}
             </Typography>
             <Box
               width={240}

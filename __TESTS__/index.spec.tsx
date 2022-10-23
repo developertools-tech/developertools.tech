@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import Home from '../pages/index';
-import { renderWithI18n } from './helper/i18n';
+import renderWithI18n from './helper/i18n';
 
 describe('Home', () => {
   it('renders a heading', () => {

@@ -1,0 +1,22 @@
+{
+  "copy": "COPIAR",
+  "paste": "COLAR",
+  "clear": "LIMPAR",
+  "searchTools": "Buscar Ferramentas",
+  "search": "Buscando...",
+  "home": "Home",
+  "aspectRatio": "Aspect Ratio",
+  "base64": "Base64",
+  "colors": "Colors",
+  "css": "CSS",
+  "html": "HTML",
+  "htmlCharCodes": "HTML Char Codes",
+  "imageConverter": "Image Converter",
+  "json": "JSON",
+  "loremIpsum": "Lorem Ipsum",
+  "markdownPreview": "Markdown Preview",
+  "regexTester": "Regex Tester",
+  "textDiff": "Text Diff",
+  "urlEncode": "URL Encode",
+  "uuid": "UUID"
+}

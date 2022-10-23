@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import Json from '../pages/json';
-import { renderWithI18n } from './helper/i18n';
+import renderWithI18n from './helper/i18n';
 
 const goodTestInput =
   '{\\{}"test":true,"item":{\\{}"thing":"yes","count":20{\\}}{\\}}';

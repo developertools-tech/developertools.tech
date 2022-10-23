@@ -28,9 +28,12 @@ export default function Base64Page() {
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
   const { t } = useTranslation('base64');
+
+  const pageTitle = t('title');
+
   return (
-    <Layout title='Base64'>
-      <Heading>Base64</Heading>
+    <Layout title={pageTitle}>
+      <Heading>{pageTitle}</Heading>
       <Typography paragraph>{t('description')}</Typography>
       <Base64InputOutput
         ascii={ascii}
@@ -57,10 +60,9 @@ const i18nextNameSpaces: Namespace[] = ['common', 'base64'];
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const translation = await serverSideTranslations(
-    locale!,
+    locale || 'en',
     i18nextNameSpaces as string[],
     nextI18NextConfig,
-    ['en', 'ja'],
   );
   return {
     props: { ...translation },

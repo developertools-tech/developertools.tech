@@ -67,7 +67,16 @@ export default function AspectRatioLayouts({
       result.push(layout);
     }
     return result;
-  }, [width, height, layoutWidths, layoutCount, gap, margins, expand]);
+  }, [
+    width,
+    height,
+    layoutWidths,
+    layoutCount,
+    gap,
+    margins,
+    expand,
+    t,
+  ]);
 
   const layoutData = getLayoutData();
 

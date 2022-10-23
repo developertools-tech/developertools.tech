@@ -12,8 +12,9 @@ import nextI18NextConfig from '../next-i18next.config.js';
 
 export default function IndexPage() {
   const { t } = useTranslation('notFound');
+
   return (
-    <Layout>
+    <Layout title={t('heading')}>
       <Box textAlign='center'>
         <Heading>{t('heading')}</Heading>
         <Typography paragraph>{t('message')}</Typography>
@@ -26,7 +27,7 @@ const i18nextNameSpaces: Namespace[] = ['notFound', 'common'];
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const translation = await serverSideTranslations(
-    locale!,
+    locale || 'en',
     i18nextNameSpaces as string[],
     nextI18NextConfig,
   );

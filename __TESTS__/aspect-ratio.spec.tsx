@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import AspectRatio from '../pages/aspect-ratio';
-import { renderWithI18n } from './helper/i18n';
+import renderWithI18n from './helper/i18n';
 
 describe('AspectRatio', () => {
   it('renders a preview of the correct aspect ratio', async () => {
