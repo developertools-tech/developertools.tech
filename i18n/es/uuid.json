@@ -1,0 +1,23 @@
+{
+  "generateUuid": "Generar un UUID",
+  "uuidVersion": "Versión de UUID ",
+  "pseudorandom": "Pseudo-aleatorio",
+  "md5hash": " El Algoritmo de Hashing MD5",
+  "random": "aleatorio",
+  "sha1Hash": "El Algoritmo de Hashing SHA-1",
+  "nameSpaceUuid": "Espacio de Nombre UUID",
+  "uuidName": "Nombre de UUID",
+  "namespaceType": "Tipo de Espacio de Nombre",
+  "namespaceUuid": "Espacio de Nombre UUID",
+  "invalidUuid": "Un UUID inválido",
+  "generatedUuid": "UUID Generado",
+  "newUuid": "UN UUID NUEVO",
+  "checkUuidVersionAndValidity": "Verificar la versión y la validez de UUID",
+  "uuidToValidate": "UUID a Validar",
+  "aboudUuids": "Sobre UUIDs",
+  "overview": "El UUID (Identificadores únicos Universale) es un número de 128 bit que se utiliza un identificador único.",
+  "aboutUuid1": "v1 de UUID es pseudo-aleatorio. Fue generado usando el tiempo de la creación y la dirección mac de la computadora que lo creó.",
+  "aboutUuid3": "v3 de UUID es el algoritmo de hashing MD5. Fue generado usando un esapcio de nombre y un nombre. El espacio de nombre tiene que ser un UUID y el nombre puede ser cualquier cadena de caracteres. Si das el mismo espacio de nombre y nombre, siempre obtendrás lo mismo UUID.",
+  "aboutUuid4": "v4 de UUID es aleatoria o pseudoaleatorio, dependiendo de cómo lo hayas generado. Los UUID de la versión 4 producidos a partir de esta herramienta son valores aleatorios criptográficamente-fuertes.",
+  "aboutUuid5": "v5 de UUID es el algoritmo de hashing SHA-1. Fue generado con un espacio de nombre y un nombre. como la v3 de UUID, si das el mismo espacio de nombre y nombre, obtendrás lo mismo UUID. El espacio de nombre para la v5 de UUID puede ser un UUID o un tipo de espacio de nombres presente (URL, DNS, ISO OID, and X.500 DN). Esta herramienta actualmente no es compatible con ISO OID o X.500 DN."
+}
