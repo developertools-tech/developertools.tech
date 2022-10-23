@@ -1,0 +1,8 @@
+{
+  "description": "इसे बदलने या छोटा करने के लिए कुछ CSS में पेस्ट या टाइप करें.",
+  "note": "Note: Formatting works with CSS, SCSS, and LESS. Minification only works for raw CSS.",
+  "minify": "छोटा करना",
+  "format": "बदलना",
+  "formattedCss": "FormattedCSS",
+  "minifiedCss": "MinifiedCSS"
+}
