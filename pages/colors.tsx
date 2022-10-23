@@ -39,12 +39,13 @@ function stringToNumArray(value: string): number[] | string {
 }
 
 export default function Colors() {
+  const { t } = useTranslation('common');
+
   const supportsClipboardRead = useSupportsClipboardRead();
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
-  const { t } = useTranslation('common');
 
   const [pickerColor, setPickerColor] = useLocalState<string>({
     key: 'colorPicker_pickerColor',
@@ -396,7 +397,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     locale || 'en',
     i18nextNameSpaces as string[],
     nextI18NextConfig,
-    ['en', 'ja'],
   );
   return {
     props: { ...translation },

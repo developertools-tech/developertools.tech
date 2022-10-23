@@ -30,7 +30,7 @@ import Link from './Link';
 
 const drawerWidth = 240;
 
-function Logo() {
+function Logo({ title }: { title: string }) {
   return (
     <Button
       href='/'
@@ -50,14 +50,14 @@ function Logo() {
         color='#fff'
         textTransform='none'
       >
-        Dev Tools
+        {title}
       </Typography>
     </Button>
   );
 }
 
 export default function Layout({
-  title = 'Developer Utilities',
+  title,
   children,
 }: {
   title?: string;
@@ -153,7 +153,7 @@ export default function Layout({
       flexDirection='column'
     >
       <Head>
-        <title>{title}</title>
+        <title>{title || t('longTitle')}</title>
         <meta
           name='description'
           content='Developer utilities by DL Ford'
@@ -173,7 +173,7 @@ export default function Layout({
         }}
       >
         <Toolbar>
-          <Logo />
+          <Logo title={t('shortTitle')} />
           <IconButton
             color='inherit'
             aria-label='open drawer'
@@ -264,7 +264,7 @@ export default function Layout({
               mb={3}
               fontWeight='normal'
             >
-              Sponsors
+              {t('sponsors')}
             </Typography>
             <Box
               maxWidth={600}
@@ -317,7 +317,7 @@ export default function Layout({
 
                   return link ? (
                     <a
-                      key={title}
+                      key={sponsorTitle}
                       className='sponsor-wrap'
                       href={link}
                       target='_blank'
@@ -327,7 +327,7 @@ export default function Layout({
                     </a>
                   ) : (
                     <div
-                      key={title}
+                      key={sponsorTitle}
                       className='sponsor-wrap'
                     >
                       <Content />
@@ -342,7 +342,7 @@ export default function Layout({
                 href='https://github.com/sponsors/dlford'
               >
                 <FavoriteIcon color='error' />
-                <Typography>Become a Sponsor</Typography>
+                <Typography>{t('becomeASponsor')}</Typography>
               </a>
             </Box>
           </Box>
@@ -358,7 +358,7 @@ export default function Layout({
               mb={3}
               fontWeight='normal'
             >
-              Contributors
+              {t('contributors')}
             </Typography>
             <Box
               width={240}

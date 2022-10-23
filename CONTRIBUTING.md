@@ -26,6 +26,12 @@ Please do not start working on something until you have an issue assigned to you
 
 First, fork this repository on GitHub, and clone your fork to your local machine.
 
+Checkout the `dev` branch to base your work on:
+
+```sh
+git checkout dev
+```
+
 Create a branch for your work:
 
 ```sh
@@ -128,7 +134,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
         locale || 'en',
         i18nextNameSpaces as string[],
         nextI18NextConfig,
-        ['en'], // Add any additionally supported languages here
       );
       return {
         props: { ...translation },
@@ -221,32 +226,29 @@ Please refer to [the base64 tool](https://github.com/developertools-tech/develop
 
 Adding a language does not require adding every translation for the entire app, missing translations will fall back to english.
 
-1. Create a directory at `i18n/{short-language-code}/`
-2. Create the namespace JSON files to match the `en` directory
-3. Add the translated text to each namespace file
-4. Add the locale to `next-i18next.config.js`
+1. See [Getting Started](#getting-started) to create a fork and a new branch based on the `dev` branch
+2. Create a directory at `i18n/{short-language-code}/`, use a [language code or LCID string](https://wiki.freepascal.org/Language_Codes) for the directory name
+3. Create the namespace JSON files to match the `en` directory
+4. Add the translated text to each namespace file
+5. Add the locale language code or LCID string from step 2 to `next-i18next.config.js`
+
 
     ```js
     module.exports = {
       i18n: {
         // ...
-        locales: ['en', 'ja', 'YOUR_LOCALE_HERE'],
+        locales: [
+          'en',
+          'ja',
+          'pt-BR',
+          'YOUR_LOCALE_HERE'
+        ],
       },
       // ...
     };
     ```
 
-5. For each page that should support the new language, edit the `getStaticProps` function to include the new locale.
-
-    ```tsx
-    export const getStaticProps: GetStaticProps = async ({ locale }) => {
-      const translation = await serverSideTranslations(
-        // ...
-        ['en', 'ja', 'YOUR_LOCALE_HERE'],
-      );
-      // ...
-    };
-    ```
+6. Create a pull request against the `dev` branch on GitHub
 
 ## More Resources
 

@@ -262,7 +262,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     locale || 'en',
     i18nextNameSpaces as string[],
     nextI18NextConfig,
-    ['en', 'ja'],
   );
   return {
     props: { ...translation },

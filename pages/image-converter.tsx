@@ -209,14 +209,13 @@ export default function ImageConverterPage() {
   );
 }
 
-const i18nextNameSpaces: Namespace[] = ['imageConverter'];
+const i18nextNameSpaces: Namespace[] = ['imageConverter', 'common'];
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const translation = await serverSideTranslations(
     locale || 'en',
     i18nextNameSpaces as string[],
     nextI18NextConfig,
-    ['en', 'ja'],
   );
   return {
     props: { ...translation },

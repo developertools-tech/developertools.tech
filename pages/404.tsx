@@ -12,6 +12,7 @@ import nextI18NextConfig from '../next-i18next.config.js';
 
 export default function IndexPage() {
   const { t } = useTranslation('notFound');
+
   return (
     <Layout title={t('heading')}>
       <Box textAlign='center'>

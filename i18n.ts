@@ -10,7 +10,9 @@ import htmlCharCodes from './i18n/en/htmlCharCodes.json';
 import imageConverter from './i18n/en/imageConverter.json';
 import jsonFormat from './i18n/en/jsonFormat.json';
 import loremIpsum from './i18n/en/loremIpsum.json';
+import markdown from './i18n/en/markdown.json';
 import notFound from './i18n/en/notFound.json';
+import offline from './i18n/en/offline.json';
 import regex from './i18n/en/regex.json';
 import textDiff from './i18n/en/textDiff.json';
 import top from './i18n/en/top.json';
@@ -35,6 +37,8 @@ export const resources = {
     urlEncode,
     uuid,
     notFound,
+    offline,
+    markdown,
   },
 } as const;
 
