@@ -1,23 +1,29 @@
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import { Namespace } from 'i18next';
 import { marked } from 'marked';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Heading from '../components/Heading';
 import Layout from '../components/Layout';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 export default function MarkDownPreview() {
+  const { t } = useTranslation('markdown');
   const [output, setOutput] = useState('');
 
   return (
-    <Layout title='MarkDownPreview'>
-      <Heading>Markdown Previewer</Heading>
+    <Layout title={t('title')}>
+      <Heading>{t('title')}</Heading>
       <Typography
         paragraph
         textAlign='center'
       >
-        Paste or type markdown style to preview it.
+        {t('description')}
       </Typography>
       <Box
         className='mainBox'
@@ -30,7 +36,7 @@ export default function MarkDownPreview() {
         }}
       >
         <TextField
-          label='Markdown'
+          label={t('inputLabel')}
           id='inputText'
           multiline
           rows={10}
@@ -52,3 +58,16 @@ export default function MarkDownPreview() {
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['markdown', 'common'];
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale || 'en',
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+  );
+  return {
+    props: { ...translation },
+  };
+};

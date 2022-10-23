@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import URLEncodeDecode from '../pages/url-encode';
-import { renderWithI18n } from './helper/i18n';
+import renderWithI18n from './helper/i18n';
 
 describe('URLEncodeDecode', () => {
   it('should encode and decode', () => {

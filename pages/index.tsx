@@ -12,7 +12,7 @@ import nextI18NextConfig from '../next-i18next.config.js';
 export default function IndexPage() {
   const { t } = useTranslation('top');
   return (
-    <Layout title={t('home')}>
+    <Layout>
       <Box textAlign='center'>
         <Heading>{t('welcome')}</Heading>
         <Typography paragraph>{t('chooseFromMenu')}</Typography>
@@ -61,7 +61,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     locale || 'en',
     i18nextNameSpaces as string[],
     nextI18NextConfig,
-    ['en', 'ja'],
   );
   return {
     props: { ...translation },

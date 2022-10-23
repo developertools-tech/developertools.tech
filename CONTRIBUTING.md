@@ -26,6 +26,12 @@ Please do not start working on something until you have an issue assigned to you
 
 First, fork this repository on GitHub, and clone your fork to your local machine.
 
+Checkout the `dev` branch to base your work on:
+
+```sh
+git checkout dev
+```
+
 Create a branch for your work:
 
 ```sh
@@ -79,117 +85,87 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 2. Create a translation namespace for your tool in `i18n/en/myToolName.json`, add an entry for any hard-coded text as you work on your tool
 
-  ```json
-  {
-    "title": "My Tool Name",
-    // ...
-  }
-  ```
-
-3. Add your namespace to `@types/react-i18next.d.ts`
-
-  ```ts
-  // ...
-  import myToolName from '../i18n/en/myToolName.json';
-
-  declare module 'react-i18next' {
-    interface CustomTypeOptions {
-      defaultNS: 'common';
-      resources: {
-        // ...
-        myToolName: typeof myToolName;
-      };
-    }
-  }
-  ```
-
-4. Add your namespace to `__TESTS__/helper/i18n.tsx`
-
-  ```tsx
-  // ...
-  import myToolName from '../../i18n/en/myToolName.json';
-
-  i18n.use(initReactI18next).init({
-    // ...
-
-    ns: [
+    ```json
+    {
+      "title": "My Tool Name",
       // ...
-      'myToolName',
-    ],
+    }
+    ```
 
+3. Add your namespace to `i18n.ts`
+
+    ```ts
     // ...
+    import myToolName from '../i18n/en/myToolName.json';
 
-    resources: {
+    export const resources = {
       en: {
         // ...
         myToolName,
-      },
-    },
-  });
+      }
+    } as const;
+    ```
 
-  ```
+4. Create the file `pages/your-tool-slug.tsx`
 
-5. Create the file `pages/your-tool-slug.tsx`
+    ```tsx
+    import React from 'react';
+    import { Namespace, useTranslation } from 'react-i18next';
 
-  ```tsx
-  import React from 'react';
-  import { Namespace, useTranslation } from 'react-i18next';
+    import nextI18NextConfig from '../next-i18next.config.js';
+    import Heading from '../components/Heading';
+    import Layout from '../components/Layout';
 
-  import nextI18NextConfig from '../next-i18next.config.js';
-  import Heading from '../components/Heading';
-  import Layout from '../components/Layout';
+    export default function MyToolName() {
+      const { t } = useTranslation('myToolName');
 
-  export default function MyToolName() {
-    const { t } = useTranslation(['common', 'myToolName']);
+      return (
+      <Layout title={t('title')}>
+        <Heading>{t('title')}</Heading>
+        {/* TODO - Build my tool */}
+      </Layout>
+      )
+    }
 
-    return (
-    <Layout title={t('myToolName:title')}>
-      <Heading>{t('myToolName:title')}</Heading>
-      {/* TODO - Build my tool */}
-    </Layout>
-    )
-  }
+    const i18nextNameSpaces: Namespace[] = ['common', 'myToolName'];
 
-  const i18nextNameSpaces: Namespace[] = ['common', 'myToolName'];
-
-  export const getStaticProps: GetStaticProps = async ({ locale }) => {
-    const translation = await serverSideTranslations(
-      locale || 'en',
-      i18nextNameSpaces as string[],
-      nextI18NextConfig,
-      ['en'], // Add any additionally supported languages here
-    );
-    return {
-      props: { ...translation },
+    export const getStaticProps: GetStaticProps = async ({ locale }) => {
+      const translation = await serverSideTranslations(
+        locale || 'en',
+        i18nextNameSpaces as string[],
+        nextI18NextConfig,
+      );
+      return {
+        props: { ...translation },
+      };
     };
-  };
 
-  ```
+    ```
 
-6. Add your tool name to the common namespace (`i18n/en/common.json`)
+5. Add your tool name to the common namespace (`i18n/en/common.json`)
 
-  ```json
-  {
-    // ...
-    "myToolName": "My Tool Name",
-  }
-  ```
-
-7. Add your tool to the main navigation (`data/nav.ts`)
-
-  ```ts
-  //...
-  import SomeIcon from '@mui/icons-material/SomeIcon';
-
-  export default [
-    // ...
+    ```json
     {
-      title: 'myToolName', // This is the translation key from the common namespace
-      href: '/my-tool-slug',
-      Icon: SomeIcon,
-    },
-  ];
-  ```
+      // ...
+      "myToolName": "My Tool Name",
+    }
+    ```
+
+6. Add your tool to the main navigation (`data/nav.ts`)
+
+    ```ts
+    //...
+    import SomeIcon from '@mui/icons-material/SomeIcon';
+
+    export default [
+      // ...
+      {
+        title: 'myToolName', // This is the translation key from the common namespace
+        href: '/my-tool-slug',
+        Icon: SomeIcon,
+      },
+    ];
+    ```
 
 ### Code quality
 
@@ -232,11 +208,11 @@ You can run all the tests in the project with `npm run test:ci`. Github Actions 
 
 This App is internationalized. This section describes the addition of translations.
 
-### Add translation file
+### Add translation file (namespace)
 
 Translation JSON files should be added to the `i18n/{en, ja, ..etc}/{PageName}.json`
 
-Then update two files `@types/react-i18next.d.ts` and `__TEST__/helper.i18n.tsx`
+Import the JSON file in `i18n.ts` and add it to the `resources.en` object
 
 ### Use translation
 
@@ -250,10 +226,29 @@ Please refer to [the base64 tool](https://github.com/developertools-tech/develop
 
 Adding a language does not require adding every translation for the entire app, missing translations will fall back to english.
 
-1. Create a directory at `i18n/{short-language-code}/`
-2. Create the namespace JSON files to match the `en` directory
-3. Add the translated text to each namespace file
-4. Add the locale to `next-i18next.config.js`
+1. See [Getting Started](#getting-started) to create a fork and a new branch based on the `dev` branch
+2. Create a directory at `i18n/{short-language-code}/`, use a [language code or LCID string](https://wiki.freepascal.org/Language_Codes) for the directory name
+3. Create the namespace JSON files to match the `en` directory
+4. Add the translated text to each namespace file
+5. Add the locale language code or LCID string from step 2 to `next-i18next.config.js`
+
+
+    ```js
+    module.exports = {
+      i18n: {
+        // ...
+        locales: [
+          'en',
+          'ja',
+          'pt-BR',
+          'YOUR_LOCALE_HERE'
+        ],
+      },
+      // ...
+    };
+    ```
+
+6. Create a pull request against the `dev` branch on GitHub
 
 ## More Resources
 

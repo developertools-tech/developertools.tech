@@ -1,4 +1,9 @@
 {
+  "shortTitle": "Dev Tools",
+  "longTitle": "Developer Utilities",
+  "sponsors": "Sponsors",
+  "becomeASponsor": "Become a Sponsor",
+  "contributors": "Contributors",
   "copy": "COPY",
   "paste": "PASTE",
   "clear": "CLEAR",
