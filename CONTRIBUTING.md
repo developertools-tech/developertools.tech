@@ -231,7 +231,7 @@ Adding a language does not require adding every translation for the entire app, 
 3. Create the namespace JSON files to match the `en` directory
 4. Add the translated text to each namespace file
 5. Add the locale to `next-i18next.config.js`
-6. Create a pull request against the `dev` branch on GitHub
+
 
     ```js
     module.exports = {
@@ -242,6 +242,8 @@ Adding a language does not require adding every translation for the entire app, 
       // ...
     };
     ```
+
+6. Create a pull request against the `dev` branch on GitHub
 
 ## More Resources
 
