@@ -244,7 +244,7 @@ export default function TextDiffPage() {
       >
         <FormControl>
           <InputLabel id='diff-select-label'>
-            Choose Diff Options
+            {t('textDiff:diffOptions.label')}
           </InputLabel>
           <Select
             labelId='diff-select-label'

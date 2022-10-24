@@ -3,6 +3,7 @@
   "text": "Text",
   "difference": "Difference",
   "diffOptions": {
+    "label": "Choose Diff Options",
     "characters": {
       "label": "Characters",
       "description": "Two blocks of text, comparing character by character."
@@ -20,11 +21,11 @@
       "description": "Two blocks of text, comparing word by word, ignoring case."
     },
     "wordsWithSpace": {
-      "label": "Words With Space",
+      "label": "Words with Space",
       "description": "Two blocks of text, comparing word by word, treating whitespace as significant."
     },
     "trimmedLines": {
-      "label": "Trimmed lines",
+      "label": "Trimmed Lines",
       "description": "Two blocks of text, comparing line by line."
     },
     "sentences": {
