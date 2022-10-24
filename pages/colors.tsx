@@ -10,10 +10,10 @@ import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { ChangeEvent, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
-import useEyeDropper from 'use-eye-dropper';
-import PreviewPane from '../components/colors/PreviewPane';
-import Heading from '../components/Heading';
 import { useTranslation } from 'react-i18next';
+import useEyeDropper from 'use-eye-dropper';
+
+import PreviewPane from '../components/colors/PreviewPane';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
