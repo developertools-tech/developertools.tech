@@ -107,7 +107,7 @@ function LanguageToggle() {
           },
         }}
       >
-        {(router.locales || []).map((locale) => (
+        {(router.locales || []).sort().map((locale) => (
           <MenuItem key={locale}>
             <Link
               href={router.asPath}
