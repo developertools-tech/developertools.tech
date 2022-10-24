@@ -1,0 +1,16 @@
+{
+    "ratioPreview": "অনুপাত পূর্বরূপ",
+    "sourceDimensions": "উৎস মাত্রা",
+    "sourceWidth": "উৎস প্রস্থ",
+    "sourceHeight": "উৎস উচ্চতা",
+    "targetDimensions": "উদ্দেশ্য মাত্রা",
+    "targetWidth": "উদ্দেশ্য প্রস্থ",
+    "targetHeight": "উদ্দেশ্য উচ্চতা",
+    "layouts": "নকশাগুলি",
+    "layout": "নকশা",
+    "screenWidth": "স্ক্রিন প্রস্থ",
+    "across": "সম্মুখীন",
+    "marginPixels": "মার্জিন পিক্সেল",
+    "gapPixels": "গ্যাপ পিক্সেল",
+    "expandPercent": "প্রসার শতাংশ"
+  }
