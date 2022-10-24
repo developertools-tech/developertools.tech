@@ -5,9 +5,5 @@ module.exports = {
     defaultLocale: 'en',
     locales: ['en', 'es', 'hi', 'ja', 'pt'],
   },
-  fallbackLng: {
-    default: ['en'],
-  },
-  nonExplicitSupportedLngs: true,
   localePath: 'i18n',
 };
