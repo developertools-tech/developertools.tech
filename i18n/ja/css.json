@@ -1,0 +1,8 @@
+{
+  "description": "CSSを貼り付けまたはタイプするとフォーマットまたはminifyされます",
+  "note": "フォーマットはCSS, SCSS, LESSに有効ですが、minifyはCSSのみ有効です",
+  "minify": "minify",
+  "format": "フォーマット",
+  "formattedCss": "フォーマット済みCSS",
+  "minifiedCss": "minify済みCSS"
+}

@@ -1,20 +1,21 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import RegexTester from '../pages/regex';
+import renderWithI18n from './helper/i18n';
 
 describe('Regex Tester', () => {
   it('can add and remove test cases', async () => {
-    render(<RegexTester />);
+    renderWithI18n(<RegexTester />);
     const user = userEvent.setup();
 
     expect(screen.getAllByLabelText('Test case content')).toHaveLength(
       1,
     );
 
-    await user.click(screen.getByText('Add test case'));
+    await user.click(screen.getByText('ADD TEST CASE'));
 
     expect(screen.getAllByLabelText('Test case content')).toHaveLength(
       2,
@@ -28,7 +29,7 @@ describe('Regex Tester', () => {
   });
 
   it('can match a regular expression', async () => {
-    render(<RegexTester />);
+    renderWithI18n(<RegexTester />);
     const user = userEvent.setup();
 
     await user.type(screen.getByLabelText('Regex'), `\\d+`);
@@ -40,7 +41,7 @@ describe('Regex Tester', () => {
   });
 
   it('can match a regular expression with groups', async () => {
-    render(<RegexTester />);
+    renderWithI18n(<RegexTester />);
     const user = userEvent.setup();
 
     await user.type(
@@ -59,7 +60,7 @@ describe('Regex Tester', () => {
   });
 
   it('can match a regular expression with flags', async () => {
-    render(<RegexTester />);
+    renderWithI18n(<RegexTester />);
     const user = userEvent.setup();
 
     await user.type(screen.getByLabelText('Regex'), `/Dog/i`);
@@ -71,7 +72,7 @@ describe('Regex Tester', () => {
   });
 
   it('shows all matches for global expressions', async () => {
-    render(<RegexTester />);
+    renderWithI18n(<RegexTester />);
     const user = userEvent.setup();
 
     await user.type(screen.getByLabelText('Regex'), `/\\w+/g`);

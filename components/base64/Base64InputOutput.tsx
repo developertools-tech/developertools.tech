@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { decode, encode } from 'js-base64';
+import { useTranslation } from 'next-i18next';
 import React from 'react';
 
 import useSupportsClipboardRead from '../../hooks/useSupportsClipboardRead';
@@ -34,6 +35,7 @@ export default function Base64InputOutput({
   setToastSeverity,
 }: Base64InputOutputProps) {
   const supportsClipboardRead = useSupportsClipboardRead();
+  const { t } = useTranslation('common');
 
   function convertToAscii(value = base64) {
     try {
@@ -109,7 +111,7 @@ export default function Base64InputOutput({
               setBase64('');
             }}
           >
-            Clear
+            {t('clear')}
           </Button>
           <Button
             startIcon={<ContentCopyIcon />}
@@ -129,7 +131,7 @@ export default function Base64InputOutput({
               );
             }}
           >
-            Copy
+            {t('copy')}
           </Button>
           {!!supportsClipboardRead && (
             <Button
@@ -142,7 +144,7 @@ export default function Base64InputOutput({
                 }
               }}
             >
-              Paste
+              {t('paste')}
             </Button>
           )}
         </Box>
@@ -174,7 +176,7 @@ export default function Base64InputOutput({
               setAscii('');
             }}
           >
-            Clear
+            {t('clear')}
           </Button>
           <Button
             startIcon={<ContentCopyIcon />}
@@ -194,7 +196,7 @@ export default function Base64InputOutput({
               );
             }}
           >
-            Copy
+            {t('copy')}
           </Button>
           {!!supportsClipboardRead && (
             <Button
@@ -207,7 +209,7 @@ export default function Base64InputOutput({
                 }
               }}
             >
-              Paste
+              {t('paste')}
             </Button>
           )}
         </Box>

@@ -1,0 +1,23 @@
+{
+  "generateUuid": "UUIDの生成",
+  "uuidVersion": "UUIDバージョン",
+  "pseudorandom": "疑似ランダム",
+  "md5hash": "MD5ハッシュ",
+  "random": "ランダム",
+  "sha1Hash": "SHA-1ハッシュ",
+  "nameSpaceUuid": "名前空間UUID",
+  "uuidName": "UUID名",
+  "namespaceType": "名前空間タイプ",
+  "namespaceUuid": "名前空間UUID",
+  "invalidUuid": "不正なUUID",
+  "generatedUuid": "生成済みUUID",
+  "newUuid": "新規UUID",
+  "checkUuidVersionAndValidity": "UUIDバージョンチェックと検査",
+  "uuidToValidate": "検査するUUID",
+  "aboudUuids": "UUIDについて",
+  "overview": "UUID（Universally Unique Identifier）は、ユニークな識別子として使用される128ビットの数字です。",
+  "aboutUuid1": "UUID v1は、作成時刻と作成したコンピュータのMACアドレスを使って作成される疑似ランダムなものです。",
+  "aboutUuid3": "UUID v3はMD5ハッシュで、名前空間と名前を使って作成されます。名前空間はUUIDでなければならず、名前は任意の文字列でよい。同じ名前空間と名前を与えれば、常に同じUUIDを得ることができる。",
+  "aboutUuid4": "UUID v4は生成方法によって、ランダムまたは疑似ランダムとなります。このツールで生成されるバージョン4のUUIDは、暗号的に強力なランダム値です。",
+  "aboutUuid5": "UUID v5はSHA-1ハッシュで、名前空間と名前を使って作成されます。UUID v3と同様に、同じ名前空間と名前があれば、常に同じUUIDが得られます。UUID v5の名前空間は、UUID、またはプリセットの名前空間タイプ（URL、DNS、ISO OID、X.500 DN）のいずれかであり、このツールは現在ISO OIDとX.500 DNをサポートしていません。"
+}

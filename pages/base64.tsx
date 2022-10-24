@@ -1,11 +1,14 @@
 import Typography from '@mui/material/Typography';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
+import { Namespace, useTranslation } from 'react-i18next';
 
 import Base64InputOutput from '../components/base64/Base64InputOutput';
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 export default function Base64Page() {
   const [ascii, setAscii] = useLocalState<string | void>({
@@ -23,14 +26,11 @@ export default function Base64Page() {
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
+  const { t } = useTranslation('base64');
 
   return (
-    <Layout title='Base64'>
-      <Heading>Base64</Heading>
-      <Typography paragraph>
-        Paste or type in some ASCII text and it will be converted to
-        Base64 and vice-versa.
-      </Typography>
+    <Layout title={t('title')}>
+      <Typography paragraph>{t('description')}</Typography>
       <Base64InputOutput
         ascii={ascii}
         base64={base64}
@@ -51,3 +51,16 @@ export default function Base64Page() {
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['common', 'base64'];
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale || 'en',
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+  );
+  return {
+    props: { ...translation },
+  };
+};

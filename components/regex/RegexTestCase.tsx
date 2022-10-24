@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import React, { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface RegexMatchProps {
   match: RegExpMatchArray;
@@ -77,6 +78,7 @@ function RegexTestCase({
   onInput,
   deleteDisabled,
 }: RegexTestCaseProps) {
+  const { t } = useTranslation('regex');
   const matches = getAllMatches(testCase, regex);
   const hasMatch = matches.length > 0;
   return (
@@ -98,7 +100,7 @@ function RegexTestCase({
           component='h3'
           color={hasMatch ? 'success.main' : 'grey.300'}
         >
-          Case #{index + 1}
+          {t('case')} #{index + 1}
         </Typography>
         <IconButton
           aria-label='Delete test case'

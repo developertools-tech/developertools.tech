@@ -6,6 +6,12 @@ import React from 'react';
 
 import Base64 from '../pages/base64';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+  }),
+}));
+
 describe('Base64', () => {
   it('converts ASCII to Base64', async () => {
     const user = userEvent.setup();

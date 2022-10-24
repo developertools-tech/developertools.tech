@@ -1,0 +1,23 @@
+{
+  "generateUuid": "Gerar UUID",
+  "uuidVersion": "Versão do UUID",
+  "pseudorandom": "Pseudo-aleatório",
+  "md5hash": "Hash MD5",
+  "random": "Random",
+  "sha1Hash": "Hash SHA-1",
+  "nameSpaceUuid": "Namespace do UUID",
+  "uuidName": "Nome do UUID",
+  "namespaceType": "Tipo do Namespace",
+  "namespaceUuid": "UUID do Namespace ",
+  "invalidUuid": "UUID inválido",
+  "generatedUuid": "UUID gerado",
+  "newUuid": "NOVO UUID",
+  "checkUuidVersionAndValidity": "Verificar versão e a validade do UUID",
+  "uuidToValidate": "UUID para validar",
+  "aboudUuids": "Sobre UUIDs",
+  "overview": "Um identificador exclusivo universal (UUID) é um número de 128 bits usado como um identificador exclusivo.",
+  "aboutUuid1": "UUID v1 é pseudo-aleatório, criado usando o horário de criação e o endereço MAC do computador que o criou.",
+  "aboutUuid3": "UUID v3 é um hash MD5, criado usando um namespace e um nome. O namespace deve ser um UUID, e o nome pode ser qualquer string. Com o mesmo namespace e nome, você sempre obterá o mesmo UUID.",
+  "aboutUuid4": "UUID v4 é aleatório ou pseudo-aleatório, dependendo de como é gerado. Os UUIDs da versão 4 produzidos por esta ferramenta são valores aleatórios criptograficamente fortes.",
+  "aboutUuid5": "UUID v5 é um hash SHA-1, criado usando um namespace e um nome. Assim como os UUIDs v3, com o mesmo namespace e nome, você sempre obterá o mesmo UUID. O namespace para UUIDs v5 pode ser um UUID ou um tipo de namespace predefinido (URL, DNS, ISO OID e X.500 DN), esta ferramenta atualmente não suporta ISO OID ou X.500 DN."
+}

@@ -11,12 +11,15 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import * as Diff from 'diff';
 import { Change } from 'diff';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useCallback, useEffect } from 'react';
+import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 interface DiffOptions {
   label: string;
@@ -28,68 +31,63 @@ interface DiffOptions {
   ) => Change[];
 }
 
-const diffOptions: DiffOptions[] = [
-  {
-    label: 'Characters',
-    description:
-      'Two blocks of text, comparing character by character.',
-    value: Diff.diffChars,
-  },
-  {
-    label: 'Characters Ignore Case',
-    description:
-      'Two blocks of text, comparing character by character ignoring case.',
-    value: (oldStr: string, newStr: string) =>
-      Diff.diffChars(oldStr, newStr, { ignoreCase: true }),
-  },
-  {
-    label: 'Words',
-    description:
-      'Two blocks of text, comparing word by word, ignoring whitespace.',
-    value: Diff.diffWords,
-  },
-  {
-    label: 'Words Ignore Case',
-    description:
-      'Two blocks of text, comparing word by word, ignoring case.',
-    value: (oldStr: string, newStr: string) =>
-      Diff.diffWords(oldStr, newStr, { ignoreCase: true }),
-  },
-  {
-    label: 'Words with Space',
-    description:
-      'Two blocks of text, comparing word by word, treating whitespace as significant.',
-    value: Diff.diffWordsWithSpace,
-  },
-  {
-    label: 'Trimmed Lines',
-    description: 'Two blocks of text, comparing line by line.',
-    value: Diff.diffTrimmedLines,
-  },
-  {
-    label: 'Sentences',
-    description: 'Two blocks of text, comparing sentence by sentence.',
-    value: Diff.diffLines,
-  },
-  {
-    label: 'CSS',
-    description: 'Two blocks of text, comparing CSS tokens',
-    value: Diff.diffCss,
-  },
-  {
-    label: 'JSON',
-    description:
-      'Two JSON objects, comparing the fields defined on each. The order of fields, etc does not matter in this compparsion.',
-    value: Diff.diffJson,
-  },
-  // {
-  //   label: 'Arrays',
-  //   description:
-  //     'Two arrays, comparing each item for strict equality (===).',
-  //   value: Diff.diffArrays,
-  // },
-];
 export default function TextDiffPage() {
+  const { t } = useTranslation(['common', 'textDiff']);
+
+  const diffOptions: DiffOptions[] = [
+    {
+      label: t('textDiff:diffOptions.characters.label'),
+      description: t('textDiff:diffOptions.characters.description'),
+      value: Diff.diffChars,
+    },
+    {
+      label: t('textDiff:diffOptions.charactersIgnoreCase.label'),
+      description: t(
+        'textDiff:diffOptions.charactersIgnoreCase.description',
+      ),
+      value: (oldStr: string, newStr: string) =>
+        Diff.diffChars(oldStr, newStr, { ignoreCase: true }),
+    },
+    {
+      label: t('textDiff:diffOptions.words.label'),
+      description: t('textDiff:diffOptions.words.description'),
+      value: Diff.diffWords,
+    },
+    {
+      label: t('textDiff:diffOptions.wordsIgnoreCase.label'),
+      description: t(
+        'textDiff:diffOptions.wordsIgnoreCase.description',
+      ),
+      value: (oldStr: string, newStr: string) =>
+        Diff.diffWords(oldStr, newStr, { ignoreCase: true }),
+    },
+    {
+      label: t('textDiff:diffOptions.wordsWithSpace.label'),
+      description: t('textDiff:diffOptions.wordsWithSpace.description'),
+      value: Diff.diffWordsWithSpace,
+    },
+    {
+      label: t('textDiff:diffOptions.trimmedLines.label'),
+      description: t('textDiff:diffOptions.trimmedLines.description'),
+      value: Diff.diffTrimmedLines,
+    },
+    {
+      label: t('textDiff:diffOptions.sentences.label'),
+      description: t('textDiff:diffOptions.sentences.description'),
+      value: Diff.diffLines,
+    },
+    {
+      label: t('textDiff:diffOptions.css.label'),
+      description: t('textDiff:diffOptions.css.description'),
+      value: Diff.diffCss,
+    },
+    {
+      label: t('textDiff:diffOptions.json.label'),
+      description: t('textDiff:diffOptions.json.description'),
+      value: Diff.diffJson,
+    },
+  ];
+
   const supportsClipboardRead = useSupportsClipboardRead();
   const [selectedOptions, setSelectedOptions] = useLocalState<
     DiffOptions | undefined
@@ -225,15 +223,13 @@ export default function TextDiffPage() {
       compare();
     }
   }, [input1, input2, compare, setOutput]);
-
   return (
     <Layout title='Text Difference'>
-      <Heading>Text Diff</Heading>
       <Typography
         paragraph
         textAlign='center'
       >
-        Type or paste text into both fields to check the difference.
+        {t('textDiff:description')}
       </Typography>
       <Box
         display='flex'
@@ -246,7 +242,7 @@ export default function TextDiffPage() {
       >
         <FormControl>
           <InputLabel id='diff-select-label'>
-            Choose Diff Options
+            {t('textDiff:diffOptions.label')}
           </InputLabel>
           <Select
             labelId='diff-select-label'
@@ -285,7 +281,7 @@ export default function TextDiffPage() {
         >
           <TextField
             multiline
-            label='Text 1'
+            label={`${t('textDiff:text')} 1`}
             value={input1}
             name='first text'
             onChange={handleChange1}
@@ -306,7 +302,7 @@ export default function TextDiffPage() {
                   }
                 }}
               >
-                Paste
+                {t('common:paste')}
               </Button>
             )}
             <Button
@@ -316,7 +312,7 @@ export default function TextDiffPage() {
                 setInput1('');
               }}
             >
-              Clear
+              {t('common:clear')}
             </Button>
             {input1ValidityMessage.show && (
               <Typography sx={{ color: 'red' }}>
@@ -332,7 +328,7 @@ export default function TextDiffPage() {
         >
           <TextField
             multiline
-            label='Text 2'
+            label={`${t('textDiff:text')} 2`}
             value={input2}
             name='second text'
             onChange={handleChange2}
@@ -353,7 +349,7 @@ export default function TextDiffPage() {
                   }
                 }}
               >
-                Paste
+                {t('common:paste')}
               </Button>
             )}
             <Button
@@ -363,7 +359,7 @@ export default function TextDiffPage() {
                 setInput2('');
               }}
             >
-              Clear
+              {t('common:clear')}
             </Button>
             {input2ValidityMessage.show && (
               <Typography sx={{ color: 'red' }}>
@@ -407,7 +403,10 @@ export default function TextDiffPage() {
             data-testid='text-difference-output'
             dangerouslySetInnerHTML={{
               __html:
-                output || '<span class="placeholder">Difference</span>',
+                output ||
+                `<span class="placeholder">${t(
+                  'textDiff:difference',
+                )}</span>`,
             }}
           />
           {/* eslint-enable react/no-danger */}
@@ -416,3 +415,16 @@ export default function TextDiffPage() {
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['common', 'textDiff'];
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale || 'en',
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+  );
+  return {
+    props: { ...translation },
+  };
+};

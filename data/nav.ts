@@ -6,6 +6,7 @@ import ColorLensIcon from '@mui/icons-material/ColorLens';
 import Css from '@mui/icons-material/Css';
 import DataObject from '@mui/icons-material/DataObject';
 import DifferenceIcon from '@mui/icons-material/Difference';
+import DocumentScanner from '@mui/icons-material/DocumentScanner';
 import Fingerprint from '@mui/icons-material/Fingerprint';
 import HomeIcon from '@mui/icons-material/Home';
 import Image from '@mui/icons-material/Image';
@@ -17,72 +18,77 @@ import Search from '@mui/icons-material/Search';
 
 const navItems = [
   {
-    title: 'Home',
+    title: 'home', // These are translation keys in the common namespace
     href: '/',
     Icon: HomeIcon,
   },
   {
-    title: 'Aspect Ratio',
+    title: 'aspectRatio',
     href: '/aspect-ratio',
     Icon: AspectRatio,
   },
   {
-    title: 'CSS',
+    title: 'css',
     href: '/css',
     Icon: Css,
   },
   {
-    title: 'UUID',
+    title: 'uuid',
     href: '/uuid',
     Icon: Fingerprint,
   },
   {
-    title: 'Base64',
+    title: 'base64',
     href: '/base64',
     Icon: Looks6,
   },
   {
-    title: 'JSON',
+    title: 'json',
     href: '/json',
     Icon: DataObject,
   },
   {
-    title: 'Colors',
+    title: 'markdownPreview',
+    href: '/markdown',
+    Icon: DocumentScanner,
+  },
+  {
+    title: 'colors',
     href: '/colors',
     Icon: ColorLensIcon,
   },
   {
-    title: 'URL Encode',
+    title: 'urlEncode',
     href: '/url-encode',
     Icon: LinkIcon,
   },
   {
-    title: 'HTML',
+    title: 'html',
     href: '/html',
     Icon: Code,
   },
   {
-    title: 'Lorem Ipsum',
+    title: 'loremIpsum',
     href: '/lorem-ipsum',
     Icon: ArticleIcon,
   },
   {
-    title: 'Image Converter',
+    title: 'imageConverter',
     href: '/image-converter',
     Icon: Image,
   },
   {
-    title: 'Text Diff',
+    title: 'textDiff',
     href: '/text-diff',
     Icon: DifferenceIcon,
   },
   {
-    title: 'Regex Tester',
+    title: 'regexTester',
     href: '/regex',
     Icon: Search,
   },
   {
-    title: 'HTML Char Codes',
+    title: 'htmlCharCodes',
     href: '/html-char-codes',
     Icon: Abc,
   },

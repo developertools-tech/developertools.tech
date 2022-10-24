@@ -5,16 +5,20 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import * as convert from 'colors-convert';
 import { HEX, HSL, RGB } from 'colors-convert/dist/cjs/lib/types/types';
+import { Namespace } from 'i18next';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { ChangeEvent, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import useEyeDropper from 'use-eye-dropper';
-
 import PreviewPane from '../components/colors/PreviewPane';
 import Heading from '../components/Heading';
+import { useTranslation } from 'react-i18next';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 function serializeColor(value: HEX | HSL | RGB): string {
   if (typeof value === 'object') {
@@ -36,6 +40,8 @@ function stringToNumArray(value: string): number[] | string {
 }
 
 export default function Colors() {
+  const { t } = useTranslation('common');
+
   const supportsClipboardRead = useSupportsClipboardRead();
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
@@ -173,8 +179,7 @@ export default function Colors() {
   }
 
   return (
-    <Layout>
-      <Heading>Colors</Heading>
+    <Layout title='Colors'>
       <Box
         width='1000px'
         maxWidth='100%'
@@ -301,7 +306,7 @@ export default function Colors() {
                   );
                 }}
               >
-                Copy
+                {t('copy')}
               </Button>
               {!!supportsClipboardRead && (
                 <Button
@@ -316,7 +321,7 @@ export default function Colors() {
                     }
                   }}
                 >
-                  Paste
+                  {t('paste')}
                 </Button>
               )}
             </Box>
@@ -361,7 +366,7 @@ export default function Colors() {
                   );
                 }}
               >
-                Copy
+                {t('copy')}
               </Button>
               {!!supportsClipboardRead && (
                 <Button
@@ -376,7 +381,7 @@ export default function Colors() {
                     }
                   }}
                 >
-                  Paste
+                  {t('paste')}
                 </Button>
               )}
             </Box>
@@ -421,7 +426,7 @@ export default function Colors() {
                   );
                 }}
               >
-                Copy
+                {t('copy')}
               </Button>
               {!!supportsClipboardRead && (
                 <Button
@@ -436,7 +441,7 @@ export default function Colors() {
                     }
                   }}
                 >
-                  Paste
+                  {t('paste')}
                 </Button>
               )}
             </Box>
@@ -459,3 +464,15 @@ export default function Colors() {
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['common'];
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale || 'en',
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+  );
+  return {
+    props: { ...translation },
+  };
+};

@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export type LayoutData = {
   layout: string;
@@ -21,6 +22,7 @@ export default function AspectRatioLayoutTable({
   layoutData,
   layoutWidths,
 }: AspectRatioLayoutTableProps) {
+  const { t } = useTranslation('aspectRatio');
   return (
     <TableContainer
       component={Paper}
@@ -32,7 +34,7 @@ export default function AspectRatioLayoutTable({
       >
         <TableHead>
           <TableRow>
-            <TableCell>Layout</TableCell>
+            <TableCell>{t('layout')}</TableCell>
             {layoutWidths.map((label) => (
               <TableCell
                 key={label}

@@ -1,0 +1,16 @@
+{
+  "ratioPreview": "अनुपात पूर्व दर्शन",
+  "sourceDimensions": "स्रोत आयाम",
+  "sourceWidth": "स्रोत चौड़ाई",
+  "sourceHeight": "स्रोत ऊँचाई",
+  "targetDimensions": "टार्गिट आयाम",
+  "targetWidth": "टार्गिट चौड़ाई",
+  "targetHeight": "टार्गिट ऊँचाई",
+  "layouts": "लेआउट",
+  "layout": "लेआउट",
+  "screenWidth": "स्क्रीन चौड़ाई",
+  "across": "अक्रॉस",
+  "marginPixels": "मार्जिन पिक्सल",
+  "gapPixels": "गैप पिक्सल",
+  "expandPercent": "बढ़ाना प्रतिशत"
+}

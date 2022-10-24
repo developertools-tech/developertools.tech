@@ -19,6 +19,12 @@ afterEach(() => {
   cleanup();
 });
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+  }),
+}));
+
 describe('HtmlCharCodes', () => {
   it('input unescaped', async () => {
     render(<HtmlCharCode />);

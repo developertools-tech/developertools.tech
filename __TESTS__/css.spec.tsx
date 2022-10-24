@@ -6,6 +6,12 @@ import React from 'react';
 
 import Css from '../pages/css';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+  }),
+}));
+
 describe('CSS', () => {
   it('formats CSS correctly', async () => {
     const user = userEvent.setup();
