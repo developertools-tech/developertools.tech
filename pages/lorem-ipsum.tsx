@@ -13,7 +13,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useEffect, useState } from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import jeffGoldblumFragments from '../data/loremIpsum/jeffGoldblum';
@@ -100,7 +99,6 @@ export default function LoremIpsumPage() {
   const { t } = useTranslation('loremIpsum');
   return (
     <Layout title='Lorem Ipsum'>
-      <Heading>Lorem Ipsum</Heading>
       <Box
         display='flex'
         justifyContent='center'

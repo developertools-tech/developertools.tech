@@ -11,7 +11,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
@@ -58,7 +57,6 @@ export default function URLEncodeDecode() {
 
   return (
     <Layout title='URL Encode'>
-      <Heading>URL Encode</Heading>
       <Typography paragraph>{t('urlEncode:description')}</Typography>
 
       <Box

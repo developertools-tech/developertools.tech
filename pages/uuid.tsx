@@ -4,7 +4,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
 import { Namespace } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import UuidAbout from '../components/uuid/About';
@@ -20,7 +19,6 @@ export default function UuidPage() {
 
   return (
     <Layout title='UUID'>
-      <Heading>UUID</Heading>
       <Box
         display='flex'
         flexWrap='wrap'

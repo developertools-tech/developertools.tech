@@ -29,6 +29,7 @@ import sponsors from '../data/sponsors';
 import useWindowSize from '../hooks/useWindowSize';
 import logo from '../public/logo.svg';
 import dlfordLogo from '../public/logo-full.svg';
+import Heading from './Heading';
 import Link from './Link';
 
 const drawerWidth = 240;
@@ -219,7 +220,9 @@ export default function Layout({
       flexDirection='column'
     >
       <Head>
-        <title>{title || t('longTitle')}</title>
+        <title>
+          {asPath === '/' ? t('longTitle') : title || t('longTitle')}
+        </title>
         <meta
           name='description'
           content='Developer utilities by DL Ford'
@@ -292,6 +295,7 @@ export default function Layout({
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
+        <Heading>{title}</Heading>
         {children}
       </Box>
       <Box

@@ -12,7 +12,6 @@ import React, { ChangeEvent, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import { useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
@@ -165,8 +164,7 @@ export default function Colors() {
   };
 
   return (
-    <Layout>
-      <Heading>Colors</Heading>
+    <Layout title='Colors'>
       <Box
         width='1000px'
         maxWidth='100%'

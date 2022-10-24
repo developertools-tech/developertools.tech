@@ -16,7 +16,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useCallback, useEffect } from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
@@ -226,7 +225,6 @@ export default function TextDiffPage() {
   }, [input1, input2, compare, setOutput]);
   return (
     <Layout title='Text Difference'>
-      <Heading>Text Diff</Heading>
       <Typography
         paragraph
         textAlign='center'

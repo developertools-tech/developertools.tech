@@ -8,7 +8,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import nextI18NextConfig from '../next-i18next.config.js';
 
@@ -18,7 +17,6 @@ export default function MarkDownPreview() {
 
   return (
     <Layout title={t('title')}>
-      <Heading>{t('title')}</Heading>
       <Typography
         paragraph
         textAlign='center'

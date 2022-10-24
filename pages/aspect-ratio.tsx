@@ -7,7 +7,6 @@ import { Namespace } from 'react-i18next';
 import AspectRatioLayouts from '../components/aspectRatio/Layouts';
 import AspectRatioPreview from '../components/aspectRatio/Preview';
 import AspectRatioSourceAndTarget from '../components/aspectRatio/SourceAndTarget';
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
 import nextI18NextConfig from '../next-i18next.config.js';
@@ -23,7 +22,6 @@ export default function AspectRatioPage() {
   });
   return (
     <Layout title='Aspect Ratio'>
-      <Heading>Aspect Ratio</Heading>
       <Box
         display='flex'
         flexWrap='wrap'

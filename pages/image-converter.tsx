@@ -15,7 +15,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
 import nextI18NextConfig from '../next-i18next.config.js';
@@ -108,7 +107,6 @@ export default function ImageConverterPage() {
   };
   return (
     <Layout title='Image Converter'>
-      <Heading>Image Converter</Heading>
       <Container>
         <Grid
           container
