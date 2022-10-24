@@ -1,6 +1,6 @@
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
-import { TextField, Typography } from '@mui/material';
+import { TextField, Tooltip, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import * as convert from 'colors-convert';
@@ -11,7 +11,9 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { ChangeEvent, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import { useTranslation } from 'react-i18next';
+import useEyeDropper from 'use-eye-dropper';
 
+import PreviewPane from '../components/colors/PreviewPane';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
@@ -45,6 +47,7 @@ export default function Colors() {
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
+  const { open, isSupported } = useEyeDropper();
 
   const [pickerColor, setPickerColor] = useLocalState<string>({
     key: 'colorPicker_pickerColor',
@@ -163,6 +166,18 @@ export default function Colors() {
     }
   };
 
+  function pickColor() {
+    open()
+      .then((color) =>
+        updateColors({ target: { name: 'hex', value: color.sRGBHex } }),
+      )
+      .catch((e) => {
+        // Ensures component is still mounted
+        // before calling setState
+        if (!e.canceled) setErr(e);
+      });
+  }
+
   return (
     <Layout title='Colors'>
       <Box
@@ -174,21 +189,82 @@ export default function Colors() {
         alignItems={{ xs: 'center', md: 'flex-start' }}
         gap='4rem'
       >
-        <Box>
-          <HexColorPicker
-            color={pickerColor}
-            onChange={(color) => {
-              updateColors({
-                target: { name: 'hex', value: color },
-              });
-            }}
-          />
+        <Box
+          display='flex'
+          flexDirection='column'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            gap={4}
+          >
+            <PreviewPane color={pickerColor} />
+            {isSupported() ? (
+              <Button
+                onClick={pickColor}
+                variant='text'
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <path d='m2 22 1-1h3l9-9' />
+                  <path d='M3 21v-3l9-9' />
+                  <path d='m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-3.8-3.8a2.1 2.1 0 1 1 3-3l.4.4Z' />
+                </svg>
+              </Button>
+            ) : (
+              <Tooltip
+                placement='top'
+                title='EyeDropper is not supported in this browser'
+              >
+                <span style={{ textAlign: 'center' }}>
+                  <Button
+                    disabled
+                    onClick={pickColor}
+                    variant='text'
+                  >
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                      stroke='currentColor'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    >
+                      <path d='m2 22 1-1h3l9-9' />
+                      <path d='M3 21v-3l9-9' />
+                      <path d='m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-3.8-3.8a2.1 2.1 0 1 1 3-3l.4.4Z' />
+                    </svg>
+                  </Button>
+                </span>
+              </Tooltip>
+            )}
+            <HexColorPicker
+              color={pickerColor}
+              onChange={(color) => {
+                updateColors({
+                  target: { name: 'hex', value: color },
+                });
+              }}
+            />
+          </Box>
         </Box>
         <Box
           display='flex'
           flexDirection='column'
           justifyContent='stretch'
-          gap={4}
+          gap={7}
         >
           <Box
             display='flex'
