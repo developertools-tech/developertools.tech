@@ -1,0 +1,11 @@
+{
+  "home": "Home",
+  "welcome": "Willkommen",
+  "chooseFromMenu": "Wähle ein Werkzeug vom Menü, um loszulegen",
+  "dontSeeTheToolYouNeed": "Das Werkzeug deiner Wünsche ist nicht dabei?",
+  "requestItHere": "Fordere es hier an",
+  "foundBug": "Einen Fehler entdeckt?",
+  "reportItHere": "Berichte von ihm hier",
+  "wantToHelp": "Du möchtest mitmachen?",
+  "contributeOnGit": "Helfe uns auf GitHub"
+}
