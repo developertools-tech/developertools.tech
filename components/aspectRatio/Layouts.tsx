@@ -16,6 +16,7 @@ export default function AspectRatioLayouts({
   height,
 }: AspectRatioLayoutsProps) {
   const { t } = useTranslation('aspectRatio');
+
   const [margins, setMargins] = useLocalState({
     key: 'aspectRatioMargins',
     defaultValue: 0,

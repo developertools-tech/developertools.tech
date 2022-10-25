@@ -40,7 +40,7 @@ function stringToNumArray(value: string): number[] | string {
 }
 
 export default function Colors() {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation(['common', 'colors']);
 
   const supportsClipboardRead = useSupportsClipboardRead();
   const [toastOpen, setToastOpen] = useState<boolean>(false);
@@ -179,7 +179,7 @@ export default function Colors() {
   }
 
   return (
-    <Layout title='Colors'>
+    <Layout title={t('colors:title')}>
       <Box
         width='1000px'
         maxWidth='100%'
@@ -211,6 +211,7 @@ export default function Colors() {
               <Button
                 onClick={pickColor}
                 variant='text'
+                aria-label={t('colors:openColorPicker')}
               >
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
@@ -294,19 +295,21 @@ export default function Colors() {
                 onClick={() => {
                   navigator.clipboard.writeText(hexColor || '').then(
                     () => {
-                      setToastMessage('Copied to clipboard');
+                      setToastMessage(t('common:copiedToClipboard'));
                       setToastSeverity('success');
                       setToastOpen(true);
                     },
                     () => {
-                      setToastMessage('Failed to copy to clipboard');
+                      setToastMessage(
+                        t('common:failedToCopyToClipboard'),
+                      );
                       setToastSeverity('error');
                       setToastOpen(true);
                     },
                   );
                 }}
               >
-                {t('copy')}
+                {t('common:copy')}
               </Button>
               {!!supportsClipboardRead && (
                 <Button
@@ -321,7 +324,7 @@ export default function Colors() {
                     }
                   }}
                 >
-                  {t('paste')}
+                  {t('common:paste')}
                 </Button>
               )}
             </Box>
@@ -354,19 +357,21 @@ export default function Colors() {
                 onClick={() => {
                   navigator.clipboard.writeText(hslColor || '').then(
                     () => {
-                      setToastMessage('Copied to clipboard');
+                      setToastMessage(t('common:copiedToClipboard'));
                       setToastSeverity('success');
                       setToastOpen(true);
                     },
                     () => {
-                      setToastMessage('Failed to copy to clipboard');
+                      setToastMessage(
+                        t('common:failedToCopyToClipboard'),
+                      );
                       setToastSeverity('error');
                       setToastOpen(true);
                     },
                   );
                 }}
               >
-                {t('copy')}
+                {t('common:copy')}
               </Button>
               {!!supportsClipboardRead && (
                 <Button
@@ -381,7 +386,7 @@ export default function Colors() {
                     }
                   }}
                 >
-                  {t('paste')}
+                  {t('common:paste')}
                 </Button>
               )}
             </Box>
@@ -414,19 +419,21 @@ export default function Colors() {
                 onClick={() => {
                   navigator.clipboard.writeText(rgbColor || '').then(
                     () => {
-                      setToastMessage('Copied to clipboard');
+                      setToastMessage(t('common:copiedToClipboard'));
                       setToastSeverity('success');
                       setToastOpen(true);
                     },
                     () => {
-                      setToastMessage('Failed to copy to clipboard');
+                      setToastMessage(
+                        t('common:failedToCopyToClipboard'),
+                      );
                       setToastSeverity('error');
                       setToastOpen(true);
                     },
                   );
                 }}
               >
-                {t('copy')}
+                {t('common:copy')}
               </Button>
               {!!supportsClipboardRead && (
                 <Button
@@ -441,7 +448,7 @@ export default function Colors() {
                     }
                   }}
                 >
-                  {t('paste')}
+                  {t('common:paste')}
                 </Button>
               )}
             </Box>
