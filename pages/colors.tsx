@@ -199,6 +199,14 @@ export default function Colors() {
             gap={4}
           >
             <PreviewPane color={pickerColor} />
+            <HexColorPicker
+              color={pickerColor}
+              onChange={(color) => {
+                updateColors({
+                  target: { name: 'hex', value: color },
+                });
+              }}
+            />
             {isSupported() ? (
               <Button
                 onClick={pickColor}
@@ -250,14 +258,6 @@ export default function Colors() {
                 </span>
               </Tooltip>
             )}
-            <HexColorPicker
-              color={pickerColor}
-              onChange={(color) => {
-                updateColors({
-                  target: { name: 'hex', value: color },
-                });
-              }}
-            />
           </Box>
         </Box>
         <Box

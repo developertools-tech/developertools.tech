@@ -15,13 +15,28 @@ export default function PreviewPane({ color }: { color: string }) {
     });
   }, [color, setPreviewColor]);
 
-  const Styled = styled('span')({
-    display: 'block',
-    backgroundColor: previewColor,
+  const ColorPreviewContainer = styled('span')({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: 8,
     width: '200px',
-    height: '100px',
+    height: '140px',
+    background:
+      'linear-gradient(90deg, #000 20%, #7F7F7F 70%, #fff 85%)',
   });
 
-  return <Styled />;
+  const ColorPreviewBox = styled('span')({
+    display: 'block',
+    backgroundColor: previewColor,
+    width: 'calc(100% - 32px)',
+    height: 'calc(100% - 32px)',
+    borderRadius: 4,
+  });
+
+  return (
+    <ColorPreviewContainer>
+      <ColorPreviewBox />
+    </ColorPreviewContainer>
+  );
 }
