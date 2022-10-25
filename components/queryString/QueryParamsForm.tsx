@@ -81,8 +81,8 @@ export default function QueryParamsForm({
             xs={5}
           >
             <TextField
-              label='Parameter'
-              name={`param${i}`}
+              label={`Parameter ${i + 1}`}
+              name={`param${i + 1}`}
               value={param.param}
               onChange={(event) => handleChange(event, i, 'param')}
               style={{ width: '100%' }}
@@ -93,8 +93,8 @@ export default function QueryParamsForm({
             xs={6}
           >
             <TextField
-              label='Value'
-              name={`value${i}`}
+              label={`Value ${i + 1}`}
+              name={`value${i + 1}`}
               value={param.value}
               onChange={(event) => handleChange(event, i, 'value')}
               style={{ width: '100%' }}
@@ -115,10 +115,18 @@ export default function QueryParamsForm({
                   justifyContent: 'space-around',
                 }}
               >
-                <Delete
-                  style={{ cursor: 'pointer' }}
+                <button
+                  type='button'
                   onClick={(event) => deleteRow(event, i)}
-                />
+                  style={{
+                    cursor: 'pointer',
+                    background: 'none',
+                    color: 'inherit',
+                  }}
+                  aria-label={`Delete Row ${i + 1}`}
+                >
+                  <Delete />
+                </button>
               </div>
             </Grid>
           ) : (
