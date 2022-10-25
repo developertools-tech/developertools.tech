@@ -208,7 +208,7 @@ This App is internationalized. This section describes the addition of translatio
 
 ### Add translation file (namespace)
 
-Translation JSON files should be added to the `i18n/{en, ja, ..etc}/{PageName}.json`
+Translation JSON files should be added to the `i18n/{en, ja, ..etc}/{pageName}.json`
 
 Import the JSON file in `i18n.ts` and add it to the `resources.en` object
 
