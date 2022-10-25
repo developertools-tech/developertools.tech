@@ -269,6 +269,12 @@ export default function Layout({
             keepMounted: true,
           }}
           sx={{
+            '& .MuiPaper-root::-webkit-scrollbar': {
+              display: 'none',
+            },
+            '& .MuiPaper-root': {
+              scrollbarWidth: 'none',
+            },
             '& .MuiDrawer-paper': {
               sm: {
                 boxSizing: 'border-box',
