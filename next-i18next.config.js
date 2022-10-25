@@ -9,6 +9,7 @@ module.exports = {
       'pt-BR',
       'pt-PT', // fallback to pt-BR
       'pt', // fallback to pt-BR
+      'sw', // fallback to en
     ],
   },
   fallbackLng: {
