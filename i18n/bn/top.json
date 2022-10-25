@@ -1,0 +1,11 @@
+{
+    "home": "হোম",
+    "welcome": "স্বাগতম",
+    "chooseFromMenu": "শুরু করতে মেনু থেকে একটি টুল বেছে নিন",
+    "dontSeeTheToolYouNeed": "প্রয়োজনীয় টুল দেখতে পাচ্ছেন না?",
+    "requestItHere": "এখানে আবেদন করুন",
+    "foundBug": "বাগ খুঁজে পেয়েছেন?",
+    "reportItHere": "এখানে রিপোর্ট করুন",
+    "wantToHelp": "সাহায্য করতে চান?",
+    "contributeOnGit": "GitHub এ কান্ট্রিবিউট করুন"
+  }

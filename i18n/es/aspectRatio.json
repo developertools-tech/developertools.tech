@@ -1,0 +1,16 @@
+{
+  "ratioPreview": "Vista Previa de la Proporción",
+  "sourceDimensions": "Dimensiones de Fuente",
+  "sourceWidth": "Ancho de Fuente",
+  "sourceHeight": "Estatura de Fuente",
+  "targetDimensions": "Metas de Dimensiones",
+  "targetWidth": "Meta de Ancho",
+  "targetHeight": "Meta de Estatura",
+  "layouts": "Planos",
+  "layout": "Plano",
+  "screenWidth": "Ancho de Pantalla",
+  "across": "Que Cruza",
+  "marginPixels": "Píxeles de Margen",
+  "gapPixels": "Píxeles de Brecha",
+  "expandPercent": "Expandir Por Ciento"
+}

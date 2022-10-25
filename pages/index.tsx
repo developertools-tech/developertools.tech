@@ -5,16 +5,14 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import nextI18NextConfig from '../next-i18next.config.js';
 
 export default function IndexPage() {
   const { t } = useTranslation('top');
   return (
-    <Layout>
+    <Layout title={t('welcome')}>
       <Box textAlign='center'>
-        <Heading>{t('welcome')}</Heading>
         <Typography paragraph>{t('chooseFromMenu')}</Typography>
         <Typography
           paragraph

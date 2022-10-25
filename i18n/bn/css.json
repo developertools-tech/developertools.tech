@@ -1,0 +1,8 @@
+{
+    "description": "এটিকে ফরম্যাট বা ছোট করতে কিছু CSS পেস্ট করুন বা টাইপ করুন।",
+    "note": "নোট: ফরম্যাটিং CSS, SCSS, এবং LESS এর সাথে কাজ করে। ক্ষুদ্রকরণ শুধুমাত্র CSS এর জন্য কাজ করে।",
+    "minify": "ছোট করা",
+    "format": "ফরম্যাট",
+    "formattedCss": "FormattedCSS",
+    "minifiedCss": "MinifiedCSS"
+  }

@@ -1,0 +1,5 @@
+{
+  "description": "Pegar o escriber cada uno para escapar o no escapar códigos de caracteres HTLM desde uno al otro.",
+  "unescaped": "No Escapado",
+  "escaped": "Escapado"
+}

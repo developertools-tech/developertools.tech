@@ -42,9 +42,13 @@ export const resources = {
   },
 } as const;
 
+// Used for Jest
 i18n.use(initReactI18next).init({
   lng: 'en',
   fallbackLng: 'en',
+
+  ns: Object.keys(resources.en),
+  defaultNS: 'common',
 
   interpolation: {
     escapeValue: false,

@@ -1,0 +1,22 @@
+{
+  "generateUuid": "Erstelle eine UUID",
+  "uuidVersion": "UUID Version",
+  "pseudorandom": "Pseudozufall",
+  "md5hash": "MD5 Hash",
+  "random": "Zufällig",
+  "sha1Hash": "SHA-1 Hash",
+  "nameSpaceUuid": "Namensraum UUID",
+  "uuidName": "UUID Name",
+  "namespaceType": "Namensraum Typ",
+  "invalidUuid": "Ungültige UUID",
+  "generatedUuid": "Erstellte UUID",
+  "newUuid": "NEUE UUID",
+  "checkUuidVersionAndValidity": "Überprüfe UUID Version und Gültigkeit",
+  "uuidToValidate": "UUID für Validierung",
+  "aboudUuids": "Über UUIDs",
+  "overview": "Der Universally Unique Identifier (UUID) ist eine 128-bit Zahl, die als eindeutiger Identifikator benutzt wird.",
+  "aboutUuid1": "UUID v1 ist pseudozufällig. Bei der Erstellung wird die Uhrzeit der Erstellung zusammen mit der MAC Adresse des Gerätes verwendet, mit dem die UUID erstellt wurde.",
+  "aboutUuid3": "UUID v3 ist ein MD5 Hash. Bei der Erstellung wird ein Namensraum zusammen mit einem Namen verwendet. Der Namensraum muss eine UUID sein und der Name kann jede beliebige Zeichenfolge sein. Der selbe Namensraum zusammen mit dem selben Namen wird immer die selbe UUID ergeben.",
+  "aboutUuid4": "UUID v4 ist zufällig oder pseudozufällig, abhängig davon wie sie erstellt wurde. Die v4 UUIDs, die von dieser Webseite generiert werden sind kryptographisch starke Zufallswerte.",
+  "aboutUuid5": "UUID v5 ist ein SHA-1 Hash, erstellt aus einem Namensraum und einem Namen. Ähnlich wie v3 UUIDs, ist die UUID immer dieselbe wenn Namensraum und Name dieselben sind. Der Namensraum für v5 UUIDs kann entweder eine UUID oder ein vordefinierter Namensraum-Typ sein (URL, DNS, ISO OID, und X.500 DN). Allerdings unterstützt diese Webseite im Moment nicht ISO OID oder X.500 DN."
+}

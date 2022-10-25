@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
 import Base64InputOutput from '../components/base64/Base64InputOutput';
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
@@ -29,11 +28,8 @@ export default function Base64Page() {
     useState<ToastProps['severity']>('success');
   const { t } = useTranslation('base64');
 
-  const pageTitle = t('title');
-
   return (
-    <Layout title={pageTitle}>
-      <Heading>{pageTitle}</Heading>
+    <Layout title={t('title')}>
       <Typography paragraph>{t('description')}</Typography>
       <Base64InputOutput
         ascii={ascii}

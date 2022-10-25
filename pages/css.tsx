@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
 import CssForm from '../components/css/CssForm';
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
@@ -33,7 +32,6 @@ export default function CssPage() {
   const { t } = useTranslation('css');
   return (
     <Layout title='CSS'>
-      <Heading>Minify CSS</Heading>
       <Typography paragraph>{t('description')}</Typography>
       <Typography paragraph>{t('note')}</Typography>
       <CssForm
