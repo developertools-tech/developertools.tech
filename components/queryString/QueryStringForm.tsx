@@ -50,7 +50,7 @@ export default function QueryStringForm({
       newParams.push({
         param: key,
         value: val,
-        key: `${Math.random() * 100}`,
+        key,
       });
     });
     newParams.push({ param: '', value: '', key: 'last' });
