@@ -12,12 +12,14 @@ export const defaultParams = [{ param: '', value: '', key: 'initial' }];
 
 export interface QueryParamsFormProps {
   queryParams: QueryParams;
+  queryString: string | void;
   setQueryParams: (_queryParams: QueryParams) => void;
   setQueryString: (_queryString: string) => void;
 }
 
 export function getQueryString(
   queryParams: QueryParams,
+  queryString: string | void,
   setQueryString: (_queryString: string) => void,
 ) {
   const params = new URLSearchParams();
@@ -26,11 +28,18 @@ export function getQueryString(
       params.set(param.param, param.value);
     }
   });
-  setQueryString(params.toString());
+  try {
+    const url = new URL(queryString || '');
+    url.search = params.toString();
+    setQueryString(url.toString());
+  } catch {
+    setQueryString(params.toString());
+  }
 }
 
 export default function QueryParamsForm({
   queryParams,
+  queryString,
   setQueryParams,
   setQueryString,
 }: QueryParamsFormProps) {
@@ -57,7 +66,7 @@ export default function QueryParamsForm({
       });
     }
     setQueryParams(newParams);
-    getQueryString(newParams, setQueryString);
+    getQueryString(newParams, queryString, setQueryString);
   }
 
   function deleteRow(event: React.MouseEvent, row: number) {
@@ -66,7 +75,7 @@ export default function QueryParamsForm({
       (_x, i) => i !== row,
     );
     setQueryParams(newParams);
-    getQueryString(newParams, setQueryString);
+    getQueryString(newParams, queryString, setQueryString);
   }
 
   return (

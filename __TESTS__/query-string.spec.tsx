@@ -20,11 +20,7 @@ describe('QueryString', () => {
     const queryString = screen.getByLabelText('Query String');
 
     await user.clear(queryString);
-    await user.type(
-      queryString,
-      'testparam=mytestvalue&test2=value2',
-      // .replace(/[{[]/g, '$&$&'),
-    );
+    await user.type(queryString, 'testparam=mytestvalue&test2=value2');
 
     expect(
       screen.getByRole('textbox', { name: 'Parameter 1' }),
@@ -160,5 +156,25 @@ describe('QueryString', () => {
       screen.getByRole('button', { name: 'Delete Row 1' }),
     );
     expect(queryString).toHaveValue('this=%3Chtml+%26+one%3E');
+  });
+
+  it('keep the base url and fragement if there is one', async () => {
+    const user = userEvent.setup();
+    render(<QueryString />);
+
+    const queryString = screen.getByLabelText('Query String');
+
+    await user.clear(queryString);
+    await user.type(
+      queryString,
+      'http://google.com/search?mytestparam=mytestvalue&test2=value2',
+    );
+    await user.type(
+      screen.getByRole('textbox', { name: 'Parameter 1' }),
+      'modified',
+    );
+    expect(queryString).toHaveValue(
+      'http://google.com/search?mytestparammodified=mytestvalue&test2=value2',
+    );
   });
 });

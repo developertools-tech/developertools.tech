@@ -146,6 +146,7 @@ export default function QueryStringForm({
 
       <QueryParamsForm
         queryParams={queryParams}
+        queryString={queryString}
         setQueryParams={setQueryParams}
         setQueryString={setQueryString}
       />
