@@ -1,4 +1,5 @@
 import Delete from '@mui/icons-material/Delete';
+import { IconButton } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import React from 'react';
@@ -124,18 +125,13 @@ export default function QueryParamsForm({
                   justifyContent: 'space-around',
                 }}
               >
-                <button
+                <IconButton
                   type='button'
                   onClick={(event) => deleteRow(event, i)}
-                  style={{
-                    cursor: 'pointer',
-                    background: 'none',
-                    color: 'inherit',
-                  }}
                   aria-label={`Delete Row ${i + 1}`}
                 >
                   <Delete />
-                </button>
+                </IconButton>
               </div>
             </Grid>
           ) : (
@@ -143,16 +139,6 @@ export default function QueryParamsForm({
           )}
         </React.Fragment>
       ))}
-      {/* <Button
-            startIcon={<ClearIcon />}
-            disabled={!queryParams}
-            onClick={() => {
-              setQueryString('');
-              setQueryParams([]);
-            }}
-          >
-            {t('common:clear')}
-          </Button> */}
     </Grid>
   );
 }
