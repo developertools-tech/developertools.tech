@@ -11,7 +11,7 @@ import nextI18NextConfig from '../next-i18next.config.js';
 export default function HtmlCharCodesPage() {
   const { t } = useTranslation('htmlCharCodes');
   return (
-    <Layout title='HTML Character Codes'>
+    <Layout title={t('title')}>
       <Typography paragraph>{t('description')}</Typography>
       <HtmlCharCodes />
     </Layout>

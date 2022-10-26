@@ -1,21 +1,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import Base64 from '../pages/base64';
-
-jest.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (str: string) => str,
-  }),
-}));
+import renderWithI18n from './helper/i18n';
 
 describe('Base64', () => {
   it('converts ASCII to Base64', async () => {
     const user = userEvent.setup();
-    render(<Base64 />);
+    renderWithI18n(<Base64 />);
 
     const ascii = screen.getByLabelText(/ASCII/i);
     const base64 = screen.getByLabelText(/Base64/i);
@@ -27,7 +22,7 @@ describe('Base64', () => {
 
   it('converts Base64 to ASCII', async () => {
     const user = userEvent.setup();
-    render(<Base64 />);
+    renderWithI18n(<Base64 />);
 
     const ascii = screen.getByLabelText(/ASCII/i);
     const base64 = screen.getByLabelText(/Base64/i);
@@ -39,7 +34,7 @@ describe('Base64', () => {
 
   it('clears inputs with either clear button', async () => {
     const user = userEvent.setup();
-    render(<Base64 />);
+    renderWithI18n(<Base64 />);
 
     const ascii = screen.getByLabelText(/ASCII/i);
     const base64 = screen.getByLabelText(/Base64/i);
@@ -61,7 +56,7 @@ describe('Base64', () => {
 
   it('copies text to clipboard', async () => {
     const user = userEvent.setup();
-    render(<Base64 />);
+    renderWithI18n(<Base64 />);
 
     const ascii = screen.getByLabelText(/ASCII/i);
     const copyBtns = screen.getAllByRole('button', { name: /Copy/i });

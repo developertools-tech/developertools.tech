@@ -13,6 +13,8 @@ interface RegexMatchProps {
 }
 
 function RegexMatch({ match }: RegexMatchProps) {
+  const { t } = useTranslation('regex');
+
   const [fullMatch, ...groups] = match;
   return (
     <Box sx={{ mt: 2 }}>
@@ -21,7 +23,7 @@ function RegexMatch({ match }: RegexMatchProps) {
         sx={{ mb: 1 }}
         data-testid='match-result'
       >
-        Full match:{' '}
+        {`${t('fullMatch')}: `}
         <Typography
           color='grey.300'
           component='span'
@@ -36,7 +38,7 @@ function RegexMatch({ match }: RegexMatchProps) {
           sx={{ mt: 1 }}
           data-testid='match-group'
         >
-          Group #{index + 1}:{' '}
+          {t('group')} #{index + 1}:{' '}
           <Typography
             color='grey.300'
             component='span'
@@ -79,6 +81,7 @@ function RegexTestCase({
   deleteDisabled,
 }: RegexTestCaseProps) {
   const { t } = useTranslation('regex');
+
   const matches = getAllMatches(testCase, regex);
   const hasMatch = matches.length > 0;
   return (
@@ -114,8 +117,8 @@ function RegexTestCase({
       <TextField
         fullWidth
         multiline
-        aria-label='Test case content'
-        placeholder='Lorem ipsum...'
+        aria-label={t('testCaseContent')}
+        placeholder={t('testCasePlaceholder')}
         maxRows={8}
         value={testCase}
         onChange={(event) => onInput(index, event.currentTarget.value)}

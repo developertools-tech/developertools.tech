@@ -1,5 +1,7 @@
 {
+  "title": "URL Encode",
   "description": "Paste or Type text to URL Encode or Decode it",
   "decoded": "Decoded",
-  "encoded": "Encoded"
+  "encoded": "Encoded",
+  "errorMsg": "Error: Invalid URL Encoded Text"
 }

@@ -100,7 +100,7 @@ export default function CssForm({
         <TextField
           multiline
           error={error.length > 0}
-          label='CSS'
+          label={t('css:css')}
           name='css'
           onChange={handleChange}
           value={css}
@@ -200,12 +200,12 @@ export default function CssForm({
             onClick={() => {
               navigator.clipboard.writeText(formattedCss || '').then(
                 () => {
-                  setToastMessage('Copied to clipboard');
+                  setToastMessage(t('common:copiedToClipboard'));
                   setToastSeverity('success');
                   setToastOpen(true);
                 },
                 () => {
-                  setToastMessage('Failed to copy to clipboard');
+                  setToastMessage(t('common:failedToCopyToClipboard'));
                   setToastSeverity('error');
                   setToastOpen(true);
                 },

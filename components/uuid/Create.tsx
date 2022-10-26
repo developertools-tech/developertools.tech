@@ -28,6 +28,7 @@ export default function UuidCreate({
   setToastOpen,
 }: UuidCreateProps) {
   const { t } = useTranslation(['common', 'uuid']);
+
   const [uuidVersion, setUuidVersion] = useLocalState<number>({
     key: 'uuidVersion',
     defaultValue: 4,
@@ -138,9 +139,9 @@ export default function UuidCreate({
             onChange={(event) => setNamespaceType(event.target.value)}
             sx={{ minWidth: 120 }}
           >
-            <MenuItem value='custom'>Custom</MenuItem>
-            <MenuItem value='url'>URL</MenuItem>
-            <MenuItem value='dns'>DNS</MenuItem>
+            <MenuItem value='custom'>{t('uuid:custom')}</MenuItem>
+            <MenuItem value='url'>{t('uuid:url')}</MenuItem>
+            <MenuItem value='dns'>{t('uuid:dns')}</MenuItem>
           </SelectInput>
         </FormControl>
       ) : null}
@@ -175,9 +176,6 @@ export default function UuidCreate({
         value={uuid}
         disabled
         fullWidth
-        onClick={() => {
-          navigator.clipboard.writeText(uuid);
-        }}
       />
       <Box
         display='flex'
@@ -211,12 +209,12 @@ export default function UuidCreate({
           onClick={() => {
             navigator.clipboard.writeText(uuid).then(
               () => {
-                setToastMessage('Copied to clipboard');
+                setToastMessage(t('common:copiedToClipboard'));
                 setToastSeverity('success');
                 setToastOpen(true);
               },
               () => {
-                setToastMessage('Failed to copy to clipboard');
+                setToastMessage(t('common:failedToCopyToClipboard'));
                 setToastSeverity('error');
                 setToastOpen(true);
               },

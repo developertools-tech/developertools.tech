@@ -1,0 +1,12 @@
+{
+  "title": "Tester Wyrażeń Regularnych",
+  "regex": "Regex",
+  "description": "Obsługiwane są wyrażenia z ukośnikami na końcu oraz bez nich. Dodaj ukośniki na końcu, aby używać flag, np. /w+/ig",
+  "testCases": "Przypadki Testowe",
+  "case": "Przypadek",
+  "addTestCase": "Dodaj Przypadek Testowy",
+  "fullMatch": "Pełne Dopasowanie",
+  "group": "Grupa",
+  "testCaseContent": "Treść Przypadku Testowego",
+  "testCasePlaceholder": "Lorem Ipsum..."
+}

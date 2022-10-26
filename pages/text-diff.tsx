@@ -145,6 +145,10 @@ export default function TextDiffPage() {
   }
 
   useEffect(() => {
+    setInput2ValidityMessage({
+      message: '',
+      show: false,
+    });
     let inputJSON1: Record<string, unknown> | null = null;
     let inputJSON2: Record<string, unknown> | null = null;
     if (selectedOptions?.label === 'JSON') {
@@ -162,10 +166,6 @@ export default function TextDiffPage() {
       }
       try {
         inputJSON2 = JSON.parse(input2);
-        setInput2ValidityMessage({
-          message: '',
-          show: false,
-        });
       } catch (err) {
         setInput2ValidityMessage({
           show: true,
@@ -187,6 +187,7 @@ export default function TextDiffPage() {
 
       setDiff(newdiff);
     }
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, [
     selectedOptions,
     input1,
@@ -195,6 +196,7 @@ export default function TextDiffPage() {
     setInput2ValidityMessage,
     setDiff,
   ]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   const compare = useCallback(() => {
     let value = '';
@@ -224,7 +226,7 @@ export default function TextDiffPage() {
     }
   }, [input1, input2, compare, setOutput]);
   return (
-    <Layout title='Text Difference'>
+    <Layout title={t('textDiff:title')}>
       <Typography
         paragraph
         textAlign='center'
@@ -248,7 +250,7 @@ export default function TextDiffPage() {
             labelId='diff-select-label'
             id='diff-select'
             value={selectedOptions?.label}
-            label='Choose Diff Options'
+            label={t('textDiff:diffOptions.label')}
             onChange={handleSelectChange}
             inputProps={{ 'data-testid': 'text-difference-options' }}
           >

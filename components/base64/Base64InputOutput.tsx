@@ -35,7 +35,7 @@ export default function Base64InputOutput({
   setToastSeverity,
 }: Base64InputOutputProps) {
   const supportsClipboardRead = useSupportsClipboardRead();
-  const { t } = useTranslation('common');
+  const { t } = useTranslation(['common', 'base64']);
 
   function convertToAscii(value = base64) {
     try {
@@ -92,7 +92,7 @@ export default function Base64InputOutput({
       >
         <TextField
           multiline
-          label='ASCII'
+          label={t('base64:ascii')}
           value={ascii}
           name='ascii'
           onChange={handleChange}
@@ -111,7 +111,7 @@ export default function Base64InputOutput({
               setBase64('');
             }}
           >
-            {t('clear')}
+            {t('common:clear')}
           </Button>
           <Button
             startIcon={<ContentCopyIcon />}
@@ -119,19 +119,19 @@ export default function Base64InputOutput({
             onClick={() => {
               navigator.clipboard.writeText(ascii || '').then(
                 () => {
-                  setToastMessage('Copied to clipboard');
+                  setToastMessage(t('common:copiedToClipboard'));
                   setToastSeverity('success');
                   setToastOpen(true);
                 },
                 () => {
-                  setToastMessage('Failed to copy to clipboard');
+                  setToastMessage(t('common:failedToCopyToClipboard'));
                   setToastSeverity('error');
                   setToastOpen(true);
                 },
               );
             }}
           >
-            {t('copy')}
+            {t('common:copy')}
           </Button>
           {!!supportsClipboardRead && (
             <Button
@@ -144,7 +144,7 @@ export default function Base64InputOutput({
                 }
               }}
             >
-              {t('paste')}
+              {t('common:paste')}
             </Button>
           )}
         </Box>
@@ -156,7 +156,7 @@ export default function Base64InputOutput({
       >
         <TextField
           multiline
-          label='Base64'
+          label={t('base64:title')}
           value={base64}
           name='base64'
           onChange={handleChange}
@@ -176,7 +176,7 @@ export default function Base64InputOutput({
               setAscii('');
             }}
           >
-            {t('clear')}
+            {t('common:clear')}
           </Button>
           <Button
             startIcon={<ContentCopyIcon />}
@@ -184,19 +184,19 @@ export default function Base64InputOutput({
             onClick={() => {
               navigator.clipboard.writeText(base64 || '').then(
                 () => {
-                  setToastMessage('Copied to clipboard');
+                  setToastMessage(t('common:copiedToClipboard'));
                   setToastSeverity('success');
                   setToastOpen(true);
                 },
                 () => {
-                  setToastMessage('Failed to copy to clipboard');
+                  setToastMessage(t('common:failedToCopyToClipboard'));
                   setToastSeverity('error');
                   setToastOpen(true);
                 },
               );
             }}
           >
-            {t('copy')}
+            {t('common:copy')}
           </Button>
           {!!supportsClipboardRead && (
             <Button
@@ -209,7 +209,7 @@ export default function Base64InputOutput({
                 }
               }}
             >
-              {t('paste')}
+              {t('common:paste')}
             </Button>
           )}
         </Box>

@@ -1,7 +1,11 @@
 {
+  "title": "Lorem Ipsum",
   "wordList": "Word List",
   "copyText": "COPY TEXT",
   "sentenceLength": "Sentence Length",
   "paragraphLength": "Paragraph Length",
-  "ParagraphCount": "Paragraph Count"
+  "ParagraphCount": "Paragraph Count",
+  "latin": "Latin",
+  "willFerrell": "Will Ferrell",
+  "jeffGoldblum": "Jeff Goldblum"
 }

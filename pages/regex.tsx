@@ -72,7 +72,7 @@ export default function RegexTesterPage() {
     [regexInput],
   );
   return (
-    <Layout title='Regex Tester'>
+    <Layout title={t('title')}>
       <Container>
         <Box sx={{ mb: 2 }}>
           <TextField

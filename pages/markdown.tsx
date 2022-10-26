@@ -52,6 +52,7 @@ export default function MarkDownPreview() {
           paragraph
           dangerouslySetInnerHTML={{ __html: marked(output) }}
         />
+        {/* eslint-enable react/no-danger */}
       </Box>
     </Layout>
   );

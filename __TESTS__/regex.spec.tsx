@@ -15,7 +15,7 @@ describe('Regex Tester', () => {
       1,
     );
 
-    await user.click(screen.getByText('ADD TEST CASE'));
+    await user.click(screen.getByText('Add test case'));
 
     expect(screen.getAllByLabelText('Test case content')).toHaveLength(
       2,
