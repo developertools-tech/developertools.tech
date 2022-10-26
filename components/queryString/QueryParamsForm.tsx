@@ -103,7 +103,7 @@ export default function QueryParamsForm({
             xs={6}
           >
             <TextField
-              label={`{t('queryString:value')} ${i + 1}`}
+              label={`${t('queryString:value')} ${i + 1}`}
               name={`value${i + 1}`}
               value={param.value}
               onChange={(event) => handleChange(event, i, 'value')}
@@ -128,7 +128,7 @@ export default function QueryParamsForm({
                 <IconButton
                   type='button'
                   onClick={(event) => deleteRow(event, i)}
-                  aria-label={`{t('queryString:deleteRow')} ${i + 1}`}
+                  aria-label={`${t('queryString:deleteRow')} ${i + 1}`}
                 >
                   <Delete />
                 </IconButton>

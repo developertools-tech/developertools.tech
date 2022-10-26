@@ -31,7 +31,7 @@ export default function QueryStringPage() {
     useState<ToastProps['severity']>('success');
   const { t } = useTranslation('queryString');
   return (
-    <Layout title='Query String'>
+    <Layout title={t('common:queryString')}>
       <Typography paragraph>{t('description')}</Typography>
       <QueryStringForm
         queryString={queryString}

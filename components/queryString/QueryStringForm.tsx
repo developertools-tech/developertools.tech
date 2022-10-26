@@ -74,7 +74,7 @@ export default function QueryStringForm({
         <TextField
           multiline
           error={error.length > 0}
-          label='Query String'
+          label={t('common:queryString')}
           name='queryString'
           onChange={handleChange}
           value={queryString}
@@ -102,14 +102,14 @@ export default function QueryStringForm({
             onClick={() => {
               navigator.clipboard.writeText(queryString || '').then(
                 () => {
-                  setToastMessage('Copied to clipboard');
+                  setToastMessage(t('common:copiedToClipboard'));
                   setToastSeverity('success');
                   setToastOpen(true);
                 },
                 () => {
-                  setToastMessage('Failed to copy to clipboard');
+                  setToastMessage(t('common:failedToCopyToClipboard'));
                   setToastSeverity('error');
-                  setError('Failed to copy to clipboard');
+                  setError(t('common:failedToCopyToClipboard'));
                   setToastOpen(true);
                 },
               );

@@ -17,29 +17,29 @@ describe('QueryString', () => {
     const user = userEvent.setup();
     render(<QueryString />);
 
-    const queryString = screen.getByLabelText('Query String');
+    const queryString = screen.getByLabelText('common:queryString');
 
     await user.clear(queryString);
     await user.type(queryString, 'testparam=mytestvalue&test2=value2');
 
     expect(
-      screen.getByRole('textbox', { name: 'Parameter 1' }),
+      screen.getByRole('textbox', { name: 'queryString:parameter 1' }),
     ).toHaveValue('testparam');
     expect(
-      screen.getByRole('textbox', { name: 'Parameter 2' }),
+      screen.getByRole('textbox', { name: 'queryString:parameter 2' }),
     ).toHaveValue('test2');
     expect(
-      screen.getByRole('textbox', { name: 'Parameter 3' }),
+      screen.getByRole('textbox', { name: 'queryString:parameter 3' }),
     ).toHaveValue('');
 
     expect(
-      screen.getByRole('textbox', { name: 'Value 1' }),
+      screen.getByRole('textbox', { name: 'queryString:value 1' }),
     ).toHaveValue('mytestvalue');
     expect(
-      screen.getByRole('textbox', { name: 'Value 2' }),
+      screen.getByRole('textbox', { name: 'queryString:value 2' }),
     ).toHaveValue('value2');
     expect(
-      screen.getByRole('textbox', { name: 'Value 3' }),
+      screen.getByRole('textbox', { name: 'queryString:value 3' }),
     ).toHaveValue('');
   });
 
@@ -47,33 +47,33 @@ describe('QueryString', () => {
     const user = userEvent.setup();
     render(<QueryString />);
 
-    const queryString = screen.getByLabelText('Query String');
+    const queryString = screen.getByLabelText('common:queryString');
 
     await user.clear(queryString);
     await user.type(
-      screen.getByRole('textbox', { name: 'Parameter 1' }),
+      screen.getByRole('textbox', { name: 'queryString:parameter 1' }),
       'testparam',
     );
     await user.type(
-      screen.getByRole('textbox', { name: 'Value 1' }),
+      screen.getByRole('textbox', { name: 'queryString:value 1' }),
       'testvalue',
     );
 
     await user.type(
-      screen.getByRole('textbox', { name: 'Parameter 2' }),
+      screen.getByRole('textbox', { name: 'queryString:parameter 2' }),
       'test2',
     );
     await user.type(
-      screen.getByRole('textbox', { name: 'Value 2' }),
+      screen.getByRole('textbox', { name: 'queryString:value 2' }),
       'value2',
     );
 
     await user.type(
-      screen.getByRole('textbox', { name: 'Parameter 3' }),
+      screen.getByRole('textbox', { name: 'queryString:parameter 3' }),
       'this',
     );
     await user.type(
-      screen.getByRole('textbox', { name: 'Value 3' }),
+      screen.getByRole('textbox', { name: 'queryString:value 3' }),
       '<html & one>',
     );
 
@@ -86,8 +86,10 @@ describe('QueryString', () => {
     const user = userEvent.setup();
     render(<QueryString />);
 
-    const queryString = screen.getByLabelText('Query String');
-    const clearBtn = screen.getByRole('button', { name: /Clear/i });
+    const queryString = screen.getByLabelText('common:queryString');
+    const clearBtn = screen.getByRole('button', {
+      name: 'common:clear',
+    });
 
     await user.clear(queryString);
     await user.type(
@@ -98,10 +100,10 @@ describe('QueryString', () => {
 
     expect(queryString).toHaveValue('');
     expect(
-      screen.getByRole('textbox', { name: 'Parameter 1' }),
+      screen.getByRole('textbox', { name: 'queryString:parameter 1' }),
     ).toHaveValue('');
     expect(
-      screen.getByRole('textbox', { name: 'Value 1' }),
+      screen.getByRole('textbox', { name: 'queryString:value 1' }),
     ).toHaveValue('');
   });
 
@@ -109,24 +111,24 @@ describe('QueryString', () => {
     const user = userEvent.setup();
     render(<QueryString />);
 
-    const queryString = screen.getByLabelText(/^Query String$/i);
+    const queryString = screen.getByLabelText('common:queryString');
 
     await user.clear(queryString);
 
     await user.type(
-      screen.getByRole('textbox', { name: 'Parameter 1' }),
+      screen.getByRole('textbox', { name: 'queryString:parameter 1' }),
       'Test',
     );
     expect(
-      screen.getByRole('textbox', { name: 'Parameter 2' }),
+      screen.getByRole('textbox', { name: 'queryString:parameter 2' }),
     ).toHaveValue('');
 
     await user.type(
-      screen.getByRole('textbox', { name: 'Value 2' }),
+      screen.getByRole('textbox', { name: 'queryString:value 2' }),
       'value',
     );
     expect(
-      screen.getByRole('textbox', { name: 'Value 3' }),
+      screen.getByRole('textbox', { name: 'queryString:value 3' }),
     ).toHaveValue('');
   });
 
@@ -134,7 +136,7 @@ describe('QueryString', () => {
     const user = userEvent.setup();
     render(<QueryString />);
 
-    const queryString = screen.getByLabelText('Query String');
+    const queryString = screen.getByLabelText('common:queryString');
 
     await user.clear(queryString);
     await user.type(
@@ -142,18 +144,18 @@ describe('QueryString', () => {
       'testparam=testvalue&test2=value2&this=%3Chtml+%26+one%3E',
     );
     expect(
-      screen.getByRole('textbox', { name: 'Parameter 2' }),
+      screen.getByRole('textbox', { name: 'queryString:parameter 2' }),
     ).toHaveValue('test2');
 
     await user.click(
-      screen.getByRole('button', { name: 'Delete Row 2' }),
+      screen.getByRole('button', { name: 'queryString:deleteRow 2' }),
     );
     expect(
-      screen.getByRole('textbox', { name: 'Value 2' }),
+      screen.getByRole('textbox', { name: 'queryString:value 2' }),
     ).toHaveValue('<html & one>');
 
     await user.click(
-      screen.getByRole('button', { name: 'Delete Row 1' }),
+      screen.getByRole('button', { name: 'queryString:deleteRow 1' }),
     );
     expect(queryString).toHaveValue('this=%3Chtml+%26+one%3E');
   });
@@ -162,7 +164,7 @@ describe('QueryString', () => {
     const user = userEvent.setup();
     render(<QueryString />);
 
-    const queryString = screen.getByLabelText('Query String');
+    const queryString = screen.getByLabelText('common:queryString');
 
     await user.clear(queryString);
     await user.type(
@@ -170,7 +172,7 @@ describe('QueryString', () => {
       'http://google.com/search?mytestparam=mytestvalue&test2=value2',
     );
     await user.type(
-      screen.getByRole('textbox', { name: 'Parameter 1' }),
+      screen.getByRole('textbox', { name: 'queryString:parameter 1' }),
       'modified',
     );
     expect(queryString).toHaveValue(
