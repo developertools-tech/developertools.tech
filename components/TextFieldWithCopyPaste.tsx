@@ -78,12 +78,12 @@ export default function TextFieldWithCopyPaste(
             onClick={() => {
               navigator.clipboard.writeText(value || '').then(
                 () => {
-                  setToastMessage('Copied to clipboard');
+                  setToastMessage(t('copiedToClipboard'));
                   setToastSeverity('success');
                   setToastOpen(true);
                 },
                 () => {
-                  setToastMessage('Failed to copy to clipboard');
+                  setToastMessage(t('failedToCopyToClipboard'));
                   setToastSeverity('error');
                   setToastOpen(true);
                 },

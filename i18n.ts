@@ -3,6 +3,7 @@ import { initReactI18next } from 'react-i18next';
 
 import aspectRatio from './i18n/en/aspectRatio.json';
 import base64 from './i18n/en/base64.json';
+import colors from './i18n/en/colors.json';
 import common from './i18n/en/common.json';
 import css from './i18n/en/css.json';
 import html from './i18n/en/html.json';
@@ -24,6 +25,7 @@ export const resources = {
   en: {
     aspectRatio,
     common,
+    colors,
     top,
     base64,
     css,
@@ -42,9 +44,13 @@ export const resources = {
   },
 } as const;
 
+// Used for Jest
 i18n.use(initReactI18next).init({
   lng: 'en',
   fallbackLng: 'en',
+
+  ns: Object.keys(resources.en),
+  defaultNS: 'common',
 
   interpolation: {
     escapeValue: false,

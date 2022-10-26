@@ -1,6 +1,7 @@
+import ColorizeIcon from '@mui/icons-material/Colorize';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
-import { TextField, Typography } from '@mui/material';
+import { TextField, Tooltip, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import * as convert from 'colors-convert';
@@ -11,8 +12,9 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { ChangeEvent, useState } from 'react';
 import { HexColorPicker } from 'react-colorful';
 import { useTranslation } from 'react-i18next';
+import useEyeDropper from 'use-eye-dropper';
 
-import Heading from '../components/Heading';
+import PreviewPane from '../components/colors/PreviewPane';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
@@ -39,12 +41,14 @@ function stringToNumArray(value: string): number[] | string {
 }
 
 export default function Colors() {
+  const { t } = useTranslation(['common', 'colors']);
+
   const supportsClipboardRead = useSupportsClipboardRead();
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
-  const { t } = useTranslation('common');
+  const { open, isSupported } = useEyeDropper();
 
   const [pickerColor, setPickerColor] = useLocalState<string>({
     key: 'colorPicker_pickerColor',
@@ -87,7 +91,7 @@ export default function Colors() {
       setRGBColor(serializeColor(convert.hexToRgb(`#${sanitized}`)));
       setPickerColor(`#${sanitized}`);
     } else {
-      setErr('Invalid Hex Color');
+      setErr(t('colors:invalidHex'));
       setHexErr(true);
     }
   }
@@ -107,7 +111,7 @@ export default function Colors() {
       setHslColor(serializeColor(convert.rgbToHsl(rgb)));
     } else {
       setRGBColor(value);
-      setErr('Invalid RGB Color');
+      setErr(t('colors:invalidRGB'));
       setRgbErr(true);
     }
   }
@@ -127,7 +131,7 @@ export default function Colors() {
       setRGBColor(serializeColor(convert.hslToRgb(hsl)));
     } else {
       setHslColor(value);
-      setErr('Invalid HSL Color');
+      setErr(t('colors:invalidHSL'));
       setHslErr(true);
     }
   }
@@ -163,9 +167,16 @@ export default function Colors() {
     }
   };
 
+  function pickColor() {
+    open()
+      .then((color) =>
+        updateColors({ target: { name: 'hex', value: color.sRGBHex } }),
+      )
+      .catch((_e) => {});
+  }
+
   return (
-    <Layout>
-      <Heading>Colors</Heading>
+    <Layout title={t('common:colors')}>
       <Box
         width='1000px'
         maxWidth='100%'
@@ -175,21 +186,54 @@ export default function Colors() {
         alignItems={{ xs: 'center', md: 'flex-start' }}
         gap='4rem'
       >
-        <Box>
-          <HexColorPicker
-            color={pickerColor}
-            onChange={(color) => {
-              updateColors({
-                target: { name: 'hex', value: color },
-              });
-            }}
-          />
+        <Box
+          display='flex'
+          flexDirection='column'
+        >
+          <Box
+            display='flex'
+            flexDirection='column'
+            gap={4}
+          >
+            <PreviewPane color={pickerColor} />
+            <HexColorPicker
+              color={pickerColor}
+              onChange={(color) => {
+                updateColors({
+                  target: { name: 'hex', value: color },
+                });
+              }}
+            />
+            {isSupported() ? (
+              <Button
+                onClick={pickColor}
+                variant='text'
+                aria-label={t('colors:openColorPicker')}
+              >
+                <ColorizeIcon />
+              </Button>
+            ) : (
+              <Tooltip
+                placement='top'
+                title={t('colors:eyeDropperNotSupported')}
+              >
+                <span style={{ textAlign: 'center' }}>
+                  <Button
+                    disabled
+                    variant='text'
+                  >
+                    <ColorizeIcon />
+                  </Button>
+                </span>
+              </Tooltip>
+            )}
+          </Box>
         </Box>
         <Box
           display='flex'
           flexDirection='column'
           justifyContent='stretch'
-          gap={4}
+          gap={7}
         >
           <Box
             display='flex'
@@ -199,7 +243,7 @@ export default function Colors() {
             gap={1}
           >
             <TextField
-              label='HEX'
+              label={t('colors:hex')}
               name='hex'
               error={hexErr}
               value={hexColor}
@@ -219,19 +263,21 @@ export default function Colors() {
                 onClick={() => {
                   navigator.clipboard.writeText(hexColor || '').then(
                     () => {
-                      setToastMessage('Copied to clipboard');
+                      setToastMessage(t('common:copiedToClipboard'));
                       setToastSeverity('success');
                       setToastOpen(true);
                     },
                     () => {
-                      setToastMessage('Failed to copy to clipboard');
+                      setToastMessage(
+                        t('common:failedToCopyToClipboard'),
+                      );
                       setToastSeverity('error');
                       setToastOpen(true);
                     },
                   );
                 }}
               >
-                {t('copy')}
+                {t('common:copy')}
               </Button>
               {!!supportsClipboardRead && (
                 <Button
@@ -246,7 +292,7 @@ export default function Colors() {
                     }
                   }}
                 >
-                  {t('paste')}
+                  {t('common:paste')}
                 </Button>
               )}
             </Box>
@@ -259,7 +305,7 @@ export default function Colors() {
             gap={1}
           >
             <TextField
-              label='HSL'
+              label={t('colors:hsl')}
               name='hsl'
               error={hslErr}
               value={hslColor}
@@ -279,19 +325,21 @@ export default function Colors() {
                 onClick={() => {
                   navigator.clipboard.writeText(hslColor || '').then(
                     () => {
-                      setToastMessage('Copied to clipboard');
+                      setToastMessage(t('common:copiedToClipboard'));
                       setToastSeverity('success');
                       setToastOpen(true);
                     },
                     () => {
-                      setToastMessage('Failed to copy to clipboard');
+                      setToastMessage(
+                        t('common:failedToCopyToClipboard'),
+                      );
                       setToastSeverity('error');
                       setToastOpen(true);
                     },
                   );
                 }}
               >
-                {t('copy')}
+                {t('common:copy')}
               </Button>
               {!!supportsClipboardRead && (
                 <Button
@@ -306,7 +354,7 @@ export default function Colors() {
                     }
                   }}
                 >
-                  {t('paste')}
+                  {t('common:paste')}
                 </Button>
               )}
             </Box>
@@ -319,7 +367,7 @@ export default function Colors() {
             gap={1}
           >
             <TextField
-              label='RGB'
+              label={t('colors:rgb')}
               name='rgb'
               error={rgbErr}
               value={rgbColor}
@@ -339,19 +387,21 @@ export default function Colors() {
                 onClick={() => {
                   navigator.clipboard.writeText(rgbColor || '').then(
                     () => {
-                      setToastMessage('Copied to clipboard');
+                      setToastMessage(t('common:copiedToClipboard'));
                       setToastSeverity('success');
                       setToastOpen(true);
                     },
                     () => {
-                      setToastMessage('Failed to copy to clipboard');
+                      setToastMessage(
+                        t('common:failedToCopyToClipboard'),
+                      );
                       setToastSeverity('error');
                       setToastOpen(true);
                     },
                   );
                 }}
               >
-                {t('copy')}
+                {t('common:copy')}
               </Button>
               {!!supportsClipboardRead && (
                 <Button
@@ -366,7 +416,7 @@ export default function Colors() {
                     }
                   }}
                 >
-                  {t('paste')}
+                  {t('common:paste')}
                 </Button>
               )}
             </Box>
@@ -390,7 +440,7 @@ export default function Colors() {
   );
 }
 
-const i18nextNameSpaces: Namespace[] = ['common'];
+const i18nextNameSpaces: Namespace[] = ['common', 'colors'];
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const translation = await serverSideTranslations(
     locale || 'en',

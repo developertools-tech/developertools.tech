@@ -4,7 +4,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import HtmlFormat from '../components/html/HtmlFormat';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
@@ -32,8 +31,7 @@ export default function HtmlPage() {
   const { t } = useTranslation('html');
 
   return (
-    <Layout title='HTML'>
-      <Heading>HTML</Heading>
+    <Layout title={t('title')}>
       <Typography paragraph>{t('description')}</Typography>
       <HtmlFormat
         html={html}

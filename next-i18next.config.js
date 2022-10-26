@@ -3,19 +3,8 @@
 module.exports = {
   i18n: {
     defaultLocale: 'en',
-    locales: [
-      'en',
-      'ja',
-      'pt-BR',
-      'pt-PT', // fallback to pt-BR
-      'pt', // fallback to pt-BR
-      'sw', // fallback to en
-    ],
-  },
-  fallbackLng: {
-    default: ['en'],
-    pt: ['pt-BR', 'en'],
-    'pt-PT': ['pt-BR', 'en'],
+    locales: ['en', 'es', 'hi', 'ja', 'pt', 'bn', 'de', 'sw'],
+    reloadOnPrerender: process.env.NODE_ENV === 'development',
   },
   localePath: 'i18n',
 };

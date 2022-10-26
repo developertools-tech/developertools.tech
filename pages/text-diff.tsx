@@ -16,7 +16,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useCallback, useEffect } from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
@@ -32,68 +31,63 @@ interface DiffOptions {
   ) => Change[];
 }
 
-const diffOptions: DiffOptions[] = [
-  {
-    label: 'Characters',
-    description:
-      'Two blocks of text, comparing character by character.',
-    value: Diff.diffChars,
-  },
-  {
-    label: 'Characters Ignore Case',
-    description:
-      'Two blocks of text, comparing character by character ignoring case.',
-    value: (oldStr: string, newStr: string) =>
-      Diff.diffChars(oldStr, newStr, { ignoreCase: true }),
-  },
-  {
-    label: 'Words',
-    description:
-      'Two blocks of text, comparing word by word, ignoring whitespace.',
-    value: Diff.diffWords,
-  },
-  {
-    label: 'Words Ignore Case',
-    description:
-      'Two blocks of text, comparing word by word, ignoring case.',
-    value: (oldStr: string, newStr: string) =>
-      Diff.diffWords(oldStr, newStr, { ignoreCase: true }),
-  },
-  {
-    label: 'Words with Space',
-    description:
-      'Two blocks of text, comparing word by word, treating whitespace as significant.',
-    value: Diff.diffWordsWithSpace,
-  },
-  {
-    label: 'Trimmed Lines',
-    description: 'Two blocks of text, comparing line by line.',
-    value: Diff.diffTrimmedLines,
-  },
-  {
-    label: 'Sentences',
-    description: 'Two blocks of text, comparing sentence by sentence.',
-    value: Diff.diffLines,
-  },
-  {
-    label: 'CSS',
-    description: 'Two blocks of text, comparing CSS tokens',
-    value: Diff.diffCss,
-  },
-  {
-    label: 'JSON',
-    description:
-      'Two JSON objects, comparing the fields defined on each. The order of fields, etc does not matter in this compparsion.',
-    value: Diff.diffJson,
-  },
-  // {
-  //   label: 'Arrays',
-  //   description:
-  //     'Two arrays, comparing each item for strict equality (===).',
-  //   value: Diff.diffArrays,
-  // },
-];
 export default function TextDiffPage() {
+  const { t } = useTranslation(['common', 'textDiff']);
+
+  const diffOptions: DiffOptions[] = [
+    {
+      label: t('textDiff:diffOptions.characters.label'),
+      description: t('textDiff:diffOptions.characters.description'),
+      value: Diff.diffChars,
+    },
+    {
+      label: t('textDiff:diffOptions.charactersIgnoreCase.label'),
+      description: t(
+        'textDiff:diffOptions.charactersIgnoreCase.description',
+      ),
+      value: (oldStr: string, newStr: string) =>
+        Diff.diffChars(oldStr, newStr, { ignoreCase: true }),
+    },
+    {
+      label: t('textDiff:diffOptions.words.label'),
+      description: t('textDiff:diffOptions.words.description'),
+      value: Diff.diffWords,
+    },
+    {
+      label: t('textDiff:diffOptions.wordsIgnoreCase.label'),
+      description: t(
+        'textDiff:diffOptions.wordsIgnoreCase.description',
+      ),
+      value: (oldStr: string, newStr: string) =>
+        Diff.diffWords(oldStr, newStr, { ignoreCase: true }),
+    },
+    {
+      label: t('textDiff:diffOptions.wordsWithSpace.label'),
+      description: t('textDiff:diffOptions.wordsWithSpace.description'),
+      value: Diff.diffWordsWithSpace,
+    },
+    {
+      label: t('textDiff:diffOptions.trimmedLines.label'),
+      description: t('textDiff:diffOptions.trimmedLines.description'),
+      value: Diff.diffTrimmedLines,
+    },
+    {
+      label: t('textDiff:diffOptions.sentences.label'),
+      description: t('textDiff:diffOptions.sentences.description'),
+      value: Diff.diffLines,
+    },
+    {
+      label: t('textDiff:diffOptions.css.label'),
+      description: t('textDiff:diffOptions.css.description'),
+      value: Diff.diffCss,
+    },
+    {
+      label: t('textDiff:diffOptions.json.label'),
+      description: t('textDiff:diffOptions.json.description'),
+      value: Diff.diffJson,
+    },
+  ];
+
   const supportsClipboardRead = useSupportsClipboardRead();
   const [selectedOptions, setSelectedOptions] = useLocalState<
     DiffOptions | undefined
@@ -151,6 +145,10 @@ export default function TextDiffPage() {
   }
 
   useEffect(() => {
+    setInput2ValidityMessage({
+      message: '',
+      show: false,
+    });
     let inputJSON1: Record<string, unknown> | null = null;
     let inputJSON2: Record<string, unknown> | null = null;
     if (selectedOptions?.label === 'JSON') {
@@ -168,10 +166,6 @@ export default function TextDiffPage() {
       }
       try {
         inputJSON2 = JSON.parse(input2);
-        setInput2ValidityMessage({
-          message: '',
-          show: false,
-        });
       } catch (err) {
         setInput2ValidityMessage({
           show: true,
@@ -193,6 +187,7 @@ export default function TextDiffPage() {
 
       setDiff(newdiff);
     }
+    /* eslint-disable react-hooks/exhaustive-deps */
   }, [
     selectedOptions,
     input1,
@@ -201,6 +196,7 @@ export default function TextDiffPage() {
     setInput2ValidityMessage,
     setDiff,
   ]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   const compare = useCallback(() => {
     let value = '';
@@ -229,10 +225,8 @@ export default function TextDiffPage() {
       compare();
     }
   }, [input1, input2, compare, setOutput]);
-  const { t } = useTranslation(['common', 'textDiff']);
   return (
-    <Layout title='Text Difference'>
-      <Heading>Text Diff</Heading>
+    <Layout title={t('textDiff:title')}>
       <Typography
         paragraph
         textAlign='center'
@@ -250,13 +244,13 @@ export default function TextDiffPage() {
       >
         <FormControl>
           <InputLabel id='diff-select-label'>
-            Choose Diff Options
+            {t('textDiff:diffOptions.label')}
           </InputLabel>
           <Select
             labelId='diff-select-label'
             id='diff-select'
             value={selectedOptions?.label}
-            label='Choose Diff Options'
+            label={t('textDiff:diffOptions.label')}
             onChange={handleSelectChange}
             inputProps={{ 'data-testid': 'text-difference-options' }}
           >

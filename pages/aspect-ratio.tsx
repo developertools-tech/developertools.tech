@@ -2,17 +2,18 @@ import Box from '@mui/material/Box';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
-import { Namespace } from 'react-i18next';
+import { Namespace, useTranslation } from 'react-i18next';
 
 import AspectRatioLayouts from '../components/aspectRatio/Layouts';
 import AspectRatioPreview from '../components/aspectRatio/Preview';
 import AspectRatioSourceAndTarget from '../components/aspectRatio/SourceAndTarget';
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
 import nextI18NextConfig from '../next-i18next.config.js';
 
 export default function AspectRatioPage() {
+  const { t } = useTranslation('aspectRatio');
+
   const [width, setWidth] = useLocalState<number | void>({
     key: 'aspectRatioWidth',
     defaultValue: 1920,
@@ -22,8 +23,7 @@ export default function AspectRatioPage() {
     defaultValue: 1080,
   });
   return (
-    <Layout title='Aspect Ratio'>
-      <Heading>Aspect Ratio</Heading>
+    <Layout title={t('title')}>
       <Box
         display='flex'
         flexWrap='wrap'

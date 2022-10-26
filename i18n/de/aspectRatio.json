@@ -1,0 +1,15 @@
+{
+  "ratioPreview": "Verhältnis-Vorschau",
+  "sourceDimensions": "Ursprungs-Abmessungen",
+  "sourceWidth": "Ursprungs-Breite",
+  "sourceHeight": "Ursprungs-Höhe",
+  "targetDimensions": "Ziel-Dimension",
+  "targetWidth": "Ziel-Breite",
+  "targetHeight": "Ziel-Höhe",
+  "layouts": "Layouts",
+  "layout": "Layout",
+  "screenWidth": "Bildschirm-Breite",
+  "marginPixels": "Margin Pixel",
+  "gapPixels": "Abstand Pixel",
+  "expandPercent": "Prozent Ausdehnung"
+}

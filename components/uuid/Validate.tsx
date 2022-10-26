@@ -30,12 +30,12 @@ export default function UuidValidate() {
     }
 
     if (validate(value)) {
-      setValidateResult(`Valid UUID v${version(value)}`);
+      setValidateResult(`${t('uuid:validUuid')} v${version(value)}`);
       setValidateError(false);
       return;
     }
 
-    setValidateResult('Invalid UUID');
+    setValidateResult(t('uuid:invalidUuid'));
     setValidateError(true);
   }
 

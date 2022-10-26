@@ -1,5 +1,45 @@
 {
+  "title": "Text Difference",
   "description": "Type or paste text into both fields to check the difference.",
   "text": "Text",
-  "difference": "Difference"
+  "difference": "Difference",
+  "diffOptions": {
+    "label": "Choose Diff Options",
+    "characters": {
+      "label": "Characters",
+      "description": "Two blocks of text, comparing character by character."
+    },
+    "charactersIgnoreCase": {
+      "label": "Characters Ignore Case",
+      "description": "Two blocks of text, comparing character by character ignoring case."
+    },
+    "words": {
+      "label": "Words",
+      "description": "Two blocks of text, comparing word by word, ignoring whitespace."
+    },
+    "wordsIgnoreCase": {
+      "label": "Words Ignore Case",
+      "description": "Two blocks of text, comparing word by word, ignoring case."
+    },
+    "wordsWithSpace": {
+      "label": "Words with Space",
+      "description": "Two blocks of text, comparing word by word, treating whitespace as significant."
+    },
+    "trimmedLines": {
+      "label": "Trimmed Lines",
+      "description": "Two blocks of text, comparing line by line."
+    },
+    "sentences": {
+      "label": "Sentences",
+      "description": "Two blocks of text, comparing sentence by sentence."
+    },
+    "css": {
+      "label": "CSS",
+      "description": "Two blocks of text, comparing CSS tokens"
+    },
+    "json": {
+      "label": "JSON",
+      "description": "Two JSON objects, comparing the fields defined on each. The order of fields, etc does not matter in this compparsion."
+    }
+  }
 }

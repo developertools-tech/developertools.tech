@@ -113,7 +113,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     import { Namespace, useTranslation } from 'react-i18next';
 
     import nextI18NextConfig from '../next-i18next.config.js';
-    import Heading from '../components/Heading';
     import Layout from '../components/Layout';
 
     export default function MyToolName() {
@@ -121,7 +120,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
       return (
       <Layout title={t('title')}>
-        <Heading>{t('title')}</Heading>
         {/* TODO - Build my tool */}
       </Layout>
       )
@@ -210,7 +208,7 @@ This App is internationalized. This section describes the addition of translatio
 
 ### Add translation file (namespace)
 
-Translation JSON files should be added to the `i18n/{en, ja, ..etc}/{PageName}.json`
+Translation JSON files should be added to the `i18n/{en, ja, ..etc}/{pageName}.json`
 
 Import the JSON file in `i18n.ts` and add it to the `resources.en` object
 

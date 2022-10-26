@@ -11,7 +11,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import RegexTestCase from '../components/regex/RegexTestCase';
 import nextI18NextConfig from '../next-i18next.config.js';
@@ -73,8 +72,7 @@ export default function RegexTesterPage() {
     [regexInput],
   );
   return (
-    <Layout title='Regex Tester'>
-      <Heading>Regex Tester</Heading>
+    <Layout title={t('title')}>
       <Container>
         <Box sx={{ mb: 2 }}>
           <TextField

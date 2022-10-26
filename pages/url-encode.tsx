@@ -11,7 +11,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
@@ -57,8 +56,7 @@ export default function URLEncodeDecode() {
   const { t } = useTranslation(['common', 'urlEncode']);
 
   return (
-    <Layout title='URL Encode'>
-      <Heading>URL Encode</Heading>
+    <Layout title={t('urlEncode:title')}>
       <Typography paragraph>{t('urlEncode:description')}</Typography>
 
       <Box
@@ -100,12 +98,14 @@ export default function URLEncodeDecode() {
               onClick={() => {
                 navigator.clipboard.writeText(decoded || '').then(
                   () => {
-                    setToastMessage('Copied to clipboard');
+                    setToastMessage(t('common:copiedToClipboard'));
                     setToastSeverity('success');
                     setToastOpen(true);
                   },
                   () => {
-                    setToastMessage('Failed to copy to clipboard');
+                    setToastMessage(
+                      t('common:failedToCopyToClipboard'),
+                    );
                     setToastSeverity('error');
                     setToastOpen(true);
                   },
@@ -164,12 +164,14 @@ export default function URLEncodeDecode() {
               onClick={() => {
                 navigator.clipboard.writeText(encoded || '').then(
                   () => {
-                    setToastMessage('Copied to clipboard');
+                    setToastMessage(t('common:copiedToClipboard'));
                     setToastSeverity('success');
                     setToastOpen(true);
                   },
                   () => {
-                    setToastMessage('Failed to copy to clipboard');
+                    setToastMessage(
+                      t('common:failedToCopyToClipboard'),
+                    );
                     setToastSeverity('error');
                     setToastOpen(true);
                   },
@@ -194,7 +196,7 @@ export default function URLEncodeDecode() {
               variant='caption'
               color={red[500]}
             >
-              Error: Invalid URL Encoded Text
+              {t('urlEncode:errorMsg')}
             </Typography>
           )}
         </Box>

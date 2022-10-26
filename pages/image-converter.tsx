@@ -15,7 +15,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import useLocalState from '../hooks/useLocalState';
 import nextI18NextConfig from '../next-i18next.config.js';
@@ -32,12 +31,6 @@ const FILE_TYPE_EXTENSIONS = {
   [FileType.WEBP]: '.webp',
 };
 
-const FILE_TYPE_OPTIONS = [
-  { label: 'PNG', value: FileType.PNG },
-  { label: 'JPG', value: FileType.JPG },
-  { label: 'WebP', value: FileType.WEBP },
-];
-
 function renameFile(filename: string, fileType: FileType) {
   return (
     filename.substring(0, filename.lastIndexOf('.')) +
@@ -53,6 +46,13 @@ const PreviewImage = styled('img')({});
 
 export default function ImageConverterPage() {
   const { t } = useTranslation('imageConverter');
+
+  const FILE_TYPE_OPTIONS = [
+    { label: t('png'), value: FileType.PNG },
+    { label: t('jpg'), value: FileType.JPG },
+    { label: t('webp'), value: FileType.WEBP },
+  ];
+
   const [file, setFile] = useState<{ raw: File; imageSrc: string }>();
   const [fileType, setFileType] = useLocalState<FileType>({
     key: 'image-converter-file-type',
@@ -107,8 +107,7 @@ export default function ImageConverterPage() {
     link.click();
   };
   return (
-    <Layout title='Image Converter'>
-      <Heading>Image Converter</Heading>
+    <Layout title={t('title')}>
       <Container>
         <Grid
           container

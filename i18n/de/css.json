@@ -1,0 +1,8 @@
+{
+  "description": "Füge etwas CSS ein, um es zu formatieren oder zu minifizieren.",
+  "note": "Hinweis: Formatierung funktioniert mit CSS, SCSS, und LESS. Minifizierung funktioniert nur mit einfachem CSS.",
+  "minify": "Minifizieren",
+  "format": "Formatieren",
+  "formattedCss": "FormatiertesCSS",
+  "minifiedCss": "MinifiziertesCSS"
+}

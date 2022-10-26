@@ -1,0 +1,8 @@
+{
+  "description": "Pegar o escribir en algún CSS para formatearlo o minificarlo.",
+  "note": "Nota: El formateo funcion sirve con CSS, SCSS, y LESS. Minificación solamente sirve con CSS sin procesar.",
+  "minify": "Minificar",
+  "format": "Formatear",
+  "formattedCss": "CSS Formateado",
+  "minifiedCss": "CSS Minificado"
+}

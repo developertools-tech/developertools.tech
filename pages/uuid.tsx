@@ -2,9 +2,8 @@ import Box from '@mui/material/Box';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useState } from 'react';
-import { Namespace } from 'react-i18next';
+import { Namespace, useTranslation } from 'react-i18next';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import UuidAbout from '../components/uuid/About';
@@ -13,14 +12,15 @@ import UuidValidate from '../components/uuid/Validate';
 import nextI18NextConfig from '../next-i18next.config.js';
 
 export default function UuidPage() {
+  const { t } = useTranslation('uuid');
+
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
 
   return (
-    <Layout title='UUID'>
-      <Heading>UUID</Heading>
+    <Layout title={t('title')}>
       <Box
         display='flex'
         flexWrap='wrap'

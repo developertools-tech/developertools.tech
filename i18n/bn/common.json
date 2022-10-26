@@ -1,0 +1,22 @@
+{
+  "copy": "কপি",
+  "paste": "পেস্ট",
+  "clear": "মুছুন",
+  "searchTools": "অনুসন্ধানের টুল",
+  "search": "অনুসন্ধান...",
+  "home": "হোম",
+  "aspectRatio": "অনুপাত পূর্বরূপ",
+  "base64": "Base64",
+  "colors": "রং",
+  "css": "CSS",
+  "html": "HTML",
+  "htmlCharCodes": "HTML Char Codes",
+  "imageConverter": "ইমেজ কনভার্টার",
+  "json": "JSON",
+  "loremIpsum": "লরেম  ইপ্সম",
+  "markdownPreview": "মার্কডাউন প্রিভিউ",
+  "regexTester": "রেজেক্স টেস্টার",
+  "textDiff": "টেক্সট পার্থক্য",
+  "urlEncode": "URL এনকোড",
+  "uuid": "UUID"
+}
