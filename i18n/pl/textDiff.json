@@ -1,0 +1,45 @@
+{
+  "title": "Różnice Miedzy Tekstami",
+  "description": "Wpisz lub wklej tekst w oba pola, aby znaleźć różnice.",
+  "text": "Tekst",
+  "difference": "Różnica",
+  "diffOptions": {
+    "label": "Wybierz Opcje",
+    "characters": {
+      "label": "Znaki",
+      "description": "Dwa bloki tekstu, porównując znak po znaku."
+    },
+    "charactersIgnoreCase": {
+      "label": "Znaki Ignorując Wielkość Liter",
+      "description": "Dwa bloki tekstu, porównując znak po znaku, ignorując wielkość liter."
+    },
+    "words": {
+      "label": "Słowa",
+      "description": "Dwa bloki tekstu, porównujące słowo po słowie, ignorujące białe znaki."
+    },
+    "wordsIgnoreCase": {
+      "label": "Słowa Ignorując Wielkość Liter",
+      "description": "Dwa bloki tekstu, porównując słowo po słowie, ignorując wielkość liter."
+    },
+    "wordsWithSpace": {
+      "label": "Słowa ze Spacją",
+      "description": "Dwa bloki tekstu, porównujące słowo po słowie, uwzględniająć białe znaki."
+    },
+    "trimmedLines": {
+      "label": "Wiersze z Przyciętymi Białymi Znakami",
+      "description": "Dwa bloki tekstu, porównując wiersz po wierszu."
+    },
+    "sentences": {
+      "label": "Zdania",
+      "description": "Dwa bloki tekstu, porównując zdanie po zdaniu."
+    },
+    "css": {
+      "label": "CSS",
+      "description": "Dwa bloki tekstu, porównywanie tokenów CSS"
+    },
+    "json": {
+      "label": "JSON",
+      "description": "Dwa obiekty JSON, porównując ich zdefiniowane pola. Kolejność pól itp. jest bez znaczenia ..."
+    }
+  }
+}
