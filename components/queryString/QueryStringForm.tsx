@@ -45,7 +45,9 @@ export default function QueryStringForm({
     const { value } = event.target;
     setQueryString(value);
     const newParams: QueryParams = [];
-    const params = new URLSearchParams(value.split('?')?.[1] || value);
+    const params = new URLSearchParams(
+      value.split('?')?.slice(1).join('?') || value,
+    );
     params.forEach((val, key) => {
       newParams.push({
         param: key,
