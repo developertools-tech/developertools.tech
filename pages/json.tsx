@@ -112,7 +112,7 @@ export default function JsonPage() {
   }, [input, processJson]);
 
   return (
-    <Layout title='JSON'>
+    <Layout title={t('jsonFormat:title')}>
       <Typography
         paragraph
         textAlign='center'
@@ -160,12 +160,12 @@ export default function JsonPage() {
               onClick={() => {
                 navigator.clipboard.writeText(input || '').then(
                   () => {
-                    setToastMessage('Copied to clipboard');
+                    setToastMessage(t('common:copiedToClipboard'));
                     setToastSeverity('success');
                     setToastOpen(true);
                   },
                   () => {
-                    setToastMessage('Failed to copy to clipboard');
+                    setToastMessage(t('common:copyToClipboardFailed'));
                     setToastSeverity('error');
                     setToastOpen(true);
                   },
@@ -250,12 +250,12 @@ export default function JsonPage() {
               onClick={() => {
                 navigator.clipboard.writeText(output || '').then(
                   () => {
-                    setToastMessage('Copied to clipboard');
+                    setToastMessage(t('common:copiedToClipboard'));
                     setToastSeverity('success');
                     setToastOpen(true);
                   },
                   () => {
-                    setToastMessage('Failed to copy to clipboard');
+                    setToastMessage(t('common:copyToClipboardFailed'));
                     setToastSeverity('error');
                     setToastOpen(true);
                   },

@@ -81,7 +81,7 @@ export default function HtmlFormat({
         <TextField
           multiline
           error={error.length > 0}
-          label='HTML'
+          label={t('html:html')}
           name='html'
           onChange={handleChange}
           value={html}
@@ -163,12 +163,12 @@ export default function HtmlFormat({
             onClick={() => {
               navigator.clipboard.writeText(formattedHtml || '').then(
                 () => {
-                  setToastMessage('Copied to clipboard');
+                  setToastMessage(t('common:copiedToClipboard'));
                   setToastSeverity('success');
                   setToastOpen(true);
                 },
                 () => {
-                  setToastMessage('Failed to copy to clipboard');
+                  setToastMessage(t('common:failedToCopyToClipboard'));
                   setToastSeverity('error');
                   setToastOpen(true);
                 },

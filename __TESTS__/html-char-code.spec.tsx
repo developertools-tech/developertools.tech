@@ -1,11 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import HtmlCharCode from '../pages/html-char-codes';
+import renderWithI18n from './helper/i18n';
 
 const unescapedChars = '<>"\'&©∆';
 const escapedChars = '&lt;&gt;&quot;&apos;&amp;&copy;&#8710;';
@@ -19,15 +20,9 @@ afterEach(() => {
   cleanup();
 });
 
-jest.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (str: string) => str,
-  }),
-}));
-
 describe('HtmlCharCodes', () => {
   it('input unescaped', async () => {
-    render(<HtmlCharCode />);
+    renderWithI18n(<HtmlCharCode />);
     const unescaped = screen.getByLabelText(/Unescaped/i);
     const escaped = screen.getByLabelText(/^Escaped/i);
 
@@ -37,7 +32,7 @@ describe('HtmlCharCodes', () => {
   });
 
   it('input escaped', async () => {
-    render(<HtmlCharCode />);
+    renderWithI18n(<HtmlCharCode />);
     const unescaped = screen.getByLabelText(/Unescaped/i);
     const escaped = screen.getByLabelText(/^Escaped/i);
 
@@ -47,7 +42,7 @@ describe('HtmlCharCodes', () => {
   });
 
   it('clears unescaped and escaped with clear button', async () => {
-    render(<HtmlCharCode />);
+    renderWithI18n(<HtmlCharCode />);
     const unescaped = screen.getByLabelText(/Unescaped/i);
     const escaped = screen.getByLabelText(/^Escaped/i);
 
@@ -75,7 +70,7 @@ describe('HtmlCharCodes', () => {
   });
 
   it('copies text to clipboard', async () => {
-    render(<HtmlCharCode />);
+    renderWithI18n(<HtmlCharCode />);
     const unescaped = screen.getByLabelText(/Unescaped/i);
 
     await user.clear(unescaped);

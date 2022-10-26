@@ -1,24 +1,19 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import Html from '../pages/html';
-
-jest.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (str: string) => str,
-  }),
-}));
+import renderWithI18n from './helper/i18n';
 
 describe('HTML', () => {
   it('formats HTML and adds newlines', async () => {
     const user = userEvent.setup();
-    render(<Html />);
+    renderWithI18n(<Html />);
 
     const html = screen.getByLabelText(/^HTML$/i);
-    const formattedHtml = screen.getByLabelText(/FormattedHTML/i);
+    const formattedHtml = screen.getByLabelText(/Formatted HTML/i);
 
     await user.clear(html);
     await user.type(html, '<html><body>');
@@ -28,10 +23,10 @@ describe('HTML', () => {
 
   it('clears inputs with either clear button', async () => {
     const user = userEvent.setup();
-    render(<Html />);
+    renderWithI18n(<Html />);
 
     const html = screen.getByLabelText(/^HTML$/i);
-    const formattedHtml = screen.getByLabelText(/FormattedHTML/i);
+    const formattedHtml = screen.getByLabelText(/Formatted HTML/i);
 
     const clearBtns = screen.getAllByRole('button', { name: /Clear/i });
 

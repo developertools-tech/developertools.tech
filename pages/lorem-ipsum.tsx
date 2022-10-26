@@ -34,25 +34,27 @@ export type WordList = {
   type: WordListTypes;
 };
 
-const wordLists: WordList[] = [
-  {
-    title: 'Latin',
-    words: loremIpsumWords,
-    type: WordListTypes.words,
-  },
-  {
-    title: 'Will Ferrell',
-    words: willFerrellFragments,
-    type: WordListTypes.fragments,
-  },
-  {
-    title: 'Jeff Goldblum',
-    words: jeffGoldblumFragments,
-    type: WordListTypes.fragments,
-  },
-];
-
 export default function LoremIpsumPage() {
+  const { t } = useTranslation(['loremIpsum', 'common']);
+
+  const wordLists: WordList[] = [
+    {
+      title: t('loremIpsum:latin'),
+      words: loremIpsumWords,
+      type: WordListTypes.words,
+    },
+    {
+      title: t('loremIpsum:willFerrell'),
+      words: willFerrellFragments,
+      type: WordListTypes.fragments,
+    },
+    {
+      title: t('loremIpsum:jeffGoldblum'),
+      words: jeffGoldblumFragments,
+      type: WordListTypes.fragments,
+    },
+  ];
+
   const [wordList, setWordList] = useLocalState<WordList>({
     key: 'lorem-ipsum-word-list',
     defaultValue: wordLists[0],
@@ -95,10 +97,8 @@ export default function LoremIpsumPage() {
       generateFromFragments(args);
     }
   }, [wordList, sentenceLength, paragraphLength, paragraphCount]);
-
-  const { t } = useTranslation('loremIpsum');
   return (
-    <Layout title='Lorem Ipsum'>
+    <Layout title={t('loremIpsum:title')}>
       <Box
         display='flex'
         justifyContent='center'
@@ -122,12 +122,12 @@ export default function LoremIpsumPage() {
           <Box flex='1 1 100%'>
             <FormControl fullWidth>
               <InputLabel id='word_list_field_label'>
-                {t('wordList')}
+                {t('loremIpsum:wordList')}
               </InputLabel>
               <Select
                 labelId='word_list_field_label'
                 value={wordList.title}
-                label='Word List'
+                label={t('loremIpsum:wordList')}
                 onChange={(event: SelectChangeEvent) => {
                   setWordList(
                     wordLists.find(
@@ -155,19 +155,21 @@ export default function LoremIpsumPage() {
                   .writeText(paragraphs?.join('\n\n') || '')
                   .then(
                     () => {
-                      setToastMessage('Copied to clipboard');
+                      setToastMessage(t('common:copiedToClipboard'));
                       setToastSeverity('success');
                       setToastOpen(true);
                     },
                     () => {
-                      setToastMessage('Failed to copy to clipboard');
+                      setToastMessage(
+                        t('common:copyToClipboardFailed'),
+                      );
                       setToastSeverity('error');
                       setToastOpen(true);
                     },
                   );
               }}
             >
-              {t('copyText')}
+              {t('loremIpsum:copyText')}
             </Button>
           </Box>
         </Box>
@@ -183,7 +185,7 @@ export default function LoremIpsumPage() {
           gap={4}
         >
           <Box flex='1 1 100%'>
-            <Typography>{t('sentenceLength')}</Typography>
+            <Typography>{t('loremIpsum:sentenceLength')}</Typography>
             <Slider
               aria-label='Sentence Length'
               value={sentenceLength}
@@ -199,7 +201,7 @@ export default function LoremIpsumPage() {
             />
           </Box>
           <Box flex='1 1 100%'>
-            <Typography>{t('paragraphLength')}</Typography>
+            <Typography>{t('loremIpsum:paragraphLength')}</Typography>
             <Slider
               aria-label='Paragraph Length'
               value={paragraphLength}
@@ -214,7 +216,7 @@ export default function LoremIpsumPage() {
             />
           </Box>
           <Box flex='1 1 100%'>
-            <Typography>{t('ParagraphCount')}</Typography>
+            <Typography>{t('loremIpsum:ParagraphCount')}</Typography>
             <Slider
               aria-label='Paragraph Count'
               value={paragraphCount}

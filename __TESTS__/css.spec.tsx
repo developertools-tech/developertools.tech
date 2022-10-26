@@ -1,24 +1,19 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import Css from '../pages/css';
-
-jest.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (str: string) => str,
-  }),
-}));
+import renderWithI18n from './helper/i18n';
 
 describe('CSS', () => {
   it('formats CSS correctly', async () => {
     const user = userEvent.setup();
-    render(<Css />);
+    renderWithI18n(<Css />);
 
     const css = screen.getByLabelText(/^CSS$/i);
-    const formattedCss = screen.getByLabelText(/FormattedCSS/i);
+    const formattedCss = screen.getByLabelText(/Formatted CSS/i);
 
     await user.clear(css);
     await user.type(
@@ -33,7 +28,7 @@ describe('CSS', () => {
 
   it('minifies CSS correctly', async () => {
     const user = userEvent.setup();
-    render(<Css />);
+    renderWithI18n(<Css />);
 
     const css = screen.getByLabelText(/^CSS$/i);
     const minifySwitch = screen.getByRole('checkbox', {
@@ -49,7 +44,7 @@ describe('CSS', () => {
     );
 
     await user.click(minifySwitch);
-    const minifiedCss = screen.getByLabelText(/MinifiedCSS/i);
+    const minifiedCss = screen.getByLabelText(/Minified CSS/i);
 
     expect(minifiedCss.innerHTML).toBe('body{background:#fff}');
 
@@ -58,10 +53,10 @@ describe('CSS', () => {
 
   it('clears inputs with either clear button', async () => {
     const user = userEvent.setup();
-    render(<Css />);
+    renderWithI18n(<Css />);
 
     const css = screen.getByLabelText(/^CSS$/i);
-    const formattedCss = screen.getByLabelText(/FormattedCSS/i);
+    const formattedCss = screen.getByLabelText(/Formatted CSS/i);
 
     const clearBtns = screen.getAllByRole('button', { name: /Clear/i });
 

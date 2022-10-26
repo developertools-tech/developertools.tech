@@ -31,7 +31,7 @@ export default function CssPage() {
     useState<ToastProps['severity']>('success');
   const { t } = useTranslation('css');
   return (
-    <Layout title='CSS'>
+    <Layout title={t('title')}>
       <Typography paragraph>{t('description')}</Typography>
       <Typography paragraph>{t('note')}</Typography>
       <CssForm

@@ -1,7 +1,12 @@
 {
+  "title": "Regular Expression Tester",
   "regex": "Regex",
   "description": "Expressions with and without trailing slashes are supported. Add trailing slashes to use flags, ie /w+/ig",
   "testCases": "Test Cases",
   "case": "Case",
-  "addTestCase": "ADD TEST CASE"
+  "addTestCase": "Add test case",
+  "fullMatch": "Full match",
+  "group": "Group",
+  "testCaseContent": "Test case content",
+  "testCasePlaceholder": "Lorem Ipsum..."
 }

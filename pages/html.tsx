@@ -31,7 +31,7 @@ export default function HtmlPage() {
   const { t } = useTranslation('html');
 
   return (
-    <Layout title='HTML'>
+    <Layout title={t('title')}>
       <Typography paragraph>{t('description')}</Typography>
       <HtmlFormat
         html={html}
