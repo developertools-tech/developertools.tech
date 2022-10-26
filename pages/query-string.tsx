@@ -15,7 +15,7 @@ import useLocalState from '../hooks/useLocalState';
 import nextI18NextConfig from '../next-i18next.config.js';
 
 export default function QueryStringPage() {
-  const [queryString, setQueryString] = useLocalState<string | void>({
+  const [queryString, setQueryString] = useLocalState<string>({
     key: 'queryString',
     defaultValue: '',
   });

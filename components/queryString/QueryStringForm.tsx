@@ -16,10 +16,10 @@ import QueryParamsForm, {
 } from './QueryParamsForm';
 
 export interface QueryStringFormProps {
-  queryString: string | void;
+  queryString: string;
   queryParams: QueryParams;
   error: string;
-  setQueryString: (_queryString: string | void) => void;
+  setQueryString: (_queryString: string) => void;
   setQueryParams: (_queryParams: QueryParams) => void;
   setError: (_error: string) => void;
   setToastMessage: (_toastMessage: string) => void;

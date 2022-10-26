@@ -13,14 +13,14 @@ export const defaultParams = [{ param: '', value: '', key: 'initial' }];
 
 export interface QueryParamsFormProps {
   queryParams: QueryParams;
-  queryString: string | void;
+  queryString: string;
   setQueryParams: (_queryParams: QueryParams) => void;
   setQueryString: (_queryString: string) => void;
 }
 
 export function getQueryString(
   queryParams: QueryParams,
-  queryString: string | void,
+  queryString: string,
   setQueryString: (_queryString: string) => void,
 ) {
   const params = new URLSearchParams();
@@ -29,13 +29,10 @@ export function getQueryString(
       params.set(param.param, param.value);
     }
   });
-  try {
-    const url = new URL(queryString || '');
-    url.search = params.toString();
-    setQueryString(url.toString());
-  } catch {
-    setQueryString(params.toString());
-  }
+  const url = queryString.includes('?')
+    ? `${queryString.split('?')[0]}?`
+    : '';
+  setQueryString(`${url}${params.toString()}`);
 }
 
 export default function QueryParamsForm({
