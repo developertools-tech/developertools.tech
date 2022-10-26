@@ -3,6 +3,7 @@ import { IconButton } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export type QueryParams = {
   param: string;
@@ -41,6 +42,8 @@ export default function QueryParamsForm({
   setQueryParams,
   setQueryString,
 }: QueryParamsFormProps) {
+  const { t } = useTranslation(['queryString', 'common']);
+
   function handleChange(
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     index: number,
@@ -88,7 +91,7 @@ export default function QueryParamsForm({
             xs={5}
           >
             <TextField
-              label={`Parameter ${i + 1}`}
+              label={`${t('queryString:parameter')} ${i + 1}`}
               name={`param${i + 1}`}
               value={param.param}
               onChange={(event) => handleChange(event, i, 'param')}
@@ -100,7 +103,7 @@ export default function QueryParamsForm({
             xs={6}
           >
             <TextField
-              label={`Value ${i + 1}`}
+              label={`{t('queryString:value')} ${i + 1}`}
               name={`value${i + 1}`}
               value={param.value}
               onChange={(event) => handleChange(event, i, 'value')}
@@ -125,7 +128,7 @@ export default function QueryParamsForm({
                 <IconButton
                   type='button'
                   onClick={(event) => deleteRow(event, i)}
-                  aria-label={`Delete Row ${i + 1}`}
+                  aria-label={`{t('queryString:deleteRow')} ${i + 1}`}
                 >
                   <Delete />
                 </IconButton>
