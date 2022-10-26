@@ -1,16 +1,17 @@
 {
-  "ratioPreview": "Hakiki ya Uwiano",
-  "sourceDimensions": "Vipimo vya chanzo  ",
-  "sourceWidth": "Upana wa Chanzo",
+  "title": "Aspect Ratio",
+  "ratioPreview": "Ratio Preview",
+  "sourceDimensions": "Source Dimensions",
+  "sourceWidth": "Source Width",
   "sourceHeight": "Source Height",
-  "targetDimensions": "Chanzo Urefu",
+  "targetDimensions": "Target Dimensions",
   "targetWidth": "Target Width",
-  "targetHeight": "Upana wa Lengo",
-  "layouts": "Mipangilio",
-  "layout": "Mpangilio",
-  "screenWidth": "Upana wa skrini",
-  "across": "Kuvuka",
-  "marginPixels": "Pixels za Pambizo  ",
+  "targetHeight": "Target Height",
+  "layouts": "Layouts",
+  "layout": "Layout",
+  "screenWidth": "Screen Widths",
+  "across": "Across",
+  "marginPixels": "Margin Pixels",
   "gapPixels": "Gap Pixels",
-  "expandPercent": "Panua Asilimia  "
+  "expandPercent": "Expand Percent"
 }
