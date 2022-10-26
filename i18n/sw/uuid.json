@@ -1,0 +1,23 @@
+{
+  "generateUuid": "Tengeneza UUID  ",
+  "uuidVersion": "Toleo la UUID  ",
+  "pseudorandom": "Udanganyifu",
+  "md5hash": "MD5 Hash",
+  "random": "Nasibu",
+  "sha1Hash": "SHA-1 Hash",
+  "nameSpaceUuid": "Nafasi ya jina UUID  ",
+  "uuidName": "Jina la UUID",
+  "namespaceType": "Aina ya Nafasi ya Majina  ",
+  "namespaceUuid": "Nafasi ya jina UUID  ",
+  "invalidUuid": "UUID batili",
+  "generatedUuid": "UUID iliyozalishwa",
+  "newUuid": "UUID MPYA",
+  "checkUuidVersionAndValidity": "Angalia Toleo la UUID na Uhalali  ",
+  "uuidToValidate": "UUID ili Kuthibitisha  ",
+  "aboudUuids": "Kuhusu UUIDs",
+  "overview": "Kitambulishi cha Kipekee kwa Wote (UUID) ni nambari ya biti-128 inayotumika kama kitambulisho cha kipekee.  ",
+  "aboutUuid1": "UUID v1 ni pseudorandom, iliyoundwa kwa kutumia wakati wa uundaji na anwani ya MAC ya kompyuta iliyoiunda.",
+  "aboutUuid3": "UUID v3 ni heshi ya MD5, iliyoundwa kwa kutumia nafasi ya majina na jina. Nafasi ya majina lazima iwe UUID, na jina linaweza kuwa mfuatano wowote. Kwa kuzingatia nafasi sawa ya majina na jina, utapata UUID sawa kila wakati.  ",
+  "aboutUuid4": "UUID v4 ni nasibu au pseudorandom, kulingana na jinsi inavyozalishwa. Toleo la 4 la UUID zinazozalishwa na zana hii ni thamani za nasibu zenye nguvu za siri.  ",
+  "aboutUuid5": "UUID v5 ni heshi ya SHA-1, iliyoundwa kwa kutumia nafasi ya majina na jina. Kama vile v3 UUIDs, ukipewa nafasi sawa ya majina na jina, utapata UUID sawa kila wakati. Nafasi ya majina ya v5 UUIDs inaweza ama kuwa UUID, au aina ya nafasi ya majina iliyowekwa awali (URL, DNS, ISO OID, na X.500 DN), zana hii kwa sasa haitumii ISO OID au X.500 DN.  "
+}
