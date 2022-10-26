@@ -1,0 +1,16 @@
+{
+  "ratioPreview": "Hakiki ya Uwiano",
+  "sourceDimensions": "Vipimo vya Chanzo",
+  "sourceWidth": "Upana wa Chanzo",
+  "sourceHeight": "Urefu wa chanzo",
+  "targetDimensions": "Vipimo vinavyolengwa",
+  "targetWidth": "Upana wa Lengo",
+  "targetHeight": "Urefu wa lengo",
+  "layouts": "Mipangilio",
+  "layout": "Mpangilio",
+  "screenWidth": "Upana wa skrini",
+  "across": "Kuvuka",
+  "marginPixels": "Pixels za Pambizo",
+  "gapPixels": "pengo saizi",
+  "expandPercent": "Panua Asilimia"
+}
