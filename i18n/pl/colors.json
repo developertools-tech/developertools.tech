@@ -1,0 +1,10 @@
+{
+  "openColorPicker": "Otwórz Selektor Kolorów",
+  "eyeDropperNotSupported": "Kroplomierz nie jest obsługiwany w tej przeglądarce",
+  "hex": "HEX",
+  "hsl": "HSL",
+  "rgb": "RGB",
+  "invalidHex": "Nieprawidłowy Kolor HEX",
+  "invalidHsl": "Nieprawidłowy Kolor HSL",
+  "invalidRgb": "Nieprawidłowy Kolor RGB"
+}

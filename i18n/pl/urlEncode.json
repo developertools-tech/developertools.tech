@@ -1,0 +1,7 @@
+{
+  "title": "Kodowanie adresu URL",
+  "description": "Wklej lub wpisz adres URL do zakodowania lub odkodowania",
+  "decoded": "Odkodowany",
+  "encoded": "Zakodowany",
+  "errorMsg": "Błąd: Źle zakodowany adres URL"
+}
