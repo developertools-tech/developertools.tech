@@ -164,17 +164,19 @@ export default function CaseConverterPage() {
         alignItems='center'
         justifyContent='center'
         paddingBottom={2}
-        width={1100}
+        width={1000}
+        maxWidth='80%'
       >
         <TextField
-          sx={{ width: 600 }}
+          fullWidth
           label='Input Text'
           value={input}
           name='input text'
           onChange={handleInputChange}
         />
         <Box
-          width={600}
+          width={1000}
+          maxWidth='80%'
           marginTop={2}
           borderColor='red'
           display='flex'
@@ -206,11 +208,18 @@ export default function CaseConverterPage() {
           )}
         </Box>
       </Box>
-      <Box width={600}>
-        <FormControl fullWidth>
+      <Box
+        display='flex'
+        flexDirection='column'
+        justifyContent='center'
+        width={1000}
+        maxWidth='80%'
+        gap={2}
+        mb={3}
+      >
+        <FormControl>
           <InputLabel id='case_list_field_label'>Case List</InputLabel>
           <Select
-            fullWidth
             labelId='case_list_field_label'
             value={caseSelected}
             label='Case List'
@@ -237,7 +246,7 @@ export default function CaseConverterPage() {
         flexDirection='column'
         alignItems='center'
         width={1000}
-        maxWidth='100%'
+        maxWidth='80%'
         paddingTop={2}
       >
         <Typography
@@ -252,7 +261,8 @@ export default function CaseConverterPage() {
           flexDirection='row'
           padding={2}
           border='1px solid #494949'
-          width={600}
+          borderRadius={1}
+          width='100%'
           sx={{
             '& .bad-line': {
               backgroundColor: '#ff330050',
@@ -284,7 +294,6 @@ export default function CaseConverterPage() {
           display='flex'
           justifyContent='end'
           padding={2}
-          width={600}
         >
           <Button
             startIcon={<ContentCopyIcon />}
