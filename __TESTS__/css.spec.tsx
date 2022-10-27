@@ -1,16 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import Css from '../pages/css';
-import renderWithI18n from './helper/i18n';
 
 describe('CSS', () => {
   it('formats CSS correctly', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Css />);
+    render(<Css />);
 
     const css = screen.getByLabelText(/^CSS$/i);
     const formattedCss = screen.getByLabelText(/Formatted CSS/i);
@@ -28,7 +27,7 @@ describe('CSS', () => {
 
   it('minifies CSS correctly', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Css />);
+    render(<Css />);
 
     const css = screen.getByLabelText(/^CSS$/i);
     const minifySwitch = screen.getByRole('checkbox', {
@@ -53,7 +52,7 @@ describe('CSS', () => {
 
   it('clears inputs with either clear button', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Css />);
+    render(<Css />);
 
     const css = screen.getByLabelText(/^CSS$/i);
     const formattedCss = screen.getByLabelText(/Formatted CSS/i);

@@ -1,15 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import URLEncodeDecode from '../pages/url-encode';
-import renderWithI18n from './helper/i18n';
 
 describe('URLEncodeDecode', () => {
   it('should encode and decode', () => {
-    renderWithI18n(<URLEncodeDecode />);
+    render(<URLEncodeDecode />);
 
     const encodedOutput = screen.getByLabelText(
       'Encoded',
@@ -32,7 +31,7 @@ describe('URLEncodeDecode', () => {
     });
   });
   it('should detect invalid encoded text', () => {
-    renderWithI18n(<URLEncodeDecode />);
+    render(<URLEncodeDecode />);
 
     const encodedOutput = screen.getByLabelText(
       'Encoded',

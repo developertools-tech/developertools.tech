@@ -1,16 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import Colors from '../pages/colors';
-import renderWithI18n from './helper/i18n';
 
 describe('Colors', () => {
   it('reacts to HEX change correctly', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Colors />);
+    render(<Colors />);
 
     const hex = screen.getByLabelText('HEX');
     const hsl = screen.getByLabelText('HSL');
@@ -25,7 +24,7 @@ describe('Colors', () => {
 
   it('reacts to HSL change correctly', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Colors />);
+    render(<Colors />);
 
     const hex = screen.getByLabelText('HEX');
     const hsl = screen.getByLabelText('HSL');
@@ -40,7 +39,7 @@ describe('Colors', () => {
 
   it('reacts to RGB change correctly', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Colors />);
+    render(<Colors />);
 
     const hex = screen.getByLabelText('HEX');
     const hsl = screen.getByLabelText('HSL');

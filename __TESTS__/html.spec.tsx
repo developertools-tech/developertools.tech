@@ -1,16 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import Html from '../pages/html';
-import renderWithI18n from './helper/i18n';
 
 describe('HTML', () => {
   it('formats HTML and adds newlines', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Html />);
+    render(<Html />);
 
     const html = screen.getByLabelText(/^HTML$/i);
     const formattedHtml = screen.getByLabelText(/Formatted HTML/i);
@@ -23,7 +22,7 @@ describe('HTML', () => {
 
   it('clears inputs with either clear button', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Html />);
+    render(<Html />);
 
     const html = screen.getByLabelText(/^HTML$/i);
     const formattedHtml = screen.getByLabelText(/Formatted HTML/i);

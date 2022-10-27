@@ -1,15 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { screen, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import Home from '../pages/index';
-import renderWithI18n from './helper/i18n';
 
 describe('Home', () => {
   it('renders a heading', () => {
-    renderWithI18n(<Home />);
+    render(<Home />);
 
     const heading = screen.getByText(/Welcome/i);
 
@@ -17,7 +16,7 @@ describe('Home', () => {
   });
 
   it('renders the main navigation', () => {
-    renderWithI18n(<Home />);
+    render(<Home />);
 
     const menu = screen.getByRole('navigation');
     expect(menu).toBeInTheDocument();
@@ -28,7 +27,7 @@ describe('Home', () => {
 
   it('handles search queries in nav', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Home />);
+    render(<Home />);
 
     const search = screen.getByPlaceholderText('Search...');
 
@@ -61,7 +60,7 @@ describe('Home', () => {
 
   it('shows search and home as the top two nav items', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Home />);
+    render(<Home />);
 
     const search = screen.getByPlaceholderText('Search...');
     await user.clear(search);
@@ -86,7 +85,7 @@ describe('Home', () => {
   });
 
   it('renders the footer', () => {
-    renderWithI18n(<Home />);
+    render(<Home />);
 
     const footer = screen.getByText(/CopyLeft/i);
     expect(footer).toBeInTheDocument();

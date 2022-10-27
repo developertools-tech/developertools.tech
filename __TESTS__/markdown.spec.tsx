@@ -1,9 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { fireEvent, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
 import MarkDownPreview from '../pages/markdown';
-import renderWithI18n from './helper/i18n';
 
 const goodTestInput = `
   # This is a first header
@@ -23,7 +22,7 @@ const goodTestOutput = `<h1 id="this-is-a-first-header">This is a first header</
 `;
 
 test('previews markdown correctly', async () => {
-  renderWithI18n(<MarkDownPreview />);
+  render(<MarkDownPreview />);
   const input = screen.getByLabelText('Markdown');
   const output = screen.getByTestId('markdown-output');
   fireEvent.change(input, { target: { value: goodTestInput } });

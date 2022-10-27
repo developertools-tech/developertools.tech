@@ -1,11 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { screen, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import TextDiff from '../pages/text-diff';
-import renderWithI18n from './helper/i18n';
 
 const testInput1 = 'I am the Lorax';
 const testInput2 = 'I speak for the trees';
@@ -15,7 +14,7 @@ const testOutput =
 describe('TextDiff', () => {
   it('Shows different characters', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<TextDiff />);
+    render(<TextDiff />);
 
     const selectedOption = 'Characters';
 
@@ -49,7 +48,7 @@ describe('TextDiff', () => {
         .join('');
 
     const user = userEvent.setup();
-    renderWithI18n(<TextDiff />);
+    render(<TextDiff />);
 
     const selectedOption = 'Characters Ignore Case';
     await user.click(screen.getByLabelText(/Choose Diff Options/i));
@@ -77,7 +76,7 @@ describe('TextDiff', () => {
 
   it('Show different words', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<TextDiff />);
+    render(<TextDiff />);
 
     const selectedOption = 'Words';
     await user.click(screen.getByLabelText(/Choose Diff Options/i));
@@ -106,7 +105,7 @@ describe('TextDiff', () => {
 
   it('Show different words ignoring case', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<TextDiff />);
+    render(<TextDiff />);
 
     const selectedOption = 'Words Ignore Case';
     await user.click(screen.getByLabelText(/Choose Diff Options/i));
@@ -135,7 +134,7 @@ describe('TextDiff', () => {
 
   it('Show different words treating whitespace as significant', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<TextDiff />);
+    render(<TextDiff />);
 
     const selectedOption = 'Words with Space';
     await user.click(screen.getByLabelText(/Choose Diff Options/i));
@@ -164,7 +163,7 @@ describe('TextDiff', () => {
 
   it('Show different trimmed lines', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<TextDiff />);
+    render(<TextDiff />);
 
     const selectedOption = 'Trimmed Lines';
     await user.click(screen.getByLabelText(/Choose Diff Options/i));
@@ -208,7 +207,7 @@ this is another line.
 
   it('Show different CSS', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<TextDiff />);
+    render(<TextDiff />);
 
     const selectedOption = 'CSS';
     await user.click(screen.getByLabelText(/Choose Diff Options/i));
@@ -250,7 +249,7 @@ border: 2px </span><span style="color:red">solid</span><span style="color:green"
 
   it('Show different JSON', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<TextDiff />);
+    render(<TextDiff />);
 
     const selectedOption = 'JSON';
     await user.click(screen.getByLabelText(/Choose Diff Options/i));
