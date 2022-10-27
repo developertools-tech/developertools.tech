@@ -1,0 +1,23 @@
+{
+  "copy": "COPIAR",
+  "paste": "PEGAR",
+  "clear": "QUITAR",
+  "searchTools": "HERRAMIENTA DE BÚSQUEDA",
+  "search": "BUSCAR...",
+  "home": "PÁGINA DE INICIO",
+  "aspectRatio": "Proporción de Aspecto",
+  "base64": "Base-64",
+  "colors": "Colores",
+  "css": "CSS",
+  "html": "HTML",
+  "htmlCharCodes": "Códigos de Caracteres HTML",
+  "imageConverter": "Convertidor de Imagen",
+  "json": "JSON",
+  "loremIpsum": "Lorem Ipsum",
+  "markdownPreview": "Vista Previa de Markdown", 
+  "regexTester": "Probador de Expresiones Regulares",
+  "textDiff": "Diferencias de Texto",
+  "urlEncode": "Codificación de URL",
+  "uuid": "UUID"
+}
+

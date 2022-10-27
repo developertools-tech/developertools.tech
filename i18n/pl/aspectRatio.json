@@ -1,0 +1,17 @@
+{
+  "title": "Współczynnik Proporcji",
+  "ratioPreview": "Podgląd Proporcji",
+  "sourceDimensions": "Wymiary Źródłowe",
+  "sourceWidth": "Szerokość Źródłowa",
+  "sourceHeight": "Wysokość Źródłowa",
+  "targetDimensions": "Wymiary Docelowe",
+  "targetWidth": "Szerokość Docelowa",
+  "targetHeight": "Wysokość Docelowa",
+  "layouts": "Layouty",
+  "layout": "Layout",
+  "screenWidth": "Szerokość Ekranu",
+  "across": "W Poprzek",
+  "marginPixels": "Margines w Pixelach",
+  "gapPixels": "Odstęp w Pixelach",
+  "expandPercent": "Rozgiągnięcie w Procentach"
+}

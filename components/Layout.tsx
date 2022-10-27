@@ -1,5 +1,6 @@
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import GitHub from '@mui/icons-material/GitHub';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import MenuIcon from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,12 +13,15 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import React, { useState } from 'react';
 
 import navItems from '../data/nav';
@@ -25,11 +29,12 @@ import sponsors from '../data/sponsors';
 import useWindowSize from '../hooks/useWindowSize';
 import logo from '../public/logo.svg';
 import dlfordLogo from '../public/logo-full.svg';
+import Heading from './Heading';
 import Link from './Link';
 
 const drawerWidth = 240;
 
-function Logo() {
+function Logo({ title }: { title: string }) {
   return (
     <Button
       href='/'
@@ -49,19 +54,83 @@ function Logo() {
         color='#fff'
         textTransform='none'
       >
-        Dev Tools
+        {title}
       </Typography>
     </Button>
   );
 }
 
+function LanguageToggle() {
+  const router = useRouter();
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(
+    null,
+  );
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <div>
+      <Button
+        id='language-toggle-button'
+        aria-controls={open ? 'language-toggle-menu' : undefined}
+        aria-haspopup='true'
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        endIcon={<KeyboardArrowDownIcon />}
+        sx={{
+          background: 'none',
+          color: '#fff',
+        }}
+      >
+        {router.locale}
+      </Button>
+      <Menu
+        id='language-toggle-menu'
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        onClick={handleClose}
+        disableScrollLock
+        sx={{
+          '& .MuiMenuItem-root': {
+            padding: 0,
+            '& a': {
+              padding: '6px 16px',
+              textAlign: 'center',
+              textDecoration: 'none',
+              textTransform: 'uppercase',
+            },
+          },
+        }}
+      >
+        {(router.locales || []).sort().map((locale) => (
+          <MenuItem key={locale}>
+            <Link
+              href={router.asPath}
+              locale={locale}
+            >
+              {locale}
+            </Link>
+          </MenuItem>
+        ))}
+      </Menu>
+    </div>
+  );
+}
+
 export default function Layout({
-  title = 'Developer Utilities',
+  title,
   children,
 }: {
   title?: string;
   children: React.ReactNode;
 }) {
+  const { t } = useTranslation('common');
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -78,8 +147,8 @@ export default function Layout({
       <ListItem>
         <TextField
           variant='standard'
-          placeholder='Search...'
-          label='Search Tools'
+          placeholder={t('search')}
+          label={t('searchTools')}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={(e) => {
             const curHref = navItems
@@ -107,10 +176,10 @@ export default function Layout({
       </ListItem>
       {[...navItems]
         .sort((a, b) => {
-          if (a.title === 'Home') {
+          if (a.title === 'home') {
             return -1;
           }
-          if (b.title === 'Home') {
+          if (b.title === 'home') {
             return 1;
           }
           return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1;
@@ -134,7 +203,7 @@ export default function Layout({
                       <Icon />
                     </ListItemIcon>
                   )}
-                  <ListItemText primary={itemTitle} />
+                  <ListItemText primary={t(itemTitle)} />
                 </ListItemButton>
               </ListItem>
             );
@@ -151,7 +220,9 @@ export default function Layout({
       flexDirection='column'
     >
       <Head>
-        <title>{title}</title>
+        <title>
+          {asPath === '/' ? t('longTitle') : title || t('longTitle')}
+        </title>
         <meta
           name='description'
           content='Developer utilities by DL Ford'
@@ -171,7 +242,8 @@ export default function Layout({
         }}
       >
         <Toolbar>
-          <Logo />
+          <Logo title={t('shortTitle')} />
+          <LanguageToggle />
           <IconButton
             color='inherit'
             aria-label='open drawer'
@@ -197,6 +269,12 @@ export default function Layout({
             keepMounted: true,
           }}
           sx={{
+            '& .MuiPaper-root::-webkit-scrollbar': {
+              display: 'none',
+            },
+            '& .MuiPaper-root': {
+              scrollbarWidth: 'none',
+            },
             '& .MuiDrawer-paper': {
               sm: {
                 boxSizing: 'border-box',
@@ -223,6 +301,7 @@ export default function Layout({
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
+        <Heading>{title}</Heading>
         {children}
       </Box>
       <Box
@@ -262,7 +341,7 @@ export default function Layout({
               mb={3}
               fontWeight='normal'
             >
-              Sponsors
+              {t('sponsors')}
             </Typography>
             <Box
               maxWidth={600}
@@ -315,7 +394,7 @@ export default function Layout({
 
                   return link ? (
                     <a
-                      key={title}
+                      key={sponsorTitle}
                       className='sponsor-wrap'
                       href={link}
                       target='_blank'
@@ -325,7 +404,7 @@ export default function Layout({
                     </a>
                   ) : (
                     <div
-                      key={title}
+                      key={sponsorTitle}
                       className='sponsor-wrap'
                     >
                       <Content />
@@ -340,7 +419,7 @@ export default function Layout({
                 href='https://github.com/sponsors/dlford'
               >
                 <FavoriteIcon color='error' />
-                <Typography>Become a Sponsor</Typography>
+                <Typography>{t('becomeASponsor')}</Typography>
               </a>
             </Box>
           </Box>
@@ -356,7 +435,7 @@ export default function Layout({
               mb={3}
               fontWeight='normal'
             >
-              Contributors
+              {t('contributors')}
             </Typography>
             <Box
               width={240}

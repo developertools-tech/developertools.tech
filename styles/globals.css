@@ -8,10 +8,27 @@ body,
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "JetBrains Mono", Menlo, monospace;
+  font-family: 'JetBrains Mono', Menlo, monospace;
 }
 
 a {
   color: #fff;
   text-underline-offset: 0.25em;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #989898 #121212;
+}
+
+body::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #989898;
 }

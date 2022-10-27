@@ -9,6 +9,7 @@ import Slider from '@mui/material/Slider';
 import { Theme, useTheme } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export interface AspectRatioLayoutSettingsProps {
   margins: number;
@@ -37,6 +38,7 @@ export default function AspectRatioLayoutSettings({
 }: AspectRatioLayoutSettingsProps) {
   const theme = useTheme();
 
+  const { t } = useTranslation('aspectRatio');
   const layoutWidthOptions = [
     '300',
     '320',
@@ -112,7 +114,7 @@ export default function AspectRatioLayoutSettings({
             sx={{ m: 1, width: { xs: 240, lg: 400, xl: 500 } }}
           >
             <InputLabel id='demo-multiple-chip-label'>
-              Screen Widths
+              {t('screenWidth')}
             </InputLabel>
             <Select
               labelId='demo-multiple-chip-label'
@@ -168,11 +170,11 @@ export default function AspectRatioLayoutSettings({
           marks={[
             {
               value: 1,
-              label: '1 Across',
+              label: `1 ${t('across')}`,
             },
             {
               value: 10,
-              label: '10 Across',
+              label: `10 ${t('across')}`,
             },
           ]}
           min={1}
@@ -189,7 +191,7 @@ export default function AspectRatioLayoutSettings({
         gap={2}
       >
         <TextField
-          label='Margin Pixels (L+R)'
+          label={`${t('marginPixels')} (L+R)`}
           variant='outlined'
           value={margins || ''}
           name='margin'
@@ -204,7 +206,7 @@ export default function AspectRatioLayoutSettings({
           }}
         />
         <TextField
-          label='Gap Pixels'
+          label={t('gapPixels')}
           variant='outlined'
           value={gap || ''}
           name='gap'
@@ -219,7 +221,7 @@ export default function AspectRatioLayoutSettings({
           }}
         />
         <TextField
-          label='Expand Percent'
+          label={t('expandPercent')}
           variant='outlined'
           value={expand || ''}
           name='expand'

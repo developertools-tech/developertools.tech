@@ -1,0 +1,7 @@
+{
+  "regex": "Regex",
+  "description": "Expressões com e sem barras à direita são suportadas. Adicione barras à direita para usar sinalizadores, ou seja, /w+/ig",
+  "testCases": "Casos de teste",
+  "case": "Caso",
+  "addTestCase": "ADICIONA CASO DE TESTE"
+}

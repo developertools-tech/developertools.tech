@@ -1,0 +1,8 @@
+{
+  "description": "Bandika au charaza katika baadhi ya CSS ili kuiumbiza au kuipunguza.  ",
+  "note": "Kumbuka: Uumbizaji hufanya kazi na CSS, SCSS, na LESS. Minification hufanya kazi kwa CSS ghafi pekee.  ",
+  "minify": "Minify",
+  "format": "Umbizo",
+  "formattedCss": "IliyoumbizwaCSS",
+  "minifiedCss": "MinifiedCSS"
+}

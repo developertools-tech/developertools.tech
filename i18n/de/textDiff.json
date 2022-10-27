@@ -1,0 +1,44 @@
+{
+  "description": "Tippe oder füge Text in beide Felder ein, um den Unterschied zu sehen.",
+  "text": "Text",
+  "difference": "Differenz",
+  "diffOptions": {
+    "label": "Wähle Unterschied-Option",
+    "characters": {
+      "label": "Zeichen",
+      "description": "Zwei Text-Blöcke, Zeichen für Zeichen wird verglichen."
+    },
+    "charactersIgnoreCase": {
+      "label": "Zeichen, ohne Groß- und Kleinschreibung",
+      "description": "Zwei Text-Blöcke, Zeichen für Zeichen wird verglichen, Groß- und Kleinschreibung wird ignoriert."
+    },
+    "words": {
+      "label": "Wörter",
+      "description": "Zwei Text-Blöcke, Wort für Wort wird verglichen, Leerzeichen werden ignoriert."
+    },
+    "wordsIgnoreCase": {
+      "label": "Wörter, ohne Groß- und Kleinschreibung",
+      "description": "Zwei Text-Blöcke, Wort für Wort wird verglichen, Groß- und Kleinschreibung wird ignoriert."
+    },
+    "wordsWithSpace": {
+      "label": "Wörter mit Leerzeichen",
+      "description": "Zwei Text-Blöcke, Wort für Wort wird verglichen, inklusive Leerzeichen."
+    },
+    "trimmedLines": {
+      "label": "Getrimmte Zeilen",
+      "description": "Zwei Text-Blöcke, Zeile für Zeile wird verglichen."
+    },
+    "sentences": {
+      "label": "Sätze",
+      "description": "Zwei Text-Blöcke, Satz für Satz wird verglichen."
+    },
+    "css": {
+      "label": "CSS",
+      "description": "Zwei Text-Blöcke, in dem CSS Token verglichen werden."
+    },
+    "json": {
+      "label": "JSON",
+      "description": "Zwei JSON-Objekte, Element für Element je Objekt wird verglichen. Die Reihenfolge der Elemente ist unwichtig für den Vergleich."
+    }
+  }
+}

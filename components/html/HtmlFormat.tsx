@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import prettier from 'prettier';
 import parserHtml from 'prettier/parser-html';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import useSupportsClipboardRead from '../../hooks/useSupportsClipboardRead';
 import type { ToastProps } from '../Toast';
@@ -36,6 +37,7 @@ export default function HtmlFormat({
   setToastSeverity,
 }: HtmlFormatProps) {
   const supportsClipboardRead = useSupportsClipboardRead();
+  const { t } = useTranslation(['common', 'html']);
   function calculateFormattedHtml(value: string | void) {
     setHtml(value);
     if (!value) {
@@ -79,7 +81,7 @@ export default function HtmlFormat({
         <TextField
           multiline
           error={error.length > 0}
-          label='HTML'
+          label={t('html:html')}
           name='html'
           onChange={handleChange}
           value={html}
@@ -98,7 +100,7 @@ export default function HtmlFormat({
               setFormattedHtml('');
             }}
           >
-            Clear
+            {t('common:clear')}
           </Button>
           {!!supportsClipboardRead && (
             <Button
@@ -111,7 +113,7 @@ export default function HtmlFormat({
                 }
               }}
             >
-              Paste
+              {t('common:paste')}
             </Button>
           )}
         </Box>
@@ -134,7 +136,7 @@ export default function HtmlFormat({
       >
         <TextField
           multiline
-          label='FormattedHTML'
+          label={t('html:formattedHtml')}
           name='formattedHtml'
           value={formattedHtml}
         />
@@ -152,7 +154,7 @@ export default function HtmlFormat({
               setHtml('');
             }}
           >
-            Clear
+            {t('common:clear')}
           </Button>
           <Button
             startIcon={<ContentCopyIcon />}
@@ -161,19 +163,19 @@ export default function HtmlFormat({
             onClick={() => {
               navigator.clipboard.writeText(formattedHtml || '').then(
                 () => {
-                  setToastMessage('Copied to clipboard');
+                  setToastMessage(t('common:copiedToClipboard'));
                   setToastSeverity('success');
                   setToastOpen(true);
                 },
                 () => {
-                  setToastMessage('Failed to copy to clipboard');
+                  setToastMessage(t('common:failedToCopyToClipboard'));
                   setToastSeverity('error');
                   setToastOpen(true);
                 },
               );
             }}
           >
-            Copy
+            {t('common:copy')}
           </Button>
         </Box>
       </Box>

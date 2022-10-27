@@ -1,14 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import AspectRatio from '../pages/aspect-ratio';
+import renderWithI18n from './helper/i18n';
 
 describe('AspectRatio', () => {
   it('renders a preview of the correct aspect ratio', async () => {
-    render(<AspectRatio />);
+    renderWithI18n(<AspectRatio />);
     const user = userEvent.setup();
 
     const width = screen.getByLabelText(/Source Width/i);
@@ -38,7 +39,7 @@ describe('AspectRatio', () => {
   });
 
   it('correctly adjusts target dimensions', async () => {
-    render(<AspectRatio />);
+    renderWithI18n(<AspectRatio />);
     const user = userEvent.setup();
 
     const sourceWidth = screen.getByLabelText(/Source Width/i);
@@ -62,7 +63,7 @@ describe('AspectRatio', () => {
   });
 
   it('generates an accurate table of layouts', async () => {
-    render(<AspectRatio />);
+    renderWithI18n(<AspectRatio />);
     const user = userEvent.setup();
 
     const width = screen.getByLabelText(/Source Width/i);

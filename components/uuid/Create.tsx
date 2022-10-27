@@ -10,6 +10,7 @@ import SelectInput from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { v1, v3, v4, v5, validate } from 'uuid';
 
 import useLocalState from '../../hooks/useLocalState';
@@ -26,6 +27,8 @@ export default function UuidCreate({
   setToastSeverity,
   setToastOpen,
 }: UuidCreateProps) {
+  const { t } = useTranslation(['common', 'uuid']);
+
   const [uuidVersion, setUuidVersion] = useLocalState<number>({
     key: 'uuidVersion',
     defaultValue: 4,
@@ -99,56 +102,60 @@ export default function UuidCreate({
         component='h2'
         textAlign='center'
       >
-        Generate a UUID
+        {t('uuid:generateUuid')}
       </Typography>
       <FormControl fullWidth>
-        <InputLabel id='version-label'>UUID Version</InputLabel>
+        <InputLabel id='version-label'>
+          {t('uuid:uuidVersion')}
+        </InputLabel>
         <SelectInput
           fullWidth
           labelId='version-label'
           value={uuidVersion}
-          label='UUID Version'
+          label={t('uuid:uuidVersion')}
           onChange={(event) =>
             setUuidVersion(Number(event.target.value))
           }
           sx={{ minWidth: 120 }}
         >
-          <MenuItem value={1}>v1 (Pseudorandom)</MenuItem>
-          <MenuItem value={3}>v3 (MD5 Hash)</MenuItem>
-          <MenuItem value={4}>v4 (Random)</MenuItem>
-          <MenuItem value={5}>v5 (SHA-1 Hash)</MenuItem>
+          <MenuItem value={1}>{`v1 (${t(
+            'uuid:pseudorandom',
+          )})`}</MenuItem>
+          <MenuItem value={3}>{`v3 (${t('uuid:md5hash')})`}</MenuItem>
+          <MenuItem value={4}>{`v4 (${t('uuid:random')})`}</MenuItem>
+          <MenuItem value={5}>{`v5 (${t('uuid:sha1Hash')})`}</MenuItem>
         </SelectInput>
       </FormControl>
       {uuidVersion === 5 ? (
         <FormControl fullWidth>
           <InputLabel id='namespace-type-label'>
-            Namespace Type
+            {t('uuid:namespaceType')}
           </InputLabel>
           <SelectInput
             fullWidth
             labelId='namespace-type-label'
             value={namespaceType}
-            label='Namespace Type'
+            label={t('uuid:namespaceType')}
             onChange={(event) => setNamespaceType(event.target.value)}
             sx={{ minWidth: 120 }}
           >
-            <MenuItem value='custom'>Custom</MenuItem>
-            <MenuItem value='url'>URL</MenuItem>
-            <MenuItem value='dns'>DNS</MenuItem>
+            <MenuItem value='custom'>{t('uuid:custom')}</MenuItem>
+            <MenuItem value='url'>{t('uuid:url')}</MenuItem>
+            <MenuItem value='dns'>{t('uuid:dns')}</MenuItem>
           </SelectInput>
         </FormControl>
       ) : null}
       {uuidVersion === 3 ||
       (uuidVersion === 5 && namespaceType === 'custom') ? (
         <TextField
-          label='Namespace UUID'
+          label={t('uuid:nameSpaceUuid')}
           value={namespace}
           error={namespaceError}
           inputProps={{
             inputMode: 'numeric',
             pattern: '[0-9-]*',
           }}
-          helperText={namespaceError ? 'Invalid UUID' : ''}
+          helperText={namespaceError ? t('uuid:invalidUuid') : ''}
           onChange={(event) => {
             setNamespace(event.target.value);
             setNamespaceError(
@@ -159,19 +166,16 @@ export default function UuidCreate({
       ) : null}
       {uuidVersion === 3 || uuidVersion === 5 ? (
         <TextField
-          label='UUID Name'
+          label={t('uuid:uuidName')}
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
       ) : null}
       <TextField
-        label='Generated UUID'
+        label={t('uuid:generatedUuid')}
         value={uuid}
         disabled
         fullWidth
-        onClick={() => {
-          navigator.clipboard.writeText(uuid);
-        }}
       />
       <Box
         display='flex'
@@ -182,7 +186,7 @@ export default function UuidCreate({
             startIcon={<RefreshIcon />}
             onClick={createUuid}
           >
-            New UUID
+            {t('uuid:newUuid')}
           </Button>
         ) : (
           <Button
@@ -195,7 +199,7 @@ export default function UuidCreate({
               setNamespaceError(false);
             }}
           >
-            Clear
+            {t('common:clear')}
           </Button>
         )}
         <Button
@@ -205,19 +209,19 @@ export default function UuidCreate({
           onClick={() => {
             navigator.clipboard.writeText(uuid).then(
               () => {
-                setToastMessage('Copied to clipboard');
+                setToastMessage(t('common:copiedToClipboard'));
                 setToastSeverity('success');
                 setToastOpen(true);
               },
               () => {
-                setToastMessage('Failed to copy to clipboard');
+                setToastMessage(t('common:failedToCopyToClipboard'));
                 setToastSeverity('error');
                 setToastOpen(true);
               },
             );
           }}
         >
-          Copy
+          {t('common:copy')}
         </Button>
       </Box>
     </Box>

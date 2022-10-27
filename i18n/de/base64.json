@@ -1,0 +1,4 @@
+{
+  "title": "Base64",
+  "description": "Schreibe oder füge einen ASCII Text ein. Dieser wird dann mit Base64 kodiert. Wenn du einen Base64 kodierten Text einfügst, wird dieser in einen ASCII Text umgewandelt."
+}

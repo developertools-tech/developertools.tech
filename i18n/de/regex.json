@@ -1,0 +1,7 @@
+{
+  "regex": "Regex",
+  "description": "Ausdrücke mit und ohne nachfolgendem Schrägstrich sind unterstützt. Füge nachfolgende Schrägstriche hinzu, um Flags zu nutzen, z.B. /w+/ig",
+  "testCases": "Test-Fall",
+  "case": "Fall",
+  "addTestCase": "TEST-FALL HINZUFÜGEN"
+}

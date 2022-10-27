@@ -5,12 +5,14 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { validate, version } from 'uuid';
 
 import useLocalState from '../../hooks/useLocalState';
 import useSupportsClipboardRead from '../../hooks/useSupportsClipboardRead';
 
 export default function UuidValidate() {
+  const { t } = useTranslation(['common', 'uuid']);
   const supportsClipboardRead = useSupportsClipboardRead();
 
   const [validateResult, setValidateResult] = useState<string>('');
@@ -28,12 +30,12 @@ export default function UuidValidate() {
     }
 
     if (validate(value)) {
-      setValidateResult(`Valid UUID v${version(value)}`);
+      setValidateResult(`${t('uuid:validUuid')} v${version(value)}`);
       setValidateError(false);
       return;
     }
 
-    setValidateResult('Invalid UUID');
+    setValidateResult(t('uuid:invalidUuid'));
     setValidateError(true);
   }
 
@@ -58,10 +60,10 @@ export default function UuidValidate() {
         component='h2'
         alignSelf='center'
       >
-        Check UUID Version and Validity
+        {t('uuid:checkUuidVersionAndValidity')}
       </Typography>
       <TextField
-        label='UUID to Validate'
+        label={t('uuid:uuidToValidate')}
         value={validateUuid}
         error={validateError}
         helperText={validateResult}
@@ -88,7 +90,7 @@ export default function UuidValidate() {
               }
             }}
           >
-            Paste
+            {t('common:paste')}
           </Button>
         ) : null}
         <Button
@@ -102,7 +104,7 @@ export default function UuidValidate() {
             setValidateError(false);
           }}
         >
-          Clear
+          {t('common:clear')}
         </Button>
       </Box>
     </Box>

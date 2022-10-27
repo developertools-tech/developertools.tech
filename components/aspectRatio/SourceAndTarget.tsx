@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import useLocalState from '../../hooks/useLocalState';
 
@@ -63,6 +64,7 @@ export default function SourceAndTarget({
       }
     }
   }
+  const { t } = useTranslation('aspectRatio');
 
   return (
     <Box
@@ -79,9 +81,9 @@ export default function SourceAndTarget({
         alignItems='center'
         gap={2}
       >
-        <Typography component='h2'>Source Dimensions</Typography>
+        <Typography component='h2'>{t('sourceDimensions')}</Typography>
         <TextField
-          label='Source Width'
+          label={t('sourceWidth')}
           variant='outlined'
           value={width || ''}
           name='width'
@@ -92,7 +94,7 @@ export default function SourceAndTarget({
           }}
         />
         <TextField
-          label='Source Height'
+          label={t('sourceHeight')}
           variant='outlined'
           value={height || ''}
           name='height'
@@ -110,9 +112,9 @@ export default function SourceAndTarget({
         alignItems='center'
         gap={2}
       >
-        <Typography component='h2'>Target Dimensions</Typography>
+        <Typography component='h2'>{t('targetDimensions')}</Typography>
         <TextField
-          label='Target Width'
+          label={t('targetWidth')}
           variant='outlined'
           value={newWidth || ''}
           name='newWidth'
@@ -123,7 +125,7 @@ export default function SourceAndTarget({
           }}
         />
         <TextField
-          label='Target Height'
+          label={t('targetHeight')}
           variant='outlined'
           value={newHeight || ''}
           name='newHeight'

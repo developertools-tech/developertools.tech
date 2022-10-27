@@ -1,0 +1,7 @@
+{
+  "regex": "Regex",
+  "description": "Misemo iliyo na na bila mikwaruzo inayofuata inaungwa mkono. Ongeza mikwaju inayofuata ili kutumia bendera, yaani /w+/ig  ",
+  "testCases": "Kesi za Mtihani  ",
+  "case": "kesi",
+  "addTestCase": "ONGEZA KESI YA MTIHANI  "
+}

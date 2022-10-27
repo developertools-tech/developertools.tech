@@ -1,0 +1,10 @@
+{
+  "title": "Konwerter Obrazów",
+  "uploadImage": "Wgraj obraz",
+  "fileType": "Typ Pliku",
+  "quality": "Jakość",
+  "download": "Pobierz",
+  "png": "PNG",
+  "jpg": "JPG",
+  "webp": "WebP"
+}
