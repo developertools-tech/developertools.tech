@@ -14,6 +14,7 @@ import loremIpsum from './i18n/en/loremIpsum.json';
 import markdown from './i18n/en/markdown.json';
 import notFound from './i18n/en/notFound.json';
 import offline from './i18n/en/offline.json';
+import queryString from './i18n/en/queryString.json';
 import regex from './i18n/en/regex.json';
 import textDiff from './i18n/en/textDiff.json';
 import top from './i18n/en/top.json';
@@ -34,6 +35,7 @@ export const resources = {
     imageConverter,
     jsonFormat,
     loremIpsum,
+    queryString,
     regex,
     textDiff,
     urlEncode,
