@@ -1,0 +1,12 @@
+{
+  "title": "Regular Expression መሞከሪያ",
+  "regex": "Regex",
+  "description": "ከኋላ ተከታይ ህዝባር ያለቸውና የሌላቸው መግለጫዎች ይደገፋሉ። መለያዎችን ለመጠቀም ተከታይ ፍንጮችን ያክሉ፣ ማለትም /w+/ig",
+  "testCases": "የሙከራ ጉዳዮች",
+  "case": "ጉዳይ",
+  "addTestCase": "የሙከራ መያዣ ያክሉ",
+  "fullMatch": "ሙሉ በሙሉ ተዛማጅ",
+  "group": "ምድብ",
+  "testCaseContent": "የሙከራ ይዘት",
+  "testCasePlaceholder": "ሎሬም ኢፕሰም..."
+}

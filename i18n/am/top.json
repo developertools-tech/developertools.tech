@@ -1,0 +1,11 @@
+{
+  "home": "መነሻ",
+  "welcome": "እንኳን በደህና መጡ",
+  "chooseFromMenu": "ለመጀመር ከማውጫው ላይ አንድ መሣሪያ ይምረጡ",
+  "dontSeeTheToolYouNeed": "የሚፈልጉትን መሳሪያ አላገኙም?",
+  "requestItHere": "እዚህ ይጠይቁ",
+  "foundBug": "ስህተት አግኝተዋል?",
+  "reportItHere": "እዚህ ሪፖርት ያድርጉት",
+  "wantToHelp": "መርዳት ይፈልጋሉ",
+  "contributeOnGit": "GitHub ላይ ያግዙን"
+}
