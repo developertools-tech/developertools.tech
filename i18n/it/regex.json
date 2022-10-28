@@ -1,0 +1,12 @@
+{
+  "title": "Regular Expression Tester",
+  "regex": "Regex",
+  "description": "Sono supportate espressioni con o senza trailing slash. Aggiungi i trailing slash per usare flag, ie /w+/ig",
+  "testCases": "Casi di Test",
+  "case": "Caso",
+  "addTestCase": "Aggiungi caso di test",
+  "fullMatch": "Match completo",
+  "group": "Gruppo",
+  "testCaseContent": "Contenuto del caso di test",
+  "testCasePlaceholder": "Lorem Ipsum..."
+}
