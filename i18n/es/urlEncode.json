@@ -1,5 +1,6 @@
 {
-  "description": "Pegar o escribir texto a URL para codificarlo o descodificarlo.",
+  "description": "Pegar o escribir texto para codificar la URL o decodificarla",
   "decoded": "Descodificado",
-  "encoded": "Codificado"
+  "encoded": "Codificado",
+  "errorMsg": "Error: Texto codificado en la URL inválido"
 }

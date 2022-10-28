@@ -1,7 +1,10 @@
 {
   "regex": "Expresiones Regulares",
-  "description": "Espresiones con barras inclinadas y sin barras inclinadas son compatibles. Añadir barras inclinadas para usar banderas. Por ejemplo,  /w+/ig",
-  "testCases": "Caso de Prueba",
+  "description": "Se admiten expresiones con y sin barras finales. Añade barras al final para usar banderas, por ejemplo /w+/ig",
+  "testCases": "Casos de prueba",
   "case": "Caso",
-  "addTestCase": "AÑADIR CASO DE PRUEBA"
+  "addTestCase": "Añadir caso de prueba",
+  "fullMatch": "Coincidencia completa",
+  "group": "Grupo",
+  "testCaseContent": "Contenido del caso de prueba"
 }

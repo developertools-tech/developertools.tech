@@ -1,5 +1,44 @@
 {
-  "description": "Escribir o pegar texto en ambos campos para verificar la diferencia.",
+  "description": "Escriba o pegue el texto en ambos campos para comprobar la diferencia.",
   "text": "Texto",
-  "difference": "Diferencia"
+  "difference": "Diferencia",
+  "diffOptions": {
+    "label": "Elija las opciones de diferencia",
+    "characters": {
+      "label": "Caracteres",
+      "description": "Dos bloques de texto, comparando carácter por carácter."
+    },
+    "charactersIgnoreCase": {
+      "label": "Los caracteres no distinguen entre mayúsculas y minúsculas",
+      "description": "Dos bloques de texto, comparando carácter por carácter ignorando las mayúsculas y minúsculas."
+    },
+    "words": {
+      "label": "Palabras",
+      "description": "Dos bloques de texto, comparando palabra por palabra, ignorando los espacios en blanco."
+    },
+    "wordsIgnoreCase": {
+      "label": "Las palabras no distinguen entre mayúsculas y minúsculas",
+      "description": "Dos bloques de texto, comparando palabra por palabra, ignorando las mayúsculas y minúsculas."
+    },
+    "wordsWithSpace": {
+      "label": "Palabras con espacio",
+      "description": "Dos bloques de texto, comparando palabra por palabra, tratando los espacios en blanco como significativos."
+    },
+    "trimmedLines": {
+      "label": "Líneas recortadas",
+      "description": "Dos bloques de texto, comparados línea a línea."
+    },
+    "sentences": {
+      "label": "Frases",
+      "description": "Dos bloques de texto, comparando frase a frase."
+    },
+    "css": {
+      "label": "CSS",
+      "description": "Dos bloques de texto, comparando tokens CSS"
+    },
+    "json": {
+      "label": "JSON",
+      "description": "Dos objetos JSON, comparando los campos definidos en cada uno. El orden de los campos, etc. no importa en esta comparación."
+    }
+  }
 }
