@@ -1,0 +1,6 @@
+{
+  "description": "Convertir una cadena de consulta a o desde una lista de claves y valores",
+  "parameter": "Parámetro",
+  "value": "Valor",
+  "deleteRow": "Borrar fila"
+}
