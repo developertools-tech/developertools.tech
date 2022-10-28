@@ -12,6 +12,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Image from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 import Looks6 from '@mui/icons-material/Looks6';
+import QuestionMark from '@mui/icons-material/QuestionMark';
 import Search from '@mui/icons-material/Search';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
@@ -81,6 +82,11 @@ const navItems = [
     title: 'textDiff',
     href: '/text-diff',
     Icon: DifferenceIcon,
+  },
+  {
+    title: 'queryString',
+    href: '/query-string',
+    Icon: QuestionMark,
   },
   {
     title: 'regexTester',
