@@ -11,21 +11,22 @@ describe('UUID', () => {
   it('shows the about section', () => {
     render(<UUID />);
 
-    expect(screen.getByText(/About UUIDs/i)).toBeInTheDocument();
+    expect(screen.getByText('aboudUuids')).toBeInTheDocument();
   });
 
   it('generates a valid v1 UUID', async () => {
     const user = userEvent.setup();
     render(<UUID />);
 
-    const versionSelect = screen.getByLabelText(/UUID Version/i);
+    const versionSelect = screen.getByLabelText('uuid:uuidVersion');
     await user.click(versionSelect);
     await user.click(
-      screen.getByRole('option', { name: 'v1 (Pseudorandom)' }),
+      screen.getByRole('option', { name: 'v1 (uuid:pseudorandom)' }),
     );
 
-    const output: HTMLInputElement =
-      screen.getByLabelText('Generated UUID');
+    const output: HTMLInputElement = screen.getByLabelText(
+      'uuid:generatedUuid',
+    );
 
     const validated = validate(output.value);
     const versioned = version(output.value);
@@ -34,7 +35,9 @@ describe('UUID', () => {
     expect(versioned).toBe(1);
 
     const old = output.value;
-    await user.click(screen.getByRole('button', { name: 'NEW UUID' }));
+    await user.click(
+      screen.getByRole('button', { name: 'uuid:newUuid' }),
+    );
     expect(output.value).not.toBe(old);
   });
 
@@ -46,19 +49,20 @@ describe('UUID', () => {
     const name = 'test version three';
     const namespaceOutput = '74c32544-5824-3700-9e54-92c68a08defd';
 
-    const versionSelect = screen.getByLabelText(/UUID Version/i);
+    const versionSelect = screen.getByLabelText('uuid:uuidVersion');
     await user.click(versionSelect);
     await user.click(
-      screen.getByRole('option', { name: 'v3 (MD5 Hash)' }),
+      screen.getByRole('option', { name: 'v3 (uuid:md5hash)' }),
     );
 
-    const namespaceInput = screen.getByLabelText(/Namespace UUID/i);
-    const nameInput = screen.getByLabelText(/UUID Name/i);
+    const namespaceInput = screen.getByLabelText('uuid:namespaceUuid');
+    const nameInput = screen.getByLabelText('uuid:uuidName');
     await user.type(namespaceInput, namespace);
     await user.type(nameInput, name);
 
-    const output: HTMLInputElement =
-      screen.getByLabelText('Generated UUID');
+    const output: HTMLInputElement = screen.getByLabelText(
+      'uuid:generatedUuid',
+    );
 
     const validated = validate(output.value);
     const versioned = version(output.value);
@@ -72,14 +76,15 @@ describe('UUID', () => {
     const user = userEvent.setup();
     render(<UUID />);
 
-    const versionSelect = screen.getByLabelText(/UUID Version/i);
+    const versionSelect = screen.getByLabelText('uuid:uuidVersion');
     await user.click(versionSelect);
     await user.click(
-      screen.getByRole('option', { name: 'v4 (Random)' }),
+      screen.getByRole('option', { name: 'v4 (uuid:random)' }),
     );
 
-    const output: HTMLInputElement =
-      screen.getByLabelText('Generated UUID');
+    const output: HTMLInputElement = screen.getByLabelText(
+      'uuid:generatedUuid',
+    );
 
     const validated = validate(output.value);
     const versioned = version(output.value);
@@ -88,7 +93,9 @@ describe('UUID', () => {
     expect(versioned).toBe(4);
 
     const old = output.value;
-    await user.click(screen.getByRole('button', { name: 'NEW UUID' }));
+    await user.click(
+      screen.getByRole('button', { name: 'uuid:newUuid' }),
+    );
     expect(output.value).not.toBe(old);
   });
 
@@ -99,23 +106,24 @@ describe('UUID', () => {
     const name = 'test version five';
     const namespaceOutput = '5cdbc07f-e32e-55cf-9cc7-5619fbe1be53';
 
-    const versionSelect = screen.getByLabelText(/UUID Version/i);
+    const versionSelect = screen.getByLabelText('uuid:uuidVersion');
     await user.click(versionSelect);
     await user.click(
-      screen.getByRole('option', { name: 'v5 (SHA-1 Hash)' }),
+      screen.getByRole('option', { name: 'v5 (uuid:sha1Hash)' }),
     );
 
     await user.click(screen.getByTestId('generate-uuid-clear-btn'));
 
-    const namespaceSelect = screen.getByLabelText(/Namespace Type/i);
+    const namespaceSelect = screen.getByLabelText('uuid:namespaceType');
     await user.click(namespaceSelect);
-    await user.click(screen.getByRole('option', { name: 'DNS' }));
+    await user.click(screen.getByRole('option', { name: 'uuid:dns' }));
 
-    const nameInput = screen.getByLabelText(/UUID Name/i);
+    const nameInput = screen.getByLabelText('uuid:uuidName');
     await user.type(nameInput, name);
 
-    const output: HTMLInputElement =
-      screen.getByLabelText('Generated UUID');
+    const output: HTMLInputElement = screen.getByLabelText(
+      'uuid:generatedUuid',
+    );
 
     const validated = validate(output.value);
     const versioned = version(output.value);
@@ -135,18 +143,18 @@ describe('UUID', () => {
     const name = 'test version three';
     const namespaceOutput = '74c32544-5824-3700-9e54-92c68a08defd';
 
-    const versionSelect = screen.getByLabelText(/UUID Version/i);
+    const versionSelect = screen.getByLabelText('uuid:uuidVersion');
     await user.click(versionSelect);
     await user.click(
-      screen.getByRole('option', { name: 'v3 (MD5 Hash)' }),
+      screen.getByRole('option', { name: 'v3 (uuid:md5hash)' }),
     );
 
-    const namespaceInput = screen.getByLabelText(/Namespace UUID/i);
-    const nameInput = screen.getByLabelText(/UUID Name/i);
+    const namespaceInput = screen.getByLabelText('uuid:namespaceUuid');
+    const nameInput = screen.getByLabelText('uuid:uuidName');
     await user.type(namespaceInput, namespace);
     await user.type(nameInput, name);
 
-    const copyBtn = screen.getByRole('button', { name: 'COPY' });
+    const copyBtn = screen.getByRole('button', { name: 'common:copy' });
     await user.click(copyBtn);
 
     expect(await navigator.clipboard.readText()).toBe(namespaceOutput);
@@ -164,12 +172,17 @@ describe('UUID', () => {
       return;
     }
 
-    await user.type(screen.getByLabelText(/UUID to Validate/i), input);
+    await user.type(
+      screen.getByLabelText('uuid:uuidToValidate'),
+      input,
+    );
 
-    expect(screen.getByText(/Valid UUID v4/i)).toBeInTheDocument();
+    expect(screen.getByText('uuid:validUuid v4')).toBeInTheDocument();
 
     await user.click(screen.getByTestId('validate-uuid-clear-btn'));
 
-    expect(screen.getByLabelText(/UUID to Validate/i)).toHaveValue('');
+    expect(screen.getByLabelText('uuid:uuidToValidate')).toHaveValue(
+      '',
+    );
   });
 });

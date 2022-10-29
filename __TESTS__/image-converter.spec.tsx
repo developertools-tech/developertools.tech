@@ -14,7 +14,7 @@ describe('Image Converter', () => {
   it('renders without crashing', () => {
     render(<ImageConverter />);
 
-    expect(screen.getByText(/Upload image/i)).toBeInTheDocument();
+    expect(screen.getByText(/uploadImage/i)).toBeInTheDocument();
   });
 
   it('an image can be uploaded and displayed', async () => {
@@ -25,7 +25,7 @@ describe('Image Converter', () => {
     ).not.toBeInTheDocument();
 
     const file = new File(['abc'], 'test.png', { type: 'image/png' });
-    const input = screen.getByLabelText('Upload Image');
+    const input = screen.getByLabelText('uploadImage');
     fireEvent.change(input, { target: { files: [file] } });
 
     await waitFor(() => {
@@ -38,7 +38,7 @@ describe('Image Converter', () => {
     const user = userEvent.setup();
 
     const fileTypeControl: HTMLInputElement =
-      screen.getByLabelText('PNG');
+      screen.getByLabelText('png');
     expect(fileTypeControl.checked).toBe(false);
     await user.click(fileTypeControl);
     expect(fileTypeControl.checked).toBe(true);

@@ -11,20 +11,22 @@ describe('URLEncodeDecode', () => {
     render(<URLEncodeDecode />);
 
     const encodedOutput = screen.getByLabelText(
-      'Encoded',
+      'urlEncode:encoded',
     ) as HTMLInputElement;
     userEvent
       .type(encodedOutput, 'https%3A%2F%2Fexample.com')
       .then(() => {
-        const decodedOutput = screen.getByLabelText('Decoded');
+        const decodedOutput = screen.getByLabelText(
+          'urlEncode:decoded',
+        );
         expect(decodedOutput.innerText).toBe('https://example.com');
       });
 
     const decodedOutput = screen.getByLabelText(
-      'Decoded',
+      'urlEncode:decoded',
     ) as HTMLInputElement;
     userEvent.type(decodedOutput, 'https://example2.com').then(() => {
-      const encodedOutput2 = screen.getByLabelText('Encoded');
+      const encodedOutput2 = screen.getByLabelText('urlEncode:encoded');
       expect(encodedOutput2.innerText).toBe(
         'https%3A%2F%2Fexample2.com',
       );
@@ -34,14 +36,12 @@ describe('URLEncodeDecode', () => {
     render(<URLEncodeDecode />);
 
     const encodedOutput = screen.getByLabelText(
-      'Encoded',
+      'urlEncode:encoded',
     ) as HTMLInputElement;
     userEvent
       .type(encodedOutput, 'https%3A%2F%2Fexample.com%')
       .then(() => {
-        const errorMessage = screen.getByText(
-          'Error: Invalid URL Encoded Text',
-        );
+        const errorMessage = screen.getByText('urlEncode:errorMsg');
         expect(errorMessage).toBeInTheDocument();
       });
   });

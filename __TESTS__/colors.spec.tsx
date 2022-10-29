@@ -11,9 +11,9 @@ describe('Colors', () => {
     const user = userEvent.setup();
     render(<Colors />);
 
-    const hex = screen.getByLabelText('HEX');
-    const hsl = screen.getByLabelText('HSL');
-    const rgb = screen.getByLabelText('RGB');
+    const hex = screen.getByLabelText('colors:hex');
+    const hsl = screen.getByLabelText('colors:hsl');
+    const rgb = screen.getByLabelText('colors:rgb');
 
     await user.clear(hex);
     await user.type(hex, '232c34');
@@ -26,9 +26,9 @@ describe('Colors', () => {
     const user = userEvent.setup();
     render(<Colors />);
 
-    const hex = screen.getByLabelText('HEX');
-    const hsl = screen.getByLabelText('HSL');
-    const rgb = screen.getByLabelText('RGB');
+    const hex = screen.getByLabelText('colors:hex');
+    const hsl = screen.getByLabelText('colors:hsl');
+    const rgb = screen.getByLabelText('colors:rgb');
 
     await user.clear(hsl);
     await user.type(hsl, '39, 24, 52');
@@ -41,9 +41,9 @@ describe('Colors', () => {
     const user = userEvent.setup();
     render(<Colors />);
 
-    const hex = screen.getByLabelText('HEX');
-    const hsl = screen.getByLabelText('HSL');
-    const rgb = screen.getByLabelText('RGB');
+    const hex = screen.getByLabelText('colors:hex');
+    const hsl = screen.getByLabelText('colors:hsl');
+    const rgb = screen.getByLabelText('colors:rgb');
 
     await user.clear(rgb);
     await user.type(rgb, '201, 57, 123');

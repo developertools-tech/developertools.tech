@@ -11,8 +11,8 @@ describe('AspectRatio', () => {
     render(<AspectRatio />);
     const user = userEvent.setup();
 
-    const width = screen.getByLabelText(/Source Width/i);
-    const height = screen.getByLabelText(/Source Height/i);
+    const width = screen.getByLabelText(/sourceWidth/i);
+    const height = screen.getByLabelText(/sourceHeight/i);
 
     await user.clear(width);
     await user.type(width, '1024');
@@ -41,10 +41,10 @@ describe('AspectRatio', () => {
     render(<AspectRatio />);
     const user = userEvent.setup();
 
-    const sourceWidth = screen.getByLabelText(/Source Width/i);
-    const sourceHeight = screen.getByLabelText(/Source Height/i);
-    const targetWidth = screen.getByLabelText(/Target Width/i);
-    const targetHeight = screen.getByLabelText(/Target Height/i);
+    const sourceWidth = screen.getByLabelText(/sourceWidth/i);
+    const sourceHeight = screen.getByLabelText(/sourceHeight/i);
+    const targetWidth = screen.getByLabelText(/targetWidth/i);
+    const targetHeight = screen.getByLabelText(/targetHeight/i);
 
     await user.clear(sourceWidth);
     await user.type(sourceWidth, '1024');
@@ -65,12 +65,12 @@ describe('AspectRatio', () => {
     render(<AspectRatio />);
     const user = userEvent.setup();
 
-    const width = screen.getByLabelText(/Source Width/i);
-    const height = screen.getByLabelText(/Source Height/i);
-    const margin = screen.getByLabelText(/Margin Pixels/i);
-    const gap = screen.getByLabelText(/Gap Pixels/i);
-    const expand = screen.getByLabelText(/Expand Percent/i);
-    const widths = screen.getAllByLabelText(/Screen Widths/i);
+    const width = screen.getByLabelText(/sourceWidth/i);
+    const height = screen.getByLabelText(/sourceHeight/i);
+    const margin = screen.getByLabelText(/marginPixels/i);
+    const gap = screen.getByLabelText(/gapPixels/i);
+    const expand = screen.getByLabelText(/expandPercent/i);
+    const widths = screen.getAllByLabelText(/screenWidth/i);
     const count = screen.getByLabelText(
       /Number of layouts to display/i,
     );

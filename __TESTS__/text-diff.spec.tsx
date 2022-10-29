@@ -16,16 +16,18 @@ describe('TextDiff', () => {
     const user = userEvent.setup();
     render(<TextDiff />);
 
-    const selectedOption = 'Characters';
+    const selectedOption = 'textDiff:diffOptions.characters.label';
 
-    await user.click(screen.getByLabelText(/Choose Diff Options/i));
+    await user.click(
+      screen.getByLabelText(/textDiff:diffOptions.label/i),
+    );
     const listbox = within(screen.getByRole('listbox'));
     await user.click(listbox.getByText(selectedOption));
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
 
-    const input1 = screen.getByLabelText(/Text 1/i);
-    const input2 = screen.getByLabelText(/Text 2/i);
+    const input1 = screen.getByLabelText(/textDiff:text 1/i);
+    const input2 = screen.getByLabelText(/textDiff:text 2/i);
     const output = screen.getByTestId('text-difference-output');
 
     await user.clear(input1);
@@ -50,15 +52,18 @@ describe('TextDiff', () => {
     const user = userEvent.setup();
     render(<TextDiff />);
 
-    const selectedOption = 'Characters Ignore Case';
-    await user.click(screen.getByLabelText(/Choose Diff Options/i));
+    const selectedOption =
+      'textDiff:diffOptions.charactersIgnoreCase.label';
+    await user.click(
+      screen.getByLabelText(/textDiff:diffOptions.label/i),
+    );
     const listbox = within(screen.getByRole('listbox'));
     await user.click(listbox.getByText(selectedOption));
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
 
-    const input1 = screen.getByLabelText(/Text 1/i);
-    const input2 = screen.getByLabelText(/Text 2/i);
+    const input1 = screen.getByLabelText(/textDiff:text 1/i);
+    const input2 = screen.getByLabelText(/textDiff:text 2/i);
     const output = screen.getByTestId('text-difference-output');
 
     const testInput = 'This is some random text for testing';
@@ -78,16 +83,18 @@ describe('TextDiff', () => {
     const user = userEvent.setup();
     render(<TextDiff />);
 
-    const selectedOption = 'Words';
-    await user.click(screen.getByLabelText(/Choose Diff Options/i));
+    const selectedOption = 'textDiff:diffOptions.words.label';
+    await user.click(
+      screen.getByLabelText(/textDiff:diffOptions.label/i),
+    );
     const listbox = within(screen.getByRole('listbox'));
     await user.click(listbox.getByText(selectedOption));
 
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
 
-    const input1 = screen.getByLabelText(/Text 1/i);
-    const input2 = screen.getByLabelText(/Text 2/i);
+    const input1 = screen.getByLabelText(/textDiff:text 1/i);
+    const input2 = screen.getByLabelText(/textDiff:text 2/i);
     const output = screen.getByTestId('text-difference-output');
 
     const testInputT1 = 'I am some teXt for Testing';
@@ -107,16 +114,18 @@ describe('TextDiff', () => {
     const user = userEvent.setup();
     render(<TextDiff />);
 
-    const selectedOption = 'Words Ignore Case';
-    await user.click(screen.getByLabelText(/Choose Diff Options/i));
+    const selectedOption = 'textDiff:diffOptions.wordsIgnoreCase.label';
+    await user.click(
+      screen.getByLabelText(/textDiff:diffOptions.label/i),
+    );
     const listbox = within(screen.getByRole('listbox'));
     await user.click(listbox.getByText(selectedOption));
 
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
 
-    const input1 = screen.getByLabelText(/Text 1/i);
-    const input2 = screen.getByLabelText(/Text 2/i);
+    const input1 = screen.getByLabelText(/textDiff:text 1/i);
+    const input2 = screen.getByLabelText(/textDiff:text 2/i);
     const output = screen.getByTestId('text-difference-output');
 
     const testInputT1 = 'I am some teXt for Testing';
@@ -136,16 +145,18 @@ describe('TextDiff', () => {
     const user = userEvent.setup();
     render(<TextDiff />);
 
-    const selectedOption = 'Words with Space';
-    await user.click(screen.getByLabelText(/Choose Diff Options/i));
+    const selectedOption = 'textDiff:diffOptions.wordsWithSpace.label';
+    await user.click(
+      screen.getByLabelText(/textDiff:diffOptions.label/i),
+    );
     const listbox = within(screen.getByRole('listbox'));
     await user.click(listbox.getByText(selectedOption));
 
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
 
-    const input1 = screen.getByLabelText(/Text 1/i);
-    const input2 = screen.getByLabelText(/Text 2/i);
+    const input1 = screen.getByLabelText(/textDiff:text 1/i);
+    const input2 = screen.getByLabelText(/textDiff:text 2/i);
     const output = screen.getByTestId('text-difference-output');
 
     const testInputT1 = 'I am s ome text for Testing';
@@ -165,16 +176,18 @@ describe('TextDiff', () => {
     const user = userEvent.setup();
     render(<TextDiff />);
 
-    const selectedOption = 'Trimmed Lines';
-    await user.click(screen.getByLabelText(/Choose Diff Options/i));
+    const selectedOption = 'textDiff:diffOptions.trimmedLines.label';
+    await user.click(
+      screen.getByLabelText(/textDiff:diffOptions.label/i),
+    );
     const listbox = within(screen.getByRole('listbox'));
     await user.click(listbox.getByText(selectedOption));
 
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
 
-    const input1 = screen.getByLabelText(/Text 1/i);
-    const input2 = screen.getByLabelText(/Text 2/i);
+    const input1 = screen.getByLabelText(/textDiff:text 1/i);
+    const input2 = screen.getByLabelText(/textDiff:text 2/i);
     const output = screen.getByTestId('text-difference-output');
 
     const testInputT1 = ` I am some text for Testing.
@@ -209,16 +222,18 @@ this is another line.
     const user = userEvent.setup();
     render(<TextDiff />);
 
-    const selectedOption = 'CSS';
-    await user.click(screen.getByLabelText(/Choose Diff Options/i));
+    const selectedOption = 'textDiff:diffOptions.css.label';
+    await user.click(
+      screen.getByLabelText(/textDiff:diffOptions.label/i),
+    );
     const listbox = within(screen.getByRole('listbox'));
     await user.click(listbox.getByText(selectedOption));
 
     const inputBox = screen.getByTestId('text-difference-options');
     expect(inputBox).toHaveValue(selectedOption);
 
-    const input1 = screen.getByLabelText(/Text 1/i);
-    const input2 = screen.getByLabelText(/Text 2/i);
+    const input1 = screen.getByLabelText(/textDiff:text 1/i);
+    const input2 = screen.getByLabelText(/textDiff:text 2/i);
     const output = screen.getByTestId('text-difference-output');
 
     const testInputT1 = `position: absolute;
@@ -238,38 +253,6 @@ color: </span><span style="color:red">red</span><span style="color:green">purple
 margin: </span><span style="color:red">1px</span><span style="color:green">1%</span><span style="color:grey">;
 border: 2px </span><span style="color:red">solid</span><span style="color:green">dotted</span><span style="color:grey"> blue;
     </span>`;
-
-    await user.clear(input1);
-    await user.clear(input2);
-    await user.type(input1, testInputT1);
-    await user.type(input2, testInputT2);
-
-    expect(output.innerHTML).toBe(testOutputLocal);
-  });
-
-  it('Show different JSON', async () => {
-    const user = userEvent.setup();
-    render(<TextDiff />);
-
-    const selectedOption = 'JSON';
-    await user.click(screen.getByLabelText(/Choose Diff Options/i));
-    const listbox = within(screen.getByRole('listbox'));
-    await user.click(listbox.getByText(selectedOption));
-
-    const inputBox = screen.getByTestId('text-difference-options');
-    expect(inputBox).toHaveValue(selectedOption);
-
-    const input1 = screen.getByLabelText(/Text 1/i);
-    const input2 = screen.getByLabelText(/Text 2/i);
-    const output = screen.getByTestId('text-difference-output');
-
-    const testInputT1 = `{{"name":"John", "age":30, "car":null}`;
-    const testInputT2 = `{{"age":30, "name":"John", "car":null}`;
-    const testOutputLocal = `<span style="color:grey">{
-  "age": 30,
-  "car": null,
-  "name": "John"
-}</span>`;
 
     await user.clear(input1);
     await user.clear(input2);

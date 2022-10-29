@@ -11,8 +11,8 @@ describe('Base64', () => {
     const user = userEvent.setup();
     render(<Base64 />);
 
-    const ascii = screen.getByLabelText(/ASCII/i);
-    const base64 = screen.getByLabelText(/Base64/i);
+    const ascii = screen.getByLabelText(/base64:ascii/i);
+    const base64 = screen.getByLabelText(/base64:title/i);
 
     await user.clear(ascii);
     await user.type(ascii, 'Hello, world!');
@@ -23,8 +23,8 @@ describe('Base64', () => {
     const user = userEvent.setup();
     render(<Base64 />);
 
-    const ascii = screen.getByLabelText(/ASCII/i);
-    const base64 = screen.getByLabelText(/Base64/i);
+    const ascii = screen.getByLabelText(/base64:ascii/i);
+    const base64 = screen.getByLabelText(/base64:title/i);
 
     await user.clear(base64);
     await user.type(base64, 'dGVzdCBwYXNzZWQ=');
@@ -35,8 +35,8 @@ describe('Base64', () => {
     const user = userEvent.setup();
     render(<Base64 />);
 
-    const ascii = screen.getByLabelText(/ASCII/i);
-    const base64 = screen.getByLabelText(/Base64/i);
+    const ascii = screen.getByLabelText(/base64:ascii/i);
+    const base64 = screen.getByLabelText(/base64:title/i);
     const clearBtns = screen.getAllByRole('button', { name: /Clear/i });
 
     await user.clear(ascii);
@@ -57,7 +57,7 @@ describe('Base64', () => {
     const user = userEvent.setup();
     render(<Base64 />);
 
-    const ascii = screen.getByLabelText(/ASCII/i);
+    const ascii = screen.getByLabelText(/base64:ascii/i);
     const copyBtns = screen.getAllByRole('button', { name: /Copy/i });
 
     await user.clear(ascii);

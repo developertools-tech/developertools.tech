@@ -77,7 +77,7 @@ describe('JSON', () => {
 
     expect(input).toHaveValue('');
     expect(output.innerHTML).toBe(
-      '<span class="placeholder">Output</span>',
+      '<span class="placeholder">jsonFormat:output</span>',
     );
 
     await user.type(input, goodTestInput);
@@ -85,7 +85,7 @@ describe('JSON', () => {
 
     expect(input).toHaveValue('');
     expect(output.innerHTML).toBe(
-      '<span class="placeholder">Output</span>',
+      '<span class="placeholder">jsonFormat:output</span>',
     );
   });
 

@@ -11,8 +11,8 @@ describe('CSS', () => {
     const user = userEvent.setup();
     render(<Css />);
 
-    const css = screen.getByLabelText(/^CSS$/i);
-    const formattedCss = screen.getByLabelText(/Formatted CSS/i);
+    const css = screen.getByLabelText(/css:css/i);
+    const formattedCss = screen.getByLabelText(/css:formattedCss/i);
 
     await user.clear(css);
     await user.type(
@@ -29,9 +29,9 @@ describe('CSS', () => {
     const user = userEvent.setup();
     render(<Css />);
 
-    const css = screen.getByLabelText(/^CSS$/i);
+    const css = screen.getByLabelText(/css:css/i);
     const minifySwitch = screen.getByRole('checkbox', {
-      name: /Minify/i,
+      name: /minify/i,
     });
 
     await user.clear(css);
@@ -43,7 +43,7 @@ describe('CSS', () => {
     );
 
     await user.click(minifySwitch);
-    const minifiedCss = screen.getByLabelText(/Minified CSS/i);
+    const minifiedCss = screen.getByLabelText(/minifiedCss/i);
 
     expect(minifiedCss.innerHTML).toBe('body{background:#fff}');
 
@@ -54,8 +54,8 @@ describe('CSS', () => {
     const user = userEvent.setup();
     render(<Css />);
 
-    const css = screen.getByLabelText(/^CSS$/i);
-    const formattedCss = screen.getByLabelText(/Formatted CSS/i);
+    const css = screen.getByLabelText(/css:css/i);
+    const formattedCss = screen.getByLabelText(/css:formattedCss/i);
 
     const clearBtns = screen.getAllByRole('button', { name: /Clear/i });
 

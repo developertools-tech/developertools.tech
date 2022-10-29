@@ -11,8 +11,8 @@ describe('HTML', () => {
     const user = userEvent.setup();
     render(<Html />);
 
-    const html = screen.getByLabelText(/^HTML$/i);
-    const formattedHtml = screen.getByLabelText(/Formatted HTML/i);
+    const html = screen.getByLabelText(/html:html/i);
+    const formattedHtml = screen.getByLabelText(/html:formattedHtml/i);
 
     await user.clear(html);
     await user.type(html, '<html><body>');
@@ -24,8 +24,8 @@ describe('HTML', () => {
     const user = userEvent.setup();
     render(<Html />);
 
-    const html = screen.getByLabelText(/^HTML$/i);
-    const formattedHtml = screen.getByLabelText(/Formatted HTML/i);
+    const html = screen.getByLabelText(/html:html/i);
+    const formattedHtml = screen.getByLabelText(/html:formattedHtml/i);
 
     const clearBtns = screen.getAllByRole('button', { name: /Clear/i });
 
