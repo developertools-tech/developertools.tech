@@ -1,0 +1,10 @@
+{
+  "openColorPicker": "የቀለም መራጭን ይክፈቱ",
+  "eyeDropperNotSupported": "EyeDropper በዚህ የድር አሳሽ አይደገፍም።",
+  "hex": "HEX",
+  "hsl": "HSL",
+  "rgb": "RGB",
+  "invalidHex": "ልክ ያልሆነ HEX ቀለም",
+  "invalidHsl": "ልክ ያልሆነ HSL ቀለም",
+  "invalidRgb": "ልክ ያልሆነ RGB ቀለም"
+}

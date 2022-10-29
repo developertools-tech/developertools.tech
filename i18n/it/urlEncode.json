@@ -1,0 +1,7 @@
+{
+  "title": "Codifica URL",
+  "description": "Incolla o Scrivi testo per codificare come URL o decodificarlo",
+  "decoded": "Decodificato",
+  "encoded": "Codificato",
+  "errorMsg": "Errore: Testo non valido come URL Codificata"
+}

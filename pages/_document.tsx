@@ -1,5 +1,6 @@
 import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 import React from 'react';
 
 import createEmotionCache from '../utility/createEmotionCache';
@@ -137,6 +138,17 @@ export default class MyDocument extends Document {
             name='twitter:image:alt'
             content='A screenshot of the Developer Tools website'
           />
+          {process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL &&
+            process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+              <Script
+                strategy='lazyOnload'
+                data-website-id={
+                  process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID
+                }
+                src={process.env.NEXT_PUBLIC_UMAMI_SCRIPT_URL}
+                data-domains='developertools.tech,www.developertools.tech'
+              />
+            )}
         </Head>
         <body>
           <Main />

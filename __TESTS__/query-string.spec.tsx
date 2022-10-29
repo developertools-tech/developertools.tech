@@ -6,12 +6,6 @@ import React from 'react';
 
 import QueryString from '../pages/query-string';
 
-jest.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (str: string) => str,
-  }),
-}));
-
 describe('QueryString', () => {
   it('converts string -> key/values correctly', async () => {
     const user = userEvent.setup();

@@ -3,6 +3,7 @@
   "description": "Type or paste text into both fields to check the difference.",
   "text": "Text",
   "difference": "Difference",
+  "jsonInvalid": "Please ensure you entered a valid JSON object",
   "diffOptions": {
     "label": "Choose Diff Options",
     "characters": {

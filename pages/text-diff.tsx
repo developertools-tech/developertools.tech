@@ -145,6 +145,10 @@ export default function TextDiffPage() {
   }
 
   useEffect(() => {
+    setInput1ValidityMessage({
+      message: '',
+      show: false,
+    });
     setInput2ValidityMessage({
       message: '',
       show: false,
@@ -154,14 +158,10 @@ export default function TextDiffPage() {
     if (selectedOptions?.label === 'JSON') {
       try {
         inputJSON1 = JSON.parse(input1);
-        setInput1ValidityMessage({
-          message: '',
-          show: false,
-        });
       } catch (err) {
         setInput1ValidityMessage({
           show: true,
-          message: 'Please ensure you entered a valid JSON object',
+          message: t('textDiff:jsonInvalid'),
         });
       }
       try {
@@ -169,7 +169,7 @@ export default function TextDiffPage() {
       } catch (err) {
         setInput2ValidityMessage({
           show: true,
-          message: 'Please ensure you entered a valid JSON object',
+          message: t('textDiff:jsonInvalid'),
         });
       }
     }
