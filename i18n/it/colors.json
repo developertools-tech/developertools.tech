@@ -1,0 +1,10 @@
+{
+  "openColorPicker": "Apri Selezionatore Colori",
+  "eyeDropperNotSupported": "EyeDropper non è supportato da questo browser",
+  "hex": "HEX",
+  "hsl": "HSL",
+  "rgb": "RGB",
+  "invalidHex": "Colore HEX Non Valido",
+  "invalidHsl": "Colore HSL Non Valido",
+  "invalidRgb": "Colore RGB Non Valido"
+}

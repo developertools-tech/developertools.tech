@@ -1,0 +1,17 @@
+{
+  "title": "Rapporto d'Aspetto",
+  "ratioPreview": "Anteprima Rapporto",
+  "sourceDimensions": "Dimensioni Origine",
+  "sourceWidth": "Larghezza Origine",
+  "sourceHeight": "Altezza Origine",
+  "targetDimensions": "Dimensioni Obiettivo",
+  "targetWidth": "Larghezza Obiettivo",
+  "targetHeight": "Altezza Obiettivo",
+  "layouts": "Layout",
+  "layout": "Layout",
+  "screenWidth": "Larghezza Schermo",
+  "across": "Attraverso",
+  "marginPixels": "Pixel di Margine",
+  "gapPixels": "Pixel di Spazio",
+  "expandPercent": "Percentuale Espansione"
+}
