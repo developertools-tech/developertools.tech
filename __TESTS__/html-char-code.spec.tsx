@@ -1,12 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { cleanup, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { UserEvent } from '@testing-library/user-event/dist/types/setup/setup';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import HtmlCharCode from '../pages/html-char-codes';
-import renderWithI18n from './helper/i18n';
 
 const unescapedChars = '<>"\'&©∆';
 const escapedChars = '&lt;&gt;&quot;&apos;&amp;&copy;&#8710;';
@@ -22,7 +21,7 @@ afterEach(() => {
 
 describe('HtmlCharCodes', () => {
   it('input unescaped', async () => {
-    renderWithI18n(<HtmlCharCode />);
+    render(<HtmlCharCode />);
     const unescaped = screen.getByLabelText(/Unescaped/i);
     const escaped = screen.getByLabelText(/^Escaped/i);
 
@@ -32,7 +31,7 @@ describe('HtmlCharCodes', () => {
   });
 
   it('input escaped', async () => {
-    renderWithI18n(<HtmlCharCode />);
+    render(<HtmlCharCode />);
     const unescaped = screen.getByLabelText(/Unescaped/i);
     const escaped = screen.getByLabelText(/^Escaped/i);
 
@@ -42,7 +41,7 @@ describe('HtmlCharCodes', () => {
   });
 
   it('clears unescaped and escaped with clear button', async () => {
-    renderWithI18n(<HtmlCharCode />);
+    render(<HtmlCharCode />);
     const unescaped = screen.getByLabelText(/Unescaped/i);
     const escaped = screen.getByLabelText(/^Escaped/i);
 
@@ -70,7 +69,7 @@ describe('HtmlCharCodes', () => {
   });
 
   it('copies text to clipboard', async () => {
-    renderWithI18n(<HtmlCharCode />);
+    render(<HtmlCharCode />);
     const unescaped = screen.getByLabelText(/Unescaped/i);
 
     await user.clear(unescaped);

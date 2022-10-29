@@ -113,19 +113,19 @@ export default function AspectRatioLayoutSettings({
           <FormControl
             sx={{ m: 1, width: { xs: 240, lg: 400, xl: 500 } }}
           >
-            <InputLabel id='demo-multiple-chip-label'>
+            <InputLabel id='screen-widths-multiple-chip-label'>
               {t('screenWidth')}
             </InputLabel>
             <Select
-              labelId='demo-multiple-chip-label'
-              id='demo-multiple-chip'
+              labelId='screen-widths-multiple-chip-label'
+              id='screen-widths-multiple-chip'
               multiple
               value={layoutWidths}
               onChange={handleLayoutSizeChange}
               input={
                 <OutlinedInput
-                  id='select-multiple-chip'
-                  label='Screen Widths'
+                  id='screen-widths-select-multiple-chip'
+                  label={t('screenWidth')}
                 />
               }
               renderValue={(selected) => (

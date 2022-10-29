@@ -148,7 +148,7 @@ export default function UuidCreate({
       {uuidVersion === 3 ||
       (uuidVersion === 5 && namespaceType === 'custom') ? (
         <TextField
-          label={t('uuid:nameSpaceUuid')}
+          label={t('uuid:namespaceUuid')}
           value={namespace}
           error={namespaceError}
           inputProps={{

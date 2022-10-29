@@ -202,6 +202,8 @@ You must write tests for your tool or changes before submitting a PR. Running `n
 
 You can run all the tests in the project with `npm run test:ci`. Github Actions will run them for you once you submit your PR, so this is not required.
 
+Note: When writing tests, if you are querying for an input label, or any string that is translated, you'll need to use the translation ID instead of the translated text.
+
 ## Internationalization (i18n)
 
 This App is internationalized. This section describes the addition of translations.

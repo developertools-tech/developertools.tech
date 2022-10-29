@@ -5,6 +5,7 @@
   "testCases": "Test Cases",
   "case": "Case",
   "addTestCase": "Add test case",
+  "deleteTestCase": "Delete test case",
   "fullMatch": "Full match",
   "group": "Group",
   "testCaseContent": "Test case content",
