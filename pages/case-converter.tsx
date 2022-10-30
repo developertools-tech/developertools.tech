@@ -21,15 +21,18 @@ import {
   snakeCase,
 } from 'change-case';
 import { lowerCase } from 'lower-case';
+import { GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React, { useCallback, useState } from 'react';
+import { Namespace, useTranslation } from 'react-i18next';
 import { titleCase } from 'title-case';
 import { upperCase } from 'upper-case';
 
-import Heading from '../components/Heading';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
 import useSupportsClipboardRead from '../hooks/useSupportsClipboardRead';
+import nextI18NextConfig from '../next-i18next.config.js';
 
 interface CaseDetails {
   name: string;
@@ -37,6 +40,8 @@ interface CaseDetails {
 }
 
 export default function CaseConverterPage() {
+  const { t } = useTranslation(['common', 'caseConverter']);
+
   const supportsClipboardRead = useSupportsClipboardRead();
   const [toastOpen, setToastOpen] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
@@ -68,61 +73,61 @@ export default function CaseConverterPage() {
 
   const casesAvailableData: Record<string, CaseDetails> = {
     'kebab-case': {
-      name: 'Kebab case',
+      name: t('caseConverter:kebabCase'),
       conversionFunction: () => {
         convert(paramCase, input);
       },
     },
     'camel-case': {
-      name: 'Camel case',
+      name: t('caseConverter:camelCase'),
       conversionFunction: () => {
         convert(camelCase, input);
       },
     },
     'pascal-case': {
-      name: 'Pascal case',
+      name: t('caseConverter:pascalCase'),
       conversionFunction: () => {
         convert(pascalCase, input);
       },
     },
     'snake-case': {
-      name: 'Snake case',
+      name: t('caseConverter:snakeCase'),
       conversionFunction: () => {
         convert(snakeCase, input);
       },
     },
     'screaming-snake-case': {
-      name: 'Screaming Snake case',
+      name: t('caseConverter:screamingSnakeCase'),
       conversionFunction: () => {
         convert(constantCase, input);
       },
     },
     'screaming-kebab-case': {
-      name: 'Screaming Kebab case',
+      name: t('caseConverter:screamingKebabCase'),
       conversionFunction: () => {
         convert(paramCase, input, { transform: upperCase });
       },
     },
     'title-case': {
-      name: 'Title case',
+      name: t('caseConverter:titleCase'),
       conversionFunction: () => {
         convert(titleCase, input);
       },
     },
     'lower-case': {
-      name: 'Lower case',
+      name: t('caseConverter:lowerCase'),
       conversionFunction: () => {
         convert(lowerCase, input);
       },
     },
     'upper-case': {
-      name: 'Upper case',
+      name: t('caseConverter:upperCase'),
       conversionFunction: () => {
         convert(upperCase, input);
       },
     },
     'sarcasm-case': {
-      name: 'Sarcasm case',
+      name: t('caseConverter:sarcasmCase'),
       conversionFunction: () => {
         convert((inputStr: string) => {
           let sarcasmCaseOutput = '';
@@ -150,13 +155,12 @@ export default function CaseConverterPage() {
   }
 
   return (
-    <Layout title='Case Converter'>
-      <Heading>Case Converter</Heading>
+    <Layout title={t('common:caseConverter')}>
       <Typography
         paragraph
         textAlign='center'
       >
-        Type or paste text that needs to be converted.
+        {t('caseConverter:description')}
       </Typography>
       <Box
         display='flex'
@@ -169,9 +173,9 @@ export default function CaseConverterPage() {
       >
         <TextField
           fullWidth
-          label='Input Text'
+          label={t('caseConverter:inputText')}
           value={input}
-          name='input text'
+          name='input_text'
           onChange={handleInputChange}
         />
         <Box
@@ -191,7 +195,7 @@ export default function CaseConverterPage() {
               setOutput('');
             }}
           >
-            Clear
+            {t('common:clear')}
           </Button>
           {!!supportsClipboardRead && (
             <Button
@@ -203,7 +207,7 @@ export default function CaseConverterPage() {
                 }
               }}
             >
-              Paste
+              {t('common:paste')}
             </Button>
           )}
         </Box>
@@ -218,11 +222,13 @@ export default function CaseConverterPage() {
         mb={3}
       >
         <FormControl>
-          <InputLabel id='case_list_field_label'>Case List</InputLabel>
+          <InputLabel id='case_list_field_label'>
+            {t('caseConverter:caseOptions')}
+          </InputLabel>
           <Select
             labelId='case_list_field_label'
             value={caseSelected}
-            label='Case List'
+            label={t('caseConverter:caseOptions')}
             inputProps={{ 'data-testid': 'case-convert-options' }}
             onChange={(event: SelectChangeEvent) => {
               const selectedCase = event.target.value;
@@ -253,7 +259,7 @@ export default function CaseConverterPage() {
           paragraph
           textAlign='center'
         >
-          Case conversion output
+          {t('caseConverter:outputText')}
         </Typography>
         <Box
           display='flex'
@@ -264,12 +270,6 @@ export default function CaseConverterPage() {
           borderRadius={1}
           width='100%'
           sx={{
-            '& .bad-line': {
-              backgroundColor: '#ff330050',
-            },
-            '& .bad-letter': {
-              backgroundColor: '#ff000080',
-            },
             '& pre': {
               fontsize: '1rem',
               lineHeight: '1.4375em',
@@ -301,19 +301,19 @@ export default function CaseConverterPage() {
             onClick={() => {
               navigator.clipboard.writeText(output || '').then(
                 () => {
-                  setToastMessage('Copied to clipboard');
+                  setToastMessage(t('common:copiedToClipboard'));
                   setToastSeverity('success');
                   setToastOpen(true);
                 },
                 () => {
-                  setToastMessage('Failed to copy to clipboard');
+                  setToastMessage(t('common:failedToCopyToClipboard'));
                   setToastSeverity('error');
                   setToastOpen(true);
                 },
               );
             }}
           >
-            Copy
+            {t('common:copy')}
           </Button>
         </Box>
       </Box>
@@ -326,3 +326,15 @@ export default function CaseConverterPage() {
     </Layout>
   );
 }
+
+const i18nextNameSpaces: Namespace[] = ['common', 'caseConverter'];
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const translation = await serverSideTranslations(
+    locale || 'en',
+    i18nextNameSpaces as string[],
+    nextI18NextConfig,
+  );
+  return {
+    props: { ...translation },
+  };
+};
