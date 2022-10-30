@@ -22,14 +22,9 @@ const nextConfig = withImages({
   i18n,
   sentry: {
     hideSourceMaps: true,
+    disableServerWebpackPlugin: true,
+    disableClientWebpackPlugin: true,
   },
 });
 
-const sentryWebpackPluginOptions = {
-  silent: true,
-};
-
-module.exports = withSentryConfig(
-  withPWA(nextConfig),
-  sentryWebpackPluginOptions,
-);
+module.exports = withSentryConfig(withPWA(nextConfig));
