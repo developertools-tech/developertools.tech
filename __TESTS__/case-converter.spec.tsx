@@ -12,14 +12,14 @@ describe('CaseConverter', () => {
     const user = userEvent.setup();
     render(<CaseConverterPage />);
 
-    const input = screen.getByLabelText('Input Text');
+    const input = screen.getByLabelText('caseConverter:inputText');
     await user.clear(input);
     await user.type(input, testInput1);
 
     const selectedOption = 'kebab-case';
-    const label = 'Kebab case';
+    const label = 'caseConverter:kebabCase';
 
-    await user.click(screen.getByLabelText('Case List'));
+    await user.click(screen.getByLabelText('caseConverter:caseOptions'));
     const listBox = within(screen.getByRole('listbox'));
     await user.click(listBox.getByText(label));
     const inputBox = screen.getByTestId('case-convert-options');
@@ -34,14 +34,14 @@ describe('CaseConverter', () => {
     const user = userEvent.setup();
     render(<CaseConverterPage />);
 
-    const input = screen.getByLabelText('Input Text');
+    const input = screen.getByLabelText('caseConverter:inputText');
     await user.clear(input);
     await user.type(input, testInput1);
 
     const selectedOption = 'camel-case';
-    const label = 'Camel case';
+    const label = 'caseConverter:camelCase';
 
-    await user.click(screen.getByLabelText('Case List'));
+    await user.click(screen.getByLabelText('caseConverter:caseOptions'));
     const listbox = within(screen.getByRole('listbox'));
     await user.click(listbox.getByText(label));
     const inputBox = screen.getByTestId('case-convert-options');
@@ -56,14 +56,14 @@ describe('CaseConverter', () => {
     const user = userEvent.setup();
     render(<CaseConverterPage />);
 
-    const input = screen.getByLabelText('Input Text');
+    const input = screen.getByLabelText('caseConverter:inputText');
     await user.clear(input);
     await user.type(input, testInput1);
 
     const selectedOption = 'pascal-case';
-    const label = 'Pascal case';
+    const label = 'caseConverter:pascalCase';
 
-    await user.click(screen.getByLabelText('Case List'));
+    await user.click(screen.getByLabelText('caseConverter:caseOptions'));
     const listbox = within(screen.getByRole('listbox'));
     await user.click(listbox.getByText(label));
     const inputBox = screen.getByTestId('case-convert-options');
@@ -78,14 +78,14 @@ describe('CaseConverter', () => {
     const user = userEvent.setup();
     render(<CaseConverterPage />);
 
-    const input = screen.getByLabelText('Input Text');
+    const input = screen.getByLabelText('caseConverter:inputText');
     await user.clear(input);
     await user.type(input, testInput1);
 
     const selectedOption = 'snake-case';
-    const label = 'Snake case';
+    const label = 'caseConverter:snakeCase';
 
-    await user.click(screen.getByLabelText('Case List'));
+    await user.click(screen.getByLabelText('caseConverter:caseOptions'));
     const listBox = within(screen.getByRole('listbox'));
     await user.click(listBox.getByText(label));
     const inputBox = screen.getByTestId('case-convert-options');
@@ -100,14 +100,14 @@ describe('CaseConverter', () => {
     const user = userEvent.setup();
     render(<CaseConverterPage />);
 
-    const input = screen.getByLabelText('Input Text');
+    const input = screen.getByLabelText('caseConverter:inputText');
     await user.clear(input);
     await user.type(input, testInput1);
 
     const selectedOption = 'screaming-snake-case';
-    const label = 'Screaming Snake case';
+    const label = 'caseConverter:screamingSnakeCase';
 
-    await user.click(screen.getByLabelText('Case List'));
+    await user.click(screen.getByLabelText('caseConverter:caseOptions'));
     const listBox = within(screen.getByRole('listbox'));
     await user.click(listBox.getByText(label));
     const inputBox = screen.getByTestId('case-convert-options');
@@ -122,14 +122,14 @@ describe('CaseConverter', () => {
     const user = userEvent.setup();
     render(<CaseConverterPage />);
 
-    const input = screen.getByLabelText('Input Text');
+    const input = screen.getByLabelText('caseConverter:inputText');
     await user.clear(input);
     await user.type(input, testInput1);
 
     const selectedOption = 'screaming-kebab-case';
-    const label = 'Screaming Kebab case';
+    const label = 'caseConverter:screamingKebabCase';
 
-    await user.click(screen.getByLabelText('Case List'));
+    await user.click(screen.getByLabelText('caseConverter:caseOptions'));
     const listBox = within(screen.getByRole('listbox'));
     await user.click(listBox.getByText(label));
     const inputBox = screen.getByTestId('case-convert-options');
@@ -144,14 +144,14 @@ describe('CaseConverter', () => {
     const user = userEvent.setup();
     render(<CaseConverterPage />);
 
-    const input = screen.getByLabelText('Input Text');
+    const input = screen.getByLabelText('caseConverter:inputText');
     await user.clear(input);
     await user.type(input, testInput1);
 
     const selectedOption = 'title-case';
-    const label = 'Title case';
+    const label = 'caseConverter:titleCase';
 
-    await user.click(screen.getByLabelText('Case List'));
+    await user.click(screen.getByLabelText('caseConverter:caseOptions'));
     const listBox = within(screen.getByRole('listbox'));
     await user.click(listBox.getByText(label));
     const inputBox = screen.getByTestId('case-convert-options');
@@ -166,14 +166,14 @@ describe('CaseConverter', () => {
     const user = userEvent.setup();
     render(<CaseConverterPage />);
 
-    const input = screen.getByLabelText('Input Text');
+    const input = screen.getByLabelText('caseConverter:inputText');
     await user.clear(input);
     await user.type(input, testInput2);
 
     const selectedOption = 'lower-case';
-    const label = 'Lower case';
+    const label = 'caseConverter:lowerCase';
 
-    await user.click(screen.getByLabelText('Case List'));
+    await user.click(screen.getByLabelText('caseConverter:caseOptions'));
     const listBox = within(screen.getByRole('listbox'));
     await user.click(listBox.getByText(label));
     const inputBox = screen.getByTestId('case-convert-options');
@@ -188,14 +188,14 @@ describe('CaseConverter', () => {
     const user = userEvent.setup();
     render(<CaseConverterPage />);
 
-    const input = screen.getByLabelText('Input Text');
+    const input = screen.getByLabelText('caseConverter:inputText');
     await user.clear(input);
     await user.type(input, testInput1);
 
     const selectedOption = 'upper-case';
-    const label = 'Upper case';
+    const label = 'caseConverter:upperCase';
 
-    await user.click(screen.getByLabelText('Case List'));
+    await user.click(screen.getByLabelText('caseConverter:caseOptions'));
     const listBox = within(screen.getByRole('listbox'));
     await user.click(listBox.getByText(label));
     const inputBox = screen.getByTestId('case-convert-options');
@@ -210,14 +210,14 @@ describe('CaseConverter', () => {
     const user = userEvent.setup();
     render(<CaseConverterPage />);
 
-    const input = screen.getByLabelText('Input Text');
+    const input = screen.getByLabelText('caseConverter:inputText');
     await user.clear(input);
     await user.type(input, testInput1);
 
     const selectedOption = 'sarcasm-case';
-    const label = 'Sarcasm case';
+    const label = 'caseConverter:sarcasmCase';
 
-    await user.click(screen.getByLabelText('Case List'));
+    await user.click(screen.getByLabelText('caseConverter:caseOptions'));
     const listBox = within(screen.getByRole('listbox'));
     await user.click(listBox.getByText(label));
     const inputBox = screen.getByTestId('case-convert-options');
