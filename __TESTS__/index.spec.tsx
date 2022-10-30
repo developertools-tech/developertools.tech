@@ -6,6 +6,8 @@ import React from 'react';
 
 import Home from '../pages/index';
 
+jest.mock('../data/changelog.yml', () => []);
+
 describe('Home', () => {
   it('renders a heading', () => {
     render(<Home />);
