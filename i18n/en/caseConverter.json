@@ -1,0 +1,17 @@
+{
+  "description": "Type or paste text that needs to be converted.",
+  "inputText": "Input Text",
+  "caseOptions": "Case Options",
+  "outputText": "Case Conversion Output",
+  "output": "Output",
+  "kebabCase": "kebab Case",
+  "camelCase": "Camel Case",
+  "pascalCase": "Pascal Case",
+  "snakeCase": "Snake Case",
+  "screamingSnakeCase": "Screaming Snake Case",
+  "screamingKebabCase": "Screaming Kebab Case",
+  "titleCase": "Title Case",
+  "lowerCase": "lower case",
+  "upperCase": "Upper Case",
+  "sarcasmCase": "Sarcasm Case"
+}
