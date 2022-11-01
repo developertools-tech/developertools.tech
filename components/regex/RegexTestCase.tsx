@@ -106,7 +106,7 @@ function RegexTestCase({
           {t('case')} #{index + 1}
         </Typography>
         <IconButton
-          aria-label='Delete test case'
+          aria-label={t('deleteTestCase')}
           onClick={() => onDelete(index)}
           disabled={deleteDisabled}
           size='small'

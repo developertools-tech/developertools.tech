@@ -1,0 +1,17 @@
+{
+  "title": "ምጥጥነ ገጽታ",
+  "ratioPreview": "የእይታ ምጥትን",
+  "sourceDimensions": "የምንጭ ልኬት",
+  "sourceWidth": "የምንጭ ስፋት",
+  "sourceHeight": "ምንጭ ቁመት",
+  "targetDimensions": "የዒላማ ልኬት",
+  "targetWidth": "የዒላማ ስፋት",
+  "targetHeight": "የዒላማ ቁመት",
+  "layouts": "አቀማመጦች",
+  "layout": "አቀማመጥ",
+  "screenWidth": "የስክሪን ስፋት",
+  "across": "አቋራጭ",
+  "marginPixels": "የጥግ ፒክስሎች",
+  "gapPixels": "ክፍተት ፒክስሎች",
+  "expandPercent": "ማስፊያ ከመቶ"
+}

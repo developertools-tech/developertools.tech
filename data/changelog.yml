@@ -1,0 +1,44 @@
+# Changes here are displayed on the home page for 30 days.
+# Please only add changes about tools here, newest changes go at the top.
+# Please include your timezone in the date, e.g.
+# | Date    | Time   | Timezone (GMT -7 hours in this example)
+# 2022-10-26T00:00:00-0700
+
+- date: 2022-10-26T00:00:00-0700
+  note: Query string tool added
+
+- date: 2022-10-24T00:00:00-0700
+  note: Eye dropper and preview added to color tool
+
+- date: 2022-10-22T00:00:00-0700
+  note: Markdown preview tool added
+
+- date: 2022-10-18T00:00:00-0700
+  note: Color tool added
+
+- date: 2022-10-13T00:00:00-0700
+  note: Diffing options added to text diff tool
+
+- date: 2022-10-12T00:00:00-0700
+  note: HTML character code tool added
+
+- date: 2022-10-10T00:00:00-0700
+  note: Regular expression tool added
+
+- date: 2022-10-08T00:00:00-0700
+  note: Text difference tool added
+
+- date: 2022-10-08T00:00:00-0700
+  note: Image converter tool added
+
+- date: 2022-10-06T00:00:00-0700
+  note: Fixed bug where URL encode tool failed to catch errors
+
+- date: 2022-10-05T00:00:00-0700
+  note: CSS format / minify tool added
+
+- date: 2022-10-04T00:00:00-0700
+  note: HTML format tool added
+
+- date: 2022-10-04T00:00:00-0700
+  note: URL encode / decode tool added

@@ -1,0 +1,10 @@
+{
+  "title": "CSS",
+  "description": "ለመቅረጽ ወይም ለመቀነስ አንዳንድ CSS ይጻፉ ወይም ይለጥፉ።",
+  "note": "ማስታወሻ፡ ቅርጸት ከ CSS ፣ SCSS እና LESS ጋር ይሰራል። መቀነስ ለዋና CSS ብቻ ነው የሚሰራው።",
+  "minify": "መቀነስ",
+  "format": "መቅረጽ",
+  "formattedCss": "የተቀረጸው CSS",
+  "minifiedCss": "የተቀነሰ CSS",
+  "css": "CSS"
+}

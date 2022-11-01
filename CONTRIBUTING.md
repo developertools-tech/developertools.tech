@@ -165,6 +165,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     ];
     ```
 
+7. If you have added or improved a tool, please note it in the changelog (`data/changelog.yml`), this will be shown on the homepage for 30 days
+
+    ```yml
+    #       | Date    | Time   | Timezone (GMT -7 hours in this example)
+    - date: 2022-10-26T00:00:00-0700
+      note: My cool tool added
+    ```
+
 ### Code quality
 
 #### Linting
@@ -201,6 +209,8 @@ Fix the highlighted errors, `git add` your files, and try again. You can manuall
 You must write tests for your tool or changes before submitting a PR. Running `npm test` will start [Jest](https://jestjs.io/docs/getting-started) in watch mode, allowing you to run only tests related to files changed since the last commit.
 
 You can run all the tests in the project with `npm run test:ci`. Github Actions will run them for you once you submit your PR, so this is not required.
+
+Note: When writing tests, if you are querying for an input label, or any string that is translated, you'll need to use the translation ID instead of the translated text.
 
 ## Internationalization (i18n)
 

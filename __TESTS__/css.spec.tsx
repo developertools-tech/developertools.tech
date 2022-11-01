@@ -1,19 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import Css from '../pages/css';
-import renderWithI18n from './helper/i18n';
 
 describe('CSS', () => {
   it('formats CSS correctly', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Css />);
+    render(<Css />);
 
-    const css = screen.getByLabelText(/^CSS$/i);
-    const formattedCss = screen.getByLabelText(/Formatted CSS/i);
+    const css = screen.getByLabelText(/css:css/i);
+    const formattedCss = screen.getByLabelText(/css:formattedCss/i);
 
     await user.clear(css);
     await user.type(
@@ -28,11 +27,11 @@ describe('CSS', () => {
 
   it('minifies CSS correctly', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Css />);
+    render(<Css />);
 
-    const css = screen.getByLabelText(/^CSS$/i);
+    const css = screen.getByLabelText(/css:css/i);
     const minifySwitch = screen.getByRole('checkbox', {
-      name: /Minify/i,
+      name: /minify/i,
     });
 
     await user.clear(css);
@@ -44,7 +43,7 @@ describe('CSS', () => {
     );
 
     await user.click(minifySwitch);
-    const minifiedCss = screen.getByLabelText(/Minified CSS/i);
+    const minifiedCss = screen.getByLabelText(/minifiedCss/i);
 
     expect(minifiedCss.innerHTML).toBe('body{background:#fff}');
 
@@ -53,10 +52,10 @@ describe('CSS', () => {
 
   it('clears inputs with either clear button', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Css />);
+    render(<Css />);
 
-    const css = screen.getByLabelText(/^CSS$/i);
-    const formattedCss = screen.getByLabelText(/Formatted CSS/i);
+    const css = screen.getByLabelText(/css:css/i);
+    const formattedCss = screen.getByLabelText(/css:formattedCss/i);
 
     const clearBtns = screen.getAllByRole('button', { name: /Clear/i });
 

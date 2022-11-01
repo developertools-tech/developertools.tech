@@ -1,11 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 /* eslint-enable import/no-extraneous-dependencies */
 import React from 'react';
 
 import Json from '../pages/json';
-import renderWithI18n from './helper/i18n';
 
 const goodTestInput =
   '{\\{}"test":true,"item":{\\{}"thing":"yes","count":20{\\}}{\\}}';
@@ -37,7 +36,7 @@ const badTestOutput = `{
 describe('JSON', () => {
   it('formats json', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Json />);
+    render(<Json />);
 
     const input = screen.getByLabelText(/Input/i);
     const output = screen.getByTestId('json-output');
@@ -50,7 +49,7 @@ describe('JSON', () => {
 
   it('detects invalid json', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Json />);
+    render(<Json />);
 
     const input = screen.getByLabelText(/Input/i);
     const output = screen.getByTestId('json-output');
@@ -66,7 +65,7 @@ describe('JSON', () => {
 
   it('clears inputs with clear buttons + shows placeholder', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Json />);
+    render(<Json />);
 
     const input = screen.getByLabelText(/Input/i);
     const output = screen.getByTestId('json-output');
@@ -78,7 +77,7 @@ describe('JSON', () => {
 
     expect(input).toHaveValue('');
     expect(output.innerHTML).toBe(
-      '<span class="placeholder">Output</span>',
+      '<span class="placeholder">jsonFormat:output</span>',
     );
 
     await user.type(input, goodTestInput);
@@ -86,13 +85,13 @@ describe('JSON', () => {
 
     expect(input).toHaveValue('');
     expect(output.innerHTML).toBe(
-      '<span class="placeholder">Output</span>',
+      '<span class="placeholder">jsonFormat:output</span>',
     );
   });
 
   it('copies text to clipboard', async () => {
     const user = userEvent.setup();
-    renderWithI18n(<Json />);
+    render(<Json />);
 
     const input = screen.getByLabelText(/Input/i);
     const copyBtns = screen.getAllByRole('button', { name: /Copy/i });

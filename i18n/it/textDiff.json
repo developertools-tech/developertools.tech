@@ -1,0 +1,45 @@
+{
+  "title": "Differenze di Testo",
+  "description": "Scrivi o incolla testo in entrambi i campi per controllare le differenze.",
+  "text": "Testo",
+  "difference": "Differenze",
+  "diffOptions": {
+    "label": "Scegli opzioni di Diff",
+    "characters": {
+      "label": "Caratteri",
+      "description": "Due blocchi di testo, confronta carattere per carattere."
+    },
+    "charactersIgnoreCase": {
+      "label": "Caratteri Ignora Case",
+      "description": "Due blocchi di testo, confronta carattere per carattere ignorando il case."
+    },
+    "words": {
+      "label": "Parole",
+      "description": "Due blocchi di testo, confronta parola per parola, ignorando spazi."
+    },
+    "wordsIgnoreCase": {
+      "label": "Parole Ignora Case",
+      "description": "Due blocchi di testo, confronta parola per parola, ignorando case."
+    },
+    "wordsWithSpace": {
+      "label": "Parole con Spazi",
+      "description": "Due blocchi di testo, confronta parola per parola, trattando gli spazi come significativi."
+    },
+    "trimmedLines": {
+      "label": "Righe Senza Spazi",
+      "description": "Due blocchi di testo, confronta riga per riga."
+    },
+    "sentences": {
+      "label": "Frasi",
+      "description": "Due blocchi di testo, confronta frase per frase."
+    },
+    "css": {
+      "label": "CSS",
+      "description": "Due blocchi di testo, confronta token CSS"
+    },
+    "json": {
+      "label": "JSON",
+      "description": "Due oggetti JSON, confronta i campi definiti in ognuno. L'ordine dei campi, ecc non influisce in questo confronto."
+    }
+  }
+}
