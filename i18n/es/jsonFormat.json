@@ -1,5 +1,5 @@
 {
-  "description": "Pegar o escribir JSON para validarlo o formatearlo.",
+  "description": "Pegue o escriba JSON para validarlo y formatearlo.",
   "input": "Entrada",
   "output": "Salida"
 }

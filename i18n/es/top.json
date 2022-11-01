@@ -1,10 +1,11 @@
 {
-  "home": "Página de Inicio",
-  "welcome": "Bienvenidios",
-  "chooseFromMenu": "Escoge una herramienta del menú para empezar.",
-  "dontSeeTheToolYouNeed": "¿No veas la herramienta que necesitas?",
-  "requestItHere": "Pídelo aquí",
-  "foundBug": "¿Encontraste un error?",
-  "reportItHere":"¿Quieres ayudar?",
-  "contributeOnGit": "Contribuir en GitHub"
+  "home": "Inicio",
+  "welcome": "Bienvenidos",
+  "chooseFromMenu": "Elija una herramienta del menú para empezar",
+  "dontSeeTheToolYouNeed": "¿No ve la herramienta que necesita?",
+  "requestItHere": "solicítelo aquí",
+  "foundBug": "¿Ha encontrado un error?",
+  "reportItHere": "repórtalo aquí",
+  "wantToHelp": "Quieres ayudar",
+  "contributeOnGit": "contribuir en GitHub"
 }

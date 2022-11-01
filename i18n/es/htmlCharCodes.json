@@ -1,5 +1,5 @@
 {
-  "description": "Pegar o escriber cada uno para escapar o no escapar códigos de caracteres HTLM desde uno al otro.",
-  "unescaped": "No Escapado",
+  "description": "Pegar o escribir cada uno de ellos para escapar o desescapar los códigos de caracteres HTML de cada uno de ellos",
+  "unescaped": "No escapado",
   "escaped": "Escapado"
 }
