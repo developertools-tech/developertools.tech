@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "prepare": "husky install",
     "type-check": "tsc --noEmit",
@@ -40,6 +41,7 @@
     "next-images": "^1.8.4",
     "next-plugin-yaml": "^1.0.1",
     "next-pwa": "^5.6.0",
+    "next-sitemap": "^3.1.30",
     "prettier": "^2.7.1",
     "random": "^3.0.6",
     "react": "18.2.0",

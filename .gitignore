@@ -40,5 +40,10 @@ next-env.d.ts
 **/public/sw.js
 **/public/fallback-*.js
 
+# Sitemap
+**/public/robots.txt
+**/public/sitemap.xml
+**/public/sitemap-*.xml
+
 # Sentry
 .sentryclirc
