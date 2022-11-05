@@ -3,27 +3,37 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import changelog from '../data/changelog.yml';
 
+type ChangeLogEntry = {
+  date: Date;
+  note: string;
+};
+
 export default function ChangeLog() {
   const { t } = useTranslation('top');
   const { locale } = useRouter();
+  const [changeLog, setChangeLog] = useState<ChangeLogEntry[]>([]);
 
-  //           day  hour  min  sec  msec
-  const range = 30 * 24 * 60 * 60 * 1000; // 30 days
+  useEffect(() => {
+    //           day  hour  min  sec  msec
+    const range = 30 * 24 * 60 * 60 * 1000; // 30 days
 
-  const now = new Date(Date.now());
-  const compareDate = new Date(now.getTime() - range);
+    const now = new Date(Date.now());
+    const compareDate = new Date(now.getTime() - range);
 
-  const filteredChangelog = changelog.filter((item) => {
-    const itemDate = new Date(item.date);
-    return itemDate > compareDate;
-  });
+    const filteredChangelog = changelog.filter((item) => {
+      const itemDate = new Date(item.date);
+      return itemDate > compareDate;
+    });
 
-  if (!filteredChangelog.length) {
+    setChangeLog(filteredChangelog);
+  }, []);
+
+  if (!changeLog.length) {
     return null;
   }
 
@@ -44,7 +54,7 @@ export default function ChangeLog() {
           maxWidth: 450,
         }}
       >
-        {filteredChangelog.map(({ date, note }) => {
+        {changeLog.map(({ date, note }) => {
           const formatter = new Intl.DateTimeFormat(locale, {
             year: 'numeric',
             month: 'long',
