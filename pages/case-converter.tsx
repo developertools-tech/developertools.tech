@@ -23,7 +23,12 @@ import {
 import { lowerCase } from 'lower-case';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import React, { useCallback, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 import { titleCase } from 'title-case';
 import { upperCase } from 'upper-case';
@@ -47,7 +52,10 @@ export default function CaseConverterPage() {
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastSeverity, setToastSeverity] =
     useState<ToastProps['severity']>('success');
-  const [caseSelected, setCaseSelected] = useState<string>('');
+  const [caseSelected, setCaseSelected] = useLocalState<string>({
+    key: 'caseConverter_case_selected',
+    defaultValue: '',
+  });
   const [input, setInput] = useLocalState<string>({
     key: 'caseConverter_input',
     defaultValue: '',
@@ -71,82 +79,92 @@ export default function CaseConverterPage() {
     [setOutput],
   );
 
-  const casesAvailableData: Record<string, CaseDetails> = {
-    'kebab-case': {
-      name: t('caseConverter:kebabCase'),
-      conversionFunction: () => {
-        convert(paramCase, input);
+  const casesAvailableData: Record<string, CaseDetails> = useMemo(
+    () => ({
+      'kebab-case': {
+        name: t('caseConverter:kebabCase'),
+        conversionFunction: () => {
+          convert(paramCase, input);
+        },
       },
-    },
-    'camel-case': {
-      name: t('caseConverter:camelCase'),
-      conversionFunction: () => {
-        convert(camelCase, input);
+      'camel-case': {
+        name: t('caseConverter:camelCase'),
+        conversionFunction: () => {
+          convert(camelCase, input);
+        },
       },
-    },
-    'pascal-case': {
-      name: t('caseConverter:pascalCase'),
-      conversionFunction: () => {
-        convert(pascalCase, input);
+      'pascal-case': {
+        name: t('caseConverter:pascalCase'),
+        conversionFunction: () => {
+          convert(pascalCase, input);
+        },
       },
-    },
-    'snake-case': {
-      name: t('caseConverter:snakeCase'),
-      conversionFunction: () => {
-        convert(snakeCase, input);
+      'snake-case': {
+        name: t('caseConverter:snakeCase'),
+        conversionFunction: () => {
+          convert(snakeCase, input);
+        },
       },
-    },
-    'screaming-snake-case': {
-      name: t('caseConverter:screamingSnakeCase'),
-      conversionFunction: () => {
-        convert(constantCase, input);
+      'screaming-snake-case': {
+        name: t('caseConverter:screamingSnakeCase'),
+        conversionFunction: () => {
+          convert(constantCase, input);
+        },
       },
-    },
-    'screaming-kebab-case': {
-      name: t('caseConverter:screamingKebabCase'),
-      conversionFunction: () => {
-        convert(paramCase, input, { transform: upperCase });
+      'screaming-kebab-case': {
+        name: t('caseConverter:screamingKebabCase'),
+        conversionFunction: () => {
+          convert(paramCase, input, { transform: upperCase });
+        },
       },
-    },
-    'title-case': {
-      name: t('caseConverter:titleCase'),
-      conversionFunction: () => {
-        convert(titleCase, input);
+      'title-case': {
+        name: t('caseConverter:titleCase'),
+        conversionFunction: () => {
+          convert(titleCase, input);
+        },
       },
-    },
-    'lower-case': {
-      name: t('caseConverter:lowerCase'),
-      conversionFunction: () => {
-        convert(lowerCase, input);
+      'lower-case': {
+        name: t('caseConverter:lowerCase'),
+        conversionFunction: () => {
+          convert(lowerCase, input);
+        },
       },
-    },
-    'upper-case': {
-      name: t('caseConverter:upperCase'),
-      conversionFunction: () => {
-        convert(upperCase, input);
+      'upper-case': {
+        name: t('caseConverter:upperCase'),
+        conversionFunction: () => {
+          convert(upperCase, input);
+        },
       },
-    },
-    'sarcasm-case': {
-      name: t('caseConverter:sarcasmCase'),
-      conversionFunction: () => {
-        convert((inputStr: string) => {
-          let sarcasmCaseOutput = '';
-          let counter = 0;
-          for (let i = 0; i < inputStr.length; i++) {
-            const ch = inputStr[i];
-            if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
-              sarcasmCaseOutput +=
-                counter % 2 === 0 ? upperCase(ch) : lowerCase(ch);
-              counter += 1;
-            } else {
-              sarcasmCaseOutput += ch;
+      'sarcasm-case': {
+        name: t('caseConverter:sarcasmCase'),
+        conversionFunction: () => {
+          convert((inputStr: string) => {
+            let sarcasmCaseOutput = '';
+            let counter = 0;
+            for (let i = 0; i < inputStr.length; i++) {
+              const ch = inputStr[i];
+              if (
+                (ch >= 'a' && ch <= 'z') ||
+                (ch >= 'A' && ch <= 'Z')
+              ) {
+                sarcasmCaseOutput +=
+                  counter % 2 === 0 ? upperCase(ch) : lowerCase(ch);
+                counter += 1;
+              } else {
+                sarcasmCaseOutput += ch;
+              }
             }
-          }
-          return sarcasmCaseOutput;
-        }, input);
+            return sarcasmCaseOutput;
+          }, input);
+        },
       },
-    },
-  };
+    }),
+    [convert, input, t],
+  );
+
+  useEffect(() => {
+    casesAvailableData[caseSelected]?.conversionFunction();
+  }, [caseSelected, input]);
 
   function handleInputChange(
     event: React.ChangeEvent<HTMLInputElement>,
@@ -265,6 +283,7 @@ export default function CaseConverterPage() {
           display='flex'
           justifyContent='center'
           flexDirection='row'
+          overflow='hidden'
           padding={2}
           border='1px solid #494949'
           borderRadius={1}
