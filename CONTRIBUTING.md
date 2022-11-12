@@ -165,6 +165,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
     ];
     ```
 
+7. If you have added or improved a tool, please note it in the changelog (`data/changelog.yml`), this will be shown on the homepage for 30 days
+
+    ```yml
+    #       | Date    | Time   | Timezone (GMT -7 hours in this example)
+    - date: 2022-10-26T00:00:00-0700
+      note: My cool tool added
+    ```
+
 ### Code quality
 
 #### Linting

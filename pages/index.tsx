@@ -5,6 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react';
 import { Namespace, useTranslation } from 'react-i18next';
 
+import ChangeLog from '../components/ChangeLog';
 import Layout from '../components/Layout';
 import nextI18NextConfig from '../next-i18next.config.js';
 
@@ -47,6 +48,7 @@ export default function IndexPage() {
             {t('contributeOnGit')}
           </a>
         </Typography>
+        <ChangeLog />
       </Box>
     </Layout>
   );

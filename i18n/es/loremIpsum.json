@@ -1,7 +1,8 @@
 {
   "wordList": "Lista de Palabras",
   "copyText": "COPIAR TEXTO",
-  "sentenceLength": "Largo de la Oración",
-  "paragraphLength": "Largo del Párrafo",
-  "ParagraphCount": "Conteo de Párrafos"
+  "sentenceLength": "Longitud de la frase",
+  "paragraphLength": "Longitud del párrafo",
+  "ParagraphCount": "Recuento de párrafos",
+  "latin": "Latín"
 }

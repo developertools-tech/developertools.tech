@@ -16,6 +16,7 @@
     "incremental": true
   },
   "include": [
+    "next-sitemap.config.js",
     "next-env.d.ts",
     "additional.d.ts",
     "**/*.ts",

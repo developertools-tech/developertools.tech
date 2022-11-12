@@ -61,7 +61,7 @@ function Logo({ title }: { title: string }) {
 }
 
 function LanguageToggle() {
-  const router = useRouter();
+  const { asPath, locales, locale } = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(
     null,
   );
@@ -87,7 +87,7 @@ function LanguageToggle() {
           color: '#fff',
         }}
       >
-        {router.locale}
+        {locale}
       </Button>
       <Menu
         id='language-toggle-menu'
@@ -108,13 +108,13 @@ function LanguageToggle() {
           },
         }}
       >
-        {(router.locales || []).sort().map((locale) => (
-          <MenuItem key={locale}>
+        {(locales || []).sort().map((localeName) => (
+          <MenuItem key={localeName}>
             <Link
-              href={router.asPath}
-              locale={locale}
+              href={asPath}
+              locale={localeName}
             >
-              {locale}
+              {localeName}
             </Link>
           </MenuItem>
         ))}
@@ -136,7 +136,6 @@ export default function Layout({
 
   const { width } = useWindowSize();
   const router = useRouter();
-  const { asPath } = router;
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -196,7 +195,7 @@ export default function Layout({
                 <ListItemButton
                   href={href}
                   component={Link}
-                  disabled={asPath === href}
+                  disabled={router.asPath === href}
                 >
                   {!!Icon && (
                     <ListItemIcon>
@@ -221,16 +220,23 @@ export default function Layout({
     >
       <Head>
         <title>
-          {asPath === '/' ? t('longTitle') : title || t('longTitle')}
+          {router.asPath === '/'
+            ? t('longTitle')
+            : title || t('longTitle')}
         </title>
+        {/* TODO: Add tool descriptions */}
         <meta
           name='description'
           content='Developer utilities by DL Ford'
         />
-        <meta
-          name='viewport'
-          content='initial-scale=1, width=device-width'
-        />
+        {(router.locales || []).sort().map((localeName) => (
+          <link
+            rel='alternate'
+            key={localeName}
+            hrefLang={localeName}
+            href={`https://www.developertools.tech/${localeName}${router.asPath}`}
+          />
+        ))}
       </Head>
 
       <CssBaseline />
