@@ -3,6 +3,7 @@ import { initReactI18next } from 'react-i18next';
 
 import aspectRatio from './i18n/en/aspectRatio.json';
 import base64 from './i18n/en/base64.json';
+import caseConverter from './i18n/en/caseConverter.json';
 import colors from './i18n/en/colors.json';
 import common from './i18n/en/common.json';
 import css from './i18n/en/css.json';
@@ -43,6 +44,7 @@ export const resources = {
     notFound,
     offline,
     markdown,
+    caseConverter,
   },
 } as const;
 

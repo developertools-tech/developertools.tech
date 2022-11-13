@@ -14,6 +14,7 @@ import LinkIcon from '@mui/icons-material/Link';
 import Looks6 from '@mui/icons-material/Looks6';
 import QuestionMark from '@mui/icons-material/QuestionMark';
 import Search from '@mui/icons-material/Search';
+import SortByAlpha from '@mui/icons-material/SortByAlpha';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
 
@@ -92,6 +93,11 @@ const navItems = [
     title: 'regexTester',
     href: '/regex',
     Icon: Search,
+  },
+  {
+    title: 'caseConverter',
+    href: '/case-converter',
+    Icon: SortByAlpha,
   },
   {
     title: 'htmlCharCodes',

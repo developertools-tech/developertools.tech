@@ -26,5 +26,6 @@
   "regexTester": "Regex Tester",
   "textDiff": "Text Diff",
   "urlEncode": "URL Encode",
-  "uuid": "UUID"
+  "uuid": "UUID",
+  "caseConverter": "Case Converter"
 }
