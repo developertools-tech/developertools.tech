@@ -1,0 +1,6 @@
+{
+  "description": "Convert a query string to or from a list of keys and values",
+  "parameter": "Parameter",
+  "value": "Value",
+  "deleteRow": "Delete Row"
+}
