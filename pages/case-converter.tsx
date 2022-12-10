@@ -164,7 +164,10 @@ export default function CaseConverterPage() {
 
   useEffect(() => {
     casesAvailableData[caseSelected]?.conversionFunction();
-  }, [caseSelected, input]);
+  }, [
+    caseSelected,
+    input,
+  ]); /* eslint-disable-line react-hooks/exhaustive-deps */
 
   function handleInputChange(
     event: React.ChangeEvent<HTMLInputElement>,

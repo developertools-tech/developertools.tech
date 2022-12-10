@@ -35,7 +35,7 @@ export default function PreviewPane({ color }: { color: string }) {
   });
 
   return (
-    <ColorPreviewContainer>
+    <ColorPreviewContainer aria-hidden='true'>
       <ColorPreviewBox />
     </ColorPreviewContainer>
   );
