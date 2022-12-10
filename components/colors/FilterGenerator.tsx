@@ -23,7 +23,7 @@ export default function FilterGenerator({
   setToastOpen: (open: boolean) => void;
   setToastSeverity: (severity: 'success' | 'error') => void;
 }) {
-  const { t } = useTranslation('aspectRatio');
+  const { t } = useTranslation(['colors', 'common']);
 
   const [filter, setFilter] = useLocalState<string>({
     key: 'colorPicker_filterString',
@@ -77,10 +77,10 @@ export default function FilterGenerator({
         variant='h6'
         component='h2'
       >
-        CSS Filter Generator
+        {t('colors:cssFilterGenerator')}
       </Typography>
       <Typography mb={4}>
-        Use this filter to transform any color into the selected color.
+        {t('colors:cssFilterGeneratorDescription')}
       </Typography>
       <Box
         display='flex'
@@ -97,13 +97,15 @@ export default function FilterGenerator({
             color={input}
             filter={filter}
           />
-          <Typography>Loss: {loss.toFixed(3)}</Typography>
+          <Typography>
+            {t('colors:loss')}: {loss.toFixed(3)}
+          </Typography>
           <div>
             <Button
               startIcon={<ReplayIcon />}
               onClick={generateFilterString}
             >
-              Regenerate
+              {t('colors:regenerate')}
             </Button>
           </div>
         </Box>

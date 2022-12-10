@@ -6,5 +6,11 @@
   "rgb": "RGB",
   "invalidHex": "Invalid HEX Color",
   "invalidHsl": "Invalid HSL Color",
-  "invalidRgb": "Invalid RGB Color"
+  "invalidRgb": "Invalid RGB Color",
+  "cssFilterGenerator": "CSS Filter Generator",
+  "cssFilterGeneratorDescription": "Use this filter to transform any color into the selected color.",
+  "loss": "Loss",
+  "regenerate": "Regenerate",
+  "selectedColor": "Selected Color",
+  "transformedColor": "Transformed Color"
 }

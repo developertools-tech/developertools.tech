@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import React, { startTransition, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import useLocalState from '../../hooks/useLocalState';
 
@@ -11,6 +12,8 @@ export default function PreviewPane({
   color: string;
   filter: string;
 }) {
+  const { t } = useTranslation('colors');
+
   const [previewColor, setPreviewColor] = useLocalState<string>({
     key: 'colorPicker_previewColor',
     defaultValue: '#000000',
@@ -61,12 +64,12 @@ export default function PreviewPane({
 
   return (
     <Outer aria-hidden='true'>
-      <Typography>Selected Color</Typography>
+      <Typography>{t('selectedColor')}</Typography>
       <Inner>
         <ColorPreviewBox />
         <FilterPreviewBox />
       </Inner>
-      <Typography textAlign='right'>Transformed Color</Typography>
+      <Typography textAlign='right'>{t('transformedColor')}</Typography>
     </Outer>
   );
 }
