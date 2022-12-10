@@ -49,7 +49,9 @@ export default function FilterGenerator({ input }: { input: string }) {
         color={res.color.toRgb()}
         withoutWrapper
       />
-      <Typography>Filter: {res.result.filter}</Typography>
+      <Typography>{res.result.filter}</Typography>
+      <Typography>Loss: {res.result.loss}</Typography>
+      <Typography>{res.lossMsg}</Typography>
     </>
   );
 }
