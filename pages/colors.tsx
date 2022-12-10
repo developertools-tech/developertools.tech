@@ -178,7 +178,13 @@ export default function Colors() {
 
   return (
     <Layout title={t('common:colors')}>
-      <Typography mb={4}>Color Picker</Typography>
+      <Typography
+        mb={4}
+        variant='h6'
+        component='h2'
+      >
+        Color Picker
+      </Typography>
       <Box
         width='1000px'
         maxWidth='100%'
@@ -432,7 +438,12 @@ export default function Colors() {
           </Typography>
         </Box>
       </Box>
-      <FilterGenerator input={pickerColor} />
+      <FilterGenerator
+        input={pickerColor}
+        setToastMessage={setToastMessage}
+        setToastSeverity={setToastSeverity}
+        setToastOpen={setToastOpen}
+      />
       <Toast
         open={toastOpen}
         message={toastMessage}

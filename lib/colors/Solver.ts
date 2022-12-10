@@ -159,11 +159,14 @@ export default class Solver {
     function fmt(idx: number, multiplier = 1) {
       return Math.round(filters[idx] * multiplier);
     }
-    return `filter: brightness(0) saturate(100%) invert(${fmt(
-      0,
-    )}%) sepia(${fmt(1)}%) saturate(${fmt(2)}%) hue-rotate(${fmt(
-      3,
-      3.6,
-    )}deg) brightness(${fmt(4)}%) contrast(${fmt(5)}%);`;
+    return `
+  brightness(0)
+  saturate(100%)
+  invert(${fmt(0)}%)
+  sepia(${fmt(1)}%)
+  saturate(${fmt(2)}%)
+  hue-rotate(${fmt(3, 3.6)}deg)
+  brightness(${fmt(4)}%)
+  contrast(${fmt(5)}%);`;
   }
 }
