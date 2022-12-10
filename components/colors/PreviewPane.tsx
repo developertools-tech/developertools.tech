@@ -3,7 +3,13 @@ import React, { startTransition, useEffect } from 'react';
 
 import useLocalState from '../../hooks/useLocalState';
 
-export default function PreviewPane({ color }: { color: string }) {
+export default function PreviewPane({
+  color,
+  withoutWrapper = false,
+}: {
+  color: string;
+  withoutWrapper?: boolean;
+}) {
   const [previewColor, setPreviewColor] = useLocalState<string>({
     key: 'colorPicker_previewColor',
     defaultValue: '#000000',
@@ -29,10 +35,14 @@ export default function PreviewPane({ color }: { color: string }) {
   const ColorPreviewBox = styled('span')({
     display: 'block',
     backgroundColor: previewColor,
-    width: 'calc(100% - 32px)',
-    height: 'calc(100% - 32px)',
+    width: withoutWrapper ? '200px' : 'calc(100% - 32px)',
+    height: withoutWrapper ? '140px' : 'calc(100% - 32px)',
     borderRadius: 4,
   });
+
+  if (withoutWrapper) {
+    return <ColorPreviewBox />;
+  }
 
   return (
     <ColorPreviewContainer>

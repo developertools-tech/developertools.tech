@@ -14,6 +14,7 @@ import { HexColorPicker } from 'react-colorful';
 import { useTranslation } from 'react-i18next';
 import useEyeDropper from 'use-eye-dropper';
 
+import FilterGenerator from '../components/colors/FilterGenerator';
 import PreviewPane from '../components/colors/PreviewPane';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
@@ -177,6 +178,7 @@ export default function Colors() {
 
   return (
     <Layout title={t('common:colors')}>
+      <Typography mb={4}>Color Picker</Typography>
       <Box
         width='1000px'
         maxWidth='100%'
@@ -430,6 +432,7 @@ export default function Colors() {
           </Typography>
         </Box>
       </Box>
+      <FilterGenerator input={pickerColor} />
       <Toast
         open={toastOpen}
         message={toastMessage}
