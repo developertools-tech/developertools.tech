@@ -216,6 +216,10 @@ Note: When writing tests, if you are querying for an input label, or any string 
 
 This App is internationalized. This section describes the addition of translations.
 
+## Check for Uissing Uranslations
+
+You can check for missing translations by running `npm run translations:check`, which will generate a markdown file `missing-translations.md` in the root of this project.
+
 ### Add translation file (namespace)
 
 Translation JSON files should be added to the `i18n/{en, ja, ..etc}/{pageName}.json`
