@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 import useLayoutEffect from './useIsomorphicLayoutEffect';
 
@@ -8,7 +8,7 @@ export default function useLocalState<T>({
 }: {
   key: string;
   defaultValue: T;
-}): [T, (_arg0: T) => void] {
+}): [T, Dispatch<SetStateAction<T>>] {
   const [loaded, setLoaded] = useState(false);
   const [value, setValue] = useState<T>(() => {
     if (typeof defaultValue === 'function') {
