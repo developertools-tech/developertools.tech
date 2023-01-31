@@ -1,0 +1,10 @@
+{
+  "title": "Image Converter",
+  "uploadImage": "Upload Image",
+  "fileType": "File Type",
+  "quality": "Quality",
+  "download": "Download",
+  "png": "PNG",
+  "jpg": "JPG",
+  "webp": "WebP"
+}
