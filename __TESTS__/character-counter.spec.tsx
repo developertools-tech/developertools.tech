@@ -21,8 +21,8 @@ describe('CharacterCounter', () => {
     await user.clear(input);
     await user.type(input, testInput);
 
-    // eslint-disable-next-line no-promise-executor-return -- wait for debounce
     await new Promise((resolve) =>
+      // eslint-disable-next-line no-promise-executor-return -- wait for debounce
       setTimeout(resolve, debounceTime + 50),
     );
 
@@ -47,8 +47,8 @@ describe('CharacterCounter', () => {
     await user.clear(input);
     await user.type(input, 'Hello, world!');
 
-    // eslint-disable-next-line no-promise-executor-return -- wait for debounce
     await new Promise((resolve) =>
+      // eslint-disable-next-line no-promise-executor-return -- wait for debounce
       setTimeout(resolve, debounceTime + 50),
     );
 
@@ -66,8 +66,8 @@ describe('CharacterCounter', () => {
 
     expect(input).toHaveValue('');
 
-    // eslint-disable-next-line no-promise-executor-return -- wait for debounce
     await new Promise((resolve) =>
+      // eslint-disable-next-line no-promise-executor-return -- wait for debounce
       setTimeout(resolve, debounceTime + 50),
     );
 
