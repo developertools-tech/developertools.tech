@@ -1,0 +1,9 @@
+{
+	"title": "Character Counter",
+	"description": "Type or paste some text to count the number of characters, words, sentences, and paragraphs.",
+	"inputText": "Input Text",
+	"characters": "Characters",
+	"words": "Words",
+	"sentences": "Sentences",
+	"paragraphs": "Paragraphs"
+}
