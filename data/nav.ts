@@ -14,6 +14,7 @@ import LinkIcon from '@mui/icons-material/Link';
 import Looks6 from '@mui/icons-material/Looks6';
 import QuestionMark from '@mui/icons-material/QuestionMark';
 import Search from '@mui/icons-material/Search';
+import Segment from '@mui/icons-material/Segment';
 import SortByAlpha from '@mui/icons-material/SortByAlpha';
 
 // Icons Index: https://mui.com/material-ui/material-icons/
@@ -103,6 +104,11 @@ const navItems = [
     title: 'htmlCharCodes',
     href: '/html-char-codes',
     Icon: Abc,
+  },
+  {
+    title: 'charCounter',
+    href: '/character-counter',
+    Icon: Segment,
   },
 ];
 

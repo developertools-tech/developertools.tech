@@ -85,93 +85,90 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 2. Create a translation namespace for your tool in `i18n/en/myToolName.json`, add an entry for any hard-coded text as you work on your tool
 
-    ```json
-    {
-      "title": "My Tool Name",
-      // ...
-    }
-    ```
+   ```json
+   {
+     "title": "My Tool Name"
+     // ...
+   }
+   ```
 
 3. Add your namespace to `i18n.ts`
 
-    ```ts
-    // ...
-    import myToolName from '../i18n/en/myToolName.json';
+   ```ts
+   // ...
+   import myToolName from '../i18n/en/myToolName.json';
 
-    export const resources = {
-      en: {
-        // ...
-        myToolName,
-      }
-    } as const;
-    ```
+   export const resources = {
+     en: {
+       // ...
+       myToolName,
+     },
+   } as const;
+   ```
 
 4. Create the file `pages/your-tool-slug.tsx`
 
-    ```tsx
-    import React from 'react';
-    import { Namespace, useTranslation } from 'react-i18next';
+   ```tsx
+   import React from 'react';
+   import { Namespace, useTranslation } from 'react-i18next';
 
-    import nextI18NextConfig from '../next-i18next.config.js';
-    import Layout from '../components/Layout';
+   import nextI18NextConfig from '../next-i18next.config.js';
+   import Layout from '../components/Layout';
 
-    export default function MyToolName() {
-      const { t } = useTranslation('myToolName');
+   export default function MyToolName() {
+     const { t } = useTranslation('myToolName');
 
-      return (
-      <Layout title={t('title')}>
-        {/* TODO - Build my tool */}
-      </Layout>
-      )
-    }
+     return (
+       <Layout title={t('title')}>{/* TODO - Build my tool */}</Layout>
+     );
+   }
 
-    const i18nextNameSpaces: Namespace[] = ['common', 'myToolName'];
+   const i18nextNameSpaces: Namespace[] = ['common', 'myToolName'];
 
-    export const getStaticProps: GetStaticProps = async ({ locale }) => {
-      const translation = await serverSideTranslations(
-        locale || 'en',
-        i18nextNameSpaces as string[],
-        nextI18NextConfig,
-      );
-      return {
-        props: { ...translation },
-      };
-    };
-
-    ```
+   export const getStaticProps: GetStaticProps = async ({ locale }) => {
+     const translation = await serverSideTranslations(
+       locale || 'en',
+       i18nextNameSpaces as string[],
+       nextI18NextConfig,
+     );
+     return {
+       props: { ...translation },
+     };
+   };
+   ```
 
 5. Add your tool name to the common namespace (`i18n/en/common.json`)
 
-    ```json
-    {
-      // ...
-      "myToolName": "My Tool Name",
-    }
-    ```
+   ```json
+   {
+     // ...
+     "myToolName": "My Tool Name"
+   }
+   ```
 
 6. Add your tool to the main navigation (`data/nav.ts`)
 
-    ```ts
-    //...
-    import SomeIcon from '@mui/icons-material/SomeIcon';
+   ```ts
+   //...
+   import SomeIcon from '@mui/icons-material/SomeIcon';
 
-    export default [
-      // ...
-      {
-        title: 'myToolName', // This is the translation key from the common namespace
-        href: '/my-tool-slug',
-        Icon: SomeIcon,
-      },
-    ];
-    ```
+   export default [
+     // ...
+     {
+       title: 'myToolName', // This is the translation key from the common namespace
+       href: '/my-tool-slug',
+       Icon: SomeIcon,
+     },
+   ];
+   ```
 
 7. If you have added or improved a tool, please note it in the changelog (`data/changelog.yml`), this will be shown on the homepage for 30 days
 
-    ```yml
-    #       | Date    | Time   | Timezone (GMT -7 hours in this example)
-    - date: 2022-10-26T00:00:00-0700
-      note: My cool tool added
-    ```
+   ```yml
+   #       | Date    | Time   | Timezone (GMT -7 hours in this example)
+   - date: 2022-10-26T00:00:00-0700
+     note: My cool tool added
+   ```
 
 ### Code quality
 
@@ -216,7 +213,7 @@ Note: When writing tests, if you are querying for an input label, or any string 
 
 This App is internationalized. This section describes the addition of translations.
 
-## Check for Uissing Uranslations
+## Check for Missing Translations
 
 You can check for missing translations by running `npm run translations:check`, which will generate a markdown file `missing-translations.md` in the root of this project.
 
@@ -244,21 +241,15 @@ Adding a language does not require adding every translation for the entire app, 
 4. Add the translated text to each namespace file
 5. Add the locale language code or LCID string from step 2 to `next-i18next.config.js`
 
-
-    ```js
-    module.exports = {
-      i18n: {
-        // ...
-        locales: [
-          'en',
-          'ja',
-          'pt-BR',
-          'YOUR_LOCALE_HERE'
-        ],
-      },
-      // ...
-    };
-    ```
+   ```js
+   module.exports = {
+     i18n: {
+       // ...
+       locales: ['en', 'ja', 'pt-BR', 'YOUR_LOCALE_HERE'],
+     },
+     // ...
+   };
+   ```
 
 6. Create a pull request against the `dev` branch on GitHub
 

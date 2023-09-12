@@ -4,6 +4,7 @@ import { initReactI18next } from 'react-i18next';
 import aspectRatio from './i18n/en/aspectRatio.json';
 import base64 from './i18n/en/base64.json';
 import caseConverter from './i18n/en/caseConverter.json';
+import characterCounter from './i18n/en/characterCounter.json';
 import colors from './i18n/en/colors.json';
 import common from './i18n/en/common.json';
 import css from './i18n/en/css.json';
@@ -45,6 +46,7 @@ export const resources = {
     offline,
     markdown,
     caseConverter,
+    characterCounter,
   },
 } as const;
 
