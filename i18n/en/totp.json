@@ -1,0 +1,7 @@
+{
+  "title": "TOTP",
+  "description": "Generate TOTP Tokens, QR Codes, and URIs",
+  "secretLabel": "Secret (ASCII)",
+  "uriLabel": "URI",
+  "tokenLabel": "Current Token"
+}

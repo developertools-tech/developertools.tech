@@ -162,12 +162,11 @@ export default function CaseConverterPage() {
     [convert, input, t],
   );
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     casesAvailableData[caseSelected]?.conversionFunction();
-  }, [
-    caseSelected,
-    input,
-  ]); /* eslint-disable-line react-hooks/exhaustive-deps */
+  }, [caseSelected, input]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   function handleInputChange(
     event: React.ChangeEvent<HTMLInputElement>,

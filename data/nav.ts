@@ -12,6 +12,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Image from '@mui/icons-material/Image';
 import LinkIcon from '@mui/icons-material/Link';
 import Looks6 from '@mui/icons-material/Looks6';
+import Pin from '@mui/icons-material/Pin';
 import QuestionMark from '@mui/icons-material/QuestionMark';
 import Search from '@mui/icons-material/Search';
 import Segment from '@mui/icons-material/Segment';
@@ -109,6 +110,11 @@ const navItems = [
     title: 'charCounter',
     href: '/character-counter',
     Icon: Segment,
+  },
+  {
+    title: 'totp',
+    href: '/totp',
+    Icon: Pin,
   },
 ];
 
