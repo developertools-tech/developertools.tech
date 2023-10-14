@@ -522,7 +522,7 @@ export default function Layout({
                   />
                 </Button>
               </a>
-              2022
+              {new Date().getFullYear()}
               <IconButton
                 href='https://github.com/developertools-tech/developertools.tech'
                 target='_blank'
