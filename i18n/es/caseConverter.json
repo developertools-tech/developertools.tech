@@ -10,8 +10,8 @@
   "snakeCase": "snake_case",
   "screamingSnakeCase": "SCREAMING_SNAKE_CASE",
   "screamingKebabCase": "SCREAMING-SNAKE-CASE",
-  "titleCase": "Title Case",
-  "lowerCase": "lower case",
-  "upperCase": "UPPER CASE",
-  "sarcasmCase": "SaRcAsM cAsE"
+  "titleCase": "Titulo",
+  "lowerCase": "minúsculas",
+  "upperCase": "MAYÚSCULAS",
+  "sarcasmCase": "SaRcAsMo"
 }
