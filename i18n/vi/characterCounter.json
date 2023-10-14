@@ -1,0 +1,9 @@
+{
+	"title": "Đếm chữ cái",
+	"description": "Gõ hoặc dán một đoạn văn bản để đếm số chữ cái, chữ, câu, và đoạn văn.",
+	"inputText": "Bản nhập",
+	"characters": "Chữ cái",
+	"words": "Chữ",
+	"sentences": "Câu",
+	"paragraphs": "Đoạn văn"
+}

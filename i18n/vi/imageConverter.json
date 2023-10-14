@@ -1,0 +1,10 @@
+{
+  "title": "Đổi ảnh",
+  "uploadImage": "Tải ảnh lên",
+  "fileType": "Định dạng ảnh",
+  "quality": "Chất lượng",
+  "download": "Tải về",
+  "png": "PNG",
+  "jpg": "JPG",
+  "webp": "WebP"
+}
