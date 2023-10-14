@@ -1,0 +1,9 @@
+{
+	"title": "Contador de carácteres",
+	"description": "Escriba o pegue un texto para contar el número de caracteres, palabras, frases y párrafos.",
+	"inputText": "Texto de entrada",
+	"characters": "Carácteres",
+	"words": "Palabras",
+	"sentences": "Frases",
+	"paragraphs": "Párrafos"
+}
