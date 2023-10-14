@@ -1,4 +1,5 @@
 {
+  "title": "Formateador JSON",
   "description": "Pegue o escriba JSON para validarlo y formatearlo.",
   "input": "Entrada",
   "output": "Salida"

@@ -1,8 +1,11 @@
 {
+  "title": "Lorem Ipsum",
   "wordList": "Lista de Palabras",
   "copyText": "COPIAR TEXTO",
   "sentenceLength": "Longitud de la frase",
   "paragraphLength": "Longitud del párrafo",
   "ParagraphCount": "Recuento de párrafos",
-  "latin": "Latín"
+  "latin": "Latín",
+  "willFerrell": "Will Ferrell",
+  "jeffGoldblum": "Jeff Goldblum"
 }

@@ -1,4 +1,6 @@
 {
+  "title": "HTML",
   "description": "Pegue o escriba algo de HTML sin formato para formatearlo",
-  "formattedHtml": "HTML con formato"
+  "formattedHtml": "HTML con formato",
+  "html": "HTML"
 }

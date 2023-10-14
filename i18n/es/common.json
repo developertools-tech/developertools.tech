@@ -26,5 +26,7 @@
   "regexTester": "Comprobador de Regex",
   "textDiff": "Diferencias de Texto",
   "urlEncode": "Codificación de URL",
-  "uuid": "UUID"
+  "uuid": "UUID",
+  "caseConverter": "Convertidor de Formato de Texto",
+  "charCounter": "Contador de carácteres"
 }
