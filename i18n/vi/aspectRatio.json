@@ -1,0 +1,17 @@
+{
+  "title": "Tỉ lệ khung hình",
+  "ratioPreview": "Xem thử tỉ lệ",
+  "sourceDimensions": "Kích thước nguồn",
+  "sourceWidth": "Chiều rộng nguồn",
+  "sourceHeight": "Chiều cao nguồn",
+  "targetDimensions": "Kích thước mục tiêu",
+  "targetWidth": "Chiều rộng mục tiêu",
+  "targetHeight": "Chiều cao mục tiêu",
+  "layouts": "Layouts",
+  "layout": "Layout",
+  "screenWidth": "Chiều rộng màn hình",
+  "across": "Ngang",
+  "marginPixels": "Lề Pixels",
+  "gapPixels": "Khoảng cách Pixels",
+  "expandPercent": "Phần trăm giãn"
+}

@@ -1,0 +1,16 @@
+{
+  "openColorPicker": "Dụng cụ chọn màu",
+  "eyeDropperNotSupported": "Dụng cụ chọn màu không được hỗ trợ.",
+  "hex": "HEX",
+  "hsl": "HSL",
+  "rgb": "RGB",
+  "invalidHex": "Màu HEX bị lỗi",
+  "invalidHsl": "Màu HSL bị lỗi",
+  "invalidRgb": "Màu RGB bị lỗi",
+  "cssFilterGenerator": "Tạo bộ lọc CSS",
+  "cssFilterGeneratorDescription": "Dùng bộ lọc này để chuyển bất kỳ màu nào qua màu được chọn.",
+  "loss": "Loss",
+  "regenerate": "Tái tạo",
+  "selectedColor": "Màu đã chọn",
+  "transformedColor": "Màu được chuyển"
+}

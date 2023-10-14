@@ -1,0 +1,17 @@
+{
+  "description": "Gõ hoặc dán bản văn cần chuyển.",
+  "inputText": "Bản nhập",
+  "caseOptions": "Các quy tắc",
+  "outputText": "Văn bản đã dịch",
+  "output": "Bản dịch",
+  "kebabCase": "Quy tắc kebab",
+  "camelCase": "Quy tắc lạc đà",
+  "pascalCase": "Quy tắc Pascal",
+  "snakeCase": "Quy tắc con rắn",
+  "screamingSnakeCase": "Quy tắc con rắn viết hoa",
+  "screamingKebabCase": "Quy tắc kebab viết hoa",
+  "titleCase": "Viết hoa chữ cái đầu",
+  "lowerCase": "Chữ thường",
+  "upperCase": "Chữ hoa",
+  "sarcasmCase": "Viết hoa ngẫu hứng"
+}

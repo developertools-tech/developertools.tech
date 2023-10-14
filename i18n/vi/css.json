@@ -1,0 +1,10 @@
+{
+  "title": "CSS",
+  "description": "Gõ hoặc dán tài liệu CSS để định dạng hoặc rút ngắn lại.",
+  "note": "Lưu ý: Định dạng chỉ sử dụng được với CSS, SCSS, và LESS. Rút ngắn chỉ sử dụng được với CSS.",
+  "minify": "Rút ngắn",
+  "format": "Định dạng",
+  "formattedCss": "Đã chuyển mã CSS",
+  "minifiedCss": "CSS rút ngắn",
+  "css": "CSS"
+}

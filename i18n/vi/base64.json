@@ -1,0 +1,5 @@
+{
+  "title": "Base64",
+  "description": "Dán hoặc gõ chữ ASCII sẽ tự động chuyển qua Base64 hoặc ngược lại.",
+  "ascii": "ASCII"
+}
