@@ -39,7 +39,7 @@
     "js-base64": "^3.7.2",
     "lower-case": "^2.0.2",
     "marked": "^4.1.1",
-    "next": "12.2.5",
+    "next": "13.5.4",
     "next-i18next": "^12.1.0",
     "next-images": "^1.8.4",
     "next-plugin-yaml": "^1.0.1",
