@@ -1,7 +1,14 @@
 {
+  "shortTitle": "डेव टूल्स",
+  "longTitle": "डेवलपर टूल्स",
+  "sponsors": "प्रायोजक",
+  "becomeASponsor": "प्रायोजक बनें",
+  "contributors": "योगदानकर्ता",
   "copy": "कॉपी",
   "paste": "पेस्ट",
   "clear": "क्लियर",
+  "copiedToClipboard": "क्लिपबोर्ड पर कॉपी किया गया",
+  "failedToCopyToClipboard": "क्लिपबोर्ड पर कॉपी करने में असफल हुआ!",
   "searchTools": "खोज के टूल्स",
   "search": "खोज करें...",
   "home": "होम",
@@ -15,8 +22,11 @@
   "json": "JSON",
   "loremIpsum": "लोरेम इप्सम",
   "markdownPreview": "मार्कडाउन प्रीव्यू",
+  "queryString": "क्वेरी स्ट्रिंग",
   "regexTester": "रेगेक्स टेस्टर",
   "textDiff": "टेक्सट Diff",
   "urlEncode": "URL एन्कोड",
-  "uuid": "UUID"
+  "uuid": "UUID",
+  "caseConverter": "केस कन्वर्टर",
+  "charCounter": "अक्षर काउंटर"
 }

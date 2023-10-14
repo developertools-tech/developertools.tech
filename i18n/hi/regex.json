@@ -1,7 +1,13 @@
 {
-  "regex": "Regex",
-  "description": "Expressions with and without trailing slashes are supported. Add trailing slashes to use flags, ie /w+/ig",
-  "testCases": "Test Cases",
-  "case": "Case",
-  "addTestCase": "ADD TEST CASE"
+  "title": "रेग्युलर एक्सप्रेशन टेस्टर",
+  "regex": "रेजेक्स",
+  "description": "पिछली स्लैश वाली और बिना स्लैश वाली एक्सप्रेशंस समर्थित हैं। फ्लैग्स का उपयोग करने के लिए अनुगामी स्लैश जोड़ें, जैसे के /w+/ig",
+  "testCases": "टेस्ट केस",
+  "case": "केस",
+  "addTestCase": "टेस्ट केस जोड़ें",
+  "deleteTestCase": "टेस्ट केस हटाएँ",
+  "fullMatch": "पूरा मैच हो गया",
+  "group": "समूह",
+  "testCaseContent": "टेस्ट केस कंटेंट",
+  "testCasePlaceholder": "Lorem Ipsum..."
 }
