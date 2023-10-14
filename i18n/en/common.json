@@ -28,5 +28,6 @@
 	"urlEncode": "URL Encode",
 	"uuid": "UUID",
 	"caseConverter": "Case Converter",
-	"charCounter": "Char Counter"
+	"charCounter": "Char Counter",
+	"totp": "TOTP"
 }

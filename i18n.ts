@@ -20,6 +20,7 @@ import queryString from './i18n/en/queryString.json';
 import regex from './i18n/en/regex.json';
 import textDiff from './i18n/en/textDiff.json';
 import top from './i18n/en/top.json';
+import totp from './i18n/en/totp.json';
 import urlEncode from './i18n/en/urlEncode.json';
 import uuid from './i18n/en/uuid.json';
 
@@ -47,6 +48,7 @@ export const resources = {
     markdown,
     caseConverter,
     characterCounter,
+    totp,
   },
 } as const;
 
