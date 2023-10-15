@@ -1,0 +1,6 @@
+{
+  "description": "Chuyển chuỗi truy vấn qua danh sách key và value",
+  "parameter": "Tham số",
+  "value": "Value",
+  "deleteRow": "Xóa hàng"
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Kiểm Tra Regex",
+  "regex": "Regex",
+  "description": "Có thể dùng xâu regex kết thúc hoặc không kết thúc bằng gạch chéo. Thêm gạch chéo để dùng flag, ví dụ: /w+/ig",
+  "testCases": "Test Cases",
+  "case": "Case",
+  "addTestCase": "Thêm test case",
+  "deleteTestCase": "Xóa test case",
+  "fullMatch": "Full match",
+  "group": "Nhóm",
+  "testCaseContent": "Nội dung test case",
+  "testCasePlaceholder": "Lorem Ipsum..."
+}
