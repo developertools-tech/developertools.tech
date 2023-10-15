@@ -1,0 +1,17 @@
+{
+  "title": "Rasio Aspek",
+  "ratioPreview": "Pratinjau Rasio",
+  "sourceDimensions": "Dimensi Sumber",
+  "sourceWidth": "Lebar Sumber",
+  "sourceHeight": "Tinggi Sumber",
+  "targetDimensions": "Dimensi Sasaran",
+  "targetWidth": "Lebar Sasaran",
+  "targetHeight": "Tinggi Sasaran",
+  "layouts": "Tata Letak",
+  "layout": "Tata letak",
+  "screenWidth": "Lebar Layar",
+  "across": "Lintas",
+  "marginPixels": "Piksel Batas",
+  "gapPixels": "Piksel Celah",
+  "expandPercent": "Perluas Persen"
+}

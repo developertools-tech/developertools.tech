@@ -1,0 +1,10 @@
+{
+  "title": "Pengonversi Gambar",
+  "uploadImage": "Unggah Gambar",
+  "fileType": "Tipe Berkas",
+  "quality": "Kualitas",
+  "download": "Unduh",
+  "png": "PNG",
+  "jpg": "JPG",
+  "webp": "WebP"
+}
