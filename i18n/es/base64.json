@@ -1,4 +1,5 @@
 {
   "title": "Sistema Numérico de Base-64",
-  "description": "Pegue o escriba un texto ASCII y se convertirá a Base64 y viceversa."
+  "description": "Pegue o escriba un texto ASCII y se convertirá a Base64 y viceversa.",
+  "ascii": "ASCII"
 }

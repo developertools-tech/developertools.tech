@@ -1,8 +1,10 @@
 {
+  "title": "CSS",
   "description": "Pega o escribe algo de CSS para formatear o minificar.",
   "note": "Nota: El formateo funciona con CSS, SCSS y LESS. La minificación sólo funciona con CSS sin procesar.",
   "minify": "Minimizar",
   "format": "Dar formato",
   "formattedCss": "CSS con formato",
-  "minifiedCss": "CSS minimizado"
+  "minifiedCss": "CSS minimizado",
+  "css": "CSS"
 }

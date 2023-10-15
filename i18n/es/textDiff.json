@@ -1,7 +1,9 @@
 {
+  "title": "Diferencias de Textos",
   "description": "Escriba o pegue el texto en ambos campos para comprobar la diferencia.",
   "text": "Texto",
   "difference": "Diferencia",
+  "jsonInvalid": "Por favor compruebe que ha introducido un objeto JSON válido.",
   "diffOptions": {
     "label": "Elija las opciones de diferencia",
     "characters": {

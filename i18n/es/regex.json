@@ -1,4 +1,5 @@
 {
+  "title": "Comprobador de Expresiones Regulares",
   "regex": "Expresiones Regulares",
   "description": "Se admiten expresiones con y sin barras finales. Añade barras al final para usar banderas, por ejemplo /w+/ig",
   "testCases": "Casos de prueba",
@@ -6,5 +7,7 @@
   "addTestCase": "Añadir caso de prueba",
   "fullMatch": "Coincidencia completa",
   "group": "Grupo",
-  "testCaseContent": "Contenido del caso de prueba"
+  "testCaseContent": "Contenido del caso de prueba",
+  "testCasePlaceholder": "Lorem Ipsum...",
+  "deleteTestCase": "Eliminar caso de prueba"
 }

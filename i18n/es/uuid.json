@@ -1,4 +1,5 @@
 {
+  "title": "Generador de UUID",
   "generateUuid": "Generar un UUID",
   "uuidVersion": "Versión de UUID",
   "pseudorandom": "Pseudo-aleatorio",
@@ -16,6 +17,8 @@
   "uuidToValidate": "UUID a validar",
   "aboudUuids": "Acerca de los UUID",
   "custom": "Personalizado",
+  "url": "URL",
+  "dns": "DNS",
   "overview": "Un identificador único universal (UUID) es un número de 128 bits utilizado como identificador único.",
   "aboutUuid1": "El UUID v1 es pseudo-aleatorio, creado utilizando la hora de creación y la dirección MAC del ordenador que lo creó.",
   "aboutUuid3": "UUID v3 es un hash MD5, creado utilizando un espacio de nombres y un nombre. El espacio de nombres debe ser un UUID, y el nombre puede ser cualquier cadena. Dado el mismo espacio de nombres y el mismo nombre, siempre se obtendrá el mismo UUID.",
