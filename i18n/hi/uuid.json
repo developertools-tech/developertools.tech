@@ -1,4 +1,5 @@
 {
+  "title": "UUID जेनरेटर",
   "generateUuid": "एक UUID जेनरेट करें",
   "uuidVersion": "UUID वर्श़न",
   "pseudorandom": "Pseudorandom",
@@ -8,7 +9,8 @@
   "uuidName": "UUID का नाम",
   "namespaceType": "Namespace टाइप",
   "namespaceUuid": "Namespace UUID",
-  "invalidUuid": "Invalid UUID",
+  "validUuid": "मान्य UUID",
+  "invalidUuid": "अमान्य UUID",
   "generatedUuid": "जेनरेटिड UUID",
   "newUuid": "NEW UUID",
   "checkUuidVersionAndValidity": "UUID वर्श़न और वलिडटी की जांच करें",

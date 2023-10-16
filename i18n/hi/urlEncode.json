@@ -1,5 +1,7 @@
 {
+  "title": "URL एनकोड",
   "description": "URL को पेस्ट या टाइप करें encode या decode करने के लिए",
   "decoded": "Decoded",
-  "encoded": "Encoded"
+  "encoded": "Encoded",
+  "errorMsg": "एरर: अमान्य URL एनकोडेड टेक्स्ट"
 }

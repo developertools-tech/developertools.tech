@@ -1,7 +1,11 @@
 {
+  "title": "लोरेम इप्सम",
   "wordList": "शब्द लिस्ट",
   "copyText": "कॉपी टेक्सट",
   "sentenceLength": "वाक्य की लंबाई",
   "paragraphLength": "पैराग्राफ की लंबाई",
-  "ParagraphCount": "पैराग्राफ की गिनती"
+  "ParagraphCount": "पैराग्राफ की गिनती",
+  "latin": "लैटिन",
+  "willFerrell": "विल फेररेल",
+  "jeffGoldblum": "जेफ गोल्डब्लम"
 }
