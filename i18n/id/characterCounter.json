@@ -1,0 +1,9 @@
+{
+	"title": "Penghitung Karakter",
+	"description": "Ketik atau tempel beberapa teks untuk menghitung jumlah karakter, kata, kalimat, dan paragraf.",
+	"inputText": "Masukkan teks",
+	"characters": "Karakter",
+	"words": "Kata-kata",
+	"sentences": "Kalimat",
+	"paragraphs": "Paragraf"
+}

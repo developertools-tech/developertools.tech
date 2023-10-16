@@ -1,0 +1,10 @@
+{
+  "title": "CSS",
+  "description": "Tempel atau ketik beberapa CSS untuk memformat atau memperkecilnya.",
+  "note": "Catatan: Pemformatan berfungsi dengan CSS, SCSS, dan LESS. Minifikasi hanya berfungsi untuk CSS mentah.",
+  "minify": "Mengecilkan",
+  "format": "Format",
+  "formattedCss": "CSS yang diformat",
+  "minifiedCss": "CSS yang diperkecil",
+  "css": "CSS"
+}

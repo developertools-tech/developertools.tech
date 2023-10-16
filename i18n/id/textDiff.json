@@ -1,0 +1,46 @@
+{
+  "title": "Perbedaan Teks",
+  "description": "Ketik atau tempel teks ke kedua kolom untuk memeriksa perbedaannya.",
+  "text": "Teks",
+  "difference": "Perbedaan",
+  "jsonInvalid": "Harap pastikan Anda memasukkan objek JSON yang valid",
+  "diffOptions": {
+    "label": "Pilih Opsi Berbeda",
+    "characters": {
+      "label": "Karakter",
+      "description": "Dua blok teks, membandingkan karakter demi karakter."
+    },
+    "charactersIgnoreCase": {
+      "label": "Karakter Abaikan Kasus",
+      "description": "Dua blok teks, membandingkan karakter demi karakter dengan mengabaikan huruf besar/kecil."
+    },
+    "words": {
+      "label": "Kata-kata",
+      "description": "Dua blok teks, membandingkan kata demi kata, mengabaikan spasi."
+    },
+    "wordsIgnoreCase": {
+      "label": "Kata-kata Abaikan Kasus",
+      "description": "Dua blok teks, membandingkan kata demi kata, mengabaikan huruf besar/kecil."
+    },
+    "wordsWithSpace": {
+      "label": "Kata-kata dengan Spasi",
+      "description": "Dua blok teks, membandingkan kata demi kata, menganggap spasi sebagai sesuatu yang penting."
+    },
+    "trimmedLines": {
+      "label": "Garis yang Dipangkas",
+      "description": "Dua blok teks, membandingkan baris demi baris."
+    },
+    "sentences": {
+      "label": "Kalimat",
+      "description": "Dua blok teks, membandingkan kalimat demi kalimat."
+    },
+    "css": {
+      "label": "CSS",
+      "description": "Dua blok teks, membandingkan token CSS"
+    },
+    "json": {
+      "label": "JSON",
+      "description": "Dua objek JSON, membandingkan bidang yang ditentukan pada masing-masing objek. Urutan bidang, dll tidak menjadi masalah dalam perbandingan ini."
+    }
+  }
+}

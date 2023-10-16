@@ -1,0 +1,17 @@
+{
+  "description": "Ketik atau tempel teks yang perlu dikonversi.",
+  "inputText": "Masukkan teks",
+  "caseOptions": "Opsi Kasus",
+  "outputText": "Keluaran Konversi Kasus",
+  "output": "Keluaran",
+  "kebabCase": "Kasus Kebab",
+  "camelCase": "Kasus Camel",
+  "pascalCase": "Kasus Pascal",
+  "snakeCase": "Kasus Snake",
+  "screamingSnakeCase": "Kasus Snake Berteriak",
+  "screamingKebabCase": "Kasus Kebab Berteriak",
+  "titleCase": "Judul Kasus",
+  "lowerCase": "huruf kecil",
+  "upperCase": "Huruf besar",
+  "sarcasmCase": "Kasus Sarkasme"
+}

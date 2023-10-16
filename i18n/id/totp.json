@@ -1,0 +1,7 @@
+{
+  "title": "TOTP",
+  "description": "Hasilkan Token TOTP, Kode QR, dan URI",
+  "secretLabel": "Rahasia (ASCII)",
+  "uriLabel": "URI",
+  "tokenLabel": "Token Saat Ini"
+}

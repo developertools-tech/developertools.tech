@@ -1,0 +1,16 @@
+{
+  "openColorPicker": "Buka Pemilih Warna",
+  "eyeDropperNotSupported": "EyeDropper tidak didukung di browser ini",
+  "hex": "HEX",
+  "hsl": "HSL",
+  "rgb": "RGB",
+  "invalidHex": "Warna HEX Tidak Sah",
+  "invalidHsl": "Warna HSL Tidak Sah",
+  "invalidRgb": "Warna RGB Tidak Sah",
+  "cssFilterGenerator": "Pembuat Saring CSS",
+  "cssFilterGeneratorDescription": "Gunakan Saring ini untuk mengubah warna apa pun menjadi warna yang dipilih.",
+  "loss": "Kehilangan",
+  "regenerate": "Diperbarui",
+  "selectedColor": "Warna yang Dipilih",
+  "transformedColor": "Warna yang Berubah"
+}

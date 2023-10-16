@@ -1,0 +1,13 @@
+{
+  "title": "Penguji Ekspresi Reguler",
+  "regex": "Regex",
+  "description": "Ekspresi dengan dan tanpa garis miring didukung. Tambahkan garis miring untuk menggunakan flag, yaitu /w+/ig",
+  "testCases": "Uji Kasus",
+  "case": "Kasus",
+  "addTestCase": "Tambahkan kasus uji",
+  "deleteTestCase": "Hapus kasus uji",
+  "fullMatch": "Pertandingan penuh",
+  "group": "Kelompok",
+  "testCaseContent": "Isi kasus uji",
+  "testCasePlaceholder": "Lorem Ipsum..."
+}
