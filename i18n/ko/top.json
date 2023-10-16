@@ -1,0 +1,10 @@
+{
+  "welcome": "환영합니다.",
+  "chooseFromMenu": "메뉴에서 도구를 선택하여 시작하세요.",
+  "dontSeeTheToolYouNeed": "필요한 도구가 없나요?",
+  "requestItHere": "여기에서 요청하세요.",
+  "foundBug": "버그를 발견했나요?",
+  "reportItHere": "여기에서 신고하세요.",
+  "wantToHelp": "도움을 주고 싶나요?",
+  "contributeOnGit": "GitHub에서 기여하세요."
+}
