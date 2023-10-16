@@ -1,0 +1,16 @@
+{
+  "ratioPreview": "비율 미리보기",
+  "sourceDimensions": "소스 차원",
+  "sourceWidth": "소스 너비",
+  "sourceHeight": "소스 높이",
+  "targetDimensions": "대상 차원",
+  "targetWidth": "대상 너비",
+  "targetHeight": "대상 높이",
+  "layouts": "레이아웃",
+  "layout": "레이아웃",
+  "screenWidth": "화면 너비",
+  "across": "가로",
+  "marginPixels": "여백 픽셀",
+  "gapPixels": "간격 픽셀",
+  "expandPercent": "확대 비율%"
+}
