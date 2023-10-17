@@ -62,6 +62,7 @@ function Logo({ title }: { title: string }) {
 
 function LanguageToggle() {
   const { asPath, locales, locale } = useRouter();
+  const { t } = useTranslation('common');
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(
     null,
   );
@@ -87,7 +88,7 @@ function LanguageToggle() {
           color: '#fff',
         }}
       >
-        {locale}
+        {t(String(locale))}
       </Button>
       <Menu
         id='language-toggle-menu'
@@ -114,7 +115,7 @@ function LanguageToggle() {
               href={asPath}
               locale={localeName}
             >
-              {localeName}
+              {t(localeName)}
             </Link>
           </MenuItem>
         ))}
