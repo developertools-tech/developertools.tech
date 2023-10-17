@@ -1,0 +1,10 @@
+{
+  "title": "Перетворювач Зображень",
+  "uploadImage": "Завантажити Зображення",
+  "fileType": "Тип Файлу",
+  "quality": "Якість",
+  "download": "Стягнути",
+  "png": "PNG",
+  "jpg": "JPG",
+  "webp": "WebP"
+}
