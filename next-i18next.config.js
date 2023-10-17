@@ -16,6 +16,7 @@ module.exports = {
       'am',
       'it',
       'vi',
+      'ko',
     ],
     reloadOnPrerender: process.env.NODE_ENV === 'development',
   },

@@ -1,0 +1,10 @@
+{
+  "openColorPicker": "색 선택기 열기",
+  "eyeDropperNotSupported": "이 브라우저에서는 아이드로퍼를 지원하지 않습니다",
+  "hex": "HEX",
+  "hsl": "HSL",
+  "rgb": "RGB",
+  "invalidHex": "유효하지 않은 HEX 색상",
+  "invalidHsl": "유효하지 않은 HSL 색상",
+  "invalidRgb": "유효하지 않은 RGB 색상"
+}

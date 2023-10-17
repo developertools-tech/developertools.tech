@@ -1,0 +1,8 @@
+{
+  "description": "CSS를 붙여넣거나 입력하면 서식이 지정되거나 최소화됩니다.",
+  "note": "서식이 지정되는 것은 CSS, SCSS, LESS에 유효하지만 최소화는 CSS에만 유효합니다.",
+  "minify": "압축",
+  "format": "서식 지정",
+  "formattedCss": "서식 지정된 CSS",
+  "minifiedCss": "압축된 CSS"
+}
