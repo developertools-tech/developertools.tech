@@ -1,0 +1,17 @@
+{
+  "description": "Скопіюйте чи напишіть текст для перетворення",
+  "inputText": "Текст для перетворення",
+  "caseOptions": "Параметри Регістру",
+  "outputText": "Перетворений Текст",
+  "output": "Текст",
+  "kebabCase": "Kebab Регістр",
+  "camelCase": "Camel Регістр",
+  "pascalCase": "Pascal Регістр",
+  "snakeCase": "Snake Регістр",
+  "screamingSnakeCase": "Screaming Snake Регістр",
+  "screamingKebabCase": "Screaming Kebab Регістр",
+  "titleCase": "Регістр для Заголовків",
+  "lowerCase": "нижній регістр",
+  "upperCase": "ВЕРХНІЙ РЕГІСТР",
+  "sarcasmCase": "РеГіСтР ДлЯ СаРкАзМу"
+}

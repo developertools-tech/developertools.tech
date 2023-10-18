@@ -1,0 +1,12 @@
+{
+  "home": "Головна",
+  "welcome": "Вітаємо!",
+  "chooseFromMenu": "Оберіть інструмент з меню щоб почати",
+  "dontSeeTheToolYouNeed": "Не знайшли потрібного інструменту?",
+  "requestItHere": "запросить тут",
+  "foundBug": "Знайшли ваду?",
+  "reportItHere": "повідомить про це тут",
+  "wantToHelp": "Хочете допомогти?",
+  "contributeOnGit": "зробити свій вклад в проект на GitHub",
+  "recentChanges": "Що нового?"
+}

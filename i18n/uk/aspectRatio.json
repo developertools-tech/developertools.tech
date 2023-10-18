@@ -1,0 +1,17 @@
+{
+  "title": "Співвідношення Сторін",
+  "ratioPreview": "Попередній Перегляд",
+  "sourceDimensions": "Оригінальні Розміри",
+  "sourceWidth": "Оригінальна Ширина",
+  "sourceHeight": "Оригінальна Висота",
+  "targetDimensions": "Нові Розміри",
+  "targetWidth": "Нова Ширина",
+  "targetHeight": "Нова Висота",
+  "layouts": "Моделі",
+  "layout": "Модель",
+  "screenWidth": "Ширина екрану",
+  "across": "Розтин",
+  "marginPixels": "Поля",
+  "gapPixels": "Відступи",
+  "expandPercent": "Процентне збільшення"
+}

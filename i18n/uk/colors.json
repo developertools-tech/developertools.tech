@@ -1,0 +1,16 @@
+{
+  "openColorPicker": "Відкрити Палітру кольорів",
+  "eyeDropperNotSupported": "EyeDropper не підтримується вашим переглядачем",
+  "hex": "HEX",
+  "hsl": "HSL",
+  "rgb": "RGB",
+  "invalidHex": "Неправильний HEX колір",
+  "invalidHsl": "Неправильний HSL колір",
+  "invalidRgb": "Неправильний RGB колір",
+  "cssFilterGenerator": "Створювач фільтрів CSS",
+  "cssFilterGeneratorDescription": "Використовуйте цей фільтр для перетворення будь якого кольору в обраний колір",
+  "loss": "Втрати",
+  "regenerate": "Переробити",
+  "selectedColor": "Обраний Колір",
+  "transformedColor": "Перетворений Колір"
+}

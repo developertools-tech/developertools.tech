@@ -1,0 +1,7 @@
+{
+  "title": "TOTP",
+  "description": "Генератор TOTP токенів, URI, та QR-кодов",
+  "secretLabel": "Секрет (ASCII)",
+  "uriLabel": "URI",
+  "tokenLabel": "Наявний Токен"
+}
