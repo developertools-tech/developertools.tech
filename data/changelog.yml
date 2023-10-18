@@ -49,5 +49,8 @@
 - date: 2022-10-04T00:00:00-0700
   note: URL encode / decode tool added
 
-- date: 2023-09-01T00:00:00-0700
+- date: 2023-09-28T00:00:00-0700
   note: Character Counter tool added
+
+- date: 2023-10-14T00:00:00-0700
+  note: TOTP Debugger tool added

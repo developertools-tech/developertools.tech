@@ -1,5 +1,46 @@
 {
+  "title": "टेक्स्ट डिफरेंस ",
   "description": "अंतर जांचने के लिए दोनों क्षेत्रों में टेक्स्ट टाइप या पेस्ट करें।",
   "text": "टेक्स्ट",
-  "difference": "अंतर"
+  "difference": "अंतर",
+  "jsonInvalid": "कृपया सुनिश्चित करें कि आपने एक वैध JSON ऑब्जेक्ट दर्ज किया है",
+  "diffOptions": {
+    "label": "डिफरेंस विकल्प चुनें",
+    "characters": {
+      "label": "Characters",
+      "description": "Two blocks of text, comparing character by character."
+    },
+    "charactersIgnoreCase": {
+      "label": "Characters Ignore Case",
+      "description": "Two blocks of text, comparing character by character ignoring case."
+    },
+    "words": {
+      "label": "Words",
+      "description": "Two blocks of text, comparing word by word, ignoring whitespace."
+    },
+    "wordsIgnoreCase": {
+      "label": "Words Ignore Case",
+      "description": "Two blocks of text, comparing word by word, ignoring case."
+    },
+    "wordsWithSpace": {
+      "label": "Words with Space",
+      "description": "Two blocks of text, comparing word by word, treating whitespace as significant."
+    },
+    "trimmedLines": {
+      "label": "Trimmed Lines",
+      "description": "Two blocks of text, comparing line by line."
+    },
+    "sentences": {
+      "label": "Sentences",
+      "description": "Two blocks of text, comparing sentence by sentence."
+    },
+    "css": {
+      "label": "CSS",
+      "description": "Two blocks of text, comparing CSS tokens"
+    },
+    "json": {
+      "label": "JSON",
+      "description": "Two JSON objects, comparing the fields defined on each. The order of fields, etc does not matter in this compparsion."
+    }
+  }
 }
