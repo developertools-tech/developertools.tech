@@ -6,7 +6,7 @@
   "case": "Case",
   "addTestCase": "Thêm test case",
   "deleteTestCase": "Xóa test case",
-  "fullMatch": "Full match",
+  "fullMatch": "Match tất cả",
   "group": "Nhóm",
   "testCaseContent": "Nội dung test case",
   "testCasePlaceholder": "Lorem Ipsum..."

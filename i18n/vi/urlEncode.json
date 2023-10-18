@@ -1,0 +1,7 @@
+{
+  "title": "Mã hóa URL",
+  "description": "Dán hoặc gõ văn bản để mã hóa hoặc giải mã URL.",
+  "decoded": "Giải mã",
+  "encoded": "Mã hóa",
+  "errorMsg": "Lỗi: Văn bản URL không hợp lệ."
+}
