@@ -12,5 +12,9 @@
   "loss": "Loss",
   "regenerate": "Regenerate",
   "selectedColor": "Selected Color",
-  "transformedColor": "Transformed Color"
+  "transformedColor": "Transformed Color",
+  "foreground": "FOREGROUND",
+  "background": "BACKGROUND",
+  "contrastChecker": "Contrast Checker",
+  "contrastCheckerDescription": "Use this to test accessibility of text colors over background colors."
 }
