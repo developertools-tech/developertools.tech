@@ -238,6 +238,8 @@ Adding a language does not require adding every translation for the entire app, 
 1. See [Getting Started](#getting-started) to create a fork and a new branch based on the `dev` branch
 2. Create a directory at `i18n/{short-language-code}/`, use a [language code or LCID string](https://wiki.freepascal.org/Language_Codes) for the directory name
 3. Create the namespace JSON files to match the `en` directory
+   - `en/common.json` also includes translations for each language (e.g. `"en": "English"`), these don't need to be translated, as they are already in the native language.
+   - Add the new language to `en/common.json` with the key being short language code, and the value being the name of the language in that language.
 4. Add the translated text to each namespace file
 5. Add the locale language code or LCID string from step 2 to `next-i18next.config.js`
 
