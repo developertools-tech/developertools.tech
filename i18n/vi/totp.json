@@ -1,0 +1,7 @@
+{
+  "title": "TOTP",
+  "description": "Tạo mã TOTP, QR, và URI",
+  "secretLabel": "Mật khẩu (ASCII)",
+  "uriLabel": "URI",
+  "tokenLabel": "Mã hiện tại"
+}

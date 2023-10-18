@@ -1,0 +1,46 @@
+{
+  "title": "So sánh văn bản",
+  "description": "Gõ hoặc dán 2 đoạn văn bản vào để tìm điểm khác nhau.",
+  "text": "Văn bản",
+  "difference": "Điểm khác nhau",
+  "jsonInvalid": "Xin nhập vào định dạng JSON hợp lệ.",
+  "diffOptions": {
+    "label": "Chọn thể loại so sánh",
+    "characters": {
+      "label": "Chữ cái",
+      "description": "So sánh từng chữ cái."
+    },
+    "charactersIgnoreCase": {
+      "label": "Chữ cái (hoa hoặc thường)",
+      "description": "So sánh từng chữ cái, không phân biệt dạng chữ."
+    },
+    "words": {
+      "label": "Chữ",
+      "description": "So sánh từng chữ, không tính khoảng cách."
+    },
+    "wordsIgnoreCase": {
+      "label": "Chữ (hoa hoặc thường)",
+      "description": "So sánh từng chữ, không phân biệt dạng chữ."
+    },
+    "wordsWithSpace": {
+      "label": "Chữ",
+      "description": "So sánh chữ và khoảng cách."
+    },
+    "trimmedLines": {
+      "label": "Hàng",
+      "description": "So sánh từng hàng."
+    },
+    "sentences": {
+      "label": "Câu",
+      "description": "So sánh từng câu."
+    },
+    "css": {
+      "label": "CSS",
+      "description": "So sánh CSS token"
+    },
+    "json": {
+      "label": "JSON",
+      "description": "So sánh từng mục của định dạng JSON, bất kể thứ tự."
+    }
+  }
+}
