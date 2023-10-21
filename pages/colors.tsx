@@ -16,6 +16,7 @@ import useEyeDropper from 'use-eye-dropper';
 
 import FilterGenerator from '../components/colors/FilterGenerator';
 import PreviewPane from '../components/colors/PreviewPane';
+import TextContrastChecker from '../components/colors/TextContrastChecker';
 import Layout from '../components/Layout';
 import Toast, { ToastProps } from '../components/Toast';
 import useLocalState from '../hooks/useLocalState';
@@ -440,6 +441,12 @@ export default function Colors() {
       </Box>
       <FilterGenerator
         input={pickerColor}
+        setToastMessage={setToastMessage}
+        setToastSeverity={setToastSeverity}
+        setToastOpen={setToastOpen}
+      />
+      <TextContrastChecker
+        serializeColor={serializeColor}
         setToastMessage={setToastMessage}
         setToastSeverity={setToastSeverity}
         setToastOpen={setToastOpen}
