@@ -231,10 +231,11 @@ export default function TextContrastChecker({
             </Box>
           </Box>
           <Button
+            aria-label={t('colors:swapColors')}
             startIcon={<SwapVertIcon />}
             onClick={handleColorSwap}
           >
-            {t('colors:swapColors')}
+            {t('colors:swap')}
           </Button>
           <Box
             display='flex'
