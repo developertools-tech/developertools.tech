@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 import useLocalState from '../../hooks/useLocalState';
 import useSupportsClipboardRead from '../../hooks/useSupportsClipboardRead';
+import ContrastPreview from './ContrastPreview';
 
 export default function TextContrastChecker({
   serializeColor,
@@ -302,6 +303,7 @@ export default function TextContrastChecker({
             border='1px solid #494949'
             minWidth='250px'
             minHeight='250px'
+            mb={4}
             sx={{
               '& pre': {
                 fontsize: '1rem',
@@ -322,6 +324,11 @@ export default function TextContrastChecker({
           </Box>
         </Box>
       </Box>
+      <ContrastPreview
+        contrast={textContrast}
+        foreground={`#${fgColor}`}
+        background={`#${bgColor}`}
+      />
     </>
   );
 }

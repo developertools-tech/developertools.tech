@@ -13,8 +13,17 @@
   "regenerate": "Regenerate",
   "selectedColor": "Selected Color",
   "transformedColor": "Transformed Color",
+  "contrastChecker": "Contrast Checker",
+  "contrastCheckerDescription": "Use this to test accessibility of text colors over background colors.",
   "foreground": "FOREGROUND",
   "background": "BACKGROUND",
-  "contrastChecker": "Contrast Checker",
-  "contrastCheckerDescription": "Use this to test accessibility of text colors over background colors."
+  "wcagAA": "WCAG AA:",
+  "wcagAAA": "WCAG AAA:",
+  "normalText": "Normal Text",
+  "largeText": "Large Text",
+  "gui": "Graphical Objects and User Interface Components",
+  "contrastTestString": "The five boxing wizards jump quickly.",
+  "textInput": "Text Input",
+  "pass": "Pass",
+  "fail": "Fail"
 }
