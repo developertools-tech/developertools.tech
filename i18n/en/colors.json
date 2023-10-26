@@ -17,6 +17,7 @@
   "contrastCheckerDescription": "Use this to test accessibility of text colors over background colors.",
   "foreground": "FOREGROUND",
   "background": "BACKGROUND",
+  "swapColors": "Swap",
   "wcagAA": "WCAG AA:",
   "wcagAAA": "WCAG AAA:",
   "normalText": "Normal Text",

@@ -1,5 +1,6 @@
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ContentPasteGoIcon from '@mui/icons-material/ContentPasteGo';
+import SwapVertIcon from '@mui/icons-material/SwapVert';
 import { TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -45,20 +46,20 @@ export default function TextContrastChecker({
   });
   const [textContrast, setTextContrast] = useLocalState<string>({
     key: 'contastChecker_textContrast',
-    defaultValue: '1',
+    defaultValue: '21',
   });
   const [contrastErr, setContrastErr] = useLocalState<string>({
     key: 'contastChecker_err',
     defaultValue: '',
   });
 
-  const HEXColorRegExp = /^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+  const HEXColorRegExp = /^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
   const isValid = (color: string): boolean =>
     HEXColorRegExp.test(color);
 
   function HandleFgChange(hex: string) {
     setFgColor(serializeColor(hex));
-    if (/^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(hex)) {
+    if (isValid(hex)) {
       setFgErr(false);
     } else {
       setContrastErr(t('colors:invalidHex'));
@@ -68,11 +69,18 @@ export default function TextContrastChecker({
 
   function HandleBgChange(hex: string) {
     setBgColor(serializeColor(hex));
-    if (/^#?([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(hex)) {
+    if (isValid(hex)) {
       setBgErr(false);
     } else {
       setContrastErr(t('colors:invalidHex'));
       setBgErr(true);
+    }
+  }
+
+  function handleColorSwap() {
+    if (isValid(fgColor) && isValid(bgColor)) {
+      HandleBgChange(fgColor);
+      HandleFgChange(bgColor);
     }
   }
 
@@ -158,7 +166,7 @@ export default function TextContrastChecker({
           display='flex'
           flexDirection='column'
           justifyContent='stretch'
-          gap={7}
+          gap={2}
         >
           <Box
             display='flex'
@@ -222,6 +230,12 @@ export default function TextContrastChecker({
               )}
             </Box>
           </Box>
+          <Button
+            startIcon={<SwapVertIcon />}
+            onClick={handleColorSwap}
+          >
+            {t('colors:swapColors')}
+          </Button>
           <Box
             display='flex'
             flexDirection='column'
@@ -302,7 +316,7 @@ export default function TextContrastChecker({
             borderRadius='4px'
             border='1px solid #494949'
             minWidth='250px'
-            minHeight='250px'
+            minHeight='260px'
             mb={4}
             sx={{
               '& pre': {
