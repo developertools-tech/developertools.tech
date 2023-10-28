@@ -327,7 +327,7 @@ export default function TextContrastChecker({
               },
             }}
           >
-            contrast ratio:
+            {t('colors:contrastRatio')}
             <Typography
               align='center'
               gutterBottom
