@@ -55,7 +55,8 @@ export default function ContrastPreview({
         >
           <Typography
             align='left'
-            variant='h5'
+            variant='h3'
+            fontSize='1.5rem'
             borderBottom='1px solid #494949'
           >
             {t('colors:normalText')}
@@ -126,7 +127,8 @@ export default function ContrastPreview({
         >
           <Typography
             align='left'
-            variant='h5'
+            variant='h3'
+            fontSize='1.5rem'
             borderBottom='1px solid #494949'
           >
             {t('colors:largeText')}
@@ -202,7 +204,8 @@ export default function ContrastPreview({
         >
           <Typography
             align='left'
-            variant='h5'
+            variant='h3'
+            fontSize='1.5rem'
             borderBottom='1px solid #494949'
           >
             {t('colors:gui')}

@@ -230,13 +230,18 @@ export default function TextContrastChecker({
               )}
             </Box>
           </Box>
-          <Button
-            aria-label={t('colors:swapColors')}
-            startIcon={<SwapVertIcon />}
-            onClick={handleColorSwap}
+          <Box
+            textAlign='center'
+            my={2}
           >
-            {t('colors:swap')}
-          </Button>
+            <Button
+              aria-label={t('colors:swapColors')}
+              startIcon={<SwapVertIcon />}
+              onClick={handleColorSwap}
+            >
+              {t('colors:swap')}
+            </Button>
+          </Box>
           <Box
             display='flex'
             flexDirection='column'
@@ -317,7 +322,7 @@ export default function TextContrastChecker({
             borderRadius='4px'
             border='1px solid #494949'
             minWidth='250px'
-            minHeight='260px'
+            minHeight='257px'
             mb={4}
             sx={{
               '& pre': {
@@ -332,7 +337,7 @@ export default function TextContrastChecker({
               align='center'
               gutterBottom
               my={6}
-              variant='h3'
+              fontSize='3rem'
             >
               {`${textContrast}:1`}
             </Typography>
