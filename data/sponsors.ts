@@ -1,11 +1,11 @@
-import idyllicDigital from '../resources/sponsors/idyllic-digital.png';
+// import idyllicDigital from '../resources/sponsors/idyllic-digital.png';
 
-const sponsors = [
-  {
-    title: 'Idyllic Digital',
-    logo: idyllicDigital,
-    link: 'https://www.facebook.com/IdyllicDigitalServices/',
-  },
-];
+export type Sponsor = {
+  title: string;
+  logo: string;
+  link: string;
+};
+
+const sponsors: Sponsor[] = [];
 
 export default sponsors;

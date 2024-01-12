@@ -7,6 +7,7 @@ import '../styles/globals.css';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import { appWithTranslation } from 'next-i18next';
 import React from 'react';
 
@@ -29,12 +30,20 @@ function MyApp(props: MyAppProps) {
   } = props;
 
   return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+    <>
+      <Head>
+        <meta
+          name='viewport'
+          content='initial-scale=1, width=device-width'
+        />
+      </Head>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
+    </>
   );
 }
 

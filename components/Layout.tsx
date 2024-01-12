@@ -18,6 +18,7 @@ import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -124,7 +125,7 @@ function LanguageToggle() {
   );
 }
 
-export default function Layout({
+function Layout({
   title,
   children,
 }: {
@@ -558,3 +559,8 @@ export default function Layout({
     </Box>
   );
 }
+
+const NoSSRLayout = dynamic(() => Promise.resolve(Layout), {
+  ssr: false,
+});
+export default NoSSRLayout;
